@@ -1,0 +1,28 @@
+# -*- mode: org; mode: flyspell; -*-
+#+TITLE: Discrete mathematics I
+
+* Syllabus 
+** Basics
+*** Logic
+*** Sets
+*** Relations
+*** Functions
+** Number sets
+*** Natural numbers $\mathbb{N}$
+*** Integers $\mathbb{Z}$
+*** Rational numbers $\mathbb{Q}$
+*** Real numbers $\mathbb{C}$
+*** Complex numbers $\mathbb{C}$
+** Combinatorics
+*** Counting possibilities with repetition
+*** Counting possibilities without repetition
+*** Pigeon hole principle
+*** Logical sieve
+*** Polynomial theorem
+** Number theory
+*** Divisibility
+*** (Extended) Euclidean algorithm
+*** Diophantine equations
+*** Congruences
+*** Euler's totient function
+*** System of linear congruences (Chinese remainder theorem)
