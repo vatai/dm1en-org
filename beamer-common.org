@@ -1,0 +1,18 @@
+#+AUTHOR: Emil Vatai
+#+EMAIL: vatai@inf.elte.hu
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+#+OPTIONS: toc:t H:2
+#+BEAMER_THEME: Berkeley
+# #+BEAMER_COLOR_THEME: spruce
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [10pt,a4paper,xcolor=dvipsnames,xcolor=table]
+#+LATEX_HEADER: \usepackage[]{babel}
+#+LATEX_HEADER: \usepackage{lmodern}
+#+LATEX_HEADER: \definecolor{pmsGreen}{RGB}{0,156,121}
+#+LATEX_HEADER: \def\eg{e.g.\  }
+#+LATEX_HEADER: \def\ie{i.e.\  }
+#+BEAMER_HEADER: \setbeamercolor{math text}{fg=pmsGreen}
+#+BEAMER_HEADER: \setbeamercolor{math text displayed}{fg=pmsGreen}
+

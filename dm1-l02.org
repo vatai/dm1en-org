@@ -1,0 +1,94 @@
+# -*- mode: org; mode: flyspell; -*-
+#+STARTUP: beamer
+#+INCLUDE: "beamer-common.org"
+#+TITLE: Discrete mathematics I - Sets
+#+SHORT_TITLE: Sets
+#+LATEX_HEADER: \def\iff{\Leftrightarrow}
+#+LATEX_HEADER: \def\tru{\top}
+#+LATEX_HEADER: \def\fls{\perp}
+# #+LATEX_CLASS_OPTIONS: [draft]
+* Naive set theory
+** Sets and elements
+*** Set theory
+    - Two predicates: $X$ is a *set*.  $x\in X$, $x$ is an *element of* $X$
+    - The negation of the \in predicate is sometimes written as $\not\in$
+    - A /set of sets/ is some times referred to as a *family* or *system sets*.
+*** Examples, notation
+    - $A=\{\text{cat}, \text{dog}, \text{elephant}\}$, $B=\{\tru,\fls\}$
+    - $C=\{1,2,3,\ldots\}$, $D=\{\text{the sutudents in this class}\}$
+    - $S=\{ A,B,C,D \}$ the set of the previous examples (a system of sets)
+** Basics
+*** Definitions
+    - Two sets are *equal* if they have the same elements, \ie a set is determined by its elements.
+    - $A=B \iff \forall x (x\in A \iff x\in B)$
+*** Definition 
+    - The *empty set* is denoted by \emptyset and has no elements.
+    - The empty set is unique and $\forall x  (x \not\in \emptyset)$.
+*** Example
+    - $\{1,2,3\}$ and the /set of all positive integers less then $4$/ are equal.
+    - $\{\}=\emptyset$
+** Subsets
+*** Definition
+   - It is said that $A$ is a *subset* of $B$,  written as 
+     $A \subset B$ (or $A \subseteq B$), if $\forall x (x\in A \Rightarrow x\in B)$.
+   - A set is a *proper* (or *strict*) subset if $A \subset B$ and $A\neq B$ and 
+     is written as $A \subsetneq B$.
+   - Subsets of a set can be defined using a formula. 
+     - Let $\mathcal{F}$ be a formula and $X$ a set,
+       then the set $\{x\in X : \mathcal{F}(x)\}$ contains exactly those $x$ elements 
+       for which $\mathcal{F}(x)$ is true.
+*** Examples
+    - $\{1,3\}\subset \{1,3\}$, $\{1,3\} \subsetneq \{1,2,3,4\}$
+    - $\{x\in\mathbb{N}: 0<x \land x<4\}=\{1,2,3\}\subset\mathbb{N}$.
+    - Let $E(x)$ be true if and only if $x$ is even, then $\{x \in\mathbb{Z} : E(x)\}$ is
+      the set of even integers.
+** Powerset
+*** Definition
+    - Given a set $A$, set of all subsets of $A$ is called the *powerset* of $A$.
+    - The powerset of $A$ is denoted by $\wp(A)=\{x : x\subset A\}$
+*** Example
+    - $\wp(\{a,b,c\})=\{\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\},\}$
+* Set operations
+** Union, intersection
+*** Definition: union
+    - The *union* of the sets $A$ and $B$ is the set $A\cup B$.
+      - $x$ is an element of $A\cup B$ if and only if $x\in A$ or $x\in B$.
+      - $A\cup B = \{ x : x\in A \lor x\in B\}$.
+      - If $\mathcal{A}$ is a system of sets then $\cup \mathcal{A}$ contains 
+	elements which an element of at least one $A\in\mathcal{A}$.
+*** Definition: intersection
+    - The *intersection* of the sets $A$ and $B$ is the set $A\cap B$.
+      - $x$ is an element of $A\cap B$ if and only if $x\in A$ and $x\in B$.
+      - $A\cap B = \{ x : x\in A \lor x\in B\}$.
+      - If $\mathcal{A}$ is a system of sets then $\cap \mathcal{A}$ contains 
+	elements which an element of all $A\in\mathcal{A}$.
+** Complement
+*** Definition: Difference
+    - The *set-theoretic difference* (or *relative complement*) of $A$ and $B$ 
+      is the set $A\setminus B$ (read as "A minus B") which contains elements
+      from $A$ which are not in $B$ \ie $A\setminus B=\{x\in A:x\not\in B\}$.
+*** Definition: Complement
+    - If $A \subset X$, where $X$ is a base set (or the universe),
+      the *complement* of $A$ is $X\setminus A$.
+    - It is denoted by $\overline{A}_X$ or if it is clear from the context
+      just $\overline{A}$.
+** Examples
+*** Examples of unions and intersections
+    - $\{a\}\cup\{b\}=\{a,b\}$, $\{a,b\}\cup\{b\}=\{a,b\}$
+    - $\{a\}\cap\{b\}=\emptyset$, $\{a,b\}\cap\{b\}=\{b\}$
+    - $\{2k+1:k\in\mathbb{Z}\}\cup\{2k:k\in\mathbb{Z}\}=\mathbb{Z}$
+    - If $\mathcal{A}=\{[i,i+1]\subset\mathbb{R}:i\in\mathbb{Z}\}$,
+      then $\cup\mathcal{A}=\mathbb{R}$ and $\cap\mathcal{A}=\mathbb{Z}$
+    - $\{a,b,c,d\}\setminus\{a,b\}=\{c,d\}$
+    - $\{a,b,c\}\setminus\{c,d\}=\{a,b\}$
+    - $\{a,b\}\setminus\{c,d\}=\{a,b\}$
+    - If $X=\{a,b,c,d\}$, 
+      then $\{a,c\}\subset X$ and $\overline{\{a,c\}}=\{b,d\}$
+** TODO Theorems
+   | $A\cup B=B\cup A$ | $A\cap B = B \cap A |
+** TODO Previous
+   - trivial subsets
+   - pótlás axiómája...
+   - Russel paradox
+* TODO ZFC
+** Zermelo-Freankle + axiom of choice
