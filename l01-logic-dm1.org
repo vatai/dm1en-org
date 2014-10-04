@@ -221,7 +221,7 @@
 ** Examples
 *** Example
     - Continuing with the example from propositional logic:
-    - $\exists F(x)$ and $\exists \lnot F(y)$ are well-formed formulas.
+    - $\exists x F(x)$ and $\exists x\lnot F(y)$ are well-formed formulas.
     - $\forall x\exists y(F(x)\land \lnot F(y) )$.
 ** Quantifiers
 *** Universal quantifier
@@ -257,7 +257,7 @@
    - The scope of the first universal quantifier is $(P(x)\land Q(x,y)$, 
      the scope of the existential quantifier is $\forall z R(x,y,z)$,
      the scope of the second universal quantifier is $R(x,y,z)$.
-   - The free variables are $y$
+   - The free variable is $y$
 ** Rules of first order logic
 *** Rules
    1) $\lnot\forall x P(x) \iff \exists x \lnot P(x)$
