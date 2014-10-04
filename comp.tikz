@@ -1,0 +1,49 @@
+   \tikzstyle{every node}=[draw,circle,fill=cyan,minimum size=4pt, inner sep=0pt]
+   \tikzstyle{rel}=[>=stealth',->,shorten <=1pt, shorten >= 1pt]
+   
+   \begin{tikzpicture}
+   \draw 
+   (0,2.5) node (A) [label=left:$A$] {} 
+   (0,2)   node (B) [label=left:$B$] {} 
+   (0,1.5) node (C) [label=left:$C$] {} 
+   (0,1)   node (D) [label=left:$D$] {} 
+   (0,0.5) node (E) [label=left:$E$] {} 
+   (0,0)   node (F) [label=left:$F$] {} 
+
+   (2,2)   node (G) [label=above:$G$] {} 
+   (2,1.1) node (H) [label=above:$H$] {} 
+   (2,0.5) node (I) [label=above:$I$] {} 
+   (1.5,0) node (J) [label=below:$J$] {} 
+
+   (2.5,2.5) node (K) [label=right:$K$] {} 
+   (2.5,1.5) node (L) [label=right:$L$] {} 
+   (2.5,0.5) node (M) [label=right:$M$] {} 
+   (2,0)     node (N) [label=below:$N$] {} 
+   (2.5,0)   node (O) [label=right:$O$] {} 
+   ;
+   
+   \path[rel,color=green]
+   (A) edge (G)
+   (B) edge (G)
+   (B) edge (H)
+   (C) edge (H)
+   (D) edge (I)
+   (E) edge (J)
+   ;
+   \path[rel,color=blue]
+   (G) edge (K)
+   (G) edge (L)
+   (H) edge (L)
+   (I) edge (M)
+   (N) edge (O)
+   ;
+#+BEAMER: \pause
+   \path[rel,color=red,dashed]
+   (A) edge (K)
+   (A) edge (L)
+   (B) edge (K)
+   (B) edge (L)
+   (C) edge (L)
+   (D) edge (M)
+   ;
+   \end{tikzpicture}

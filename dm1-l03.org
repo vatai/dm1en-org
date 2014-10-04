@@ -1,0 +1,396 @@
+# -*- mode: org; mode: flyspell; -*-
+#+STARTUP: beamer
+#+INCLUDE: "beamer-common.org"
+#+TITLE: Discrete mathematics I - Relations
+#+SHORT_TITLE: Relations
+#+COLUMNS: %30ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# #+LATEX_CLASS_OPTIONS: [draft]
+
+* Ordered pairs
+** The idea of a relation
+   Describes:
+   - Connection/relation between objects
+   - Generalized function/maping
+   - "Multivalued" functions
+   
+   Examples:
+   - *equals*, *is less or equal*, *divides*, *is sitting next to* etc.
+** Ordered pairs, Cartesian product
+*** Definition (Ordered pair)
+    - The *ordered pair* $(x,y)$ is defined as the set 
+      $\bigl\{\{x\},\{x,y\}\bigr\}$
+    - $x$ is the *first* and $y$ is the *second element* (or
+      coordinate)
+    - Important: $(x,y)=(u,v)\iff (x=u) \land (y=v)$ 
+    - If $x,y\in X$ then $(x,y)\in\wp\bigl(\wp(X)\bigr)$
+    - Counter example: $\{x,y\}$ is not an ordered pair
+      because  $\{x,y\}=\{y,x\}$ but $(x,y)\not=(y,x)$.
+      (which we don't want!)
+** Cartesian product
+*** Definition (Cartesian product)
+    - The *Cartesian product* of two sets $X$ and $Y$ is the set of
+      all possible ordered pairs with the first element from $X$ and
+      the second from $Y$ \ie 
+      $$X \times Y=\bigl\{(x,y)\in\wp\bigl(\wp(X\cup Y)\bigl)\bigr: 
+      x \in X \land y \in Y \}$$
+*** Example
+    - $\{a,b\}\times\{1,2,3\}=\bigl\{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3)\bigr\}$
+* Relations
+** Binary relations
+*** Definition (Binary relation)
+    - A *binary relation* is a set of ordered pairs.
+    - If the binary relation $R$ is a subset of $X \times Y$, that it is a
+      relation between $X$ and $Y$.
+      - If $X=Y$ then it is said to be a homogeneous relation
+    - The fact that $(x,y)\in R$ is often written as $xRy$ 
+*** Examples:
+   - $\mathbb{I}_X=\{(x,x)\in X\times X: x\in X \}$ is the equation relation. 
+   - $\{(x,y)\in\Z \times \Z: x \mid y\}$ is the divisibility relation.
+   - For the system of sets $\mathcal{F}$ the set $\{(X,Y)\in
+     \mathcal{F}\times \mathcal{F}: X \subset Y\}$ is the subset
+     relation.
+   - Given a  $f:\R\rightarrow \R$ function, the graph of the function $\{(x,f(x))\in \R\times\R: x\in\R\}$.
+** Domain and range
+*** Definition (Domain and range)
+    The *domain* of a the binary relation $R\subset X \times Y$ is
+    $\dmn(R) = \{ x: \exists y (x,y)\in R \}$ and the *range* of $R$
+    is $\rng(R)=\{ y: \exists x (x,y)\in R \}$.
+*** Example:
+   - If $R=\{(x, 1/x^2): x\in\R\}$, then $\dmn (R)=\{x\in\R: x\neq
+     0\}$, $\rng (R)=\{x\in\R: x>0\}$.
+   - If $R=\{(1/x^2,x): x\in\R\}$, then $\dmn (R)=\{x\in\R: x>0\}$,
+     $\rng (R)=\{x\in\R: x\neq 0\}$.
+   - If $R=\bigl\{(a,1),(b,1),(b,3)\bigr\}$, then $\dmn(R)=\{a,b\}$,
+     $\rng(R)=\{1,3\}$.
+** Extension, restriction and inverse of relations
+*** Definition (Extension, restriction)
+    A binary relation $R$ is the *extension* of the binary relation
+    $S$, or $S$ is a *restriction* of $R$, if $S\subset R$. If
+    $A$ is a set, then the restriction of $R$ to
+    $A$ is $R|_A=\{(x,y)\in R: x\in A\}$.
+*** Example
+    Let $R=\{(x^2,x)\in\R\times \R: x\in \R\}$,
+    $S=\{(x,\sqrt{x})\in\R\times \R: x\in \R\}$.
+    
+    Then $R$ is the extension of $S$, and $S$ is a restriction of $R$
+    and $S=R|_{\R^+_0}$ (where $\R^+_0$ is the set of non-negative
+    real numbers).
+*** Definition (Inverse)
+    The *inverse* of a relation $R$ is $R^{-1}=\{(y,x): (x,y)\in R\}$.
+*** Example
+    $R^{-1}=\{(x,x^2)\in\R\times \R: x\in \R\}$, $S^{-1}=\{(\sqrt{x},x)\in\R\times \R: x\in \R\}$
+** Image and preimage
+*** Definition (Image and inverse image) 
+    - Let $R\subset X\times Y$ be a binary relation, $A\subset X$. The *image of $A$ under
+      $R$* is $R(A)=\{y \in Y: \exists x (x\in A \land (x,y)\in R)\}$.
+ 
+    - The *inverse image* or *pre\-image* of a given set $B$, is
+      $R^{-1}(B)$, i.e. the image of the set $B$ under the relation
+      $R^{-1}$.
+*** Example
+    Let $R=\{(x^2,x)\in\R\times \R: x\in \R\}$,
+    $S=\{(x,\sqrt{x})\in\R\times \R: x\in \R\}$.
+    - $R(\{9\})=\{-3, +3\}$ (or more compact $R(9)=\{-3, +3\}$),
+    - $S(9)=\{+3\}$.
+** Example (Domain, Range, Restriction)
+*** Example
+    :PROPERTIES:
+    :BEAMER_COL: 0.7
+    :BEAMER_ENV: block
+    :END:
+    Let $R$ be a relation on the set $X=\{A,B,C, \dots, P\}$ and let
+    $T \rightarrow T'$, if
+    $(T,T')\in R$.
+    - ${\color{red}  \dmn(R)} = \{A,B,C,D,F,\ldots, H\}$.
+    - ${\color{green}\rng(R)} = \{A,B,C,E,\ldots, J,L\}$.
+    - ${\color{blue} R|_{\{A,B,C,D\}}} = \{ (A,B), (B,C), (C,A), (D,E), (D,F)\}$
+*** Image
+    :PROPERTIES:
+    :BEAMER_COL: 0.3
+    :END:
+    [[file:dmnrngimgres.tikz]]
+* Composition
+** Composition
+*** Definition (Composition)
+    Let $S\subset X \times Y$ and $R\subset Y \times Z$ be binary
+    relations. Then the $R \circ S$ *composition* (or *product*) is
+    the following relation: $R \circ S =\Bigl\{(x,z)\in X \times Z:
+    \exists y\bigl( (x,y)\in S \land (y, z)\in R\bigr)\Bigr\}$.
+    
+    - Note: For composition we write the relations "from right to left":
+    - Note: $(R \circ S)(A) = R(S(A))$
+*** Example
+    Let 
+    $R_{\sin} = \{(x,y)\in \R \times \R: \sin x =y\}$,
+    $S_{\log} = \{(x,y)\in \R \times \R: \log x =y\}$.
+ 
+    Then
+    - $R_{\sin}\circ S_{\log} = \{ (x,y): \exists z( \log x = z \land
+      \sin z = y )\}$
+    - $R _{\sin}\circ S_{\log} = \{ (x,y) \in \R \times \R: \sin \log
+      x =y\}$.
+** Example (Composition)
+#+ATTR_LATEX: :height 4.5cm
+#+ATTR_LATEX: :float t
+     [[file:comp.tikz]]
+*** Composition
+   $R \circ S = \{(x,z): \exists y ( (x,y)\in S \land
+   (y,z) \in R) \}$
+
+   Let $\color{green} S$, $\color{blue} R$ be two relations, and let
+   us consider the ${\color{red} T} = {\color{blue}R}\circ
+   {\color{green}S}$ composition:
+
+** Database example
+  In a company let $a,b,c,\ldots,j$ denote the employees. The company
+  is working on two projects: $bank$, $game$
+*** 
+    :PROPERTIES:
+    :BEAMER_COL: 0.4
+    :END:
+    | *assignment*     | *employee* |
+    | $manager$        | $a,b$      |
+    | $programmer$     | $c,d,e$    |
+    | $tester$         | $f,g,h$    |
+    | $hr$             | $i$        |
+    | $tech. employee$ | $j$        |
+*** 
+    :PROPERTIES:
+    :BEAMER_ENV: block
+    :BEAMER_COL: 0.59
+    :END:
+    | *project* | *employee*    | *deadline*    |
+    | $bank$    | $a,c,d,f$     | 31. dec. 2014 |
+    | $game$    | $b,d,e,f,g,h$ | 31. jan. 2015 |
+*** 
+    Let $\alpha$ be the assignment relation: \eg $b \alpha manager$,
+    $\pi$ the project relation: \eg $a \pi bank$, $\delta$ the
+    deadline relation: \eg $bank\delta 31.dec$
+    - Questions: Who is working on the $bank$ project?
+      $\pi^{-1}(bank)$ Who are the testers? 
+      #+BEAMER: \pause
+      $\alpha^{-1}(tester)$ What is the $bank$ projects deadline?
+      #+BEAMER: \pause
+      $\delta(bank)$ Which deadlines do the employees have?  
+      #+BEAMER: \pause
+      $\delta \circ \pi$ Which deadlines do the testers have?  
+      #+BEAMER: \pause
+      $\delta \circ \pi \circ \alpha^{-1}(tester)$
+
+** Properties of conditions
+*** Properties of composition 					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $T\subset W \times X$, $S\subset X \times Y$, $R \subset Y
+    \times Z$ be binary relations. Then
+    1. If $\rng(S) \supset  \dmn(R)$, then $\rng (R \circ S)=\rng (R)$.
+    2. $R \circ (S \circ T)=(R \circ S) \circ T$ (the composition is associative).
+    3. $(R \circ S)^{-1}=S^{-1}\circ R^{-1}$.
+
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    1. $\rng(R)=\{z: \ \exists y \ (y,z)\in R \}$. Since $\rng(S)
+       \supset \dmn(R)$, then for each $(y,z)\in R$ we have $\exists
+       x : (x,y)\in S$, so $(x,z)\in R \circ S$
+    2. $S \circ T =\{(w,y): \exists x ((w,x)\in T \land (x, y)\in
+       S)\}$, so $R\circ (S \circ T) =\{(w,z): \exists y ((w,y)\in S
+       \circ T \land (y, z)\in R)\} =\{(w,z): \exists y \exists x 
+       ((w,x)\in T \land (x, y)\in S \land (y, z)\in R )\} =(R\circ S )\circ T$
+    3. $(R \circ S)^{-1}=\{(z,x): \exists y((x,y)\in S \land (y, z)\in
+       R )\} =\{(z,x): \exists y((y,x)\in S^{-1}\land (z, y)\in
+       R^{-1})\}=S^{-1}\circ R^{-1}$
+* Properties of relations
+** Properties of relations
+  Example relations: $=$, $<$, $\leq$, $\mid$, $\subset$ and
+  $T=\{(x,y) \in \R \times \R: |x-y|<1 \}$.
+*** Definition (Relation properties)
+   Let $R \subset X \times X$. $\forall x,y,z$
+   the relation is
+   1. $R$ *tansitive*, if $xRy \land yRz \Rightarrow xRz$; \quad ($=$,
+      $<$, $\leq$, $\mid$, $\subset$)
+   2. $R$ *symmetric*, if $xRy \Rightarrow yRx$; \quad ($=$, $T$)
+   3. $R$ *anti-symmetric*, if $xRy \wedge yRx \Rightarrow x=y$; \quad
+      ($=$, $\leq$, $\subset$)
+   4. $R$ *strictly anti-symmetric*, $xRy \Rightarrow \lnot yRx$; ($<$)
+   5. $R$ *reflexive*, if $x \in X \Rightarrow xRx$; \quad ($=$,
+      $\leq$, $\mid$, $\subset$, $T$)
+   6. $R$ *irreflexive*, if $x \in X \Rightarrow \neg xRx$; \quad
+      ($<$)
+   7. $R$ *trichotomous*, if $x,y \in X$ implies that from $x=y$,
+      $xRy$ and $yRx$ exactly one is true; \quad ($<$)
+   8. $R$ *dichotomous*, if $x \in X \land y \in X \Rightarrow xRy
+      \lor yRx$; \quad ($=$, $\leq$)
+
+** Properties of relations
+   The properties *reflexive*, *irreflexive*, *trichotomous*,
+   *dichotomous* don't depend only on the relation but the base sets also:
+
+   The relation $\{(x,x)\in \R \times \R , x\in \R\}\subset \R\times
+   \R \subset \C \times \C$ defined on $\R$ is 
+   *reflexive*, but if defined on $\C$ then it is *not
+   reflexive*.
+   
+   [[file:relexample.tikz]]
+   
+   |----------------------+-------------------------------+--------------------|
+   | transitive: *NO*     | strictly anti-symmetric: *NO* | trichotomous: *NO* |
+   | symmetric: *NO*      | reflexive: *NO*               | dichotomous: *NO*  |
+   | anti-symmetic: $YES$ | irreflexive: *NO*             |                    |
+   |----------------------+-------------------------------+--------------------|
+
+** Graph of relations
+  The graph of a relation can be simplified:
+  - If a relation is *reflexive*, the loops can be omitted. $x\mid y$:
+  \tikzstyle{every node}=[draw,circle,fill=cyan,minimum size=4pt, inner sep=0pt]
+  \tikzstyle{rel}=[>=stealth',->,shorten <=1pt, shorten >= 1pt]
+  \tikzstyle{symrel}=[shorten <=1pt, shorten >= 1pt]
+  \tikzstyle{clean}=[draw=none,fill=none]
+  \begin{tikzpicture}
+  \draw
+  (0,0) node (2) [label=right:$2$] {}
+  (1,0) node (3) [label=right:$3$] {}
+  (2,0) node (4) [label=right:$4$] {}
+  (3,0) node (5) [label=right:$5$] {}
+  (4,0) node (6) [label=right:$6$] {}
+  (5,0) node (7) [label=right:$7$] {}
+  (6,0) node (8) [label=right:$8$] {}
+  ;
+  \path[rel]
+  (2) edge[bend left] (4)
+  (2) edge[bend left] (6)
+  (2) edge[bend left] (8)
+  (3) edge[bend left] (6)
+  (4) edge[bend left] (8)
+  ;
+  \end{tikzpicture}
+  - If a relation is *transitive*, implied edges can be omitted. $x\mid y$
+
+  \begin{tikzpicture}
+  \draw
+  (0,0) node (2) [label=right:$2$] {}
+  (1,0) node (3) [label=right:$3$] {}
+  (2,0) node (4) [label=right:$4$] {}
+  (3,0) node (5) [label=right:$5$] {}
+  (4,0) node (6) [label=right:$6$] {}
+  (5,0) node (7) [label=right:$7$] {}
+  (6,0) node (8) [label=right:$8$] {}
+  ;
+  \path[rel]
+  (2) edge[bend left] (4)
+  (2) edge[bend left] (6)
+  (3) edge[bend left] (6)
+  (4) edge[bend left] (8)
+  ;
+  \end{tikzpicture}
+  - If a relation is *symmetric*, directed edges can be replaced with
+    directionless edges (lines). $3\mid x-y$
+  \begin{tikzpicture}
+  \draw
+  (0,0) node (2) [label=below:$2$] {}
+  (1,0) node (3) [label=below:$3$] {}
+  (2,0) node (4) [label=below:$4$] {}
+  (3,0) node (5) [label=below:$5$] {}
+  (4,0) node (6) [label=below:$6$] {}
+  (5,0) node (7) [label=below:$7$] {}
+  (6,0) node (8) [label=below:$8$] {}
+  ;
+  \path[symrel]
+  (2) edge[bend left] (5)
+  (3) edge[bend left] (6)
+  (4) edge[bend left] (7)
+  (5) edge[bend left] (8)
+  ;
+  \end{tikzpicture}
+* Equivalence and classification
+** Equivalence relations and Classification 
+*** Definition (equivalence relation)
+    Let $X$ be a set, $R \subset X \times X$ a relation on $X$. 
+    The relation $R$ is an *equivalence relation*, if it is
+    *reflexive*, *symmetric*, *transitive*.
+*** Example  
+    - 1. $=$ \quad 2. $3 \mid x-y$ \quad 3. two similar triangles.
+*** Definition (Classification)
+    A system of sets $\mathcal{C}$ containing subsets of the set $X$
+    is a *classification* of $X$, if $\mathcal{C}$ is pairwise
+    disjoint system of non-empty sets and $\cup \mathcal{C} =X$.
+*** Example
+  1. A classification of $\R$: $\big\{ \{a\}: a\in \R \big\}$;
+  2. A classification of $\Z$: $\bigl\{\{0,3,6,\ldots\},\{1,4,7,\ldots\},\{2,5,8,\ldots\}\bigr\}$;
+  3. Slices of a pizza
+** Equivalence relations imply classification
+*** Each equivalence relation defines a classifications 	  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    For every equivalence relation $\sim$ on the set $X$ the
+    equivalence classes $\tilde{x}=\{y\in X: y \sim x\}$ (for $x\in
+    X$), yield a classification of $X$, which is denoted by $X/\sim$.
+*** Proof 							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    Let $\sim$ be an equivalence relation on $X$. We have to show that
+    $X/\sim \, =\{\tilde{x}: x\in X\}$ is a classification of $X$.
+    - Since $\sim$ is *reflexive*, $x\in\tilde{x}$
+      ${\color{black}\Rightarrow}$ $\bigcup_{x}\tilde{x}=X$.
+    - Equivalence classes are pairwise disjoint. Suppos $\tilde{x}
+      \cap \tilde{y} \neq \emptyset$, let $z\in \tilde{x} \cap
+      \tilde{y}$. Since $z\in \tilde{x}$ ${\color{black} \Rightarrow}$
+      $z \sim x$, implying because of *symmetry* that $x \sim
+      z$. Similarly $z\in \tilde{y}$ ${\color{black} \Rightarrow}$ $z
+      \sim y$.  Because of *transitivity* $x \sim z \sim y$
+      ${\color{black} \Rightarrow}$ $x\sim y$ ${\color{black}
+      \Rightarrow}$ $x\in \tilde{y}$. Simmilarly $y\in \tilde{x}$
+      ${\color{black} \Rightarrow}$ $\tilde{x}=\tilde{y}$.
+** Classifications imply equivalence relations
+*** Each classification defines an equivalence relation 	  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Foe each classification $\mathcal{C}$ of $X$ the relation $R=\cup\{Y
+    \times Y : Y\in \mathcal{C} \}$ is an equivalence relation, with
+    $\mathcal{C}$ as its associated equivalence classes.
+*** Proof 							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    - $R$ is *reflexive*: let the class of $x$ be $Y$: $x\in Y\in
+      \mathcal{C}$. Then $(x,x)\in Y \times Y$.
+    - $R$ is *symmetric*: let $(x,y)\in R$. Then $x,y\in Y$ for some $Y$
+      class, in particular $(y,x)\in Y \times Y$.
+    - $R$ is *transitive*: similarly let $(x,y), (y,z)\in R$, therefore
+      $x,y\in Y$, $y,z\in Y'$. Since the classes are pairwise
+      disjoint, $Y=Y'$, in particular $z\in Y$, i.e. $(x,z)\in Y
+      \times Y$.
+
+# \begin{frame}[t]{Equivalence relation, classification}
+  
+#   Equivalence relations and classes mutually define each other.
+#   \bigskip
+
+#   \pelda
+
+#   \begin{itemize}
+#   \item $=$ ${\color{black}\longleftrightarrow}$ $\big\{ \{a\}: a\in \R \big\}$;
+#   \item  $\equiv (\bmod m)$ ${\color{black}\longleftrightarrow}$ $\big\{\overline{0}, \overline{1}, \dots, \overline{m-1}\big\}$;
+#   \item $z \sim w$, if $\Re (z)=\Re(w)$   ${\color{black}\longleftrightarrow}$ $\big\{ \{z\in\C:\Re (z)=r \}: r\in\R \big\}$.
+#   \end{itemize}
+
+#   \pelda
+
+#   \begin{itemize}
+#   \item Let two {\color{blue}lines} in the plane be $\sim$, if they are parallel. Then the classes give the concept of {\color{blue} direction}.
+#   \item Let two {\color{blue}line segments} of the plane be $\sim$, if they have the same length. The classes define the concept of {\color{blue} length}.
+#   \item Let the pairs of integers $(r,s)\sim (p,q)$ ($s,q \neq 0$), if $r\cdot q = p \cdot s$. Then the classes define the set of {\color{blue} rational numbers}.
+#   \end{itemize}
+
+
+# \end{frame}
+
+
+
+* Ordering

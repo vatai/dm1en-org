@@ -1,0 +1,63 @@
+   \tikzstyle{every node}=[draw,circle,fill=cyan,minimum size=4pt, inner sep=0pt]
+   \tikzstyle{rel}=[>=stealth',->,shorten <=1pt, shorten >= 1pt, gray]
+   \tikzstyle{res}=[rel,color=red]
+   
+   \begin{tikzpicture}
+   \draw 
+   (0.5,3.5) node (A) [label=above:$A$] {} 
+   (1,2.5)   node (B) [label=right:$B$] {}
+   (0,2.5)   node (C) [label=left:$C$]  {}
+   (0,2)   node (D) [label=left:$D$]  {}
+   (1,2)   node (E) [label=right:$E$] {}
+   (1,1.5) node (F) [label=right:$F$] {}
+   (0,1.5) node (G) [label=left:$G$]  {}
+   (1,1)   node (H) [label=right:$H$] {}
+   (0,1)   node (I) [label=left:$I$]  {}
+   (1,0.5) node (J) [label=right:$J$] {}
+   (0,0)node (K)    [label=left:$K$]  {}
+   (1,0) node (L)   [label=right:$L$] {}
+   (2,3) node (M) [label=right:$M$] {}
+   (2,2) node (N) [label=right:$N$] {}
+   (2,1) node (O) [label=right:$O$] {}
+   (2,0) node (P) [label=right:$P$] {}
+   ;
+   \path[rel]
+   (A) edge (B) (B) edge (C) (C) edge (A)
+   (D) edge (E) (D) edge (F) (F) edge (G) 
+   (G) edge (H) (H) edge (I) (I) edge (J)
+   (K) edge (L);
+
+#+BEAMER: \pause
+   # domain
+   \draw[red, dashed] 
+   (-0.6,3) ..controls ++(up:1.7) and ++(up:1.7) .. ++(2.3,0)
+   -- ++(down:0.6) ..controls ++(left:1.2) and ++(left:1.2) .. ++(down:0.8)
+   -- ++(down:1) .. controls ++(down:0.8) and ++(up:1.2) .. ++(-1.5,-1)
+   ..controls ++(down:0.2) and ++(down:1)..   
+   ++(-0.7,0.5) 
+   --cycle;
+
+#+BEAMER: \pause
+   # range
+   \draw[green, thick, dashed] 
+   (-0.7,3) ..controls ++(up:1.7) and ++(up:1.7) .. ++(2.3,0)
+   -- ++(down:3) ..controls ++(down:0.5) and ++(down:0.5) .. ++(left:1)
+   .. controls ++(up:1) and ++ (down:1) .. ++(-1.2,1) 
+   -- ++(up:0.7) .. controls ++(right:1) and ++(right:1) .. ++(up:0.6)
+   --cycle
+   ;
+
+#+BEAMER: \pause
+   # restriction
+   \path[res]
+   (A) edge (B) (B) edge (C) (C) edge (A)
+   (D) edge (E) (D) edge (F)
+   ;
+
+   \draw[very thick, blue, dashed] 
+   (-0.5,3) .. controls ++(0,1.5) and ++(0,1.5) .. ++(2,0) --
+   ++(0,-0.5) .. controls ++(0,-0.5) and ++(0,0.5) .. 
+   ++(-1,-0.5) .. controls ++(0,-0.5) and ++(0,-0.5)..  ++(-1,0) 
+   --cycle;
+
+   \end{tikzpicture}

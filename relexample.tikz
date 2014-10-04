@@ -1,0 +1,39 @@
+   \tikzstyle{every node}=[draw,circle,fill=cyan,minimum size=4pt, inner sep=0pt]
+   \tikzstyle{clean}=[draw=none,fill=none]
+   \tikzstyle{rel}=[>=stealth',->,shorten <=1pt, shorten >= 1pt]
+   \tikzstyle{set}=[dashed,gray]
+   
+   \begin{tikzpicture}
+   
+   \draw
+   (-0.1,2.5) node[clean] {$X$}
+   (1.6,2.5) node[clean] {$X$}
+   (4,2.5) node[clean] {$X$}
+   ;
+   \draw[set]
+   (-0.1,1) ellipse (0.6 and 1.2)
+   (1.6,1) ellipse (0.6 and 1.2)
+   (4,1) circle (1.2)
+   ;
+   \draw 
+   (0,2) node (a1) [label=left:$a$] {}
+   (0,1) node (b1) [label=left:$b$] {}
+   (0,0) node (c1) [label=left:$c$] {}
+   (1.5,2) node (a2) [label=right:$a$] {}
+   (1.5,1) node (b2) [label=right:$b$] {}
+   (1.5,0) node (c2) [label=right:$c$] {}
+   (3.5,1.5) node (a) [label=above:$a$] {}
+   (4.5,1.5) node (b) [label=right:$b$] {}
+   (4,0.5)   node (c) [label=below:$c$] {}
+   ;
+   \path[rel]
+   (a1) edge (a2)
+   (a1) edge (b2)
+   (b1) edge (c2)
+   (c1) edge (a2)
+   (a) edge[loop left] (a)
+   (a) edge (b)
+   (b) edge (c)
+   (c) edge (a)
+   ;
+   \end{tikzpicture}

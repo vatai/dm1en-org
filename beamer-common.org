@@ -10,9 +10,21 @@
 #+LATEX_CLASS_OPTIONS: [10pt,a4paper,xcolor=dvipsnames,xcolor=table]
 #+LATEX_HEADER: \usepackage[]{babel}
 #+LATEX_HEADER: \usepackage{lmodern}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usetikzlibrary{arrows,positioning} 
+
 #+LATEX_HEADER: \definecolor{pmsGreen}{RGB}{0,156,121}
 #+LATEX_HEADER: \def\eg{e.g.\  }
+#+LATEX_HEADER: \def\Eg{E.g.\  }
 #+LATEX_HEADER: \def\ie{i.e.\  }
 #+BEAMER_HEADER: \setbeamercolor{math text}{fg=pmsGreen}
 #+BEAMER_HEADER: \setbeamercolor{math text displayed}{fg=pmsGreen}
 
+#+LATEX_HEADER: \def\iff{\Leftrightarrow}
+#+LATEX_HEADER: \def\N{\mathbb{N}}
+#+LATEX_HEADER: \def\Z{\mathbb{Z}}
+#+LATEX_HEADER: \def\Q{\mathbb{Q}}
+#+LATEX_HEADER: \def\R{\mathbb{R}}
+#+LATEX_HEADER: \def\C{\mathbb{C}}
+#+LATEX_HEADER: \DeclareMathOperator{\dmn}{dmn}
+#+LATEX_HEADER: \DeclareMathOperator{\rng}{rng}
