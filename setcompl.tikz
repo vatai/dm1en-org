@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+    \def\firstcircle{(0,0) circle (1.5cm)}
+    \def\rect{(-2cm,-1.6cm) rectangle (3cm,1.6cm)}
+
+    \colorlet{circle edge}{blue!50}
+    \colorlet{circle area}{blue!20}
+    \tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+    \begin{scope}
+        \clip \rect;
+	\draw[filled,even odd rule] \rect  \firstcircle;
+	\path (2.5cm,1cm) node{$X$};
+    \end{scope}
+    \draw[outline] \firstcircle node {$A$}
+                   \rect;
+    \node[anchor=south] at (current bounding box.north) {$\overline{A}_X$};
+\end{tikzpicture}
