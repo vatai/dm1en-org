@@ -317,10 +317,19 @@
     A system of sets $\mathcal{C}$ containing subsets of the set $X$
     is a *classification* of $X$, if $\mathcal{C}$ is pairwise
     disjoint system of non-empty sets and $\cup \mathcal{C} =X$.
-*** Example
-  1. A classification of $\R$: $\big\{ \{a\}: a\in \R \big\}$;
-  2. A classification of $\Z$: $\bigl\{\{0,3,6,\ldots\},\{1,4,7,\ldots\},\{2,5,8,\ldots\}\bigr\}$;
-  3. Slices of a pizza
+** Examples
+*** Equivalence relations
+    1. Equality on $\R$.
+    2. $x\sim y \iff 3\mid x-y$ for $x,y\in\Z$.
+    3. Two lines in the two-dimensional plane are in relation if they
+       have the same length.
+    4. Two lines in the two-dimensional plane are in relation if they
+       are parallel to each other.
+*** Corresponding classes
+    1. A classification of $\R$: $\big\{ \{a\}: a\in \R \big\}$;
+    2. A classification of $\Z$: $\bigl\{\{0,3,6,\ldots\},\{1,4,7,\ldots\},\{2,5,8,\ldots\}\bigr\}$;
+    3. Different lengths in the two-dimensional plane.
+    4. Different directions
 ** Equivalence relations imply classification
 *** Each equivalence relation defines a classifications 	  :B_theorem:
     :PROPERTIES:
@@ -391,6 +400,428 @@
 
 # \end{frame}
 
-
-
 * Ordering
+** Partial ordering
+*** Definition (Partial ordering)
+     A /reflexive/, /transitive/ and /anti-symmetric/ relation defined
+     on the set $X$ is a *partial ordering*. (symbol: $\leq$,
+     $\preceq$ $\preccurlyeq$, \dots)
+  
+     Elements $x,y\in X$ are *comparable* if $x \preceq y$ or $y
+     \preceq x$.
+*** Definition (Total ordering)
+    If all elements are comparable, the relation is dichotomous.
+  
+    A /reflexive/, /transitive/, /anti-symmetric/ and /dichotomous/
+    relation defined on the set $X$ is a *total ordering* (or just
+    ordering).
+*** Examples
+    - $\R$ with $\leq$ is a *total ordering*: $\forall
+      x,y\in \R$: $x\leq y$ or $y \leq x$.
+    - On $\Z$ the $\mid$ (divisor) relation is a *partial ordering*:
+      $4\nmid 5$, $5 \nmid 4$.
+    - On $\wp(X)$ the $\subset$ relation is a *partial ordering*
+      $X=\{a,b,c\}$, $\{a\}\not\subset \{b,c\}$, $\{b,c\}\not\subset \{a\}$
+** Strict and non-strict relations
+*** Definition (Strict and non-strict relations)
+    The *strict* relation associated with the relation $R$ defined on
+    the set $X$ is $S$ if $xSy \iff xRy \land x\neq y$.
+  
+    The *non-strict* relation associated with the relation $R$ defined
+    on the set $X$ is $T$ if $xTy \iff xRy \lor x= y$.
+ 
+    Another formulation: $S=R\setminus \mathbb{I}_X$, $T=R\cup
+    \mathbb{I}_X$, where $\mathbb{I}_X=\{(x,x): x\in X\}$.
+ 
+*** Examples
+    - The strict relation associated with $\leq$ is: $<$.
+    - The strict relation associated with $\subset$ is:
+      $\subsetneq$.
+    - The strict relation associated with the *divisor* relation is:
+      *non-trivial divisor*.
+** Strict and non-strict partial ordering
+*** Definition (Strict partial ordering)
+    A /transitive/ and /irreflexive/ relation defined on the set $X$
+    is a *strict partial ordering*. (symbol: ${}<{}$, $\prec$,
+    \dots)
+*** Remark
+    - *Transitive* and *irreflexive* implies *strictly
+      anti-symmetric*: $x\prec y$, $y \prec x$ and transitivity
+      implies $x\prec x$, which is a contradiction.
+    - The strict version of a partial ordering is the associated stric
+      ordering and conversely: $\prec = \preceq \setminus
+      \mathbb{I}_X$, $\preceq = \prec \cup \mathbb{I}_X$.
+** Strict and non-strict ordering
+*** Statement
+    If the $\preceq$ relation is an ordering, then $\prec$ is
+    /trichotomous/.  
+
+    Conversely, if $\prec$ is a trichotomous strict partial ordering,
+    then the corresponding non-strict partial ordering $\preceq$ is a
+    (total) ordering.
+*** Proof
+    We need $x=y$, $x\prec y$ and $y\prec x$ not to be true
+    simultaneously. If $x=y$, then the statement is true because of
+    the definition of $\prec$. But $x\prec y$ and $y\prec x$ can not
+    be true simultaneously because of strict anti-symmetry.
+
+    Conversely, because of the trichotous property, for each pair of
+    elements we have $x\prec y \lor x=y$ or $y\prec x \lor x=y$, which
+    is the definition of $x\preceq y$ or $x\preceq y$.
+** Intervals
+*** Definition (Intervals)
+    Let $(X,\preceq)$ be a partially ordered set.  
+    - *$z$ is between $x$ and $y$* if $x\preceq z$ and $z\preceq y$,
+    - *$z$ is strictly between $x$ and $y$* if $x\prec z$ and $z\prec y$.
+    The set of such elements is denoted by $[x,y]$ that is $(x,y)$ or
+    $]x,y[$.
+    - $[x,y]=\{z\in X : x\preceq z \land z \preceq y\}$
+    - $(x,y)=]x,y[=\{z\in X : x\prec z \land z \prec y\}$
+    Analog notations are $[x,y)$, and $(x,y]$.
+    - $[x,y)=[x,y[=\{z\in X : x\preceq z \land z \prec y\}$
+    - $(x,y]=]x,y]=\{z\in X : x\prec z \land z \preceq y\}$
+** Examples
+*** Examples
+    Let $X=\wp(\{a,b,c\})$ with the /subset/
+    relation.
+    - $[\{a\}, \{a,b,c\}]=\big\{\{a\}, \{a,b\},\{a,b,c\}\big\}$
+    - $(\{a\}, \{a,b,c\})=\big\{ \{a,b\}\big\}$
+ 
+    Let $X$ be the set of positive integers with the /divisor/ relation.
+    - $[2, 12]=\big\{2, 4, 6, 12\big\}$
+    - $[2, 12]=\big\{ 4, 6\big\}$
+** Immediate predecessor and successor
+*** Definition (Immediate predecessor and successor)
+    If $x \prec y$, but there are no elements strictly between $x$ and
+    $y$, then *$x$ precedes $y$* and *$y$ succeeds $x$* \ie *$x$ is
+    the predecessor of $y$* and *$y$ is the successor of $x$*.
+*** Example
+    - For $\wp(\{a,b,c\})$ with $\subset$: $\{a\}$
+      precedes $\{a,b\}$ and $\{a,c\}$.
+    - For $\N$ with divisibility: $2$ precedes $4$, $6$, $10$, $14$.
+*** Definition (Initial segment)
+    The subset $\{y\in X: y<x\}$ is the *initial segment* associated
+    with the element $x$.
+*** Example
+    Let $X$ the power set of $\{a,b,c\}$ with the /subset/ relation.
+    Then the starting slice associated with $\{a,b\}$ is:
+    $\big\{\emptyset,\{a\},\{b\}, \{a,b\}\big\}$
+** Hasse-diagram
+   In a *Hasse-diagram* of a partially ordered set, the elements are
+   represented as dots and there is a directed edge (an arrow) from
+   every $x$ to $y$ if $x$ is the immediate predecessor of $y$.
+   Alternatively, the arrows can be omitted if the "smaller" elements
+   are lower on the diagram. Example: /divisibility/ on $[1,8]$.
+*** Hasse-diagram with arrows					      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.5
+    :END:
+    #+ATTR_LATEX: :width 4cm
+    [[file:hasse-wa.tikz]]
+*** Hasse-diagram without arrows 				      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.5
+    :END:
+    #+ATTR_LATEX: :width 4cm
+    [[file:hasse.tikz]]
+** Least, greatest, minimal, maximal element
+*** Definition(Least, greatest, minimal, maximal elements)
+    In the partially ordered set $X$ we define $x\in X$ to be the
+    - *least*    element if $\forall y \, (y\in X \Rightarrow  x\preceq y)$;
+    - *greatest* element if $\forall y \, (y\in X \Rightarrow  y\preceq x)$;
+    - *min.*  elem. if $\forall y \, (y\in X \Rightarrow  \lnot(y\preceq x))$ 
+      \ie $\lnot\exists y\, (y\in X \land y \preceq x)$;
+    - *max.*  elem. if $\forall y \, (y\in X \Rightarrow  \lnot(x\preceq y))$
+      \ie $\lnot\exists y\, (y\in X \land x \preceq y)$;
+  
+*** Example						      :B_block:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.6
+    :BEAMER_env: block
+    :END:
+  Let $X=\{1,2,\dots,8\}$ with divisibility:
+  - *least* element: $1$
+  - *greatest* element: none
+  - *minimal* element: $1$
+  - *maximal* elements: $5$, $6$, $7$, $8$
+*** Hasse-diagram 					      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.3
+    :END:
+    [[file:hasse.tikz]]
+** Least, greatest, minimal, maximal element
+*** Remarks
+    - There is *at least* one minimal and maximal element.
+    - There can be *at most* one least and greatest element.
+    - If the set is (totally) ordered, then 
+      - *minimal* = *least* element, *maximal* = *greatest* element
+    - If the set $X$ has a unique minimal or maximal element, then it
+      is denoted by $\min X$ and $\max X$.
+*** Example						      :B_block:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.6
+    :BEAMER_env: block
+    :END:
+  Let $X=\{1,2,\dots,8\}$ with divisibility:
+  - minimal element: $1$, so $\min X=1$
+  - maximal elements: $5$, $6$, $7$, $8$ there is no $\max X$
+*** Hasse-diagram 					      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.3
+    :END:
+    [[file:hasse.tikz]]
+** Bounds 
+*** Definition (Bounds)
+    Let $(X,\preceq)$ be a partially ordered set $x\in X$ and $Y\subset X$.
+    - $x$ is a *lower bound* of $Y$ if $\forall y\, (y\in Y
+      \Rightarrow x\preceq y)$, 
+    - $x$ is an *upper bound* of $Y$ if $\forall
+      y\, (y\in Y \Rightarrow y\preceq x)$,
+    - The /least upper bound/ of $Y$ is the *supremum* of $Y$ \ie $\sup Y$,
+    - The /greatest lower bound/ of $Y$ is the *infimum* of $Y$ \ie $\inf Y$.
+  
+*** Example						      :B_block:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.6
+    :BEAMER_env: block
+    :END:
+    Let $X=\{1,2,\dots,8\}$ with divisibility:
+    - for $Y=\{1,2,3\}$ 
+      - lower bound: $1$, upper bound: $6$,
+      - infimum: $1$, supremum: $6$.
+
+    - for $Y=\{2,3,4\}$
+      - lower bound: $1$, upper bound: $\emptyset$,
+      - infimum: $1$, supremum: none.
+*** Hasse-diagram 					      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.3
+    :END:
+    [[file:hasse.tikz]]
+** Least-upper-bound property
+*** Definition (LUB and GLB property)
+    Let $(X,\preceq)$ be a partially ordered set.
+    - $X$ has the *least-upper-bound property*, if every non-empty
+      $Y\subset X$ has a supremum,
+    - $X$ has the *greatest-lower-bound property*, if every non-empty
+      $Y\subset X$ has an infimum,
+*** Examples
+    The set $\N$ with divisibility has the least-upper-bound property:
+    - If $Y=\{n_1,n_2,\ldots,n_k\}$ then $\inf Y =gcd(n_1,n_2,\ldots,n_k)$
+      and $\sup Y = lcm(n_1,n_2,\ldots,n_k)$.
+    The set $(\Q,\le)$ does not have the least-upper-bound property:
+    - If $Y=\{y\in\Q : y^2\le 2\}=\{y\in\Q : y \le \sqrt{2}\}$ then
+      $Y$ has upper bounds (\eg $2$, $10$, 42$) but the least upper
+      bound would be $\sqrt{2}$ and $\sqrt{2}\not\in\Q$.
+** Well ordered sets
+*** Definition
+    A partially ordered set $(X,\preceq)$ is *well ordered* if every
+    non-empty subset of $X$ has a least element.
+*** Examples
+    - $(\N,\leq)$ is well ordered
+    - $(\R,\leq)$ is not well ordered: \eg $(0,1)$ has no least
+      element.
+* Functions
+** Definition
+*** Definition (Functions)
+    - A relation $f\subset X \times Y$ is a *function* (or map,
+      operator, transformation) if $(x,y) \in f \land (x,y')\in f
+      \Rightarrow y=y'$ (for all $x\in X$ and $y\in Y$). 
+    - Since $f(\{x\})$ has at most one element the $f(x)=y$ (of
+      $x\mapsto y$ or $f_x=y$) notation is used.
+*** Examples
+    - $f=\{(x,x^2)\in \R\times\R : x\in\R\}$ is a function, and
+      $f$ is the $x\mapsto x^2$ map or $f(x)=x^2$.
+    - The inverse $f^{-1}$ is not a function because
+      $(4,2),(4,-2)\not\in f^{-1}$.
+    - Any sequence is a mapping from $\N$. \Eg the Fibonacci sequence
+      $F$ is a mapping from $\N$ to $\N$ and $F_0=0$, $F_1=1$ and
+      $F_{n+2}=F_{n+1}+F_n$.
+** Set of functions
+*** Notation
+    The set of functions $f\subset X\times Y$ is denoted as $X\to Y$.
+    So $f\in X\to Y$ is a map from $X$ to $Y$ and if $\dmn(f)=X$ then
+    the $f:X \to Y$ notation is used. (If $f:X \to Y$, then
+    $\rng(f)\subsetneq Y$ is still possible.)
+*** Examples
+    If $f(x)=\sqrt{x}$ then,
+    - $f \in \R \to \R$ is correct.
+    - $f : \R \to \R$ is NOT correct because $\dmn(f)=[0,\infty)=\R_0^+$.
+    - $f : \R_0^+ \to \R$ is correct!
+** Injective, surjective and bijective
+*** Definition (Injective, surjective and bijective)
+    - The function $f:X\to Y$ is
+      - *injective*, if $f(x)=y \land f(x')=y \Rightarrow x=x'$;
+      - *surjective*, if $\rng(f)=Y$;
+      - *bijective*, if it is /injective/ and /surjective/.
+    
+    - A bijective function $f:X\to X$ is a *permutation* of $X$.
+
+    Remarks: 
+    - $f$ is /injective/ if and only if the relation $f^{-1}$ is a
+      function.
+    - Whether a function $f:X\to Y$ is /surjective/, depends on $Y$. If
+      $Y\subsetneq Y'$, then $f\subset X\times Y \subset X\times Y'$,
+      and $f:X\rightarrow Y$ is surely \alert{not} surjective.
+** Example   
+*** Example  
+    - The function $f:\R \to \R$, $f(x)= x^2$ is *not* injective and
+      *not* surjective: $f(-1)=f(1)$, $\rng(f)=\R_0^+$.
+    - The function $f:\R \to \R_0^+$, $f:x\mapsto x^2$ is *not*
+      injective but it is surjective.
+    - The function $f:\R_0^+ \to \R_0^+$, $f:x\mapsto x^2$ is
+      injective and surjective, therefor it is also bijective.
+** Composition of functions
+*** Properties of the composition of functions			  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    1. If $f$ and $g$ are *functions*, then $g \circ f$ is also a
+       *function*.
+    2. If $f$ and $g$ are *injective*, then $g \circ f$ is also
+       *injective*.
+    3. If $f:X\rightarrow Y$, $g:Y\rightarrow Z$, then $g \circ f : X
+       \rightarrow Z$.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    Let $h=f\circ g$.
+    1. Let $(x,y)\in h$, $(x,y')\in h$: $\exists z\,( (x,z)\in f \land
+       (z, y)\in g)$, $\exists z' \,((x,z')\in f, (z', y')\in g)$.
+       Since $f$ is a function $z=z'$, since $g$ is a function $y=y'$.
+    2. Let $h(x)=h(x')$. Let $f(x)=y, f(x')=y'$, so
+       $g(y)=g(y')$. Since $g$ is injective: $y=y'$. Since $f$
+       injective: $x=x'$.
+    3. HW.
+** Monotonic functions 
+*** Definition (Monotonic functions)
+    Let $X$, $Y$ be partially ordered sets. The function $f:X\to Y$ is
+    - *monotonically increasing*, if $x,y\in X \land x\preceq y
+      \Rightarrow f(x)\preceq f(y)$;
+    - *strictly increasing*, if $x,y\in X \land x\prec y \Rightarrow
+      f(x)\prec f(y)$;
+    - *monotonically decreasing*, if $x,y\in X \land x\preceq y
+      \Rightarrow f(x)\succeq f(y)$;
+    - *strictly decreasing*, if $x,y\in X \land x\prec y \Rightarrow
+      f(x)\succ f(y)$.
+** Example
+*** Example
+    - Let $X=\R$ with the usual ordering. Then $f(x)=x^3$ is a
+      /strictly increasing/ function.
+    - Let $X=\Z$ with the divisor relation. Then $f(x)=5x$ is a
+      /strictly increasing/ function: $x \mid y \Rightarrow 5x \mid
+      5y$.
+    - Let $X=\wp(\{a,b,c\})$ with the subset partial ordering.  Then
+      - $f(A)=A\setminus \{a\}$ /monotonically increasing/: 
+        $A \subset B$ $\color{black} \Rightarrow$ $A \setminus \{a\}\subset
+        B\setminus \{a\}$; 
+      - $g(A)=\overline{A}$ is /strictly
+	decreasing/: $A \subsetneq B$ $\color{black} \Rightarrow$
+	$\overline{A} \supsetneq \overline{B}$.
+** Monotonic functions 
+*** Remarks
+    Let $X,Y$ be ordered sets and $f:X\to Y$.
+    - If $f$ is a /strictly increasing/ (or /decreasing/) function
+      then $f$ is also *injective*: If $x\neq y$ then $x\prec y\lor y
+      \prec x$ then $f(x)\prec f(y)\lor f(y) \prec f(x)$ so $f(x)\neq
+      f(y)$.
+    - If $f$ is a /strictly increasing/ (or /decreasing/) function
+      then $f^{-1}$ is also a /strictly increasing/ (or /decreasing/)
+      function: Since $f$ is injective, $f^{-1}$ is a function. If
+      $f(x)\prec f(y)$, then $x \succeq y$ can not be true.
+** COMMENT Indexed families (NOT TRANSLATED)
+
+% \begin{frame}[t]{Indexelt családok}
+%   \begin{block}{Definition}
+%     Legyen $I$ egy halmaz (\alert{indexhalmaz}), és legyenek $X_i$ ($i\in I$) halmazok. Ekkor $X_i$ ($i\in I$) \alert{indexelt halmazcsalád}.
+%     
+%     \alert{Indexelt halmazcsalád uniója}: $\displaystyle \bigcup_{i\in I}X_i=\cup\{X_i: i\in I\}$;\\
+%     \alert{Indexelt halmazcsalád metszete}: $\displaystyle \bigcap_{i\in I}X_i=\cap\{X_i: i\in I\}$.
+%     
+%   \end{block}
+%   
+%   \pelda
+%   
+%   Legyen $E_n$ az $n$-edik egységgyökök halmaza. Ekkor $E_n$ ($n\in \N^+$) egy indexelt halmazcsalád,\\
+%   \smallskip
+%   
+%   $\displaystyle \bigcup_{n\in \N^+}E_n$ az egységgyökök halmaza, \quad
+%   $\displaystyle \bigcap_{n\in \N^+}E_n=\{1\}$.
+%   
+%   \textbf{Remark}
+%   
+%   \begin{itemize}
+%   \item Az indexelt halmazcsalád egy $I$-n értelmezett \alert{függvény}.
+%   \item A \alert{De Morgan} szabályok igazak maradnak.
+%   \end{itemize}
+%   
+% \end{frame}
+
+** Operations
+*** Definition (Binary operation)
+    A *binary operation* (operation with two variables) defined on the
+    set $X$ is a $\otimes: X \times X \to X$ function.  Often $x
+    \otimes y$ is used instead of $\otimes (x,y)$.
+    
+    A *unary operation* defined on the set $X$ is a $\otimes : X \to
+    X$ function.
+  
+*** Example
+    - $+$, $\cdot$ are /binary/ and $z\mapsto -z$ is a /unary
+      operation/ on the set $\R$.
+    - $\div$ (division) is /not/ an /operation/ on $\R$, because $\dmn
+      (\div)\neq \R \times \R$.
+    - $\div$ is a /binary/, and $x\mapsto 1/x$ (reciprocal) is a
+      /unary operation/ on the set $\R^*=\R\setminus\{0\}$.
+#    - Designating the constant elements $0$ and $1$ are /nullary
+#      operations/ on the set $\R$.
+** Operations
+   On a finite set, operations can be given with the operation table.
+
+   | $\land$ | 0 | 1 | $\lor$ | 0 | 1 | $\oplus$ | 0 | 1 | $\lnot$ | 0 | 1 |
+   |       / |   | > |        |   | > |          |   | > |         |   |   |
+   |       0 | 0 | 0 |      0 | 0 | 1 |        0 | 0 | 1 |         | 1 | 0 |
+   |       1 | 0 | 1 |      1 | 1 | 1 |        1 | 1 | 0 |         |   |   |
+*** Definition (Operations on functions)
+    Let $X$ be an arbitrary set, $Y$ a set with the $\otimes:Y\times
+    Y\to Y$ operation, $f,g:X \rightarrow Y$ two functions. Then 
+    $$(f\otimes g)(x)=f(x)\otimes g(x)$$
+ 
+*** Example
+    $(\sin + \cos )(x)=\sin x + \cos x$
+ 
+** Properties of operations
+*** Definition (Properties of operations)
+    The operation $\otimes$ is *associative*, if $(a \otimes b)
+    \otimes c =a \otimes (b \otimes c)$; *commutative*, if $a \otimes
+    b =b \otimes a$.
+*** Example
+    - The operations $+$ and $\cdot$ operation is /associative/ and
+      /commutative/ on the set $\R$.
+    - The function /composition/ as an operation, is /associative/:
+      $(f\circ g) \circ h=f\circ (g \circ h)$.
+    - The function /composition/ as an operation, is *not*
+      /commutative/: $f(x)=x+1$, $g(x)=x^2$: $x^2+1=(f\circ g)(x)\neq
+      (g \circ f)(x)=(x+1)^2$.
+    - /Division/ is *not* /associative/: $\frac{a}{bc}=(a\div b) \div
+      c\neq a\div (b \div c)=\frac{ac}{b}$.
+** Structure preserving maps
+*** Definition
+    Let $X$ be a set with the $\otimes$ operation, $Y$ with the
+    $\oplus$ operation. The $f: X\to Y$ function is
+    *structure-preserving* or a *homomorphism*, if
+    $f(x\otimes y)=f(x)\oplus f(y)$.
+*** Example
+    - Let $X=\R$ with the $+$ operation, $Y=\R^+$ with the $\cdot$
+      operation.  Then $x\mapsto a^x$ is a /homomorphism/
+      $a^{x+y}=a^x\cdot a^y$.
+    # - Let $X=Y=\C$ with the $+$ operation.  Then $z\mapsto
+    #   \overline{z}$ is /homomorphism/:
+    #   $\overline{z+w}=\overline{z}+\overline{w}$
+    - Let $X=\Z$ with the $+$ operation, $Y=\Z_3$ with the $+_3$
+      (addition modulo $3$) operation.  Then $n\mapsto n \bmod 3$ is
+      /homomorphism/: $k+n \bmod 3 = (k \bmod 3)+_m (n \bmod 3)$.
+    - Let $X=\{\top,\perp\}$ with the $\oplus$ or $\land$ operation, $\Z_2$
+      with the $+_2$ or $\cdot_2$ operation. Then
+      $\perp \mapsto 0$, $\top\mapsto 1$ is a *homomorphism*.

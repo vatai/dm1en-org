@@ -1,0 +1,25 @@
+   \begin{tikzpicture}
+   \tikzstyle{every node}=[draw,shape=circle,fill=cyan,
+   minimum size=4pt, inner sep=0pt];
+   \tikzstyle{rel}=[>=stealth',->,shorten <=1pt,shorten >=1pt];
+   \draw 
+   node (1) [label={45:1}] {}
+   node (2) [label={left:2},below=of 1] {}
+   node (3) [label={right:3},right=of 1] {}
+   node (4) [label={right:4},below=of 2] {}
+   node (5) [label={left:5},above=of 1] {}
+   node (6) [label={right:6},below=of 3] {}
+   node (7) [label={left:7},left=of 1] {}
+   node (8) [label={left:8},left=of 4] {}
+   ;
+   \path[rel]
+   (1) edge (2)
+   (1) edge (3)
+   (1) edge (5)
+   (1) edge (7)
+   (2) edge (4)
+   (2) edge (6)
+   (3) edge (6)
+   (4) edge (8)
+   ;
+   \end{tikzpicture}
