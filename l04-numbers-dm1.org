@@ -1,0 +1,302 @@
+# -*- mode: org; mode: flyspell; -*-
+#+STARTUP: beamer
+#+INCLUDE: "beamer-common.org"
+#+TITLE: Discrete mathematics I - Expansion of the notion of numbers
+#+SHORT_TITLE: Numbers
+#+COLUMNS: %30ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# #+LATEX_CLASS_OPTIONS: [draft]
+
+* Natural numbers
+** Peano axioms
+*** The set of natural numbers $\color{white}\N$
+    Let $\N$ be a set and $f:\N\to\N$ a function so that the
+    following statements are true:
+    1. $0\in\N$.
+    2. $n\in\N \Rightarrow f(n)\in\N$.
+    3. $n\in\N \Rightarrow f(n)\neq 0$.
+    4. $\bigl[n,m\in\N \land n\neq m\bigr] \Rightarrow f(n)\neq f(m)$.
+    5. $\bigl[ S\subset \N \land 0\in S \land (n\in S \Rightarrow
+       f(n)\in S) \bigr] \Rightarrow S=\N$.
+    
+    Usually, we write $n^+$ instead of $f(n)$.
+
+    Also instead of $n^+$ we write $1$ and $0^{++}=1^+=2$ and so on,
+    so the $^+$ function basically means $f(n)=n^+=n+1$.
+** Existence and uniqueness
+*** Existence 
+    - There exists a set $\N$ which satisfies the Peano axioms,
+      because of the infinity axiom of ZFC set theory.
+    - The infinity axiom states $\exists X (\emptyset \in X \land
+      \forall y ( y \in X \Rightarrow S(y)\in X)$ where $S(y)=y\cup
+      \{y\}$.
+    - The $S$ function here is the same as the $f$ function in the
+      Peano axioms, \ie the /successor of an element/.
+*** Uniqueness
+    It can be proven, that the set of natural numbers is unique (up to
+    naming) \ie if there is a different set $\N'$ satisfying the Peano
+    axioms, there is a homomorphic bijection $\varphi :\N\to\N'$ so
+    that $\varphi(0)=0'\in\N'$ and $\varphi(n^+) =
+    (\varphi(n))^{+'}\in\N'$.
+** Operations on natural numbers
+*** Recursion
+    Let $X$ be an arbitrary set, $a\in X$ and $f:X\to X$. Then there
+    is a unique $g:\N\to X$ function for which $g(0)=a$ and $\forall n
+    (n\in\N \Rightarrow g(n^+)=f(g(n))$.
+
+    The essence of this theorem is that we can use recursion in
+    definitions.
+*** Addition
+    For each $m\in\N$ we define $s_m:\N\to\N$ so that $s_m(0)=m$ and
+    $s_m(n^+)=s_m(n)^+$.  Instead of $s_m(n)$ we usually write
+    $m+n$. Using induction if $k,m,n\in \N$ the following can be
+    proven (it is not that hard, you should try it at home):
+    - associativity: $(k+n)+m=k+(n+m)$; 
+    - 0 is a neutral (or zero) element: $0+n=n+0=n$;
+    - commutativity: $m+n=n+m$;
+    - simplification: $\bigl[(m+k=n+k)\lor(k+m=k+n)\bigr] 
+      \Rightarrow (m=n)$
+** Operations on natural numbers
+*** Multiplication
+    Similarly, we define a function $p_m:\N\to\N$ so that $p_m(0)=0$
+    and $p_m(n^+)=p_m(n)+m$. Again, instead of $p_m(n)$ we write
+    $m\cdot n$ (or $mn$).  Using induction if $k,m,n\in \N$ the
+    following can be proven:
+    - associativity: $(k\cdot n)\cdot m=k\cdot (n\cdot m)$;
+    - $0\cdot n = n \cdot 0$;
+    - 1 is a neutral (or unit) element: $1\cdot n=n\cdot 1=n$;
+    - commutativity: $m\cdot n=n\cdot m$;
+    - distributivity: $k\cdot(m+n)=k\cdot m + k\cdot n$ and
+      $(m+n)\cdot k = m\cdot k + n\cdot k$.
+** Ordering of natural numbers
+*** Definition of $\color{white}\leq$
+   We can define the relation $R\subset \N\time\N$ as follows:
+   $(n,m)\in R \iff \exists k (k\in \N \land n+k=m)$. Instead
+   $(n,m)\in R$ we usually write $n\leq m$.
+
+   It can be shown that $\leq$ is 
+   - reflexive: $n\leq n$ because there exists $k=0$ so that $n+k=n$.
+   - anti-symmetric: if $n\leq m\iff \exists k (k\in\N \land n+k=m)$
+     and $m\leq n \iff \exists k' (k'\in\N \land m+k'=n)$ substituting
+     $n$ into the previous formula we have $m+k'+k=m$ which can only be
+     true if $k+k'=0$ which implies $k=k'=0$.
+   - transitive: $n_1 \leq n_2 \iff \exists k_1 (k_1\in \N \land
+     n_1+k_1=n_2)$ and $n_2 \leq n_3 \iff \exists k_2 (k_2 \in \N
+     \land n_2+k_2=n_3)$. Substituting $n_2$ from the first statement
+     into the second statement we get $n_1+k_1+k_2 = n_3$ \ie $\exists
+     k_3 (k_3 \in \N \land n_1 + k_3 =n_3)$ where $k_3=k_1+k_2$.
+* Integers
+** Definition of integers
+*** The set $\color{white}\Z$
+   We can define the set of integers $\Z$ using $\N$ with its
+   operations as follows.
+   - Let $=_\Z\subset \N\times\N$ and $(m,n)=_\Z(m',n')\iff m+n'=m'+n$.
+   - $=_\Z$ is an equivalence relation (\ie reflexive, transitive and
+     symmetric) and it defines a classification of $\N\times\N$
+   - Each class represents one integer \ie an element of $\Z$.
+   - $m$ represents the "positive" and $n$ the negative part of the
+     integer which contains $(m,n)$, so two integers $(m,n)$ and
+     $(m',n')$ are identical if $m-n=_\Z m'-n'$ \ie $m+n'=m'+n$ (note
+     that the later doesn't use subtraction which is not yet defined).
+   - Example: the number $-42$ contains all the ordered pairs $(m,n)$
+     for which $m-n=-42$ \ie $m+42=n$ or
+     $\{(42,0),(43,1),(44,2),\ldots\}$
+** Operations on integers
+*** Addition of integers
+   - Since $(m,n)$ is basically $m-n$ we can define the operation
+     $(m,n)+(m',n')=(m+m',n+n')$ because ${\color{gray}
+     (m-n)+(m'-n') =(m+m')-(n+n')}$.
+*** Multiplication of integers
+   - Because $\color{gray}(m-n)\cdot (m'-n')=(m\cdot m' +n\cdot n') -
+     (m\cdot n'+m'\cdot n)$ we can define $(m,n)\cdot(m',n')=(m\cdot
+     m' +n\cdot n', m\cdot n'+m'\cdot n)$
+*** Remarks
+   - Note that grayed out equations are not entirely precise, because
+     they are not yet defined.
+   - Of course instead of class of $(7,0)$ we just write 7, and
+     instead of $(0,42)$ we write just $-42$.
+** Ordering of integers
+*** Embedding of $\color{white}\N$ into $\color{white}\Z$
+    - There is a homomorphism from $\N$ to the equivalence classes
+      which contain the pairs $(m,)$ ($m\in\N$)
+    # - This means that there is a natural connection between the
+    #  natural numbers and some of the integers \ie $\N\subset\Z$
+*** A classification compatible with an operation
+    - The classification (or the $\sim$ equivalence relation) of a set
+      $X$ is compatible with the operation $\oplus:X\times X \to X$
+      when $x\sim x'$ and $y\sim y'$ implies $x\otimes y \sim
+      x'\otimes y'$.
+    - The classification defined by $=_\Z$ of $\N\times\N$ is
+      compatible with the $+$ and $\cdot$ defined on integers.
+*** Ordering of integers
+    - We say that for $k,l\in\Z$ that $k\leq l$ if there is an $n\in\N$
+      such that $k+n=l$.
+** Groups and semigroups 
+   The addition $+$ on $\Z$ is associative, has a neutral element,
+   zero, and for each $k\in\Z$ we can define an inverse $-k$ for which
+   $k+(-k)=0$, and addition is also commutative. This motivates the
+   following deffinitions:
+*** Grupoid, Semigroup, Monoid, Group, Abelian group
+    - A set $G$ and an operation $\otimes:G\to G$ is a *grupoid* if for
+      each $g,g'\in G$ the result of $g\otimes g'\in G$ (\ie the
+      operation does not "lead out" of the set).
+    - A $(G,+)$ groupoid is a *semigroup* if the operation is
+      associative.
+    - A $(G,+)$ semigroup is a *monoid* if there is an element $n\in
+      G$ such that $n$ is the neutral element \ie $g\otimes n = n
+      \otimes g = g$ for each $g\in G$.
+    - A $(G,+,n)$ monoid is a *group* if every element has an inverse
+      \ie for each $g\in G$ there is a $g^{-1}\in G$ so that $g\otimes
+      g^{-1} = n$. The group is an *abelian group* if the operation is
+      commutative \ie $a\otimes b = b \otimes a$ for each $a,b\in G$.
+* Rational numbers
+** Definition
+*** Definition of $\color{white}\Q$
+    Usually the set of rational numbers is defined as a set of
+    fractions \ie numbers $\frac{p}{q}$ where $p,q\in \Z$. The precise
+    definition is as follows:
+    - We define the $=_\Q$ equivalence relation of $\Z\times\Z$ so that
+      $(p,q)=_\Q (p',q')\iff pq'=p'q$. 
+    - The $=\Q$ equivalence relation defines a classification of
+      $\Z\times\Z$ and the classes are the rational numbers \ie
+      elements of $\Q$.
+    - Addition: $(p,q)+(p',q')=(pq'+p'q,qq')$
+    - Multiplication: $(p,q)\cdot (p',q')=(pp',qq')$
+    - Ordering: $(p,q)\leq (p',q')\iff 0\leq (p'q-q'p)qq'$
+    - Instead of $(p,q)$ we write of course $\frac{p}{q}$ or $p/q$,
+      and instead of $=_\Q$ we use simply $=$
+    - $\Z$ can be embedded into $\Q$ using the mapping $k\mapsto (k,1)$
+    - The classification is compatible with addition on multiplication
+** Rings
+*** Ring, integral domain, skew field, field
+    Let $R$ be a set with two operations $+:R\times R\to R$ and
+    $\otimes:R\times R \to R$.
+    - $(R,+,\otimes)$ is a ring if $(R,+)$ is an abelian group,
+      $(R,\otimes)$ is a semigroup, and the two operations are
+      distributive, \ie $a\otimes(b+c)=a\otimes b+a\otimes c$ and
+      $(b+c)\otimes a=b\otimes a+c\otimes a$ for each $a,b,c\in R$
+    - A ring $(R,+,\otimes)$ is a *commutative ring* if the $\otimes$
+      operation is commutative \ie $a\otimes b=b\otimes a$ for each
+      $a,b\in R$.
+    - A ring is a *unitary ring* if there is a multiplicative unity
+      \ie an element $u\in R$ so that $u\otimes a = a \otimes u = a$ for
+      each $a\in R$.
+    - A *zero ring* is a ring that contains only one element, and that
+      has to be the zero element $0$ (\ie the neutral element of the
+      additive group).
+      - The term "zero ring" sometimes refers to the other trivial
+        ring, in which $a\otimes b=0$ for any $a,b\in R$.
+** Integral domain, skew field, field
+*** Integral domain, skew field, field
+    - Two element $a$ and $b$ of a ring are *zero divisors* if $a\neq
+      0$ and $b\neq 0$ and $a\otimes b = 0$
+    - A nonzero [fn:: a ring with at least two elements] commutative
+      ring $(R,+,\otimes)$ is an *integral domain* if it has no zero
+      divisors. [fn::An equivalent definition of the integral domain
+      is a nonzero commutative ring such that $a\otimes b=0$ implies
+      $a=0 \lor b=0$ for each $a,b\in R$.]
+      - An integral domain is ordered if $R$ is ordered with a $\leq$
+        relation so that for all $a,b,c\in R$:
+	- addition is monotonous: $a\leq b \Rightarrow a+c\leq b+c$
+	- multiplication is monotonous $0\leq a,b \Rightarrow 0\leq
+          a\otimes b$
+    - The ring $(R,+,\otimes)$ is a *division ring* or a *skew field*
+      if $(R\setminus\{0\},\otimes)$ is a group.
+    - The ring $(R,+,\otimes)$ is a *field* if $(R \setminus \{0\},
+      \otimes)$ is an abelian group.
+      - All fields are integral domains.
+* Real numbers
+** Definition of real numbers
+*** Example
+    - $\sqrt{2}$ (which is the diagonal of a unit square) is not
+      rational! Because, if it were $\in\Q$ then
+      $\sqrt{2}=\frac{p}{q}$ for some $p,q\in\Z$ such that $p$ and $q$
+      are as small as possible. Squaring both sides we have
+      $2=p^2/q^2$, or $2q^2=p^2$ (we can suppose that
+      $0<p,q\in\N$). We can see that $p$ has to be even \eg $p=2k$ so
+      $2q^2=4k^2$, therefore $q^2=2k^2$ which implies that $q$ is also
+      even, and we could have simplified $p$ and $q$ by dividing them
+      with $2$ which would make them smaller (which is a
+      contradiction).
+*** Definition of $\color{white}\R$
+    The set of *real numbers* $\R$ is defined as an ordered field
+    which has the leas upper bound property. The properties of real
+    numbers are further discussed in analysis/calculus.
+* Complex numbers
+** Definition of complex numbers
+*** Motivation
+    - Even some quadratic equations have no /real/ solutions, \eg
+      $x^2+1=0\iff x^2=-1$ or $x^2+x+2=0$ would have solutions
+      $x=(-1\pm\sqrt{1-4\cdot 2})/2$ \ie a solution with a negative
+      discriminant.
+*** Definition 
+    The set of *complex numbers* is defined a $\C=\R\times\R$ with the
+    following operations:
+    - addition: $(x,y)+(u,v) = (x+u,y+v)$
+    - multiplication: $(x,y)\cdot(u,v) = (xu-yv,xv+yu)$
+
+    Note: things become simpler by introducing the "value" $i$ which
+    is the *imaginary unit*, \ie a "number" which has the property
+    $i^2=-1$.
+** Functions on complex numbers
+*** Algebraic form
+    If $z\in\C$, instead of $z=(x,y)$ we write $z=x+yi$ which is the
+    *algebraic* or *rectangular form* of $z$.
+    
+    In this form, addition of two complex numbers $z=x+yi$ and
+    $w=u+vi$ becomes $z+w=(x+yi)+(u+vi)=(x+u)+(y+v)i$; multiplication
+    becomes $zw=(x+yi)(u+vi)=xu +xvi +yui + yvi^2=(xu-yv) + (xv +yu)i$
+    because $i^2=-1$.
+*** Functions on $\color{white}z=x+yi$
+    If $z\in \C$ and $z=x+yi$ where $x,y\in\R$ then 
+    - $x=\Re(z)$ is the *real* and $y=\Im(z)$ is the *imaginary
+      part* of $z$;
+    - $\overline{z}=x-yi$ is the *conjugate* of $z$;
+    - $\left\vert z\right\vert=\sqrt{x^2+y^2}=\sqrt{z\overline{z}}$
+      is the *absolute value* or *modulus* of $z$;
+** Polar form
+   Since $\C=\R\times\R$, we think about $\C$ as a 2-dimensional plane
+   called the *complex plane*.  Each complex number $z\in\C$
+   represents a point on the complex plane.  In the rectangular form
+   $x$ and $y$ represent the length of the sides of a rectangle
+   defined by the origin $0$ and the point $z$.  But points can also
+   be given as a distance from the origin $0$ and as an angle (usually
+   measured from the positive real axis counter clockwise in radians).
+*** Polar form
+    The *polar form* of $z\in\C$ is $z=r(\cos \theta+i\sin \theta)$
+    where $r=\left\vert z\right\vert$ is the distance of $z$ from $0$,
+    and $\theta$ is the angle from the positive real axis measured in
+    radians counter clockwise.
+*** Argument
+    The argument of the complex number $z=x+yi$ (where $x,y\in\R$) is
+    $\arg z = \arctan \frac{y}{x}$.
+** Division in rectangular form
+*** Calculating the reciprocial
+    Let $0\neq z=x+yi\in\C$ ($x,y\in\R$). Then
+    \begin{equation*}
+    \frac{1}{z} =  \frac{1}{x+yi} = \frac{1}{x+yi}\cdot\frac{x-yi}{x-yi} = 
+    \frac{x-yi}{x^2+y^2} =     \frac{x}{x^2+y^2} - \frac{y}{x^2+y^2}i
+    \end{equation*}
+*** Division
+    Let $z,w\in\C$ such that $w\neq0$. Then using the above procedure:
+    \begin{equation*}
+    \frac{z}{w} = \frac{z}{w}\cdot\frac{\overline{w}}{\overline{w}}=
+    \frac{z\overline{w}}{\left\vert w\right\vert^2}=
+    \frac{\Re(z\overline{w})}{\left\vert w\right\vert^2}+
+    \frac{\Im(z\overline{w})}{\left\vert w\right\vert^2}
+    \end{equation*}
+** De Moivre formuls
+*** Operations in polar form
+    Let $z,w\in \C$, $n\in\N$ $z=r(\cos t+i\sin t)$ and $q=s(\cos q+i\sin q)$
+    - multiplication: $zw=rs(\cos(t+q)+i\sin(t+q))$
+    - division: $z/w=rs(\cos(t-q)+i\sin(t-q))$
+    - exponentiation: $z^n=r(\cos(nt)+i\sin(nt))$
+*** $\color{white}n$-th root of a complex number
+    Let $z=r(\cos t+i\sin t)$ and $n\in\N$.  $w\in\C$ is the *$n$-th
+    root of $z$* if $w^n=z$ \ie the roots of the polynomial $x^n-z$
+    sometimes written as $w=\sqrt[n]{z}$.
+
+    By the fundamental theorem of algebra, there are $n$ number of
+    $n$-th roots of $z$, and these can be obtained using the following
+    formula: \[w_k=\sqrt[n]{r}\left(\cos\frac{t+2k\pi}{n}
+    +i\sin\frac{t+2k\pi}{n}\right) \text{ for } k=0,1,2,\ldots,n-1\]
