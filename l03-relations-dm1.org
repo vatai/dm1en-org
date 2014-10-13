@@ -467,7 +467,7 @@
 
     Conversely, because of the trichotous property, for each pair of
     elements we have $x\prec y \lor x=y$ or $y\prec x \lor x=y$, which
-    is the definition of $x\preceq y$ or $x\preceq y$.
+    is the definition of $x\preceq y$ or $y\preceq x$.
 ** Intervals
 *** Definition (Intervals)
     Let $(X,\preceq)$ be a partially ordered set.  
@@ -484,12 +484,12 @@
 *** Examples
     Let $X=\wp(\{a,b,c\})$ with the /subset/
     relation.
-    - $[\{a\}, \{a,b,c\}]=\big\{\{a\}, \{a,b\},\{a,b,c\}\big\}$
-    - $(\{a\}, \{a,b,c\})=\big\{ \{a,b\}\big\}$
+    - $[\{a\}, \{a,b,c\}]=\big\{\{a\}, \{a,b\},\{a,c\},\{a,b,c\}\big\}$
+    - $(\{a\}, \{a,b,c\})=\big\{ \{a,b\}, \{a,c\}, \big\}$
  
     Let $X$ be the set of positive integers with the /divisor/ relation.
     - $[2, 12]=\big\{2, 4, 6, 12\big\}$
-    - $[2, 12]=\big\{ 4, 6\big\}$
+    - $(2, 12)=\big\{ 4, 6\big\}$
 ** Immediate predecessor and successor
 *** Definition (Immediate predecessor and successor)
     If $x \prec y$, but there are no elements strictly between $x$ and
@@ -500,11 +500,11 @@
       precedes $\{a,b\}$ and $\{a,c\}$.
     - For $\N$ with divisibility: $2$ precedes $4$, $6$, $10$, $14$.
 *** Definition (Initial segment)
-    The subset $\{y\in X: y<x\}$ is the *initial segment* associated
+    The subset $\{y\in X: y\leq x\}$ is the *initial segment* associated
     with the element $x$.
 *** Example
     Let $X$ the power set of $\{a,b,c\}$ with the /subset/ relation.
-    Then the starting slice associated with $\{a,b\}$ is:
+    Then the initial segment associated with $\{a,b\}$ is:
     $\big\{\emptyset,\{a\},\{b\}, \{a,b\}\big\}$
 ** Hasse-diagram
    In a *Hasse-diagram* of a partially ordered set, the elements are
@@ -524,16 +524,15 @@
     :END:
     #+ATTR_LATEX: :width 4cm
     [[file:hasse.tikz]]
-** Least, greatest, minimal, maximal element
+** Least, greatest, minimum, maximum element
 *** Definition(Least, greatest, minimal, maximal elements)
     In the partially ordered set $X$ we define $x\in X$ to be the
     - *least*    element if $\forall y \, (y\in X \Rightarrow  x\preceq y)$;
     - *greatest* element if $\forall y \, (y\in X \Rightarrow  y\preceq x)$;
     - *min.*  elem. if $\forall y \, (y\in X \Rightarrow  \lnot(y\preceq x))$ 
-      \ie $\lnot\exists y\, (y\in X \land y \preceq x)$;
+      \ie $\lnot\exists y\, (y\in X \land y \prec x)$;
     - *max.*  elem. if $\forall y \, (y\in X \Rightarrow  \lnot(x\preceq y))$
-      \ie $\lnot\exists y\, (y\in X \land x \preceq y)$;
-  
+      \ie $\lnot\exists y\, (y\in X \land x \prec y)$;
 *** Example						      :B_block:BMCOL:
     :PROPERTIES:
     :BEAMER_col: 0.6
@@ -549,7 +548,7 @@
     :BEAMER_col: 0.3
     :END:
     [[file:hasse.tikz]]
-** Least, greatest, minimal, maximal element
+** Least, greatest, minimum, maximum element
 *** Remarks
     - There is *at least* one minimal and maximal element.
     - There can be *at most* one least and greatest element.
@@ -611,7 +610,7 @@
       and $\sup Y = lcm(n_1,n_2,\ldots,n_k)$.
     The set $(\Q,\le)$ does not have the least-upper-bound property:
     - If $Y=\{y\in\Q : y^2\le 2\}=\{y\in\Q : y \le \sqrt{2}\}$ then
-      $Y$ has upper bounds (\eg $2$, $10$, 42$) but the least upper
+      $Y$ has upper bounds (\eg $2$, $10$, $42$) but the least upper
       bound would be $\sqrt{2}$ and $\sqrt{2}\not\in\Q$.
 ** Well ordered sets
 *** Definition
@@ -633,7 +632,7 @@
     - $f=\{(x,x^2)\in \R\times\R : x\in\R\}$ is a function, and
       $f$ is the $x\mapsto x^2$ map or $f(x)=x^2$.
     - The inverse $f^{-1}$ is not a function because
-      $(4,2),(4,-2)\not\in f^{-1}$.
+      $(4,2),(4,-2)\in f^{-1}$.
     - Any sequence is a mapping from $\N$. \Eg the Fibonacci sequence
       $F$ is a mapping from $\N$ to $\N$ and $F_0=0$, $F_1=1$ and
       $F_{n+2}=F_{n+1}+F_n$.
@@ -651,7 +650,7 @@
 ** Injective, surjective and bijective
 *** Definition (Injective, surjective and bijective)
     - The function $f:X\to Y$ is
-      - *injective*, if $f(x)=y \land f(x')=y \Rightarrow x=x'$;
+      - *injective* (or *invertable*), if $f(x)=y \land f(x')=y \Rightarrow x=x'$;
       - *surjective*, if $\rng(f)=Y$;
       - *bijective*, if it is /injective/ and /surjective/.
     
@@ -662,12 +661,12 @@
       function.
     - Whether a function $f:X\to Y$ is /surjective/, depends on $Y$. If
       $Y\subsetneq Y'$, then $f\subset X\times Y \subset X\times Y'$,
-      and $f:X\rightarrow Y$ is surely \alert{not} surjective.
+      and $f:X\rightarrow Y'$ is surely \alert{not} surjective.
 ** Example   
 *** Example  
     - The function $f:\R \to \R$, $f(x)= x^2$ is *not* injective and
       *not* surjective: $f(-1)=f(1)$, $\rng(f)=\R_0^+$.
-    - The function $f:\R \to \R_0^+$, $f:x\mapsto x^2$ is *not*
+    - The function $f:\R \to \R_0^+$, $f=x\mapsto x^2$ is *not*
       injective but it is surjective.
     - The function $f:\R_0^+ \to \R_0^+$, $f:x\mapsto x^2$ is
       injective and surjective, therefor it is also bijective.
@@ -686,7 +685,7 @@
     :PROPERTIES:
     :BEAMER_env: proof
     :END:
-    Let $h=f\circ g$.
+    Let $h=g\circ f$.
     1. Let $(x,y)\in h$, $(x,y')\in h$: $\exists z\,( (x,z)\in f \land
        (z, y)\in g)$, $\exists z' \,((x,z')\in f, (z', y')\in g)$.
        Since $f$ is a function $z=z'$, since $g$ is a function $y=y'$.
@@ -809,9 +808,9 @@
 ** Structure preserving maps
 *** Definition
     Let $X$ be a set with the $\otimes$ operation, $Y$ with the
-    $\oplus$ operation. The $f: X\to Y$ function is
+    $\oplus$ operation. The $\varphi: X\to Y$ function is
     *structure-preserving* or a *homomorphism*, if
-    $f(x\otimes y)=f(x)\oplus f(y)$.
+    $\varphi(x\otimes y)=\varphi(x)\oplus \varphi(y)$.
 *** Example
     - Let $X=\R$ with the $+$ operation, $Y=\R^+$ with the $\cdot$
       operation.  Then $x\mapsto a^x$ is a /homomorphism/
@@ -821,7 +820,16 @@
     #   $\overline{z+w}=\overline{z}+\overline{w}$
     - Let $X=\Z$ with the $+$ operation, $Y=\Z_3$ with the $+_3$
       (addition modulo $3$) operation.  Then $n\mapsto n \bmod 3$ is
-      /homomorphism/: $k+n \bmod 3 = (k \bmod 3)+_m (n \bmod 3)$.
+      /homomorphism/: $k+n \bmod 3 = (k \bmod 3)+_3 (n \bmod 3)$.
     - Let $X=\{\top,\perp\}$ with the $\oplus$ or $\land$ operation, $\Z_2$
       with the $+_2$ or $\cdot_2$ operation. Then
       $\perp \mapsto 0$, $\top\mapsto 1$ is a *homomorphism*.
+      
+** COMMENT Different homomorphisms
+*** Different kinds of homomorphisms
+    Let $\varphi : X \to Y$ be a homomorphism. $\varphi$ is a
+    - Monomorphism, if $\varphi$ is injective;
+    - Epimorphism, if $rng(\varphi)=Y$; 
+    - Isomorphism, if $\varphi$ is a bijection;
+    - Endomorphism, if $X=Y$;
+    - Automorphism, if $X=Y$ and $\varphi$ is bijective.
