@@ -13,30 +13,42 @@
 * Basics
 ** Logic: The science of correct reasoning 
 *** Definition
-    - *Logic* (from the Ancient Greek: logike) is the use and study of *valid reasoning*.
+    - *Logic* (from the Ancient Greek: logike) is the use and study of
+      *valid reasoning*.
     - Independently of the object of discussion.
     - Logic discusses *statements* which have a unique *truth value*.
 *** Truth values
-    - *Truth values* can be either *true* ($\uparrow$, 1, $\tru$) or *false* ($\downarrow$, 0, $\fls$). 
+    - *Truth values* can be either *true* ($\uparrow$, 1, $\tru$) or
+      *false* ($\downarrow$, 0, $\fls$).
     - $\mathbb{L}=\{\tru,\fls\}$.
-    - *Propositional variables* are variables which range over truth values, (they must be either true or false, but never both).
+    - *Propositional variables* are variables which range over truth
+      values, (they must be either true or false, but never both).
 * Zeroth-order logic
 ** Zeroth-order logic
 *** Definition
-    - In mathematical logic, a *propositional calculus* or *logic* (also called *sentential calculus* or *sentential logic*) is a formal system in which formulas of a formal language may be interpreted to represent propositions.
-    - It is formal, \ie it uses (well-formed) formulas to approximate reality.
-    - It deals only with statements which are either true or false (not both).
-    - Mathematical logic does not address the contents of the statement, only it's truth-value.
-    - Propositional logic discusses the properties and rules of logical operations.
+    - In mathematical logic, a *propositional calculus* or *logic*
+      (also called *sentential calculus* or *sentential logic*) is a
+      formal system in which formulas of a formal language may be
+      interpreted to represent propositions.
+    - It is formal, \ie it uses (well-formed) formulas to approximate
+      reality.
+    - It deals only with statements which are either true or false
+      (not both).
+    - Mathematical logic does not address the contents of the
+      statement, only it's truth-value.
+    - Propositional logic discusses the properties and rules of
+      logical operations.
 ** Domain of discourse
 *** Definition
-    - *The domain of discourse*, also called the *universe of discourse* (or simply *universe*),
-    - is the set of entities over which certain variables of interest in some formal treatment may range.
+    - *The domain of discourse*, also called the *universe of
+      discourse* (or simply *universe*),
+    - is the set of entities over which certain variables of interest
+      in some formal treatment may range.
     - It is the set of "things we are discussing".
     - Usually it is denoted by $U$
 *** Examples
     - $U=$ the students in this class
-    - $U=\mathbb{N}$
+    - $U=\N$
 ** Terms
 *** Definition
     1) If $t\in U$ then $t$ is a *term*.
@@ -75,27 +87,27 @@
     - Unary logical operator: $\lnot$ (not, negation)
 ** Truth-tables
 *** Conjunction and disjunction
-    | $A$   | $B$   | $A\land B$ |   | $A$   | $B$   | $A\lor B$ |
-    |-------+-------+------------+---+-------+-------+-----------|
-    | /     |       | >          |   |       |       |           |
-    | \tru  | \tru  | \tru       |   | \tru  | \tru  | \tru      |
-    | \tru  | \fls | \fls      |   | \tru  | \fls | \tru      |
-    | \fls | \tru  | \fls      |   | \fls | \tru  | \tru      |
-    | \fls | \fls | \fls      |   | \fls | \fls | \fls     |
+    | $A$    | $B$    | $A\land B$ |   | $A$    | $B$    | $A\lor B$ |
+    |--------+--------+------------+---+--------+--------+-----------|
+    | /      |        | >          |   |        |        |           |
+    | $\tru$ | $\tru$ | $\tru$     |   | $\tru$ | $\tru$ | $\tru$    |
+    | $\tru$ | $\fls$ | $\fls$     |   | $\tru$ | $\fls$ | $\tru$    |
+    | $\fls$ | $\tru$ | $\fls$     |   | $\fls$ | $\tru$ | $\tru$    |
+    | $\fls$ | $\fls$ | $\fls$     |   | $\fls$ | $\fls$ | $\fls$    |
 *** Implication and equivalence
-    | $A$   | $B$   | $A\Rightarrow B$ |   | $A$   | $B$   | $A\Leftrightarrow B$ |
-    |-------+-------+------------------+---+-------+-------+----------------------|
-    | /     |       | >                |   |       |       |                      |
-    | \tru  | \tru  | \tru             |   | \tru  | \tru  | \tru                 |
-    | \tru  | \fls | \fls            |   | \tru  | \fls | \fls                |
-    | \fls | \tru  | \tru             |   | \fls | \tru  | \fls                |
-    | \fls | \fls | \tru             |   | \fls | \fls | \tru                 |
+    | $A$    | $B$    | $A\Rightarrow B$ |   | $A$  | $B$  | $A\Leftrightarrow B$ |
+    |--------+--------+------------------+---+------+------+----------------------|
+    | /      |        | >                |   |      |      |                      |
+    | $\tru$ | $\tru$ | $\tru$           |   | $\tru$ | $\tru$ | $\tru$               |
+    | $\tru$ | $\fls$ | $\fls$           |   | $\tru$ | $\fls$ | $\fls$               |
+    | $\fls$ | $\tru$ | $\tru$           |   | $\fls$ | $\tru$ | $\fls$               |
+    | $\fls$ | $\fls$ | $\tru$           |   | $\fls$ | $\fls$ | $\tru$               |
 ** Truth-tables
 *** Negation
-    | $A$     | $\lnot A$ |
-    |---------+-----------|
-    | \tru    | \fls     |
-    | \fls   | \tru      |
+    | $A$    | $\lnot A$ |
+    |--------+-----------|
+    | $\tru$ | $\fls$    |
+    | $\fls$ | $\tru$    |
 *** Number of unary and binary operators
     - What is the number of unary operators?
     - What is the number of binary operators?
@@ -104,13 +116,13 @@
     1. Inclusive or $\lor$: Those who had good weapons *or* good reflexes were victorious.
     2. Inclusive or $\oplus$: We have to go left *or* right.
     3. "Conflicting" or: Drink *or* drive!
-      | $\A$ | $\B$ | $1$  | $2$  | $3$  |
-      |------+------+------+------+------|
-      |      |      | <c>  | <c>  | <c>  |
-      | \tru | \tru | \tru | \fls | \fls |
-      | \tru | \fls | \tru | \tru | \tru |
-      | \fls | \tru | \tru | \tru | \tru |
-      | \fls | \fls | \fls | \fls | \tru |
+      | $\A$   | $\B$   | $1$    | $2$    | $3$    |
+      |--------+--------+--------+--------+--------|
+      |        |        | <c>    | <c>    | <c>    |
+      | $\tru$ | $\tru$ | $\tru$ | $\fls$ | $\fls$ |
+      | $\tru$ | $\fls$ | $\tru$ | $\tru$ | $\tru$ |
+      | $\fls$ | $\tru$ | $\tru$ | $\tru$ | $\tru$ |
+      | $\fls$ | $\fls$ | $\fls$ | $\fls$ | $\tru$ |
 ** COMMENT TODO Truth-tables
 *** How to evaluate the 
 ** Remarks and Questions
@@ -199,12 +211,12 @@
     *Proof using truth-tables* is done by filling out the first two columns of the 
     table as given bellow, and then the rest using the definitions of the 
     logical operations:
-    | $\A$ | $\B$ | $\A\lor\B$ | $lhs$ | $rhs$ | $\mathcal{F}$ |
-    |      |      | <c>        | <c>   | <c>   |               |
-    | \tru | \tru | \tru       | \tru  | \tru  | \tru          |
-    | \tru | \fls | \tru       | \tru  | \tru  | \tru          |
-    | \fls | \tru | \tru       | \fls  | \fls  | \tru          |
-    | \fls | \fls | \fls       | \fls  | \fls  | \tru          |
+    | $\A$   | $\B$   | $\A\lor\B$ | $lhs$  | $rhs$  | $\mathcal{F}$ |
+    |        |        | <c>        | <c>    | <c>    |               |
+    | $\tru$ | $\tru$ | $\tru$     | $\tru$ | $\tru$ | $\tru$        |
+    | $\tru$ | $\fls$ | $\tru$     | $\tru$ | $\tru$ | $\tru$        |
+    | $\fls$ | $\tru$ | $\tru$     | $\fls$ | $\fls$ | $\tru$        |
+    | $\fls$ | $\fls$ | $\fls$     | $\fls$ | $\fls$ | $\tru$        |
 * First-order logic
 ** Well-formed formulas
 *** Definition
