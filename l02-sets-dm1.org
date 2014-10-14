@@ -56,14 +56,16 @@
       - $A\cup B = \{ x : x\in A \lor x\in B\}$.
       - If $\mathcal{A}$ is a non-empty system of sets then $\cup
         \mathcal{A}$ contains elements which an element of at least
-        one $A\in\mathcal{A}$.
+        one $A\in\mathcal{A}$ or $\cup \mathcal{A} = \{x : \exists A
+        (A\in \mathcal{A} \land x \in A) \}$
 *** Definition: intersection
     - The *intersection* of the sets $A$ and $B$ is the set $A\cap B$.
       - $x$ is an element of $A\cap B$ if and only if $x\in A$ and $x\in B$.
-      - $A\cap B = \{ x : x\in A \lor x\in B\}$.
+      - $A\cap B = \{ x : x\in A \land x\in B\}$.
       - If $\mathcal{A}$ is a non-empty system of sets then $\cap
         \mathcal{A}$ contains elements which an element of all
-        $A\in\mathcal{A}$.
+        $A\in \mathcal{A}$ or $\cap \mathcal{A} = \{x : \forall A (A\in
+        \mathcal{A} \land x \in A) \}$
 ** Visual representation
 *** Union						      :B_block:BMCOL:
     :PROPERTIES:
