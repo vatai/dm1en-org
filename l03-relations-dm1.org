@@ -337,13 +337,13 @@
     :END:
     For every equivalence relation $\sim$ on the set $X$ the
     equivalence classes $\tilde{x}=\{y\in X: y \sim x\}$ (for $x\in
-    X$), yield a classification of $X$, which is denoted by $X/\sim$.
+    X$), yield a classification of $X$, which is denoted by $X/{\sim}$.
 *** Proof 							    :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
     :END:
     Let $\sim$ be an equivalence relation on $X$. We have to show that
-    $X/\sim \, =\{\tilde{x}: x\in X\}$ is a classification of $X$.
+    $X/{\sim} \, =\{\tilde{x}: x\in X\}$ is a classification of $X$.
     - Since $\sim$ is *reflexive*, $x\in\tilde{x}$
       ${\color{black}\Rightarrow}$ $\bigcup_{x}\tilde{x}=X$.
     - Equivalence classes are pairwise disjoint. Suppos $\tilde{x}
