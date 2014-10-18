@@ -1,0 +1,12 @@
+# Latex config
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper]
+#+LATEX_HEADER: \usepackage[margin=1cm]{geometry}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[]{lmodern}
+#+LATEX_HEADER: \pagestyle{empty}
+#+LATEX: \thispagestyle{empty}
+
+# Org-Mode config
+#+OPTIONS: toc:nil

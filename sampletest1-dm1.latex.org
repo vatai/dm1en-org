@@ -1,0 +1,72 @@
+#+INCLUDE: test-common.org
+# Set no title
+#+BIND: org-latex-title-command ""
+#+TITLE: First sample test - Discrete mathematics 1.
+#+DATE: 
+
+1. Negate (logically) the following sentences (but not just by putting
+   ``It is not true that'' before them):
+   1. The line $e$ intersects the line $f$ , and it's perpendicular to
+      $g$.
+   2. Every red car has a black component.
+   3. For every even integer $n$ greater than 10, there exist primes
+      $p$ and $q$, so that $p+q=n$.
+   4. If the degree of every vertex in a graph is even, then it
+      contains an Euler line.
+   5. For every thingy there is a gadgete which has only two coloured
+      widgets.
+
+2. Each of the following statements is either true for every set, or
+   there are counter examples.  If the statement is not true for every
+   set find sets for which it is NOT true (counter examples).
+   1. $A\cup B = A\cap B$
+   2. $(A\setminus B) \setminus C = A\setminus (B \setminus C)$
+   3. $(A\cup B) \cup C = A \cup (B\cup C)$
+   4. $(A\Delta B) \cup C = (A\cup C) \Delta (B\cup C)$
+   5. $A \setminus (B \cup C) = A\cap \overline{B}\cap \overline{C}$
+
+3. In a department store the set of workers doing restocking is:
+   $X=\{Adam, Bob, Cecil\}$.  The set of departments: $Y=\{Bakery,
+   Drinks, Sweets, Cashier\}$.  The products are Z = \{chocolate,
+   cola, rolls, croissant \}$.  The following relation describes which
+   worker is responsible for restocking which department: $R=\{(Adam,
+   Bakery), (Adam, Drinks), (Bob, Cashier), (Cecil, Sweets)\}$.  The
+   products can be found at the following departments (provided as a
+   relation): $S= \{(chocolate, Sweets), (chocolate, Cashier), (cola,
+   Drinks), (cola, Cashier), (rolls, Bakery), (croissant, Bakery),
+   (croissant, Sweets)\}$.  Answer the following questions.
+   1. What are the elements of the set: $R\circ S$.
+   2. Which are functions: $R, R^{-1}, S, S^{-1}$?
+   3. Let $R_2 = R|_{\{\textnormal{Adam}\}}$ What is
+      $\textrm{rng}(S^{-1}\circ R_2)$?
+   4. Using the relations $R$ and $S$, who can we formulate the query
+      who is responsible for restocking chocolate?
+   5. Is $R$ transitive?
+
+4. Provided the following relation on the set $E$ of eight complex
+   roots of unity $R = \{(x,y) \mid \exists k\in\mathbb{Z} \ (x^k = y)
+   \}$.  Illustrate (draw) the relation using arrows, connecting the
+   points of $E$.  Examine, if the relations i reflexive, symmetrical,
+   transitive, anti-symmetrical?  Is the relation an equivalence
+   relation?  If (and only if) it is, list all the equivalence
+   classes.  Is it a partial ordering?  If (and only if) it is, list
+   the minimal i.e. the maximal elements.
+
+2. Calculate the rectangular form of the following numbers ($a$ and
+   $b$ are non-zero real numbers):
+   1. $(2+i)^2$; 
+   2. $(a+3i)(b-2ai)$;
+   3. $(1+i)(1-i)(-1+i)(-1-i)$;
+   4. $1/(a+bi) + 1/(a-bi)$; 
+   5. $i^{2013}$.
+   
+3. Using the polar form, calculate the value of $z$, both the polar
+   and rectangular form, then give all complex values of $w$ in polar
+   for, for which $w^6=z$ is true.
+   \[ z = \frac{(2+2\sqrt{3}i)^{24}}{(-1+i)^{90}} \]
+4. 
+   1. Solve the following equation on the set of complex numbers:
+      \[ (1+i)z^2 + (2+3i)z + (1+2i) = 0 \]
+   2. What are the points dividing the PQ line segment into 3 equal
+      segments, if $P = 2+3i$, $Q=-4+5i$.
+
