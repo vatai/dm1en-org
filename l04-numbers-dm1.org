@@ -21,7 +21,7 @@
     
     Usually, we write $n^+$ instead of $f(n)$.
 
-    Also instead of $n^+$ we write $1$ and $0^{++}=1^+=2$ and so on,
+    Also instead of $0^+$ we write $1$ and $0^{++}=1^+=2$ and so on,
     so the $^+$ function basically means $f(n)=n^+=n+1$.
 ** Existence and uniqueness
 *** Existence 
@@ -63,14 +63,14 @@
     $m\cdot n$ (or $mn$).  Using induction if $k,m,n\in \N$ the
     following can be proven:
     - associativity: $(k\cdot n)\cdot m=k\cdot (n\cdot m)$;
-    - $0\cdot n = n \cdot 0$;
+    - $0\cdot n = n \cdot 0 = 0$;
     - 1 is a neutral (or unit) element: $1\cdot n=n\cdot 1=n$;
     - commutativity: $m\cdot n=n\cdot m$;
     - distributivity: $k\cdot(m+n)=k\cdot m + k\cdot n$ and
       $(m+n)\cdot k = m\cdot k + n\cdot k$.
 ** Ordering of natural numbers
 *** Definition of $\color{white}\leq$
-   We can define the relation $R\subset \N\time\N$ as follows:
+   We can define the relation $R\subset \N\times\N$ as follows:
    $(n,m)\in R \iff \exists k (k\in \N \land n+k=m)$. Instead
    $(n,m)\in R$ we usually write $n\leq m$.
 
@@ -90,7 +90,7 @@
 *** The set $\color{white}\Z$
    We can define the set of integers $\Z$ using $\N$ with its
    operations as follows.
-   - Let $=_\Z\subset \N\times\N$ and $(m,n)=_\Z(m',n')\iff m+n'=m'+n$.
+   - Let $=_\Z\subset \N^2\times\N^2$ and $(m,n)=_\Z(m',n')\iff m+n'=m'+n$.
    - $=_\Z$ is an equivalence relation (\ie reflexive, transitive and
      symmetric) and it defines a classification of $\N\times\N$
    - Each class represents one integer \ie an element of $\Z$.
@@ -118,7 +118,7 @@
 ** Ordering of integers
 *** Embedding of $\color{white}\N$ into $\color{white}\Z$
     - There is a homomorphism from $\N$ to the equivalence classes
-      which contain the pairs $(m,)$ ($m\in\N$)
+      which contain the pairs $(m,0)$ ($m\in\N$)
     # - This means that there is a natural connection between the
     #  natural numbers and some of the integers \ie $\N\subset\Z$
 *** A classification compatible with an operation
@@ -137,15 +137,15 @@
    $k+(-k)=0$, and addition is also commutative. This motivates the
    following deffinitions:
 *** Grupoid, Semigroup, Monoid, Group, Abelian group
-    - A set $G$ and an operation $\otimes:G\to G$ is a *grupoid* if for
-      each $g,g'\in G$ the result of $g\otimes g'\in G$ (\ie the
-      operation does not "lead out" of the set).
-    - A $(G,+)$ groupoid is a *semigroup* if the operation is
+    - A set $G$ and an operation $\otimes:G\times G\to G$ is a
+      *grupoid* if for each $g,g'\in G$ the result of $g\otimes g'\in
+      G$ (\ie the operation does not "lead out" of the set).
+    - A $(G,\otimes)$ groupoid is a *semigroup* if the operation is
       associative.
-    - A $(G,+)$ semigroup is a *monoid* if there is an element $n\in
+    - A $(G,\otimes)$ semigroup is a *monoid* if there is an element $n\in
       G$ such that $n$ is the neutral element \ie $g\otimes n = n
       \otimes g = g$ for each $g\in G$.
-    - A $(G,+,n)$ monoid is a *group* if every element has an inverse
+    - A $(G,\otimes,n)$ monoid is a *group* if every element has an inverse
       \ie for each $g\in G$ there is a $g^{-1}\in G$ so that $g\otimes
       g^{-1} = n$. The group is an *abelian group* if the operation is
       commutative \ie $a\otimes b = b \otimes a$ for each $a,b\in G$.
@@ -157,7 +157,7 @@
     definition is as follows:
     - We define the $=_\Q$ equivalence relation of $\Z\times\Z$ so that
       $(p,q)=_\Q (p',q')\iff pq'=p'q$. 
-    - The $=\Q$ equivalence relation defines a classification of
+    - The $=_\Q$ equivalence relation defines a classification of
       $\Z\times\Z$ and the classes are the rational numbers \ie
       elements of $\Q$.
     - Addition: $(p,q)+(p',q')=(pq'+p'q,qq')$
@@ -205,6 +205,7 @@
     - The ring $(R,+,\otimes)$ is a *field* if $(R \setminus \{0\},
       \otimes)$ is an abelian group.
       - All fields are integral domains.
+** TODO Examples
 * Real numbers
 ** Definition of real numbers
 *** Example
@@ -287,10 +288,10 @@
     \end{equation*}
 ** De Moivre formuls
 *** Operations in polar form
-    Let $z,w\in \C$, $n\in\N$ $z=r(\cos t+i\sin t)$ and $q=s(\cos q+i\sin q)$
+    Let $z,w\in \C$, $n\in\N$ $z=r(\cos t+i\sin t)$ and $w=s(\cos q+i\sin q)$
     - multiplication: $zw=rs(\cos(t+q)+i\sin(t+q))$
-    - division: $z/w=rs(\cos(t-q)+i\sin(t-q))$
-    - exponentiation: $z^n=r(\cos(nt)+i\sin(nt))$
+    - division: $z/w=\frac{r}{s}(\cos(t-q)+i\sin(t-q))$
+    - exponentiation: $z^n=r^n(\cos(nt)+i\sin(nt))$
 *** $\color{white}n$-th root of a complex number
     Let $z=r(\cos t+i\sin t)$ and $n\in\N$.  $w\in\C$ is the *$n$-th
     root of $z$* if $w^n=z$ \ie the roots of the polynomial $x^n-z$
