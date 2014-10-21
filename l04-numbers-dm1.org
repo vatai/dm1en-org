@@ -301,3 +301,20 @@
     $n$-th roots of $z$, and these can be obtained using the following
     formula: \[w_k=\sqrt[n]{r}\left(\cos\frac{t+2k\pi}{n}
     +i\sin\frac{t+2k\pi}{n}\right) \text{ for } k=0,1,2,\ldots,n-1\]
+* Graphical representations
+  \begin{tikzpicture}[scale=2]
+  \def\sqrtthree{1.732050808}
+  \def\zcords{(1/2,\sqrtthree/2)}
+  % grid, axis, circle
+  \draw[style=help lines,step=0.5] (-1.4,-1.4) grid (1.4,1.4);
+  \draw (0,0) circle (1);
+  \draw[<->] (-1.5,0) -- (1.5,0);
+  \draw[<->] (0,-1.5) -- (0,1.5);
+  
+  \draw \zcords 
+  node[draw, >=latex, label=45:{$z$}, circle, 
+  minimum width=2pt, inner sep=0pt, fill=black] {};
+  \draw[->] (0,0) -- \zcords;
+  \filldraw[fill=green!20,draw=anglecolor] (0,0) -- (3mm,0pt) arc(0:60:3mm);
+
+  \end{tikzpicture}
