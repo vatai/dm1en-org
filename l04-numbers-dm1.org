@@ -318,3 +318,33 @@
   \filldraw[fill=green!20,draw=anglecolor] (0,0) -- (3mm,0pt) arc(0:60:3mm);
 
   \end{tikzpicture}
+* Roots of unity
+** $n$-th roots of unity
+*** Definition
+    For $n\in\N^+$ the $\varepsilon\in\C$ is an *$n$-th root of unity*
+    if $\varepsilon^n=1$.
+
+    The set of $n$-th roots of unity are denoted by $E_n$.
+*** Example
+    - 1 is a $n$-th root of unity for each $n\in\N^+$.
+    - $2$-nd roots of unity are $+1$ and $-1$.
+    - $E_4=\{1,i,-1,-i\}$.
+    - $\varepsilon=\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}=-\frac{1}{2}+i\frac{\sqrt{3}}{2}$
+      is a $3$-rd root of unity, but it is not a $4$-th root of unity.
+    - $E_n=\{\varepsilon_0,\varepsilon_1,\ldots,\varepsilong_{n-1}\}$
+      where $\varepsilon_k=\cos\frac{2\pi k}{n}+i\sin\frac{2\pi
+      k}{n}$.
+** Primitive $n$-th roots of unity
+*** Definition
+    For $n\in\N^+$ the $\varepsilon\in\C$ is an *primitive $n$-th root
+    of unity* if $\varepsilon^n=1$ \ie it is an $n$-th root of unity
+    and $\{\varepsilon^k:k\in\N\}=E_n$.
+*** Example
+    - $E_2=\{1,-1\}$, $E_4=\{1,i,-1,-i\}$
+      - $-1$ is a $2$-nd and a $4$-th root of unity, 
+      - but it is only a primitive $2$-nd root of unity, 
+      - not a primitive $4$-th root of unity
+    - $\varepsilon=\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}=-\frac{1}{2}+i\frac{\sqrt{3}}{2}$
+      is a primitive $3$-rd root of unity.
+
+    
