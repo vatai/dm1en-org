@@ -277,6 +277,14 @@
    3) $\forall x \forall y P(x,y) \iff \forall y \forall x P(x,y)$
    4) $\exists x \exists y P(x,y) \iff \exists y \exists x P(x,y)$
    5) $\exists x \forall y P(x,y) \Rightarrow \forall y \exists x P(x,y)$
+*** Example to remember the last rule
+    If $U=\{1,2\}$ then consider the following two formulas:
+    - $\exists x \forall y & (x=y)$ is false because it is:
+      $\exists x (x=1 \land x=2)$ which is $(1=1\land 1=2) \lor (2=1\land 2=2)$ 
+    - $\forall y \exists x & (x=y)$ is true because it is:
+      $\forall y (1=y \lor 2=y)$ which is $(1=1 \lor 2=1) \land (1=2 \lor 2=2)$
+    - And by the definition of implication $\tru\Rightarrow\fls$ is false and
+      $\fls \Rightarrow\tru$ is true.
 * Theories
 ** Axioms,  theorems
 *** Definition
