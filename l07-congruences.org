@@ -1,0 +1,1080 @@
+# -*- mode: org; mode: flyspell; -*-
+#+STARTUP: beamer
+#+INCLUDE: "beamer-common.org"
+#+TITLE: Discrete mathematics I - Number theory Congruences
+#+SHORT_TITLE: Congruences
+#+COLUMNS: %30ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# #+LATEX_CLASS_OPTIONS: [draft]
+
+* Congruences
+** Congruences
+   For questions about divisibility, often only the remainder from the
+   euclidean division is important:
+   - days of the week;
+   - number of hours, ...
+*** Equal remainders 						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $16 \bmod 3=1$, $4\bmod 3=1$: for division by $3$ we have $16\
+    "\!\!=\!" \ 4$.
+*** Congruence						       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Let $a,b,m$ be integers, then $a \equiv b \pmod{m}$, \ie $a$ and
+    $b$ are *congruent modulo $m$* (or *with modulus $m$*). If $a$ and
+    $b$ are not congruent (with some modulus $m$) then they are *incongruent*.
+** Equivalent formulation
+*** Alternative notation
+    The following all mean $m\mid a - b$
+    - $a \equiv b \pmod{m}$,
+    - $a \equiv b \mod{m}$, 
+    - $a\equiv b \pod{m}$.
+*** Equivalent formulation:
+    $a \equiv b \pmod{m}$ $\color{black}\Leftrightarrow$ $a\bmod
+    m=b\bmod m$, that is we get the same remainder when dividing by
+    $m$.
+*** Congruences							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $16 \equiv 4 \pmod{3}$ since $3\mid 16-4$ $\color{black}\Leftrightarrow$  $16 \bmod 3=1=4\bmod 3$;\\
+    $16 \equiv 4 \pmod{2}$ since $2\mid 16-4$ $\color{black}\Leftrightarrow$  $16 \bmod 2=0=4\bmod 2$;\\
+    $16 \not\equiv 4 \pmod{5}$ since $5\nmid 16-4$ $\color{black}\Leftrightarrow$  $16 \bmod 5=1\neq4=4\bmod 5$.
+** TODO Properties of congruence
+*** Properties of congruence					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    1. $a \equiv a \pmod{m}$ (reflexivity); $a \equiv b \pmod{m}$
+       $\color{black}\Rightarrow$ $b \equiv a \pmod{m}$ (symmetry); $a
+       \equiv b \pmod{m}$, $b \equiv c \pmod{m}$
+       $\color{black}\Rightarrow$ $a \equiv c \pmod{m}$ (transitivity);
+    3. $a \equiv b \pmod{m}$, $m'\mid m$ $\color{black}\Rightarrow$ $a
+       \equiv b \pmod{m}'$;
+    4. $a \equiv b \pmod{m}$, $c \equiv d \pmod{m}$
+       $\color{black}\Rightarrow$ $a+c \equiv b+d \pmod{m}$;
+    5. $a \equiv b \pmod{m}$, $c \equiv d \pmod{m}$
+       $\color{black}\Rightarrow$ $ac \equiv bd \pmod{m}$.
+*** Proof 							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    1. $m\mid 0= a - a$; and $m\mid a - b$ $\color{black}\Rightarrow$
+       $m\mid b - a=-(a-b)$; and $m\mid a - b$, $m\mid b - c$
+       $\color{black}\Rightarrow$ $m\mid a - c =(a-b)+(b-c)$;
+    3. $m'\mid m\mid a - b$ $\color{black}\Rightarrow$ $m'\mid a - b$;
+    4. $m\mid a - b$, $m\mid c - d$ $\color{black}\Rightarrow$ $m\mid
+       (a+c)-(b+d)=(a-b)+(c-d)$;
+    5. $a =q_1 m + b$, $c=q_2 m + d$ $\color{black}\Rightarrow$
+       $ac=(q_1 m + b)(q_2 m + d)=m(q_1q_2m +q_1 d + q_2 b)+ bd$.
+
+** Properties of congruence
+*** Properties of congruences					  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    What is $345 \bmod 7=?$
+    
+    $345=34\cdot 10 + 5\equiv 6 \cdot 3 +5=18+5\equiv 4+5=9\equiv
+    \alert{2} \pmod{7}$.
+  
+    Reminder: $a \equiv b \pmod{m}$, $c \equiv d \pmod{m}$
+    $\color{black}\Rightarrow$ $ac \equiv bd \pmod{m}$
+
+*** Corollary
+    If $a \equiv b \pmod{m}$ then $ac \equiv bc \pmod{m}$.
+*** Properties of congruence 					  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $14 \equiv 6 \pmod{8}$ then $42 \equiv 18 \pmod{24}$
+  
+    *The converse is not true!* $2\cdot 7 \equiv 2\cdot 3 \pmod{8}$ but
+    $7 \not\equiv 3 \pmod{8}$.
+** The converse is not true
+*** Division 							  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $a$, $b$, $c$, $m$ be integers.  Then
+    
+    $ac\equiv bc \pmod{m}$ $\color{black}\Leftrightarrow$ $a\equiv b
+    \pmod{\frac{m}{(c,m)}}$
+*** Corollary
+    $ac\equiv bc \pmod{m}$, $(c,m)=1$ $\color{black}\Leftrightarrow$
+    $a\equiv b \pmod{m}$.
+  
+*** Division 							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $2\cdot 7 \equiv 2\cdot 3 \pmod{8}$ $\color{black}\Rightarrow$ $7
+    \equiv 3 \pmod{\frac{8}{2}}$.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    Let $d=(c,m)$. Then
+    
+    $m\mid c(a-b)$ $\color{black} \Leftrightarrow$ $\displaystyle
+    \frac{m}{d} \mid \frac{c}{d}(a-b)$ . Since $\displaystyle
+    \left(\frac{m}{d}, \frac{c}{d}\right)=1$, \\
+    we have $\displaystyle \frac{m}{d} \mid (a-b)$ $\color{black}
+    \Leftrightarrow$ $\displaystyle a\equiv b \pmod{\frac{m}{d}}$.
+* Linear congruences
+** Linear congruences
+   Let us solve the congruence $2x\equiv 5 \pmod{7}$.
+ 
+   If $x$ is a solution of $x\equiv y \pmod{7}$, then $y$ is also a
+   solution.  
+
+   Let us find the solution in the set $\{0,1,\dots, 6\}$.
+  
+   - $x=0$ $\color{black}\Rightarrow$ $2x= 0\not\equiv 5 \pmod{7}$;
+   - $x=1$ $\color{black}\Rightarrow$ $2x= 2\not\equiv 5 \pmod{7}$;
+   - $x=2$ $\color{black}\Rightarrow$ $2x= 4\not\equiv 5 \pmod{7}$;
+   - $x=3$ $\color{black}\Rightarrow$ $2x= 6\not\equiv 5 \pmod{7}$;
+   - $x=4$ $\color{black}\Rightarrow$ $2x=8\equiv 1\not\equiv 5 \pmod{7}$;
+   - $x=5$ $\color{black}\Rightarrow$ $2x=10\equiv 3\not\equiv 5 \pmod{7}$;
+   - $x=6$ $\color{black}\Rightarrow$ $2x=12\equiv 5\pmod{7}$.
+  
+   The solution of the congruence: $\{6+7k:  k \in\Z\}$. 
+     
+   Is there a better method? 
+  
+   Let us solve the congruence $23x\equiv 4 \pmod{211}$.
+   Do we need $211$ tries?
+ 
+** Linear congruences
+*** Solution of linear congruences 				  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $a$, $b$, $m$ be integers with $m>1$.  Then if there is a
+    solution for $ax\equiv b \pmod{m}$ $\color{black} \Leftrightarrow$
+    $(a,m)\mid b$.  If this is the case, the number of incongruent
+    solutions modulo $m$ equals $(a,m)$.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    $ax\equiv b \pmod{m}$ $\color{black} \Leftrightarrow$ $ax+my=b$ for
+    some $y$ integer.
+    
+    $(a,m)\mid a$ and $(a,m)\mid m$ $\color{black}
+    \Leftrightarrow$ $(a,m)\mid ax+my=b$.
+ 
+    If $d=(a,m)\mid b$ let $a'=a/d$, $b'=b/d$, $m'=m/d$: $a'x+m'y=b'$
+    
+    Since $(a',m')=1$ using the *extended euclidean algorithm* we can
+    calculate $x_0$, $y_0$, so $a'x_0+m'y_0=1$ $\color{black}
+    \Rightarrow$ $a'(b'x_0)+m'(b'y_0)=b'$, that is $x_1=b'x_0$,
+    $y_1=b'y_0$ will be the solutions.
+    
+    Number of solutions: let $(x,y)$ be a (pair of) solutions.
+    Subtracting the equations equations $a'x+m'y=b'$ and
+    $a'x_1+m'y_1=b'$ we get: $a'(x-x_1)=m'(y_1-y)$ $\color{black}
+    \Rightarrow$ $m'\mid x-x_1$ $\color{black} \Rightarrow$
+    $x=x_1+m'k$: for $k=0,1,\dots d-1$ we have incongruent
+    solutions. ($y=y_1-ka'$).
+** Linear Congruences
+   1. $ax\equiv b \pmod{m}$ $\color{black} \Leftrightarrow$ $ax+my=b$.
+   2. Let us solve the $ax+my=(a,m)$ equation (ext. euc. alg.).
+   3. If $(a,m)\mid b$ $\color{black}\Leftrightarrow$ a solution
+      exists.
+   4. The solution: $x_i=\frac{b}{(a,m)}x+k\frac{m}{(a,m)}$:
+      $k=0,1,\dots, (a,m)-1$.
+*** Solving congruences 				    :B_example:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :BEAMER_col: 0.45
+    :END:
+    # Let us solve the congruence!
+    | $i$  | $r_n$ | $q_n$ | $x_i$ |
+    | $-1$ | $23$  | --    | $1$   |
+    | $0$  | $211$ | --    | $0$   |
+    | $1$  | $23$  | $0$   | $1$   |
+    | $2$  | $4$   | $9$   | $-9$  |
+    | $3$  | $3$   | $5$   | $46$  |
+    | $4$  | $1$   | $1$   | $-55$ |
+    | $5$  | $0$   | $3$   | --    |
+*** $\color{white}23x\equiv 4 \pmod{211}$			    :B_example:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :BEAMER_col: 0.45
+    :END:
+    The algorithm: $r_{i-2}=r_{i-1}q_i+r_i$, $x_{-1}=1$, $x_0=0$,
+    $x_i=x_{i-2}-q_ix_{i-1}$
+
+    GCD: $(23,211)=1\mid 4$ $\color{black}\Rightarrow$ One solution:
+    $x=4(-55)\equiv \alert{202} \pmod{211}$.
+
+    All solutions: $\{202+211k: k \in \Z \}$.
+
+    These are solutions: $23 \cdot (202 + 211 k) - 4 = 4642 + 211
+    k = (22+k) \cdot 211$
+** Linear congruences
+*** Solving congruences						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    Solve the $10x\equiv 8 \pmod{22}$ congruence!
+    | $i$  | $r_n$ | $q_n$ | $x_i$ |
+    | $-1$ | $10$  | --    | $1$   |
+    | $0$  | $22$  | --    | $0$   |
+    | $1$  | $10$  | $0$   | $1$   |
+    | $2$  | $2$   | $2$   | $-2$  |
+    | $3$  | $0$   | $5$   | --    |
+    
+    The algorithm: $r_{i-2}=r_{i-1}q_i+r_i$, $x_{-1}=1$, $x_0=0$,
+    $x_i=x_{i-2}-q_ix_{i-1}$, $y_{-1}=0$, $y_0=-1$,
+    $y_i=y_{i-2}-q_iy_{i-1}$
+
+    GCD: $(10,22)=2\mid 8$ $\color{black}\Rightarrow$ A pair of
+    solutions: $x_1=4(-2)\equiv \alert{14} \pmod{22}$,
+    $x_2=4(-2)+\frac{22}{2}\equiv 14+11 \equiv \alert{3} \pmod{22}$.
+
+    All solutions: $\{14+22k: k \in \Z \} \cup \{3+22k:
+    k \in \Z \}$.  \smallskip
+
+    These are solutions: $x_1=14$: $10\cdot 14-8=132=6\cdot 22$
+    $x_2=3$: $10\cdot 3-8=22=1\cdot 22$.
+** TODO Linear Diophantine equations
+*** Linear Diophantine equations
+    Definition: equations with *integer* solutions.
+
+    Linear Diophantine equations: $ax+by=c$, where $a, b, c\in\Z$.
+
+    This is equivalent with the $ax\equiv c \pmod{b}$, or $by\equiv c
+    \pmod{a}$ congruence.
+ 
+    $ax+by=c$ can be solved if and only if $(a,b)\mid c$, and then the
+    solutions can be obtained using the *extended euclidean
+    algorithm*.
+*** Other Diophantine equations				      :B_block:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: block
+    :BEAMER_col: 0.55
+    :END:      
+    $x^2+y^2=-4$: Doesn't have (real) solutions.  
+
+    $x^2-4y^2=3$: doesn't have integer solutions, because the
+    remainders $\pmod{4}$ is: $x^2\equiv 3 \pmod{4}$. But this can not be,
+    because the remainder of a square has to be $0$ or $1$:
+*** Squares (mod 4) 					      :B_block:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.37
+    :BEAMER_env: block
+    :END:
+    | $x$    | $x^2\bmod 4$ |
+    |--------+--------------|
+    | $4k$   | $0$          |
+    | $4k+1$ | $1$          |
+    | $4k+2$ | $0$          |
+    | $4k+3$ | $1$          |
+* Simultaneous congruences
+** Simultaneous congruences
+   We want to find an integer $x$, which *simultaneously* satisfies
+   the following congruences:
+   \begin{align*}
+   2x &\equiv 1 \pmod{3}\\
+   4x &\equiv 3 \pmod{5}
+   \end{align*}
+
+   The solution for the congruences separately:
+   \begin{align*}
+   x &\equiv 2 \pmod{3}\\
+   x &\equiv 2 \pmod{5}
+   \end{align*}
+	 
+   We can see $x=2$ will be a solution!  
+   - $2$, $17$, $32$, $\dots$ ,$2+15k$;
+   - Other solutions?
+   - How do we solve the general case:
+   \begin{align*}
+   x &\equiv 2 \pmod{3}\\
+   x &\equiv 3 \pmod{5}
+   \end{align*}
+** Simultaneous congruences
+   Problem: Solve the following system of congruences:
+   \begin{align*}
+   a_1x & \equiv b_1 \pmod{m_1}\\
+   a_2x & \equiv b_2 \pmod{m_2}\\
+   & \vdots \\
+   a_nx & \equiv b_n \pmod{m_n}
+   \end{align*}
+   The congruences $a_ix \equiv b_i \pmod{m_i}$ can be solved
+   separately:
+   \begin{align*}
+   x & \equiv c_1 \pmod{m_1}\\
+   x & \equiv c_2 \pmod{m_2}\\
+   & \vdots \\
+   x & \equiv c_n \pmod{m_n}
+   \end{align*}
+** Simultaneous congruences
+   Problem: Solve the following system of congruences:
+   \begin{align*}
+   x & \equiv c_1 \pmod{m_1}\\
+   x & \equiv c_2 \pmod{m_2}\\
+   & \vdots \\
+   x & \equiv c_n \pmod{m_n}
+   \end{align*}
+   We can assume that $m_1,m_2 \dots, m_n$ are relative prime.
+  
+   If e.g. $m_1=m'_1 d$, $m_2=m'_2 d$, the first two congruences can
+   be substituted with the following (Proof later)
+   \begin{align*}
+   x & \equiv c_1 \pmod{m'_1}\\
+   x & \equiv c_1 \pmod{d}\\
+   x & \equiv c_2 \pmod{m'_2}\\
+   x & \equiv c_2 \pmod{d}
+   \end{align*}
+   If here $c_1\not \equiv c_2 \pmod{d}$, then there is no solution,
+   otherwise one of the congruences can be deleted.
+
+** Chinese remainder theorem
+*** Chinese remainder theorem					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $1<m_1,m_2 \dots, m_n$ be relative prime numbers,
+    $c_1,c_2,\dots, c_n$ integers. Then the
+    \begin{align*}
+    x & \equiv c_1 \pmod{m_1}\\
+    x & \equiv c_2 \pmod{m_2}\\
+    & \vdots \\
+    x & \equiv c_n \pmod{m_n}\\
+    \end{align*}
+    system of congruences can be solves, and the solutions are
+    congruent to each other modulo $m_1\cdot m_2\cdots m_n$.
+
+** Chinese remainder theorem
+   $x \equiv c_1 \pmod{m_1}$, $x \equiv c_2 \pmod{m_2}$, $\dots$, $x
+   \equiv c_n \pmod{m_n}$. $x=?$
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    # The proof is constructive!
+    Let $m=m_1m_2$.  Using the *extended euclidean algorithm* solve
+    the $m_1x_1+m_2x_2=1$ equation.  Let
+    $c_{1,2}=m_1x_1c_2+m_2x_2c_1$.  Then $c_{1,2}\equiv c_j \pmod{m_j}$
+    ($j=1,2$).  If $x\equiv c_{1,2} \pmod{m}$, then $x$ is the solution
+    of the first two congruences.  Converse: if $x$ is a solution of
+    the first two congruences, then $m_1$ and $m_2$ are divisors of
+    $x-c_{1,2}$, therefore their product is also a divisor: $x\equiv
+    c_{1,2} \pmod{m}$.  
+    This gives us an equivalent system of congruences to the original:
+    \begin{align*}
+    x & \equiv c_{1,2} \pmod{m_1m_2}\\
+    x & \equiv c_3 \pmod{m_3}\\
+    & \vdots \\
+    x & \equiv c_n \pmod{m_n}
+    \end{align*}
+    Then induction by $n$ provides us with the proof. 
+** Simultaneous congruences
+*** Simultaneous congruences				    :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    Solve the following system of congruences:
+    \begin{align*}
+    x &\equiv 2 \pmod{3}\\
+    x &\equiv 3 \pmod{5}
+    \end{align*}
+    - Let us solve the $3x_1+5x_2=1$ equation.  
+    - The solution: $x_1=-3$, $x_2=2$ $\color{black}\Rightarrow$
+      $c_{1,2}=3\cdot (-3) \cdot 3 + 5 \cdot 2 \cdot 2=-27+20=-7$.
+    - All the solutions: $\{-7+15k: k \in\Z\}=\{8+15k: k \in\Z\}$.
+** Simultaneous congruences
+*** Example							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    \begin{equation*}
+    \left.\begin{aligned}
+    x &\equiv 2 \pmod{3}\\
+    x &\equiv 3 \pmod{5}\\
+    x &\equiv 4 \pmod{7}
+    \end{aligned}
+    \right\}
+    \overset{c_{1,2}=8}{{\color{black}\Longrightarrow}}
+    \left\{
+    \begin{aligned}
+    x &\equiv 8 \pmod{15}\\
+    x &\equiv 4 \pmod{7}
+    \end{aligned}
+    \right.
+    \end{equation*}
+*** Example							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - Let us solve the $15x_{1,2}+7x_3=1$ equation.
+    - Solutions: $x_{1,2}=1$, $x_3=-2$.  $\color{black}\Rightarrow$
+      $c_{1,2,3}=15\cdot 1 \cdot 4 + 7 \cdot (-2) \cdot 8=60-112=-52$.
+    - All the solutions: $\{-52+105\ell: \ \ell \in\Z\}=\{53+105\ell:
+      \ \ell \in\Z\}$.
+* Residue classes
+** Residue classes
+   Often, the solution is not just one integer (family of integers),
+   but an entire set (set of families):
+   - $2x\equiv 5 \pmod{7}$, sol.: $\{6+7k: k \in\Z\}$
+   - $10x\equiv 8 \pmod{22}$, sol.: $\{14+22k: k \in\Z\}$, $\{3+22k: k
+     \in\Z\}$.
+*** Residues classes					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    For a fixed modulus $m$ and integer $a$, the integers congruent to
+    $a$ constitute the *residue (or congruence) class* represented by
+    $a$: $\overline{a}=\{x\in\Z: x\equiv a \pmod{m}\}=\{a+k m:
+    k\in\Z\}$.  The set of all residue classes is denoted by
+    $\Z_m^*=\{\overline{a}: \ 1\leq a <m, \ (a,m)=1 \}$.
+*** Residue class						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    The solution of $2x\equiv 5 \pmod{7}$: $\overline{6}$
+
+    The solution of $10x\equiv 8 \pmod{22}$: $\overline{14}$,
+    $\overline{3}$.
+
+    With modulus $m=7$, $\overline{2}=\overline{23}=\{\dots, -5, 2, 9,
+    16, 23, 30, \dots \}$
+
+    Generally: $\overline{a}=\overline{b}$
+    $\color{black}\Leftrightarrow$ $a\equiv b \pmod{m}$.
+** Complete residue system
+*** Complete residue system 				       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+     For a fixed modulus $m$, the *complete residue system modulo $m$*
+     is a set containing exactly one element from each congruence
+     class modulo $m$. 
+*** CRS 							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $\{33, -5, 11, -11, -8\}$ is a complete residue system modulo $5$.
+ 
+    A popular choices for complete residue systems:
+    - Least non-negative residue system modulo $m$: 
+      - $\{0,1,\dots, m-1\}$;
+    - Least absolute value residue system modulo $m$: 
+      - $\left\{0, \pm 1, \dots, \pm \frac{m-1}{2} \right\}$, if $2\nmid     m$; 
+      - $\left\{0, \pm 1, \dots, \pm \frac{m-2}{2}, \frac{m}{2} \right\}$,     if $2\mid m$.
+** Reduced residue system
+*** Remark
+    If one element of a congruence class is relative prime to the
+    modulus, then all the elements are too:: $(a+\ell m, m)=(a,m)=1$.
+*** Reduced residue system				       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    For a fixed modulus $m$, the *reduced residue system modulo $m$*
+    is a set containing exactly one element from all the congruence
+    classes with elements relative prime to $m$.
+
+    For a fixed modulus $m$, if $(a,m)=1$, then the residue class
+    $\overline{a}$ represented by $a$ is a *reduced residue
+    class*. The set of reduced residue classes is denoted by
+    $\Z_m^*=\{\overline{a}: \ 1\leq a <m, \ (a,m)=1 \}$.
+*** RRS								  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $\{1,2,3,4\}$ is a reduced residue system modulo $5$.
+  
+    $\{1,-1\}$ is a reduced residue system modulo $3$.
+  
+    $\{1,19,29,7\}$ is a reduced residue system modulo $8$.
+  
+    $\{0,1,2,3,4\}$ is \alert{not} a reduced residue system modulo $5$.
+** Operations on residue classes
+   Operations between residue classes can be defined in a natural way:
+*** Addition and multiplication				       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    For a fixed modulus $m$, and $a$, $b$ integers let: \[
+    \overline{a}+\overline{b}\overset{\text{\color{black} def}}{=}
+    \overline{a+b};\qquad
+    \overline{a}\cdot\overline{b}\overset{\text{\color{black} def}}{=}
+    \overline{a\cdot b}\]
+*** Proposition
+    This definition is meaningful, because if
+    $\overline{a}=\overline{a^*}$, $\overline{b}=\overline{b^*}$, then
+    $\overline{a}+\overline{b}=\overline{a^*}+\overline{b^*}$, and
+    $\overline{a}\cdot \overline{b}=\overline{a^*} \cdot
+    \overline{b^*}$
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+   Since $\overline{a}=\overline{a^*}$, $\overline{b}=\overline{b^*}$
+   $\color{black}\Rightarrow$ $a\equiv a^* \pmod{m}$, $b\equiv b^* \pmod{m}$ $\color{black}\Rightarrow$ $a+b\equiv a^*+b^* \pmod{m}$
+   $\color{black}\Rightarrow$ $\overline{a+b}=\overline{a^*+b^*}$
+   $\color{black}\Rightarrow$
+   $\overline{a}+\overline{b}=\overline{a^*}+\overline{b^*}$.
+
+   Similar proof applies to the multiplication. 
+** Residue classes
+   Operations between residue classes can be defined in a natural way:
+   $\overline{a}+\overline{b}=\overline{a+b}$;\quad
+   $\overline{a}\cdot\overline{b}=\overline{a\cdot b}$.
+*** Operations 						       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    For a fixed modulus $m$, let $\Z_m$ be the set of residue classes
+    modulo $m$.  Then addition and multiplication can be defined on
+    this set.
+*** $\color{white}\Z_3,+$						    :B_example:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :BEAMER_col: 0.45
+    :END:
+         | $+$            | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ |
+         | $\overline{0}$ | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ |
+         | $\overline{1}$ | $\overline{1}$ | $\overline{2}$ | $\overline{0}$ |
+         | $\overline{2}$ | $\overline{2}$ | $\overline{0}$ | $\overline{1}$ |
+*** $\color{white}\Z_3,\cdot$ 				    :B_example:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :BEAMER_col: 0.45
+    :END:
+
+        | $\cdot$        | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ |
+        | $\overline{0}$ | $\overline{0}$ | $\overline{0}$ | $\overline{0}$ |
+        | $\overline{1}$ | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ |
+        | $\overline{2}$ | $\overline{0}$ | $\overline{2}$ | $\overline{1}$ |
+
+
+** Example
+*** $\color{white}\Z_4,+$ 				    :B_example:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :BEAMER_col: 0.45
+    :END:
+    | $+$            | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ | $\overline{3}$ |
+    | $\overline{0}$ | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ | $\overline{3}$ |
+    | $\overline{1}$ | $\overline{1}$ | $\overline{2}$ | $\overline{3}$ | $\overline{0}$ |
+    | $\overline{2}$ | $\overline{2}$ | $\overline{3}$ | $\overline{0}$ | $\overline{1}$ |
+    | $\overline{3}$ | $\overline{3}$ | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ |
+
+*** $\color{white}\Z_4,\cdot$ 				    :B_example:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :BEAMER_col: 0.45
+    :END:
+    | $\cdot$        | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ | $\overline{3}$ |
+    | $\overline{0}$ | $\overline{0}$ | $\overline{0}$ | $\overline{0}$ | $\overline{0}$ |
+    | $\overline{1}$ | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ | $\overline{3}$ |
+    | $\overline{2}$ | $\overline{0}$ | $\overline{2}$ | $\overline{0}$ | $\overline{1}$ |
+    | $\overline{3}$ | $\overline{0}$ | $\overline{3}$ | $\overline{2}$ | $\overline{1}$ |
+** Residue classes
+*** Multiplicative group					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    - Let $m>1$ be an integer. If $1<(a,m)<m$, then $\overline{a}$ is
+      a zero divisor in $\Z_m$: for $\overline{a}$ there exists a
+      $\overline{b}$, so $\overline{a}\cdot\overline{b}=\overline{0}$
+    - If $(a,m)=1$, then $\overline{a}$ has a *reciprocal*
+      (\alert{multiplicative inverse}) in $\Z_m$: for $\overline{a}$
+      there exists a $\overline{x}$, so
+      $\overline{a}\cdot\overline{x}=\overline{1}$.
+    - Ergo, if $m$ is prime, division by any non-zero prime is
+      possible.
+*** Zero divisors and multiplicative inverse 			  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    Let $m=9$. $\overline{6}\cdot
+    \overline{3}=\overline{18}=\overline{0}$.  $(2,9)=1$, so
+    $\overline{2}\cdot \overline{5}=\overline{10}=\overline{1}$.
+
+*** Proof 							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    Let $d=(a,m)$. Then $a \cdot \frac{m}{d}=\frac{a}{d} \cdot 0
+    \equiv 0 \pmod{m}$, which if $b=m/d$ then $\overline{a}\cdot
+    \overline{b}=\overline{0}$.
+ 
+    If $(a,m)=1$, then using the ext.euc.alg. we can
+    obtain $x$, $y$ integers, such that $ax+my=1$. Then $ax\equiv 1
+    \pmod{m}$ \ie $\overline{a}\cdot \overline{x}=\overline{1}$. 
+
+* Euler-Fermat theorem and the totient function
+** Euler's totient $\color{white}\varphi$ function
+*** Totient function 					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    For a $m>0$ integer, let $\varphi(m)$ be the number of positive
+    integers less then and relative prime to $m$: $\varphi (m)=|\{i:
+    0<i<m, (m,i)=1\}|$.
+*** Totient function						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - $\varphi (5)=4$: integers relative prime to $5$: $1,2,3,4$;
+    - $\varphi (6)=2$: integers relative prime to $6$: $1,5$;
+    - $\varphi (12)=4$: integers relative prime to $12$: $1,5,7,11$.
+    - $\varphi (15)=8$: integers relative prime to $15$:
+      $1,2,4,7,8,11,13,14$.  \bigskip
+    Remark: $\varphi (m)$ is the number of reduced congruence classes
+    modulo $m$.
+** Euler function
+   $\varphi (m)=|\{i: \ 0<i<m, (m,i)=1\}|$
+*** Calculating the $\color{white}\varphi(n)$			  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+     Let the factorization of $m$ be $m=p_1^{e_1}p_2^{e_2}\cdots
+     p_{\ell}^{e_\ell}$. Then
+ 
+     \[ \varphi(m)=m\cdot \prod_{i=1}^\ell \left(1-\frac{1}{p_i^{e_i}}
+     \right) \]
+*** Calculating the $\color{white}\varphi(n)$			  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - $\varphi (5)=5\left(1-\frac{1}{5} \right)=4$;
+    - $\varphi (6)=6\left(1-\frac{1}{2} \right)\left(1-\frac{1}{3}
+      \right)=2$;
+    - $\varphi (12)=12\left(1-\frac{1}{2^2} \right)\left(1-\frac{1}{3}
+      \right)=4$;
+    - $\varphi (15)=15\left(1-\frac{1}{3} \right)\left(1-\frac{1}{5}
+      \right)=8$.
+** Euler-Fermat theorem
+*** Euler-Fermat 						  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $m>1$ be an integer, $a$ an integer for which $(a,m)=1$. Then
+    \[a^{\varphi (m)}\equiv 1 \pmod{m}.\]
+*** Fermat 							  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $p$ be a prime, $p\nmid a$. Then $a^{p-1} \equiv 1 \pmod{p}$, or
+    if is an arbitrary integer $a$ then $a^p\equiv a \pmod{p}$. (A
+    direct consequence of the E-F thm)
+*** Euler Fermat theorem					  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - $\varphi (6)=2$ $\color{black}\Rightarrow$ $5^2=36 \equiv 1 \pmod{6}$;
+    - $\varphi (12)=4$ $\color{black}\Rightarrow$ $5^4= 625\equiv 1 \pmod{12}$;  $7^4= 2401\equiv 1 \pmod{12}$.
+    - *Caution!* $2^4= 16\equiv 2 \not\equiv 1 \pmod{12}$, because $(2,12)=2\neq 1$.
+** The proof of Euler-Fermat theorem
+*** Lemma
+    Let $m>1$ be an integer, $a_1$, $a_2$ \dots, $a_m$ a complete
+    residue system modulo $m$. Then for each integer $a,b$, if
+    $(a,m)=1$, then $a\cdot a_1+b$, $a\cdot a_2+b$ \dots, $a\cdot a_m
+    +b$ is also a complete residue system. Further, if $a_1$, $a_2$,
+    \dots, $a_{\varphi (m)}$ is a reduced residue system modulo $m$,
+    then $a\cdot a_1$, $a\cdot a_2$ \dots, $a\cdot a_{\varphi (m)}$ is
+    also a reduced residue system.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    If $i\neq j$ then $aa_i+b\equiv aa_j+b \pmod{m}$
+    $\color{black}\Leftrightarrow$ $aa_i\equiv aa_j \pmod{m}$. Since
+    $(a,m)=1$, we divide by $a$: $a_i\equiv a_j \pmod{m}$. So $a\cdot
+    a_1+b$, $a\cdot a_2+b$ \dots, $a\cdot a_m +b$ are pairwise
+    incongruent. Since we have $m$ different numbers, it is a complete
+    residue system.
+
+    If $(a_i, m)=1$, then $(a,m)=1$ $\color{black}\Rightarrow$
+    $(a\cdot a_i, m)=1$. Further $a\cdot a_1$, $a\cdot a_2$ \dots,
+    $a\cdot a_{\varphi (m)}$ are pairwise incongruent, their number is
+    $\varphi (m)$ $\color{black}\Leftrightarrow$ reduced residue
+    system.
+** The proof of Euler-Fermat theorem
+*** Euler-Fermat						  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    $(a,m)=1$ $\color{black}\Rightarrow$ $a^{\varphi (m)}\equiv 1 \pmod{m}$.
+*** Proof
+     Let $a_1$, $a_2$, \dots, $a_{\varphi (m)}$ be a reduced residue
+     system modulo $m$. Since $(a,m)=1$ $\color{black}\Rightarrow$
+     $a\cdot a_1$, $a\cdot a_2$ \dots, $a\cdot a_{\varphi (m)}$ is
+     also a reduced residue system.  Therefore \[ a^{\varphi
+     (m)}\prod_{j=1}^{\varphi (m)}a_j=\prod_{j=1}^{\varphi (m)}a\cdot
+     a_j\equiv \prod_{j=1}^{\varphi (m)} a_j \pmod{m} \]
+  
+     Because $\prod_{j=1}^{\varphi (m)}a_j$ is relative
+     prime to $m$, we can simplify: \[ a^{\varphi (m)}\equiv 1 \pmod{m}
+     \]
+** Euler-Fermat theorem
+*** Euler-Fermat						  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    $(a,m)=1$ $\color{black}\Rightarrow$ $a^{\varphi (m)}\equiv 1
+    \pod{m}$
+*** E-F theorem							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - What is the last digit of $3^{111}$ in the decimal number system?
+      - What is  $3^{111} \bmod 10$?
+      - $\varphi (10)=4$ $\color{black}\Rightarrow$ $3^{111}=3^{4\cdot
+	27+3}=\left(3^4\right)^{27} \cdot 3^3\equiv 1^{27}\cdot
+	3^3=27\equiv 7 \pod{10}$
+    - Solve the $2x\equiv 5 \pmod{7}$ congruence!
+      - $\varphi (7)=6$. Multiply both sides by $2^{5}$. Then
+      - $5\cdot 2^{5} \equiv 2^{6}x\equiv x \pmod{7}$. And now $5\cdot
+	2^{5}=5\cdot 32 \equiv 5\cdot 4 =20\equiv 6 \pmod{7}$.
+    - Solve the $23x\equiv 4 \pmod{211}$ congruence!
+      - $\varphi (211)=210$. Multiply both sides by $2^{209}$. Then
+      - $4\cdot 23^{209} \equiv 23^{210}x\equiv x \pmod{211}$.  And now  $4\cdot 23^{209}\equiv \dots \pmod{211}$.
+** Exponentiation by squaring (fast exponentiation)
+   Let $m,a,n$ be positive integers, $m>1$. We would like to calculate
+   efficiently the remainder $a^n \bmod m$.
+
+   Write $n$ in the base $2$ (binary) numeral system: \[
+   n=\sum_{i=0}^k \varepsilon_i 2^i=(\varepsilon_k
+   \varepsilon_{k-1}\dots \varepsilon_1 \varepsilon_0) _{(2)} \text{ where }
+   \varepsilon_0, \varepsilon_1, \dots, \varepsilon_k\in\{0,1\}\]
+
+   Let $n_j$ ($0\leq j\leq k$) be the number defined by the  first $j+1$ digits:
+
+   $n_j=\lfloor n/2^{k-j} \rfloor=(\varepsilon_k \varepsilon_{k-1}\dots  \varepsilon_{k-j+1}) _{(2)}$ 
+  
+   Then for each  $j$ the remainder $x_j\equiv a^{n_j} \pmod{m}$: 
+
+   $n_0=\varepsilon_0=1$, $x_0=a$.
+   $n_j=2\cdot n_{j-1} + \varepsilon_j$ $\color{black}\Rightarrow$ 
+   \begin{equation*} 
+   x_j=a^{\varepsilon_j}x_{j-1}^2 \bmod m=
+   \left\{
+   \begin{array}{cr}
+   x_{j-1}^2 \bmod m, & \text{ if } \varepsilon_j=0\\
+   a^{\varepsilon_j}x_{j-1}^2 \bmod m, & \text{ if } \varepsilon_j=0
+   \end{array}
+   \right.
+   \end{equation*}
+   $\color{black}\Rightarrow$
+   $x_k=a^n \bmod m$.
+   
+   The correctness follows from the following formula (Proof HW):
+   
+   \[a^n=a^{\sum_{i=0}^k \varepsilon_i
+   2^i}=\prod_{i=0}^k \left(a^{2^i}\right)^{\varepsilon_i} \]
+** Fast exponentiation
+*** Fast exponentiation						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    How much is $3^{111} \bmod 10$? (Euler-Fermat
+    $\color{black}\Rightarrow$ $7$)
+
+    $111_{(10)}=1101111_{(2)}$ here $k=6$, $a=3$.
+    | $j$ | $n_j$ | $x_j=$ | $a^{\varepsilon_j}\cdot x_{j-1}^2$ | $x_j \bmod 10$ |
+    | $0$ | $1$   |        | --                                 | $3$            |
+    | $1$ | $1$   | $x_1=$ | $3\cdot 3^2$                       | $7$            |
+    | $2$ | $0$   | $x_2=$ | $7^2$                              | $9$            |
+    | $3$ | $1$   | $x_3=$ | $3\cdot 9^2$                       | $3$            |
+    | $4$ | $1$   | $x_4=$ | $3\cdot 3^2$                       | $7$            |
+    | $5$ | $1$   | $x_5=$ | $3\cdot 7^2$                       | $7$            |
+    | $6$ | $1$   | $x_6=$ | $3\cdot 7^2$                       | $\alert{7}$    |
+** Fast exponentiation
+*** Lin.cong. with fast exponentiation				  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    Let us solve the congruence $23x\equiv 4 \pmod{211}$.  Euler-Fermat
+    $\color{black}\Rightarrow$ $x\equiv 4\cdot 23^{209}\equiv \dots
+    \pmod{211}$. How much is  $23^{209} \bmod 211$?
+
+    $209_{(10)}=11010001_{(2)}$ itt $k=7$, $a=23$.
+    | $j$ | $n_j$ | $x_j=$ | $a^{\varepsilon_j}\cdot x_{j-1}^2$ | $x_j \bmod 211$ |
+    | $0$ | $1$   |        | --                                 | $23$            |
+    | $1$ | $1$   | $x_1=$ | $23\cdot 23^2$                     | $140$           |
+    | $2$ | $0$   | $x_2=$ | $140^2$                            | $188$           |
+    | $3$ | $1$   | $x_3=$ | $23\cdot 188^2$                    | $140$           |
+    | $4$ | $0$   | $x_4=$ | $140^2$                            | $188$           |
+    | $5$ | $0$   | $x_5=$ | $188^2$                            | $107$           |
+    | $6$ | $0$   | $x_6=$ | $107^2$                            | $55$            |
+    | $7$ | $1$   | $x_6=$ | $23\cdot 55^2$                     | $\alert{156}$   |
+
+    $x\equiv 4\cdot 23^{209}\equiv 4\cdot 156 \equiv \alert{202}
+    \pmod{211}$.
+* The multiplicative group
+** Generators
+*** Generating the multiplicative group 			  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $p$ be a prime. Then in $\Z^*_p$ there exists a
+     \alert{generator} (\alert{primitive root}), i.e. there is an
+     integer $1<g<p$, which yields every reduced congruence class when
+     raised to different powers of integer: $\displaystyle \{
+     \overline{g^0}=\overline{1}, \overline{g^{\phantom{1}}},
+     \overline{g^2}, \dots, \overline{g^{p-1}} \}=\Z^*_p$,
+     i.e. $\displaystyle \{1=g^0, g \bmod p, g^2 \bmod p, \dots,
+     g^{p-1} \bmod p \}= \{1,2,\dots, p-1\}$.
+*** 3 is a generator modulo 7					  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    \[\begin{array}{c@{\ = \ }r@{\ = \ }c@{\ \equiv \ }c@{\ = \ }r@{\ \equiv \ }ccc}
+    3^1 &  3   &  3^0 \cdot 3 & 1 \cdot 3 &  3 & 3 & {}\bmod 7\\ 
+    3^2 &  9   &  3^1 \cdot 3 & 3 \cdot 3 &  9 & 2 & {}\bmod 7\\
+    3^3 &  27  &  3^2 \cdot 3 & 2 \cdot 3 &  6 & 6 & {}\bmod 7\\
+    3^4 &  81  &  3^3 \cdot 3 & 6 \cdot 3 &  18& 4 & {}\bmod 7\\
+    3^5 &  243 &  3^4 \cdot 3 & 4 \cdot 3 &  12& 5 & {}\bmod 7\\
+    3^6 &  729 &  3^5 \cdot 3 & 5 \cdot 3 &  15& 1 & {}\bmod 7\\
+    \end{array}\]
+** Generator
+*** 2 mod 11 and mod 7 						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - $2$ is a generator modulo $11$
+    | $n$            | 1 | 2 | 3 | 4 |  5 | 6 | 7 | 8 | 9 | 10 |
+    | $2^n \bmod 11$ | 2 | 4 | 8 | 5 | 10 | 9 | 7 | 3 | 6 |  1 |
+    - $2$ is *not* a generator modulo $7$
+    | $n$           | 1 | 2 | 3 | 4 | 5 | 6 |
+    | $2^n \bmod 7$ | 2 | 4 | 1 | 2 | 4 | 1 |
+* Discrete logarithm
+** Discrete logarithm
+*** Discrete logarithm					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Let $p$ be a prime, $g$ a generator modulo $p$. Then the $a\in\Z$:
+    ($p\nmid a$) $g$ base *discrete logarithm* (or *index*) of $a$ is:
+    \[ \log_g a=n : \quad a\equiv g^n \bmod p, \quad 0\leq n < p-1.
+    \]
+*** 3 is a gen. mod 7 					    :B_example:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :BEAMER_col: 0.45
+    :END:
+    | $n$   | 1 | 2 | 3 | 4 | 5 | 6 |
+    | $3^n$ | 3 | 2 | 6 | 4 | 5 | 1 |
+
+    | $3^n$ | 3 | 2 | 6 | 4 | 5 | 1 |
+    | $n$   | 1 | 2 | 3 | 4 | 5 | 6 |
+
+*** Discrete logarithm					    :B_example:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :BEAMER_col: 0.5
+    :END:
+    | $a$         | 3 | 2 | 6 | 4 | 5 | 1 |
+    | $\log _3 a$ | 1 | 2 | 3 | 4 | 5 | 6 |
+
+    | $a$         | 1 | 2 | 3 | 4 | 5 | 6 |
+    | $\log _3 a$ | 6 | 2 | 1 | 4 | 5 | 3 |
+
+** Discrete logarithm
+*** a 								  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $2$ is a generator modulo $11$
+    | $n$            | 1 | 2 | 3 | 4 |  5 | 6 | 7 | 8 | 9 | 10 |
+    | $2^n \bmod 11$ | 2 | 4 | 8 | 5 | 10 | 9 | 7 | 3 | 6 |  1 |
+    Table of logarithms:
+    | $a$        |  1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+    | $\log_2 a$ | 10 | 1 | 8 | 2 | 4 | 9 | 7 | 3 | 6 |  2 |
+
+*** Properties of the discrete logarithm			  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $p$ be a prime, $g$ a generator $p$, $1\leq a,b<p$, $n\in\Z$. Then
+    \begin{align*}
+    \log_g (a\cdot b) &\equiv \log _g a + \log _g b \pmod{p-1} \\
+    \log_g\left( a^n \right) &\equiv n \cdot \log _g a \pmod{p-1}
+    \end{align*}
+     
+* Applications
+** Applications
+   Field of applications of number theory:
+   - Cryptography
+     - encryption of messages;
+     - digital signatures;
+     - authentication and authorization, 
+   - Code theory 
+** Caesar cipher (code)
+   Julius Caesar communicated with his soldiers using the following
+   cipher:
+ 
+   Let us match the letters of the (English) alphabet with the set
+   $\{0,1,\dots, 25\}$ :
+*** 								      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.2
+    :END:
+   | a  $\mapsto$ | $0$  |
+   | b  $\mapsto$ | $1$  |
+   | c  $\mapsto$ | $2$  |
+   | $\vdots$     |      |
+   | z  $\mapsto$ | $25$ |
+*** 								      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.8
+    :END:
+   - *Encryption key* $s\in\{0,1,\dots, 25\}$.
+   - *Encryption* For $a\in\{0,1, \dots, 25\}$ encrypt $a$ using the
+     $a\mapsto a+s \bmod 26$ map. The encryption is letter-wise.
+   - *Decryption* For $b\in\{0,1, \dots, 25\}$ decrypt $b$ using the
+     $b\mapsto a-s \bmod 26$ map. Decryption is letter-wise.
+*** Caesar - Rot13 						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+  
+    Encryption of =hello= using $s=13$ as the key:
+ 
+    =hello= $\color{black}\rightarrow$ $7 \ 4 \ 11 \ 11 \ 14$
+    $\color{black}\overset{\text{encryption}}{\rightarrow}$ $20 \ 17 \
+    24 \ 24 \ 1$ $\color{black}\rightarrow$ =uryyb=
+  
+    =uryyb=: Decryption with the key $s=13$:
+  
+    =uryyb= $\color{black}\rightarrow$ $20 \ 17 \ 24 \ 24 \ 1$
+    $\color{black}\overset{\text{decryption}}{\rightarrow}$ $7 \ 4 \
+    11 \ 11 \ 14$ $\color{black}\rightarrow$ =hello=
+** Caesar cipher (code)
+   For the key $s=13$ we have: *Rot13*.
+  
+   Encryption and decryption is done with the same key: $-13\equiv 13
+   \pmod{26}$.
+  
+   This cipher is *not secure*: it can be cracked by analyzing the
+   frequency of occurrence of letters (al-Kindi 9 century a.d. )
+ 
+   If we use a different (random) keys at different positions in the
+   message $\color{black}\Rightarrow$ security is mathematically
+   proven.
+
+   In practice: *One Time Pad -- OTP*
+  
+   - *Message*: binary form: $m=100100101$ 
+   - *Key*: binary sequence: $s=010110110$ 
+   - *Encryption*: bit\-wise XOR ($\bmod 2$ addition): 
+     \begin{align*}
+     m=100100101&\\
+     XOR \quad s=010110110&\\
+     c=110010011&
+     \end{align*}
+    
+   *Crucial point*: transferring the secret key $s$.
+** RSA
+   Ron *Rivest*, Adi *Shamir* and Leonard *Adleman* suggested the
+   following method in 1977: 
+*** RSA encryption
+   - *Generating the keys*: Let $p$, $q$ be two (big, ~1024 bit)
+     primes, $n=p\cdot q$.
+   - Let $e\in\{1, \dots, \varphi(n)\}$, so that $(e,\varphi(n))=1$.
+   - Let $d$ be the solution of the congruence $ex\equiv 1
+     \pmod{\varphi(n)}$.
+   - Keys: *public* key $(n,e)$ and *private* (secret) key $d$.
+   - *Encryption* of the message $0\leq m<n$: $c=m^e \bmod n$.
+   - *Decryption* for an encrypted message $0\leq c<n$: $m=c^d \bmod n$.
+*** Correctness of the algorithm
+    $c^d\equiv \left( m^e \right)^d=m^{e\cdot d}=m^{k\cdot \varphi
+    (n)+1}\overset{\text{\color{black}E-F}}{\equiv} m \pmod{n}$
+** RSA
+   Actually $m$ just a key for another encryption.
+
+   The procedure is secure, because we can not efficiently factorize
+   the $n=p\cdot q$ product.
+
+*** Problem
+    - Find the divisors of the following numbers.
+    *RSA-100* =
+    5226050279225333605356183781326374297180681149613806886
+    57908494580122963258952897654000350692006139
+  
+    *RSA-2048* =
+    #+LATEX: {\scriptsize
+    2519590847565789349402718324004839857142928212620403202777713783604366202070759
+    5556264018525880784406918290641249515082189298559149176184502808489120072844992
+    6873928072877767359714183472702618963750149718246911650776133798590957000973304
+    5974880842840179742910064245869181719511874612151517265463228221686998754918242
+    2433637259085141865462043576798423387184774447920739934236584823824281198163815
+    0106748104516603773060562016196762561338441436038339044149526344321901146575444
+    5417842402092461651572335077870774981712577246796292638635637328991215483143816
+    7899885040445364023527381951378636564391212010397122822120720357
+    #+LATEX: }
+** RSA
+*** Factorization of RSA-2048:
+     - Trial-division (the sieve of Eratosthenes): for a number $n$
+       about $\sim\sqrt{n}$ divisions are needed:
+     - RSA-2048 $\sim 2^{2048}$, $\sim 2^{1024}$ divisions.
+     - For $\sim 10^9\approx 2^{30}$ divisions per second
+	$\color{black}\Rightarrow$ $2^{1024}/2^{30}=2^{994}$ seconds are
+	needed to factorise.
+       - $2^{994}$ seconds $\approx 2^{969}$ years.
+     - The same with 2 computers: $2^{968}$ years.
+       - The same with the best (known) algorithm:
+	 $2500000000000000000000000000000$ years ($=2,5 \cdot 10^{30}$)
+       - The age of the universe: $1,38 \cdot 10^{10}$ years.
+** RSA
+*** RSA								  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - Generating the keys:
+      - Let $p=61$, $q=53$ and $n=61\cdot 53=3233$, $\varphi(3233)=3120$.
+      - Let $e=17$. Using the extended euclidean algorithm: $d=2753$
+      - Public key: $(n=3233, e=17)$;
+      - Private (secret) key: $d=2753$.
+    - Encryption: Let $m=65$.
+      - $c=2790 \equiv 65^{17} \pmod{3233}$ 
+    - Decryption: If $c=2790$:
+      - $2790^{2753}\equiv 65 \pmod{3233}$ 
+*** Digital signature
+    - $e$ and $d$ change rolls (Separate keys are needed for
+      encryption):
+    - Signature: Let $s=m^d \bmod n$, then the signed message:
+      $(m,s)$.
+    - Verification: $m\overset{{\color{black} ?}}{\equiv} s^e \pmod{n}$.
+** Diffie-Hellman key exchange protocol
+   The first public key cryptography system was developed by Whitfield
+   *Diffie* and Martin *Hellman*, and published in 1976.
+  
+   | *Alice*                             | *Bob*                               |
+   | chooses: $a\in_R\{0,1,\dots, p-2\}$ | chooses: $b\in_R\{0,1,\dots, p-2\}$ |
+   | $\overset{g^a}{\longrightarrow}$    |                                     |
+   |                                     | $\overset{g^b}{\longleftarrow}$     |
+   | calculates: $\left(g^b\right)^a$    | calculates: $\left(g^a\right)^b$    |
+   | common key: $g^{ab}$                | common key: $g^{ab}$                |
+   - *Public parameters*:
+     - $p$ (large) prime, $g$ generator $\bmod p$.
+   - *Keys*:
+     - Alice's private key $a$: $1\leq a < p-1$, public key $g^a \bmod p$
+     - Bob's private key $b$: $1\leq a < p-1$, public key $g^b \bmod p$
+   - *Common key*: $g^{ab} \bmod p$.
+** Diffie-Hellman key exchange protocol
+   The protocol is secure, because calculating the discrete logarithm
+   is hard.
+  
+   If $p\sim 2^{2048}$ ($2048$ bits), calculating the discrete
+   logarithm takes $\sim 10^{30}$ years.
+*** Diffie-Hellman						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - *Public parameters*: Let $p=11$, $g=2$. 
+    - *Keys*:
+      - Alice's private key $a=4$, public key $2^4 \bmod p=5$
+      - Bob private key $b=8$, public key $2^8 \bmod p=3$
+    - *Common key*: $\left(g^b\right)^a=3^4 \bmod p=4$,\quad
+      $\left(g^a\right)^b=5^8 \bmod =4$.

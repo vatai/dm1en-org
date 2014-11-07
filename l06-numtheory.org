@@ -1,0 +1,644 @@
+# -*- mode: org; mode: flyspell; -*-
+#+STARTUP: beamer
+#+INCLUDE: "beamer-common.org"
+#+TITLE: Discrete mathematics I - Number theory
+#+SHORT_TITLE: Number theory
+#+COLUMNS: %30ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# #+LATEX_CLASS_OPTIONS: [draft]
+
+* Divisibility
+** Divisibility
+   If $a$ and $b$ are *rational* numbers, the division $a/b$ can
+   always be performed (and the result is a rational number).
+    
+   If $a$ and $b$ are *integers*, the division $a/b$ can *not* always
+   be performed (the quotient will not always be an integer).
+*** Divisibility					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    The integer $a$ is a divisor of the integer $b$: $a\mid b$, if
+    there exists an integer $c$ for which $a\cdot c=b$ (that is $b/a$
+    is an integer if $a\neq 0$).
+*** Divisibility						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - $1\mid 13$, because $1\cdot 13=13$; $1\mid n$, because $1\cdot
+      n=n$;
+    - $6\mid 12$, because $6\cdot 2=12$; $-6\mid 12$, because
+      $(-6)\cdot (-2)=12$.
+    
+    The definition can be extended to Gaussian-integers: $\{a+bi:\
+    a,b\in\Z\}$.
+
+    - $i\mid 13$, because $i\cdot (-13i)=13$
+    - $1+i\mid 2$, because $(1+i)\cdot (1-i)=2$.
+** Properties of divisibility
+*** Properies						      :B_block:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :BEAMER_env: block
+    :END:
+    For each $a,b,c,\dots\in\Z$
+    1. $a\mid a$;
+    2. $a\mid b \land b\mid c \Rightarrow a\mid c$;
+    3. $a\mid b \land b\mid a \Rightarrow a=\pm b$;
+    4. $a\mid b \land a'\mid b' \Rightarrow aa'\mid bb'$;
+    5. $a\mid b \Rightarrow ac\mid bc$;
+    6. $ac\mid bc \land c\neq 0 \Rightarrow a\mid b$;
+    7. $a\mid b_1, \dots, a \mid b_k \Rightarrow$ 
+       $a\mid c_1b_1+\dots +c_kb_k$
+    8. $a\mid 0$, since $a\cdot 0=0$;
+    9. $0\mid a \Leftrightarrow a=0$;
+    10. $1\mid a, -1\mid a$;
+*** Divisibility 					    :B_example:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :BEAMER_env: example
+    :END:
+    1. $6\mid 6$;
+    2. $2\mid 6  \land 6 \mid 12 \Rightarrow 2\mid 12$;
+    3. $3\mid -3 \land -3\mid 3  \Rightarrow 3=\pm 3$;
+    4. $2\mid 4  \land 3 \mid 9  \Rightarrow 2\cdot 3\mid 4\cdot 9$;
+    5. $3\mid 6 \Rightarrow 5\cdot 3\mid 5\cdot 6$;
+    6. $3\cdot 5\mid 6\cdot 5 \land 5\neq 0 \Rightarrow 3\mid 6$;
+    7. $3\mid 6, 3\mid 9 \Rightarrow 3\mid 6c_1+ 9c_2$ for each
+       $c_1,c_2$.
+    8. $a\mid 0$, since $a\cdot 0=0$;
+    9. $0\mid a \Leftrightarrow 0\cdot c=a$;
+    10. $1\cdot a= a$,  $-1 \cdot (-a) \mid a$;
+** Units
+   The factor $\pm 1$ is irrelevant for divisibility.
+*** Unit						       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    If an $\varepsilon$ is a divisor of every other number, then
+    $\varepsilon$ is called a *unit*.
+  
+*** Proposition							    :B_block:
+    :PROPERTIES:
+    :BEAMER_env: block
+    :END:
+    There are two units in the set of integers: $1$, $-1$.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    $\pm 1$ are clearly units.
+    
+    Conversely, if $\varepsilon$ is a unit, then $1=\varepsilon \cdot
+    q$ for some integer $q$.  Because $|\varepsilon |\geq 1$,
+    $|q |\geq 1$ $\color{black}\Rightarrow$ $|\varepsilon|=1$, that is
+    $\varepsilon=\pm 1$. \qed
+*** Unit							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    In the set of Gaussian-integers $i$ is a unit: $a+bi=i(b-ai)$.
+** Associated elements
+   The integers $12$ and $-12$ are the same from the perspective of
+   divisibility.
+*** Associated elements					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Two numbers are associated if they are each others divisors.
+*** Remark 							    :B_block:
+    :PROPERTIES:
+    :BEAMER_env: block
+    :END:
+    $a$ and $b$ are associated if and only if $a\mid b$ *and* $b\mid
+    a$.
+*** Trivial divisor					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Trivial divisors of $n$ are the numbers associated with $n$
+    and the units.
+* Primes, irreducible elements
+** Primes, irreducible elements
+*** Irreducible						       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    A nonzero number is *irreducible* if it has only trivial divisors.
+*** Irreducible elements 					  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    Integers $2,-2,3,-3,5,-5$ are irreducible; $6$ is not irreducible,
+    because $6=2\cdot 3$.
+*** Prime 						       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    A non-zero, non-unit $p$ number is a *prime* number, if $p\mid ab
+    \Rightarrow (p\mid a \lor p\mid b)$.
+*** Primes							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $2,-2,3,-3,5,-5$} are prime; $6$ is not a prime number, because
+    $6\mid 2\cdot 3$ but $6\nmid 2$ *and* $6\nmid 3$.
+
+** Primes, irreducibles
+*** Primes and irreducbles					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Each prime number is irreducible.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    Let $p$ be a prime number and let $p=ab$ be a factorization.  We
+    have to prove, that $a$ or $b$ is a unit.
+    
+    Because $p=ab$, $p \mid ab$, which means e.g. $p \mid a$. 
+    Then $a=pk=a(bk)$, i.e. $bk=1$, implying that $b$ and $k$ are units.  
+*** Remark
+    The converse is not always true:
+    - In the set $\Z$ it is  true, (see later);
+    - The set $\{a+bi\sqrt{5}:\ a,b\in\Z\}$ it is not true.
+
+* Euclidean division
+** Euclidean division
+   The primary tool of number theory is Euclidean division:
+*** Euclidean division						  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    For all integers $a$, $b\neq 0$ there exist unique integers $q$
+    and $r$ for which 
+    \begin{equation}
+    \label{eq:eucdiv}
+    a=bq+r \quad  \land \quad  0\leq r <|b|.  
+    \end{equation}
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    This proof for non-negative numbers can be applied to all integers.
+    1. Existence: induction by $a$.
+       - If $a<b$, then $a=b\cdot 0+a$ ($q=0$, $r=a$).
+       - If $a\geq b$, then suppose that numbers less than $a$ can be
+         written as \eqref{eq:eucdiv}.
+         Let $a-b=bq^*+r^*$. 
+         Then $a=b(q^*+1)+r^*$ and let $q=q^*+1$, $r=r^*$.   
+    2. Uniqueness: Let $a=bq+r=bq^*+r^*$.
+       Then  $b(q-q^*)=r^*-r$. 
+       This can be only if $q=q^*$ and$r=r^*$.
+
+** Euclidean division
+*** mod 						       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Let $a$ and $b$ be integers ($b\neq 0$).  Let $a=b\cdot q +r$
+    ($0\leq r<|b|$).  Then $a \bmod b =r$.
+  
+    Remark: $q=\lfloor a/ b\rfloor$, if $b>0$, and $q=\lceil a/b
+    \rceil$, if $b<0$.
+*** mod 							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - $123 \bmod 10=3$, $123 \bmod 100 =23$, $123 \bmod 1000=123$;
+    - $123 \bmod -10=3$, \dots
+    - $-123 \bmod 10=7$, $-123 \bmod 100=77$, $-123 \bmod 1000=877$;
+    - $-123 \bmod -10=7$, \dots
+** Euclidean division
+*** mod 							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - If it is $9$ o'clock now, what time will it be after $123$ hours?
+    
+      Let us divide $123$ by $24$: $123=24\cdot 5+3$.  $9+3=12$: noon!
+    
+      If it is $9$ o'clock now, what time will it be after $116$ hours?
+    
+      Let us divide $116$ by $24$: $116=24\cdot 4+20$.  So $9+20=29$. We
+      have a \alert{reduction again:} $29=24\cdot 1+5$: it will be $5$
+      A.M.!
+ 
+    - Which day of the week will the 10th of November be next year?
+      Which day of the week was the 14th of September before two
+      years?
+
+      Mon$=0$, Tue$=1$, Wed$=2$, Thu$=3$, Fri$=4$, Sat$=5$, Sun$=6$
+      
+    - Divide $365$ by $7$: $365=7\cdot 52+1$.
+      
+      Monday + 1 day $=0+1=1=$ *Tuesday*
+      
+    - Divide $-(365+366)$ (2012 was a leap year) by $7$: $-731=7\cdot
+      (-105)+4$.
+      
+      Friday + 3 days $=4+4=8\overset{\alert{\text{reduction}}}{=}1=$
+      *Tuesday*
+** Numeral systems
+   In the base *10* numeral system the number $123$:
+   $123=100+20+3=1\cdot {\color{blue}10^2}+2\cdot {\color{blue}
+   10^1}+3\cdot {\color{blue} 10^0}$.
+
+   In the base \alert{2} numeral system the number $123$:
+   \begin{align*}
+   1111011_{(2)} &= 1\cdot {\color{blue} 2^6} + 1\cdot {\color{blue}
+   2^5} + 1\cdot {\color{blue} 2^4} + 1\cdot {\color{blue} 2^3} +
+   0\cdot {\color{blue} 2^2} + 1\cdot {\color{blue} 2^1} +1\cdot
+   {\color{blue} 2^0}_{(10)}\\
+   &=1\cdot
+   {\color{blue} 64} + 1\cdot {\color{blue} 32} + 1\cdot {\color{blue}
+   16} + 1\cdot {\color{blue} 8} + 0\cdot {\color{blue} 4} + 1\cdot
+   {\color{blue} 2} +1\cdot {\color{blue} 1}_{(10)}
+   \end{align*}
+*** Representation of numbers					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $q>1$ be a fixed integer.  Then each non-negative integer $n$
+    can uniquely be written in the form $\alert{\displaystyle
+    n=\sum_{i=0}^k a_i q^i}$, where $0\leq a_i<q$ is an integer,
+    $a_k\neq 0$.
+    1. This expression is the number $n$ written in the base $q$
+       num. sys.
+    2. $q$ is the base of the numeral system.
+    3. $a_0,\dots, a_k$ are the digits of $n$.
+    4. $k=\lceil \log_q n \rceil$. 
+** Numeral systems
+
+   $n$ written in the base $q$ numeral system: $\displaystyle
+   n=\sum_{i=0}^k a_i q^i$.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    The proof is by induction.
+    1. For $n=0$ the theorem is true.
+    2. Suppose each integer less than $n$ can be written uniquely in a
+       base $q$ numeral system.  Because of the *Euclidean division
+       theorem*, there exists a unique integer $0\leq a_0<q$, for
+       which $q\mid n-a_0$.  Because of the induction hypothesis we
+       can express $\frac{n-a_0}{q}= \sum_{i=1}^ka_iq^{i-1}$ (in a
+       base $q$ numeral system), and this expression is unique.  Then
+       $n=\sum_{i=0}^k a_i q^i$.
+** Numeral systems
+   The previous proof provides a method to express the numbers:
+*** Representation 						  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    Let us write in base $2$ numeral system the number $n=123$
+    (expressed in base $10$).
+   | $i$ | $n$   | $n \bmod 2$    | $\frac{n-a_i}{2}$ | Digits                           |
+   | $0$ | $123$ | $\color{red}1$ | $\frac{123-1}{2}$ | ${\color{white}111101}\alert{1}$ |
+   | $1$ | $61$  | $\color{red}1$ | $\frac{61-1}{2}$  | ${\color{white}11110}\alert{1}1$ |
+   | $2$ | $30$  | $\color{red}0$ | $\frac{30-0}{2}$  | ${\color{white}1111}\alert{0}11$ |
+   | $3$ | $15$  | $\color{red}1$ | $\frac{15-1}{2}$  | ${\color{white}111}\alert{1}011$ |
+   | $4$ | $7$   | $\color{red}1$ | $\frac{7-1}{2}$   | ${\color{white}11}\alert{1}1011$ |
+   | $5$ | $3$   | $\color{red}1$ | $\frac{3-1}{2}$   | ${\color{white}1}\alert{1}10011$ |
+   | $6$ | $1$   | $\color{red}1$ | $\frac{1-1}{2}$   | ${\color{white}}\alert{1}110011$ |
+* Euclidean algorithm
+** Greatest common divisor
+*** Greatest common divisor				       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    The integer $d$ is the *greatest common divisor* (or *gcd*) of
+    integers $a$ and $b$ if: $d\mid a$, $d\mid b$, and if $c\mid a$,
+    $c\mid b$ then $c\mid d$.
+
+    The integer $d$ is the gcd of integers $a_1,a_2,\ldots,a_n$
+    ($n\in\N^+$) if: $d\mid a_1, d\mid a_2,\ldots d\mid a_n$, and if
+    $c\mid a_1,c\mid a_2,\ldots c\mid a_n$ then $c\mid d$.
+*** Least common multiple
+    The *least common multiple* (or *lcm*) of numbers $a$ and $b$ is
+    $m$ if: $a\mid m$, $b\mid m$, and $a\mid c$, $b\mid c$
+    $\color{black}\Rightarrow$ $m\mid c$.
+
+    The lcm of numbers $a_1,a_2,\ldots,a_n$ ($n\in\N^+$) is $m$ if:
+    $a_1\mid m, a_2\mid m,\ldots,a_n\mid m$ and if $a_1\mid c, a_2\mid
+    c,\ldots,a_n\mid c$ then $m\mid c$.
+*** Notation
+    Let $(a,b)=\gcd(a,b)$ be the *non-negative* greatest common divisor!
+    Let $[a,b]=\lcm(a,b)$ be the *non-negative* least common multiple!
+** Greatest common divisor
+*** Relative prime 					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    - The numbers $a$ and $b$ are *relative prime* if $(a,b)=1$.
+    - The numbers $a_1,a_2,\ldots,a_n$ are relative prime if
+      $(a_1,a_2,\ldots,a_n)=1$ (\ie if their greatest common divisor
+      is one).
+    - The numbers $a_1,a_2,\ldots,a_n$ are *mutually (or pairwise)
+      relative prime*, if $i\neq j$ implies $(a_i,a_j)=1$.
+*** Remarks
+    - *Attention!* The ``greatest'' does not refer to the usual
+      ordering: $-3$ is also the greatest common divisor of $12$ and
+      $9$.
+    - The greatest common divisor is unique disregarding association.
+    - Example: 35 and 12 are relative prime while 20 and 12 are not.
+** Euclidean algorithm
+*** Euclidean algorithm						  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Each pair of integers has a greatest common divisor and it can be
+    determined using the euclidean algorithm.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    If on of the numbers is $0$, then the other one will be the gcd.
+    Lat $a$ and $b$ be non-zero integers. Let us do the following
+    divisions:
+    \begin{equation*}
+    \begin{split}
+    a&=bq_1+r_1, \quad 0<r_1<|b|,\\
+    b&=r_1q_2+r_2, \quad 0<r_2<r_1,\\
+    r_1&=r_2q_3+r_3, \quad 0<r_3<r_2,\\
+    & \vdots \\
+    r_{n-2}&=r_{n-1}q_n+r_n, \quad 0<r_n<r_{n-1},\\
+    r_{n-1}&=r_{n}q_{n+1}
+    \end{split}
+    \end{equation*}
+    Gcd is the last $\neq0$ remainder: $\alert{(a,b)=r_n}$.
+    Here $a=r_{-1}$, $b=r_{0}$,
+** Correctness of the euclidean algorithm
+*** Proof (continued)						    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    \begin{equation*}
+    \begin{split}
+    a&=bq_1+r_1, \quad 0<r_1<|b|,\\
+    b&=r_1q_2+r_2, \quad 0<r_2<r_1,\\
+    r_1&=r_2q_3+r_3, \quad 0<r_3<r_2,\\
+    & \vdots \\
+    r_{n-2}&=r_{n-1}q_n+r_n, \quad 0<r_n<r_{n-1},\\
+    r_{n-1}&=r_{n}q_{n+1}
+    \end{split}
+    \end{equation*}
+    
+    The algorithm terminates after a finite number of steps:
+    $|b|>r_1>r_2>\dots$.
+
+    The remainder $r_n$ is a common divisor: $r_n\mid r_{n-1}$
+    $\color{black}\Rightarrow$ $r_n\mid r_{n-1}q_n+r_n=r_{n-2}$
+    $\color{black}\Rightarrow$ \dots $\color{black}\Rightarrow$
+    $r_n\mid b$ $\color{black}\Rightarrow$ $r_n\mid a$.
+
+    $r_n$ is the \emph{greatest} common divisor: let $c\mid a$, $c\mid
+    b$ $\color{black}\Rightarrow$ $c\mid a-bq_1=r_1$
+    $\color{black}\Rightarrow$ $c\mid b-r_1q_2=r_2$
+    $\color{black}\Rightarrow$ \dots $\color{black}\Rightarrow$ $c\mid
+    r_{n-2}-r_{n-1}q_n=r_n$.
+** Calculating the GCD, euclidean algorithm
+*** Euclidean algorithm 					  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    Let us calculate the value of $(172,62)$.
+    | $i$ | $r_i$ | $q_i$ | $r_{i-2}=$ | $r_{i-1}q_i+r_i$ |
+    | --  | $172$ | --    | --         |                  |
+    | --  | $62$  | --    | --         |                  |
+    | $1$ | $48$  | $2$   | $172=$     | $62\cdot 2+48$   |
+    | $2$ | $14$  | $1$   | $62=$      | $48\cdot 1+14$   |
+    | $3$ | $6$   | $3$   | $48=$      | $14\cdot 3+6$    |
+    | $4$ | $2$   | $2$   | $14=$      | $6\cdot 2+2$     |
+    | $5$ | $0$   | $3$   | $6=$       | $2\cdot 3+0$     |
+ 
+    The greatest common divisor:  $(172,62)=2$
+** Calculating the GCD using recursion
+*** Theorem							  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Let $a\neq 0$. If $b=0$, then $(a,b)=a$.  If $b\neq 0$, then
+     $(a,b)=(|b|, a \bmod |b|)$.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    If $b=0$, the theorem is trivial.  Since $(a,b)=(|a|,|b|)$, we can
+    suppose that $a,b>0$.  If $b\neq 0$, let us divide $a$ by $|b|$:
+    $a=|b|\cdot q + (a \bmod |b|)$.  This is the first line of the
+    euclidean alg.
+*** (172,62)							  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    | $(a,b)$    | $a \bmod \lvert b \rvert$ |
+    | $(172,62)$ | $48$                      |
+    | $(62,48)$  | $14$                      |
+    | $(48,14)$  | $6$                       |
+    | $(14,6)$   | $2$                       |
+    | $(6,2)$    | $0$                       |
+** GCD, further observations
+   Similarly, we can define the greatest common divisor of multiple
+   numbers (*HW*): $(a_1,a_2,\dots, a_n)$.
+*** Proposition (HW)
+    Each collection $a_1,a_2,\dots, a_n$ of integers, has (there
+    exists) a greatest common divisor $(a_1,a_2,\dots, a_n)$ and
+    $(a_1,a_2,\dots, a_n)=((\dots (a_1,a_2),\dots a_{n-1}),a_n)$.
+*** Proposition (HW)
+    For each $a,b,c$ integer $(ca,cb)=c(a,b)$ is true.
+** Extended euclidean algorithm
+*** Extended euclidean algorithm				  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    For each $a$, $b$ integer there exist integers $x$, $y$, so that
+    $(a,b)=x\cdot a + y \cdot b$.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    Let $q_i$, $r_i$ be the quotient and the remainder obtained by the
+    euclidean algorithm.
+
+    Let $x_{-1}=1$, $x_0=0$ and for $i\geq 1$ let
+    $x_i=x_{i-2}-q_ix_{i-1}$.  Similarly let $y_{-1}=0$, $y_0=1$ and
+    for $i\geq 1$ let $y_i=y_{i-2}-q_iy_{i-1}$.
+ 
+    Then for $i\geq 1$, $x_{i}a+y_ib=r_i$. (Proof: HW, Induction)
+
+    Ergo $x_{n}a+y_nb=r_n=(a,b)$. 
+** Extended euclidean algorithm
+   - Algorithm: $r_{i-2}=r_{i-1}$, $q_i+r_i$, 
+     - $x_{-1}=1$, $x_0=0$, $x_i=x_{i-2}-q_ix_{i-1}$ 
+     - $y_{-1}=0$, $y_0=-1$, $y_i=y_{i-2}-q_iy_{i-1}$
+*** Extended euclidean algorithm
+    Let us calculate $(172,62)$ and solve the $172x +62y=(172,62)$
+    equation!
+    | $i$  | $r_n$ | $q_n$ | $x_i$ | $y_i$ | $r_i=172x_i +62y_i$           |
+    | $-1$ | $172$ | --    | $1$   | $0$   | $172=172\cdot 1 +62\cdot 0$   |
+    | $0$  | $62$  | --    | $0$   | $1$   | $62=172\cdot 0 +62\cdot 1$    |
+    | $1$  | $48$  | $2$   | $1$   | $-2$  | $48=172\cdot 1 +62\cdot (-2)$ |
+    | $2$  | $14$  | $1$   | $-1$  | $3$   | $14=172\cdot(-1) +62\cdot 3$  |
+    | $3$  | $6$   | $3$   | $4$   | $-11$ | $6=172\cdot 4 +62\cdot (-11)$ |
+    | $4$  | $2$   | $2$   | $-9$  | $25$  | $2=172\cdot (-9) +62\cdot 25$ |
+    | $5$  | $0$   | $3$   | --    | --    | --                            |
+  
+    The solution:  $2=172\cdot (-9) +62\cdot 25$,  $x=-9$, $y=25$.
+* Elementary number theory
+** Irreducibles, primes (reminder)
+   - $t$ is *irreducible*: if it has only trivial divisors of the form
+     $\varepsilon$, $t$, $\varepsilon \cdot t$ (where $\varepsilon$ is
+     a unit).
+  
+   - $p$ is *prime*: if $p\mid ab$ $\color{black}\Rightarrow$ $p\mid
+     a$ or $p \mid b$.
+
+   - $p$ is prime $\color{black}\Rightarrow$ $p$ is irreducible.
+
+   On the set of integers the converse is also true.
+*** Irreducible integers are prime 				  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Every irreducible number is also a prime number.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    Let $p$ be an irreducible number, and let $p\mid ab$.  Assume
+    $p\nmid b$.  Then $p$ and $b$ are relative prime.  Using the
+    *extended euclidean algorithm* we can obtain $x$, $y$ integers, so
+    that $px+by=1$.  Therefore $pax+aby=a$. 
+    Since $p$ divides the left hand side, it also divides the right hand
+    side: $p\mid a$. 
+** The fundamental theorem of number theory
+*** Fundamental theorem of number theory			  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Every non-zero, non-unit number can uniquely be written as a
+    product of primes ignoring associated elements and units.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    The proof is only for non negative integers, but it can be generalized.
+
+    *Existence*: Induction: for $n=2$, $n=3$ it is true (primes).
+    Generally if $n$ is prime, then we are finished, if not, it can be
+    divided into a product in a non-trivial way.  The factors are can
+    be factorized base on the induction hypothesis.
+ 
+    *Uniqueness*: Induction: for $n=2$, $n=3$ it is true (primes).
+    Assume $n=p_1 p_2 \cdots p_k=q_1q_2\cdots q_\ell$, where $p_1,p_2
+    \cdots, p_k,q_1,q_2,\dots ,q_\ell$ are primes.  $p_1$ divides the
+    left hand side $\color{black}\Rightarrow$ it divides the right
+    hand side, suppose $p_1=q_1$.  After simplification: $n'= p_2
+    \cdots p_k=q_2\cdots q_\ell$.  Because of the induction
+    hypothesis, this is true.
+** Fundamental theorem of number theory
+*** Canonical form					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    The *canonical form* of a non-zero integer $n$ is: \[ n=\pm
+    p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_\ell^{\alpha_\ell}=\pm
+    \prod_{i=1}^\ell p_i^{\alpha_i}\] where $p_1$, $p_2$,\dots,
+    $p_\ell$ are positive primes, $\alpha_1$, $\alpha_2$,\dots,
+    $\alpha_\ell$ positive integers.
+*** Corollary (HW)  
+    Let $n$, $m>1$ positive integers:
+    $n=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_\ell^{\alpha_\ell}$,
+    $m=p_1^{\beta_1}p_2^{\beta_2}\cdots p_\ell^{\beta_\ell}$, (where
+    $\alpha_i$, $\beta_i\geq 0$ non-negative integers!).  Then
+    
+    - $(a,b)=p_1^{\min\{\alpha_1, \beta_1\}}p_2^{\min\{\alpha_2,
+      \beta_2\}}\cdots p_\ell^{\min\{\alpha_\ell, \beta_\ell\}}$,
+    
+    - $[a,b]=p_1^{\max\{\alpha_1, \beta_1\}}p_2^{\max\{\alpha_2,
+      \beta_2\}}\cdots p_\ell^{\max\{\alpha_\ell, \beta_\ell\}}$,
+    
+    - $(a,b)\cdot [a,b]=a\cdot b$.
+** Number of divisors
+*** The $\color{white}\tau$ function :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+   $\tau (n)$ is the \alert{number of (positive) divisors}
+   for an integer $n>1$.
+ 
+*** Calculating $\color{white}\tau(n)$ 
+    Let $n>1$ be an integer, $n=p_1^{\alpha_1}p_2^{\alpha_2}\cdots
+    p_\ell^{\alpha_\ell}$ its canonical form. Then $\tau (n)=(\alpha_1
+    +1)\cdot (\alpha_2 +1)\cdots (\alpha_\ell +1)$.
+  
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    The possible divisors of $n$ can be obtained by iterating all the
+    $\beta_i$ exponents in the expression
+    $d=p_1^{\beta_1}p_2^{\beta_2}\cdots p_\ell^{\beta_\ell}$ over the
+    set $\{0,1, \dots, \alpha_i\}$. 
+    There are $\alpha_i+1$ choices for each exponent.
+
+ 
+*** $\color{white}\tau(n)$ 					  :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+     $\tau(6)=4$: divisors: $1$, $2$, $3$, $6$;\quad $\tau(96)=12$:
+     divisors: $1$, $2$, $3$, $4$, $6$, \dots
+     
+     # % $\tau(32)=6$: osztók: $2$, $4$, $8$, $16$, $32$.
+ 
+     $\tau(2\cdot 3)= (1+1)\cdot (1+1)$; \quad  $\tau(2^5\cdot 3)=(5+1)\cdot (1+1)$.
+** About primes
+*** Euclid's theorem 						  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    There are infinitely many primes.
+*** Proof							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    Indirect. 
+    Assume there are finite many primes. 
+    Let them be $p_1, \dots, p_k$. 
+    Consider the integer $n=p_1 \cdots p_k+1$. 
+    This is not divisible by either prime $p_1, \dots, p_k$, so the
+    factorization of $n$ has to contain an additional prime. 
+
+
+*** Dirichlet's theorem 					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    If $a,d$ are integers, $d>0$, $(a,b)=1$, then there are infinitely
+    many primes of the form $ak+d$.
+
+** About primes
+*** Prime number theorem					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    The number of primes $\leq x$ is $\sim$ $\displaystyle
+    \frac{x}{\ln x}$ 
+
+# *** There are a lot of primes!
+    | $x$     | Number of primes | $x/\ln x$   |
+    | $10$    | $4$              | $4,33$      |
+    | $100$   | $25$             | $21,71$     |
+    | $1000$  | $168$            | $144,76$    |
+    | $10000$ | $1229$           | $1085,73$   |  
+*** Sieve of Eratosthenes
+    How to find all the primes up to the integer $n$.  Start with all
+    the integers from $2$ to $n$.  $2$ is prime.  The (non-trivial)
+    multiples of $2$ are not prime, so they are eliminated.  The next
+    number is $3$ which is also a prime.  The (non-trivial) multiples
+    of $3$ are not prime, so they we eliminate them\dots Repeat this
+    procedure up to $\sqrt{n}$.  The integers which were not
+    eliminated are the primes.

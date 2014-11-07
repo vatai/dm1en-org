@@ -14,11 +14,13 @@
 #+LATEX_HEADER: \usetikzlibrary{arrows,positioning} 
 
 #+LATEX_HEADER: \definecolor{pmsGreen}{RGB}{0,156,121}
+#+BEAMER_HEADER: \setbeamercolor{math text}{fg=pmsGreen}
+#+BEAMER_HEADER: \setbeamercolor{normal text in math text}{fg=black}
+
 #+LATEX_HEADER: \def\eg{e.g.\  }
 #+LATEX_HEADER: \def\Eg{E.g.\  }
 #+LATEX_HEADER: \def\ie{i.e.\  }
-#+BEAMER_HEADER: \setbeamercolor{math text}{fg=pmsGreen}
-#+BEAMER_HEADER: \setbeamercolor{math text displayed}{fg=pmsGreen}
+#+LATEX_HEADER: \DeclareMathOperator{\lcm}{lcm}
 
 #+LATEX_HEADER: \def\iff{\Leftrightarrow}
 #+LATEX_HEADER: \def\N{\mathbb{N}}
