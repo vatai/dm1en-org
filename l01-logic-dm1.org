@@ -158,7 +158,7 @@
 *** Examples
     - Let $M(t)$ mean that $t$ is male (over the students of ELTE) and let $\A=M(x)\land M(y)$ be a formula. 
     - Possible interpretations of $\A$ are:
-      - The interpretation $\A(x/Attila,y/István)$ yields $M(Attila) \land M(István)$ which is true.
+      - The interpretation $\A(x/Attila,y/Istvan)$ yields $M(Attila) \land M(Istvan)$ which is true.
       - The interpretation $\A(x/Attila,y/Anna)$ yields $M(Attila) \land M(Anna)$ which is false.
     - $\A$ is *satisfiable*, because of the first interpretation.
     - $\A$ is *invalid*, because the second interpretation makes it false (\ie it is not always true).
