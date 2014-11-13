@@ -120,7 +120,7 @@
      the first kind, $k_2$ of the second kind, \dots, $k_m$ of the
      $m$-th kinds, and their number is:
      \begin{equation}\label{eq:permrep}
-     \displaystyle\frac{(k_1+k_2+\dots+k_m)!}{k_1!k_2!\cdots k_m!} 
+     \frac{(k_1+k_2+\dots+k_m)!}{k_1!k_2!\cdots k_m!} 
      \end{equation}
 
 *** Proof							    :B_proof:
@@ -349,7 +349,7 @@
        $1$: $\binom{n-1}{k-1}$.  The number of $n$ long $\{0,1\}$
        sequences, with first element $0$: $\binom{n-1}{k}$.
 ** Binomial coefficient
-   $\displaystyle(x+y)^n=\sum_{k=0}^n {n \choose k}x^k y^{n-k}$: $\displaystyle {n \choose k} = \frac{n!}{k!(n-k)!}$
+   $\displaystyle(x+y)^n=\sum_{k=0}^n \binom{n}{k}x^k y^{n-k}$: $\displaystyle \binom{n}{k} = \frac{n!}{k!(n-k)!}$
 | $n$ | $\binom{n}{k}$            | $(x+y)^n$                               |
 | $0$ | $1$                       | $1$                                     |
 | $1$ | $1$ $1$                   | $x+y$                                   |
@@ -423,25 +423,25 @@
     from the five elements, two will be in one of these sets, so their
     sum will be $9$.
 
-* The sieving method
-** The sieving method
+* Inclusion-exclusion principle
+** Inclusion-exclusion principle
    How many positive integers, less than $1000$, are not divisible by
    $2$, $3$ nor $5$?
 
    Integers less than $1000$ 
+   | /                              |                                         |    <r> |           <r> |
+   | All                            |                                         |  $999$ |         $999$ |
+   | divisible by $2$               | $\lfloor 999/2 \rfloor$                 | $=499$ |        $-499$ |
+   | divisible by $3$               | $\lfloor 999/3 \rfloor$                 | $=333$ |        $-333$ |
+   | divisible by $5$               | $\lfloor 999/5 \rfloor$                 | $=199$ |        $-199$ |
+   | divisible by $2\cdot 3$        | $\lfloor 999/(2\cdot 3) \rfloor$        | $=166$ |        $+166$ |
+   | divisible by $2\cdot 5$        | $\lfloor 999/(2\cdot 5) \rfloor$        |  $=99$ |         $+99$ |
+   | divisible by $3\cdot 5$        | $\lfloor 999/(3\cdot 5) \rfloor$        |  $=66$ |         $+66$ |
+   | divisible by $2\cdot 3\cdot 5$ | $\lfloor 999/(2\cdot 3\cdot 5) \rfloor$ |  $=33$ |         $-33$ |
+   |                                |                                         |    $=$ | $\alert{266}$ |
 
-   | All                            |                                         | $999$  |               | $999$ |
-   | divisible by $2$               | $\lfloor 999/2 \rfloor$                 | $=499$ | $-$           | $499$ |
-   | divisible by $3$               | $\lfloor 999/3 \rfloor$                 | $=333$ | $-$           | $333$ |
-   | divisible by $5$               | $\lfloor 999/5 \rfloor$                 | $=199$ | $-$           | $199$ |
-   | divisible by $2\cdot 3$        | $\lfloor 999/(2\cdot 3) \rfloor$        | $=166$ | $+$           | $166$ |
-   | divisible by $2\cdot 5$        | $\lfloor 999/(2\cdot 5) \rfloor$        | $=99$  | $+$           | $99$  |
-   | divisible by $3\cdot 5$        | $\lfloor 999/(3\cdot 5) \rfloor$        | $=66$  | $+$           | $66$  |
-   | divisible by $2\cdot 3\cdot 5$ | $\lfloor 999/(2\cdot 3\cdot 5) \rfloor$ | $=33$  | $-$           | $33$  |
-   |                                |                                         | $=$    | $\alert{266}$ |       |
-
-** The sieving method
-*** Logical sieve						  :B_theorem:
+** Inclusion-exclusion principle
+*** Inclusion-exclusion principle 				  :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
@@ -452,11 +452,11 @@
     - The number of positive integers, less than $1000$, minus the
       integers are divisible by $2$ or $3$ or $5$?
     
-      - $A_1=\{1\leq n < 999 : 2 \mid n\}$ $\color{black}
+      - $A_1=\{1\leq k < 999 : 2 \mid k\}$ $\color{black}
 	\rightarrow$ $|A_1|=\left\lfloor \frac{999}{2} \right\rfloor$
-      - $A_2=\{1\leq n < 999 : 3 \mid n\}$ $\color{black}
+      - $A_2=\{1\leq k < 999 : 3 \mid k\}$ $\color{black}
 	\rightarrow$ $|A_2|=\left\lfloor \frac{999}{3} \right\rfloor$
-      - $A_3=\{1\leq n < 999 : 5 \mid n\}$ $\color{black}
+      - $A_3=\{1\leq k < 999 : 5 \mid k\}$ $\color{black}
 	\rightarrow$ $|A_3|=\left\lfloor \frac{999}{5} \right\rfloor$
       - Similarly $|A_1\cap A_2|=\left\lfloor \frac{999}{2\cdot 3} \right\rfloor$, $|A_1\cap A_3|=\left\lfloor \frac{999}{2\cdot 5} \right\rfloor$, $|A_2\cap A_3|=\left\lfloor \frac{999}{3\cdot 5} \right\rfloor$, $|A_1\cap A_2 \cap A_3|=\left\lfloor \frac{999}{2\cdot 3 \cdot 5} \right\rfloor$
     
@@ -465,53 +465,54 @@
     \lfloor999/(2\cdot 3)\rfloor-\lfloor999/(2\cdot 5)\rfloor
     -\lfloor999/(3\cdot 5)\rfloor+\lfloor999/(2\cdot3\cdot5)\rfloor$
 
-** The general sieve formula
-*** Logical sieve						  :B_theorem:
+** The general Inclusion-exclusion formula
+*** Inclusion-exclusion principle 				  :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
     Let $A_1, \dots A_n$ be subsets of the finite set $A$,
-    $f:A\rightarrow\R$ an arbitrary function. 
-    #
-    Let $S=\sum_{x\in A}f(x)$ 
-    #
-    # #$S_r=\sum_{0\leq i_1 <i_2<\dots<i_r\leq k}\sum_{x\in A_{i_1}\cap
-    # #A_{i_2}\cap \dots \cap A_{i_r}}f(x)$ 
-    #
-    and
-    \begin{align*}
-    S_r&= \sum_{\mathbf{i}}\sum_{x\in A_{\mathbf{i}}} f(x) & 
-    S_0&=\sum_{x\in A'}  f(x)
-    \end{align*}
-    Where $\sum_{\mathbf{i}}$ iterates trough all the possible $r$
-    indexes such that $0\leq i_1 < i_2 <\dots<i_r\leq k$,
-    $A_{\mathbf{i}} = A_{i_1} \cap A_{i_2} \cap \ldots \cap A_{i_r}$
+    $f:A\rightarrow\R$ an arbitrary function.  Let
+    \[
+    S=\sum_{x\in A}f(x), \quad
+    S_r= \sum_{J\in I_r}\sum_{x\in A_J} f(x), \quad
+    S_0=\sum_{x\in A'}  f(x) \quad
+    \]
+    where $I_r=\bigl\{\{i_1,i_2,\ldots,i_r\}: 1\leq i_1 < i_2 < \cdots
+    < i_r \leq n\bigr\}$, $A_J=\cap_{j\in J} A_j$ and
     and $A'=A\setminus \cup_{i=1}^n A_i$.
 
-    Then $S_0=S-S_1+S_2-S_3 \pm \dots (-1)^kS_k$ 
+    Then $S_0=S-S_1+S_2-S_3 \pm \cdots (-1)^nS_n$ 
 *** Example
-    $A=\{1,2,\dots, 999\}$, $A_1=\{n:\ 1\leq n < 1000, 2\mid n\}$,
-    $A_2=\{n:\ 1\leq n < 1000, 3\mid n\}$, $A_3=\{n:\ 1\leq n < 1000,
-    5\mid n\}$, $f(x)=1$.
+    $f(x)=1$, $A=\{1,2,\dots, 999\}$, $A_1=\{k:\ 1\leq k < 1000, 2\mid k\}$,
+    $A_2=\{k:\ 1\leq k < 1000, 3\mid k\}$, $A_3=\{k:\ 1\leq k < 1000,
+    5\mid k\}$.
  
     $S_0$: the number of integers less then $1000$ not divisible by
     $2$, $3$ nor $5$.
+** The general Inclusion-exclusion  formula
+   $S_0=S-S_1+S_2-S_3 \pm \dots (-1)^n S_n$:
+    \[
+    S=\sum_{x\in A}f(x), \quad
+    S_r= \sum_{J\in I_r}\sum_{x\in A_J} f(x), \quad
+    S_0=\sum_{x\in A'}  f(x) \quad
+    \]
+    where $I_r=\bigl\{\{i_1,i_2,\ldots,i_r\}: 1\leq i_1 < i_2 < \cdots
+    < i_r \leq n\bigr\}$, $A_J=\cap_{j\in J} A_j$ and
+    and $A'=A\setminus \cup_{i=1}^n A_i$.
+*** Proof 							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    If $x\in A\setminus \cup_{i=1}^n A_i$, then $f(x)$ appears once
+    on each side.
  
-
-# \begin{frame}[t]{The general sieve formula}
-#   { $S_0=S-S_1+S_2-S_3 \pm \dots (-1)^kS_k$:
-
-#     $\displaystyle S_0=\sum_{x\in A\setminus \bigcup_{i=1}^n A_i}f(x)$, \quad 
-#     $\displaystyle S=\sum_{x\in A}f(x)$\\
-#     $\displaystyle S_r=\sum_{0\leq i_1 <i_2<\dots<i_r\leq k}\sum_{x\in A_{i_1}\cap A_{i_2}\cap \dots \cap A_{i_r}}f(x)$
-#   }
-
-
-# \begin{block}{Proof}
-#   If $x\in A\setminus \bigcup_{i=1}^n A_i$, then $f(x)$ appears once on each side.
- 
-#   If $x\in \bigcup_{i=1}^n A_i$, let $A_{j_1}, \dots, A_{j_t}$ be the subsets, which $x$ is an element of. Then $f(x)$ does not appear on the left side. It appears in the\\ 
-#   $\displaystyle \sum_{0\leq i_1 <i_2<\dots<i_r\leq k}\sum_{x\in A_{i_1}\cap A_{i_2}\cap \dots \cap A_{i_r}}f(x)$\\
-#   sum on the right side, if $\{i_1, \dots, i_r\}\subset \{j_1, \dots, j_t\}$. There are  ${t \choose r}$ such sets of indices of $r$ elements. So $f(x)$ has the coefficient\\
-#   $\displaystyle \sum_{r=0}^t{t \choose r} (-1)^r=0$ (Proof: exercise) \qed.
+    If $x\in \cup_{i=1}^n A_i$, let 
+    # $A_{j_1}, \dots, A_{j_t}$ be the
+    # sets, which $x$ is an element of. 
+    $I(x)=\{i : x\in A_i\}$ and $t=|I(x)|$.  $f(x)$ does not appear on
+    the left side. It appears in the $\sum_{J\in I_r}\sum_{x\in
+    A_J}f(x)$ sum on the right side, if $J\subset I(x)$. There are
+    $\binom{t}{r}$ such sets of indices of $r$ elements. So $f(x)$ has
+    the coefficient $\sum_{r=0}^t\binom{t}{r} (-1)^r=0$ (prove for
+    homework, hint $(1-1)^t=?$).
  
