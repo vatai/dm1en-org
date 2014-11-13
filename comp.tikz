@@ -37,7 +37,7 @@
    (I) edge (M)
    (N) edge (O)
    ;
-#+BEAMER: \pause
+   \pause
    \path[rel,color=red,dashed]
    (A) edge (K)
    (A) edge (L)

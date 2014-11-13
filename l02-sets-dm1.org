@@ -25,7 +25,7 @@
     - The *empty set* is denoted by \emptyset and has no elements.
     - The empty set is unique and $\forall x  (x \not\in \emptyset)$.
 *** Example
-    - $\{1,2,3\}$ and the /set of all positive integers less then $4$/ are equal.
+    - $\{1,2,3\}$ and the /set of all positive integers less then/ $4$ are equal.
     - $\{\}=\emptyset$
 ** Subsets
 *** Definition: Axiom schema of specification

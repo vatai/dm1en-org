@@ -31,9 +31,9 @@
 *** Definition (Cartesian product)
     - The *Cartesian product* of two sets $X$ and $Y$ is the set of
       all possible ordered pairs with the first element from $X$ and
-      the second from $Y$ \ie 
-      $$X \times Y=\bigl\{(x,y)\in\wp\bigl(\wp(X\cup Y)\bigl)\bigr: 
-      x \in X \land y \in Y \}$$
+      the second from $Y$ \ie $$X \times
+      Y=\bigl\{(x,y)\in\wp\bigl(\wp(X\cup Y)\bigl) : x \in X \land
+      y \in Y \bigr\}$$
 *** Example
     - $\{a,b\}\times\{1,2,3\}=\bigl\{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3)\bigr\}$
 * Relations
@@ -56,7 +56,7 @@
     The *domain* of a the binary relation $R\subset X \times Y$ is
     $\dmn(R) = \{ x: \exists y (x,y)\in R \}$ and the *range* of $R$
     is $\rng(R)=\{ y: \exists x (x,y)\in R \}$.
-*** Example:
+*** Example
    - If $R=\{(x, 1/x^2): x\in\R\}$, then $\dmn (R)=\{x\in\R: x\neq
      0\}$, $\rng (R)=\{x\in\R: x>0\}$.
    - If $R=\{(1/x^2,x): x\in\R\}$, then $\dmn (R)=\{x\in\R: x>0\}$,
@@ -169,13 +169,13 @@
     deadline relation: \eg $bank\delta 31.dec$
     - Questions: Who is working on the $bank$ project?
       $\pi^{-1}(bank)$ Who are the testers? 
-      #+BEAMER: \pause
+#+BEAMER: \pause
       $\alpha^{-1}(tester)$ What is the $bank$ projects deadline?
-      #+BEAMER: \pause
+#+BEAMER: \pause
       $\delta(bank)$ Which deadlines do the employees have?  
-      #+BEAMER: \pause
+#+BEAMER: \pause
       $\delta \circ \pi$ Which deadlines do the testers have?  
-      #+BEAMER: \pause
+#+BEAMER: \pause
       $\delta \circ \pi \circ \alpha^{-1}(tester)$
 
 ** Properties of conditions
