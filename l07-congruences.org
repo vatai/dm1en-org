@@ -23,9 +23,10 @@
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
-    Let $a,b,m$ be integers, then $a \equiv b \pmod{m}$, \ie $a$ and
-    $b$ are *congruent modulo $m$* (or *with modulus $m$*). If $a$ and
-    $b$ are not congruent (with some modulus $m$) then they are *incongruent*.
+    Let $a,b,m$ be integers. If $m\mid a-b$, then we say *$a$ is
+    congruent to $b$ with modulus $m$* (or *$a$ and $b$ are congruent
+    modulo $m$*) written as \[a \equiv b \pmod{m}.\] If $a$ and $b$ are not
+    congruent (with some modulus $m$) then they are *incongruent*.
 ** Equivalent formulation
 *** Alternative notation
     The following all mean $m\mid a - b$
@@ -43,34 +44,45 @@
     $16 \equiv 4 \pmod{3}$ since $3\mid 16-4$ $\color{black}\Leftrightarrow$  $16 \bmod 3=1=4\bmod 3$;\\
     $16 \equiv 4 \pmod{2}$ since $2\mid 16-4$ $\color{black}\Leftrightarrow$  $16 \bmod 2=0=4\bmod 2$;\\
     $16 \not\equiv 4 \pmod{5}$ since $5\nmid 16-4$ $\color{black}\Leftrightarrow$  $16 \bmod 5=1\neq4=4\bmod 5$.
-** TODO Properties of congruence
+** Properties of congruence
 *** Properties of congruence					  :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
-    1. $a \equiv a \pmod{m}$ (reflexivity); $a \equiv b \pmod{m}$
-       $\color{black}\Rightarrow$ $b \equiv a \pmod{m}$ (symmetry); $a
-       \equiv b \pmod{m}$, $b \equiv c \pmod{m}$
-       $\color{black}\Rightarrow$ $a \equiv c \pmod{m}$ (transitivity);
-    3. $a \equiv b \pmod{m}$, $m'\mid m$ $\color{black}\Rightarrow$ $a
-       \equiv b \pmod{m}'$;
-    4. $a \equiv b \pmod{m}$, $c \equiv d \pmod{m}$
-       $\color{black}\Rightarrow$ $a+c \equiv b+d \pmod{m}$;
-    5. $a \equiv b \pmod{m}$, $c \equiv d \pmod{m}$
-       $\color{black}\Rightarrow$ $ac \equiv bd \pmod{m}$.
+    1. $a \equiv a \pmod{m}$ (reflexivity);
+    2. $a \equiv b \pmod{m} \Rightarrow b \equiv a \pmod{m}$
+       (symmetry);
+    3. $a \equiv b \pmod{m} \land b \equiv c \pmod{m} \Rightarrow a
+       \equiv c \pmod{m}$ (transitivity);
+    Ergo, the congruence modulo $m$ is an *equivalence relation*.
 *** Proof 							    :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
     :END:
-    1. $m\mid 0= a - a$; and $m\mid a - b$ $\color{black}\Rightarrow$
-       $m\mid b - a=-(a-b)$; and $m\mid a - b$, $m\mid b - c$
-       $\color{black}\Rightarrow$ $m\mid a - c =(a-b)+(b-c)$;
-    3. $m'\mid m\mid a - b$ $\color{black}\Rightarrow$ $m'\mid a - b$;
-    4. $m\mid a - b$, $m\mid c - d$ $\color{black}\Rightarrow$ $m\mid
+    1. $m\mid 0= a - a$;
+    2. $m\mid a - b \Rightarrow m\mid b - a=-(a-b)$;
+    3. $m\mid a - b \land m\mid b - c \Rightarrow m\mid a - c
+       =(a-b)+(b-c)$;
+** Properties of congruence
+*** Properties of congruence					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    1. $a \equiv b \pmod{m} \land m'\mid m \Rightarrow a \equiv b
+       \pmod{m'}$;
+    2. $a \equiv b \pmod{m} \land c \equiv d \pmod{m}\Rightarrow a+c
+       \equiv b+d \pmod{m}$;
+    3. $a \equiv b \pmod{m} \land c \equiv d \pmod{m} \Rightarrow ac
+       \equiv bd \pmod{m}$.
+*** Proof 							    :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    1. $m'\mid m\mid a - b \Rightarrow m'\mid a - b$;
+    2. $m\mid a - b \land m\mid c - d \Rightarrow m\mid
        (a+c)-(b+d)=(a-b)+(c-d)$;
-    5. $a =q_1 m + b$, $c=q_2 m + d$ $\color{black}\Rightarrow$
-       $ac=(q_1 m + b)(q_2 m + d)=m(q_1q_2m +q_1 d + q_2 b)+ bd$.
-
+    3. $a =q_1 m + b\land c=q_2 m + d \Rightarrow ac=(q_1 m + b)(q_2
+       m + d)=m(q_1q_2m +q_1 d + q_2 b)+ bd$.
 ** Properties of congruence
 *** Properties of congruences					  :B_example:
     :PROPERTIES:
