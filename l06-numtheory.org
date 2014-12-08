@@ -141,7 +141,7 @@
     :PROPERTIES:
     :BEAMER_env: example
     :END:
-    $2,-2,3,-3,5,-5$} are prime; $6$ is not a prime number, because
+    $2,-2,3,-3,5,-5$ are prime; $6$ is not a prime number, because
     $6\mid 2\cdot 3$ but $6\nmid 2$ *and* $6\nmid 3$.
 
 ** Primes, irreducibles
@@ -300,8 +300,8 @@
    | $2$ | $30$  | $\color{red}0$ | $\frac{30-0}{2}$  | ${\color{white}1111}\alert{0}11$ |
    | $3$ | $15$  | $\color{red}1$ | $\frac{15-1}{2}$  | ${\color{white}111}\alert{1}011$ |
    | $4$ | $7$   | $\color{red}1$ | $\frac{7-1}{2}$   | ${\color{white}11}\alert{1}1011$ |
-   | $5$ | $3$   | $\color{red}1$ | $\frac{3-1}{2}$   | ${\color{white}1}\alert{1}10011$ |
-   | $6$ | $1$   | $\color{red}1$ | $\frac{1-1}{2}$   | ${\color{white}}\alert{1}110011$ |
+   | $5$ | $3$   | $\color{red}1$ | $\frac{3-1}{2}$   | ${\color{white}1}\alert{1}11011$ |
+   | $6$ | $1$   | $\color{red}1$ | $\frac{1-1}{2}$   | ${\color{white}}\alert{1}111011$ |
 * Euclidean algorithm
 ** Greatest common divisor
 *** Greatest common divisor				       :B_definition:
@@ -354,7 +354,7 @@
     :PROPERTIES:
     :BEAMER_env: proof
     :END:
-    If on of the numbers is $0$, then the other one will be the gcd.
+    If one of the numbers is $0$, then the other one will be the gcd.
     Lat $a$ and $b$ be non-zero integers. Let us do the following
     divisions:
     \begin{equation*}
@@ -617,7 +617,7 @@
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
-    If $a,d$ are integers, $d>0$, $(a,b)=1$, then there are infinitely
+    If $a,d$ are integers, $d>0$, $(a,d)=1$, then there are infinitely
     many primes of the form $ak+d$.
 
 ** About primes

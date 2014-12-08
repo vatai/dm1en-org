@@ -163,7 +163,6 @@
     $n$, for the second element $(n-1)$, \dots, for the $k$-the
     element $n-k+1$ choices.
 
-
 ** Variations with repetition
 *** Example
    How many, at most two digit numbers can we make using the digits
@@ -185,17 +184,15 @@
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
-    The number of $k$ long sequences with elements from a set with $n$
-    elements is $n^k$.
-  
-*** Proof							    :B_proof:
+    The number of $k$ long sequences with elements from a $n$ kind of
+    elements elements is $n^k$.
+*** Proof 							    :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
     :END:
     There are $n$ possibilities to choose the first element of the
     sequence, $n$ possibilities to choose the second, \dots 
 
-  
 *** Example
     - A ``TOTO'' ticket (which has $13+1$ fields, where we can write
       $1$, $2$ or $x$) can be filled out in $3^{14}=4\,782\,969$
