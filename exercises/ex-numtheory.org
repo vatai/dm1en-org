@@ -1,0 +1,205 @@
+# -*- mode: org; mode: flyspell; -*-
+#+INCLUDE: ../test-common.org
+#+TITLE: Number theory problems
+* Problems
+  # 3
+  1. Prove that $6$ is the divisor of $n(n + 1)(2n + 1)$, where $n$ is
+     an arbitrary integer.
+  2. Let $m$ be an integer. Prove, that $30$ is a divisor of $m^5 -m$.
+  3. Prove that if $a$ is an even integer no divisible by $4$, then
+     $a(a^2 - 1)(a^2 - 4)$ is divisible by $960$.
+  4. Prove that the sub of the cube of three consecutive integers is
+     1) divisible by $3$ times the middle number; 
+     2) divisible by 9.
+  5. Prove that, if we take any three digit number (written in the
+     decimal numeral system), and write it down two time
+     consecutively, the obtained six digit number will be divisible by
+     $7$, $11$ and $13$.
+  6. Do the calculations in the indicated numeral system:
+     #+LATEX: \begin{multicols}{2}
+     #+ATTR_LATEX: :environment compactenum
+     1) $10011001_{(2)}+101011010_{(2)}$; 
+     2) $1001_{(2)} \cdot 1101_{(2)}$;
+     3) $1221_{(3)} \cdot 2112_{(3)}$;
+     4) $1234_{(5)} + 4321_{(5)}$;
+     5) $1234_{(5)} \cdot 4321_{(5)}$;
+     6) $1236_{(7)} + 6321_{(7)}$;
+     7) $10011001_{(2)} : 101_{(2)}$; 
+     8) $110110010101101_{(2)}:101111001_{(2)}$; 
+     9) $12011_{(3)} : 201_{(3)}$.
+     #+LATEX: \end{multicols}
+
+  7. Using the euclidean algorithm, calculate the greatest common
+     divisor and the least common multiple of the following numbers.
+     #+LATEX: \begin{multicols}{4}
+     #+ATTR_LATEX: :environment compactenum
+     1) $a=86, b=31$; 
+     2) $a=139, b=102$;
+     3) $a=255, b=111$;
+     4) $a=332, b=88$;
+     5) $a=675, b=471$;
+     6) $a=432, b=300$;
+     7) $a=756, b=333$;
+     8) $a=504, b=150$;
+     9) $a=420, b=154$;
+     10) $a=1080, b=285$;
+     11) $a=2016, b=880$;
+     12) $a=30, b=22$;
+     13) $a=430, b=300$;
+     14) $a=2355, b=450$;
+     15) $a=300, b=132$;
+     16) $a=518, b=154$.
+     #+LATEX: \end{multicols}
+  8. For $a,b\in\mathbb{Z}$ from the previous exercise, express
+     the greatest common divisor in the following form $ax+by=(a,b)$.
+  9. For $a,b\in\mathbb{Z}$ from the previous exercise, express
+     the greatest common divisor in the following form $ax+by=(a,b)$.
+     # * 4
+  10. Solve the following Diophantine equations:
+      #+LATEX: \begin{multicols}{4}
+      1) $172x+62y=38$;
+      2) $82x+22y=34$;
+      3) $450x+86y=100$;
+      4) $125x+45y=-20$.
+      #+LATEX: \end{multicols}
+  11. Solve the following congruences:
+      #+LATEX: \begin{multicols}{4}
+      1) $21x  \equiv 14 \pmod{35}$;
+      2) $172x \equiv 6  \pmod{62}$; 
+      3) $3x   \equiv 8  \pmod{13}$;
+      4) $12x  \equiv 9  \pmod{18}$;
+      5) $26x  \equiv 12 \pmod{22}$;
+      6) $20x  \equiv 19 \pmod{22}$; 
+      7) $16x  \equiv 36 \pmod{28}$; 
+      8) $126x \equiv 46 \pmod{99}$.
+      #+LATEX: \end{multicols}
+  12. Find the integer solutions of the following equations using
+      congruences.
+      #+ATTR_LATEX: :environment inparaenum
+      1) $27x+49y=3$;
+      2) $33x+23y=2$; 
+      3) $33x+23y=3$.
+  13. Mischievous centipedes are running around on a ball. On kind has 14
+      legs and the other kind 20 legs. We counted 232 legs all
+      together. How many centipedes are running around on the ball?
+  14. Which is the smallest natural number which ends with the digit 3
+      written in the 28 base numeral system, and in the 19 base numeral
+      system ends with the digit 4? Solve the problem using congruences.
+  15. We have 100 forints change at the shop. How many different way can
+      the cashier return our change if he only has 20 and 50 forint
+      coins?
+  16. Solve the following systems of congruences:
+      #+LATEX: \begin{multicols}{4}
+      # #+ATTR_LATEX: :environment asparablank
+      #+ATTR_LATEX: :environment compactenum
+      1) 
+	 \begin{align*}
+	 5x &\equiv 3 \pmod{7} \\
+	 3x &\equiv 7 \pmod{8} 
+	 \end{align*}
+      2) 
+	 \begin{align*}
+	 3x &\equiv 2 \pmod{4} \\
+	 4x &\equiv 3 \pmod{5}
+	 \end{align*}
+      3) 
+	 \begin{align*}
+	 5x &\equiv 1 \pmod{6} \\
+	 7x &\equiv 9 \pmod{10} 
+	 \end{align*}
+      4) 
+	 \begin{align*}
+	 5x &\equiv 2 \pmod{6} \\
+	 7x &\equiv 3 \pmod{10}
+	 \end{align*}
+      5) 
+	 \begin{align*}
+	 x &\equiv 2 \pmod{3} \\
+	 x &\equiv 3 \pmod{4} \\
+	 x &\equiv 1 \pmod{5} 
+	 \end{align*}
+      6) 
+	 \begin{align*}
+	 4x &\equiv 2 \pmod{3} \\
+	 3x &\equiv 2 \pmod{7} \\
+	 9x &\equiv 7 \pmod{11} 
+	 \end{align*}
+      7) 
+	 \begin{align*}
+	 3x &\equiv 1 \pmod{4} \\
+	 7x &\equiv 2 \pmod{9} \\
+	 9x &\equiv 3 \pmod{13} 
+	 \end{align*}
+      8) 
+	 \begin{align*}
+	 5x &\equiv 3 \pmod{6} \\
+	 3x &\equiv 9 \pmod{10} \\
+	 8x &\equiv 9 \pmod{15} 
+	 \end{align*}
+      #+LATEX: \end{multicols}
+  17. Which natural numbers less then 100 have the property that, when
+      multiplied by 23, the obtained number written in the base 7 numeral
+      system, have 5 as the last digit and 2 as the one before the last?
+      Solve the problem using congruences.
+  18. Using the Chinese remainder theorem, find those integers which have
+      remainders 1 when divided by 3, 2 when divided by 4 and 3 when
+      divided by 5.
+      # * 5
+  19. Calculate $\varphi(n)$ for $n=1,2,3,4,10,24,96, 100$!
+  20. Prove that
+      #+ATTR_LATEX: :environment inparaenum
+      1) $n^6 - 1$ is divisible by 7, if $(n; 7) = 1$;
+      2) $n^{12} - 1$ is divisible by 7, if $(n; 7) = 1$;
+      3) $n^{6k} - 1$ is divisible by 7, if $(n; 7) = 1$.
+  21. Show that, for every integer $x$ we have $x^7 \equiv x \pmod{42}$.
+  22. Determine the last three digits of $3^{1203}$.
+  23. What is the remainder of $173^{163}$ obtained by dividing it by 17.
+  24. Determine the last three digits of $143^{143}$ (written in the
+      decimal number system).
+  25. What is the remainder of the following number when divided by
+      $103$: $205^{206^{207}}$?
+  26. Determine the last two digits of $37^{39^{42}}$.
+  27. What are the last two digits of $17^{3^{2013}}$ when written in the
+      base 8 numeral system?
+  28. What are the last two digits of $11^{2013^{26}}$ when written in
+      the decimal number system?
+  29. What is the smallest non-negative remainder of
+      #+ATTR_LATEX: :environment inparaenum
+      1) $323^{149}$ when divided by 63;
+      2) $423^{173}$ when divided by 52;
+      3) $495^{173}$ when divided by 98;
+      4) $457^{101}$ when divided by 90?
+  30. Prove that $n^{13} - n$ is divisible by $2$, $3$, $5$, $7$ and
+      $13$ for every integer $n$ .
+  31. Solve the following congruences using the Euler-Fermat theorem:
+      #+ATTR_LATEX: :environment inparaenum
+      1) $21x  \equiv 14 \pmod{35}$;
+      2) $172x \equiv 6  \pmod{62}$;
+      3) $3x   \equiv 8  \pmod{13}$;
+      4) $12x  \equiv 9  \pmod{18}$.
+  32. Show that $a^{1729}\equiv a \pmod{1729}$ although 1729 is not prime.
+* Bonus questions
+1. Prove that the sum of squares of five consecutive integers will
+   never be a perfect square.
+2. Binary gcd: Prove the following relations: $(a,b)=(|a|,|b|)$,
+   $(2a,2b)=2(a,b)$, $(a,b)=(a-b,b)$ for odd values of $b$ show that
+   $(2a,b)=(a,b)$. Using these observations, write an efficient
+   algorithm which calculates the gcd on a binary computer.
+   # * bonus 4
+3. Write a program to solve a system of linear congruences in the
+   general case (when the moduli aren't necessarily relative prime).
+    # * bonus 5
+4. Similarly to the rules for divisibility by A 2 (the last digit is
+   even), by 3 (the sum of digits is divisible by 3), by 4 (the last
+   two digits are divisible by 4), by 5 (the last digit is divisible
+   by 5) etc
+   1) find a rule for divisibility by 7;
+   2) find a general rule for divisibility by $m$, when $m>1$ is an
+      integer!
+5. Write a program which finds a generator modulo $p$ for a given
+   prime $p$, and generates the corresponding discrete logarithm
+   table!
+
+* COMMENT Solutions
+  1. 
+  2. 

@@ -7,27 +7,39 @@
 1. Negate (logically) the following sentences (but not just by putting
    ``It is not true that'' before them):
    1. The line $e$ intersects the line $f$ , and it's perpendicular to
-      $g$.
-   2. Every red car has a black component.
+      $g$. ($I(e,f)\land P(e,f)$, where $I$ is intersect, $P$ is
+      perpendicular)
+   2. Every red car has a black component.  ($\forall a ((R(a) \land
+      A(a))\Rightarrow(\exists c (C(c,a)\land B(c))))$ where $R$ is
+      red, $A$ is car, $C$ is component $B$ is black).
    3. For every even integer $n$ greater than 10, there exist primes
-      $p$ and $q$, so that $p+q=n$.
+      $p$ and $q$, so that $p+q=n$. ($\forall n (n\in \mathbb{Z}\land
+      n>10)\Rightarrow (\exists p \exists q (P(p)\land P(q)\land
+      p+q=n))$ where $P$ is prime)
    4. If the degree of every vertex in a graph is even, then it
-      contains an Euler line.
+      contains an Euler line. ($\forall g \forall v ((V(v,g)\land
+      E(v))\Rightarrow \exists l (L(l,g)\land O(l)))$ where $V(x,y)$
+      means that $x$ is a vertex of $y$, $E(x)$ means that the degree
+      of $x$ is even, $L(x,y)$ means $x$ is a line in $y$, and $O(x)$
+      means $x$ is an Euler line)
    5. For every thingy there is a gadgete which has only two coloured
-      widgets.
+      widgets. (HW)
 
 2. Each of the following statements is either true for every set, or
    there are counter examples.  If the statement is not true for every
    set find sets for which it is NOT true (counter examples).
-   1. $A\cup B = A\cap B$
-   2. $(A\setminus B) \setminus C = A\setminus (B \setminus C)$
-   3. $(A\cup B) \cup C = A \cup (B\cup C)$
-   4. $(A\Delta B) \cup C = (A\cup C) \Delta (B\cup C)$
-   5. $A \setminus (B \cup C) = A\cap \overline{B}\cap \overline{C}$
+   1. $A\cup B = A\cap B$ (not true: $A=\{1\}, B=\{2\}$)
+   2. $(A\setminus B) \setminus C = A\setminus (B \setminus C)$ (not
+      true: $A=B=C\neq\emptyset$)
+   3. $(A\cup B) \cup C = A \cup (B\cup C)$ (true: associativity)
+   4. $(A\Delta B) \cup C = (A\cup C) \Delta (B\cup C)$ (not true:
+      $A=\emptyset,B=\emptyset,C\neq\emptyset$)
+   5. $A \setminus (B \cup C) = A\cap \overline{B}\cap
+      \overline{C}$. (true: rule for the subtraction and DeMorgan)
 
 3. In a department store the set of workers doing restocking is:
    $X=\{Adam, Bob, Cecil\}$.  The set of departments: $Y=\{Bakery,
-   Drinks, Sweets, Cashier\}$.  The products are Z = \{chocolate,
+   Drinks, Sweets, Cashier\}$.  The products are $Z = \{chocolate,
    cola, rolls, croissant \}$.  The following relation describes which
    worker is responsible for restocking which department: $R=\{(Adam,
    Bakery), (Adam, Drinks), (Bob, Cashier), (Cecil, Sweets)\}$.  The
@@ -52,6 +64,117 @@
    classes.  Is it a partial ordering?  If (and only if) it is, list
    the minimal i.e. the maximal elements.
 
+   *Solution*:
+   \begin{tikzpicture}
+   \draw[<->,gray] (-1.5,0) -- (1.5,0);
+   \draw[<->,gray] (0,-1.5) -- (0,1.5);
+   \draw[gray] (0,0) circle (1);
+   \path (0,0) node[label=45:0]{};
+   \foreach \s in {0,...,7}{
+   \path + (\s*45:1) node[label={\s*45:$\varepsilon_\s$}] (E\s) {};
+   }
+   \path[->] 
+   (E0) edge[loop left] (E0)
+   \foreach \s in {0,...,7}{
+   (E\s) edge[red,dashed] (E0)
+   (E1) edge[green,dashed] (E\s)
+   (E3) edge[blue,dashed] (E\s)
+   (E5) edge[yellow,dashed] (E\s)
+   (E7) edge[dotted] (E\s)
+   }
+   (E2) edge (E0) 
+   (E2) edge (E2) 
+   (E2) edge (E4)
+   (E2) edge (E6) 
+
+   (E6) edge (E0)
+   (E6) edge (E2)
+   (E6) edge (E4)
+   (E6) edge (E6)
+   
+   (E4) edge (E0)
+   ;
+   \end{tikzpicture}
+   
+   The image might be a little confusing, so the relation is as follows:
+   
+   \begin{align*}
+   R=\{ & 
+   (\varepsilon_1,\varepsilon_0),  
+   (\varepsilon_1,\varepsilon_1),
+   (\varepsilon_1,\varepsilon_2),  
+   (\varepsilon_1,\varepsilon_3),
+   (\varepsilon_1,\varepsilon_4),  
+   (\varepsilon_1,\varepsilon_5),
+   (\varepsilon_1,\varepsilon_6),  
+   (\varepsilon_1,\varepsilon_7),\\
+   %
+   &(\varepsilon_3,\varepsilon_0), 
+   (\varepsilon_3,\varepsilon_1), 
+   (\varepsilon_3,\varepsilon_2),
+   (\varepsilon_3,\varepsilon_3), 
+   (\varepsilon_3,\varepsilon_4),  
+   (\varepsilon_3,\varepsilon_5),
+   (\varepsilon_3,\varepsilon_6),  
+   (\varepsilon_3,\varepsilon_7),\\
+   %
+   &(\varepsilon_5,\varepsilon_0),
+   (\varepsilon_5,\varepsilon_1),
+   (\varepsilon_5,\varepsilon_2),
+   (\varepsilon_5,\varepsilon_3),
+   (\varepsilon_5,\varepsilon_4),
+   (\varepsilon_5,\varepsilon_5),
+   (\varepsilon_5,\varepsilon_6),
+   (\varepsilon_5,\varepsilon_7),\\
+   %
+   &(\varepsilon_7,\varepsilon_0),
+   (\varepsilon_7,\varepsilon_1),
+   (\varepsilon_7,\varepsilon_2),
+   (\varepsilon_7,\varepsilon_3),
+   (\varepsilon_7,\varepsilon_4),
+   (\varepsilon_7,\varepsilon_5),
+   (\varepsilon_7,\varepsilon_6),
+   (\varepsilon_7,\varepsilon_7),\\
+   %
+   &(\varepsilon_2,\varepsilon_0),
+   (\varepsilon_2,\varepsilon_2),
+   (\varepsilon_2,\varepsilon_4),
+   (\varepsilon_2,\varepsilon_6),\\
+   %
+   &(\varepsilon_6,\varepsilon_0),
+   (\varepsilon_6,\varepsilon_2),
+   (\varepsilon_6,\varepsilon_4),
+   (\varepsilon_6,\varepsilon_6),\\
+   %
+   &(\varepsilon_4,\varepsilon_4),
+   (\varepsilon_4,\varepsilon_0),\\
+   %
+   &(\varepsilon_0,\varepsilon_0)
+   \}
+   \end{align*}
+   
+   For example $\varepsilon_3= \cos\frac{3\cdot
+   2\pi}{8}+i\sin\frac{3\cdot 2\pi}{8}$ there exists $k=2$ so that
+   $\varepsilon_3^k=\varepsilon_1$ because \[\varepsilon_3^k=
+   \cos\frac{2\cdot3\cdot 2\pi}{8}+i\sin\frac{2\cdot3\cdot 2\pi}{8}=
+   \cos\frac{2\pi}{8}+i\sin\frac{2\pi}{8}=\varepsilon_1\] so
+   $(\varepsilon_3,\varepsilon_1)\in R$. However
+   $\varepsilon_2^0=\varepsilon_0$, $\varepsilon_2^1=\varepsilon_2$,
+   $\varepsilon_2^2=\varepsilon_4$, $\varepsilon_2^3=\varepsilon_6$,
+   $\varepsilon_2^4=\varepsilon_0$ ...
+
+   $R$ is reflexive, since $\varepsilon_k^1=\varepsilon_k$. $R$ is
+   transitive because if $\varepsilon_a^k=\varepsilon_b$ and
+   $\varepsilon_b^l = \varepsilon_c$ then $\varepsilon_a^{kl} =
+   \varepsilon_c$. But it is *not* symmetric because
+   $(\varepsilon_1,\varepsilon_0)\in R$ but
+   $(\varepsilon_0,\varepsilon_1)\not\in R$.  And it is *not*
+   anti-symmetric because $(\varepsilon_2,\varepsilon_6)\in R$ and
+   $(\varepsilon_6,\varepsilon_2)\in R$ are both true.
+
+   Ergo $R$ is not an equivalence relation, or an ordering, so there
+   is no maximal/minimal element, and no classification.
+   
 2. Calculate the rectangular form of the following numbers ($a$ and
    $b$ are non-zero real numbers):
    1. $(2+i)^2$; 

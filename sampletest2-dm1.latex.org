@@ -1,0 +1,49 @@
+#+INCLUDE: test-common.org
+# Set no title
+#+BIND: org-latex-title-command ""
+* Second sample test - Discrete mathematics 1.
+1. How many ways can 10 prizes be awarded to 30 contestants, if
+   1) The prizes are different, and the contestant get at most one
+      prize;
+   2) The prizes are different, and the contestants may receive more
+      prizes;
+   3) The prizes are the same, and the contestants get at most one
+      prize;
+   4) The prizes are the same, and the contestants may receive more
+      prizes;
+   5) How many ways can 10 prizes be divided among 5 contestants, if
+      every one gets at least one prize and the prizes are the same?
+2. How many ways can 10 small balls be placed in 100 numbered boxes,
+   if
+   1) the balls are also numbered;
+   2) the balls are numbered, and in every non-empty box there has to
+      be two of them;
+   3) the balls are the same, and in every non-empty box there has to
+      be two of them;
+   4) the balls are the same, and they can not be placed in
+      neighbouring boxes;
+   5) the balls are numbered (form 1 to 10), and they have to be
+      placed so the parity of the balls and the boxes has to be the
+      same?
+3. How many 100 digit numbers are there in the binary number system,
+   where each digit appears at least once?  And how many in the
+   decimal number system?
+4. Solve the following congruences:
+   1) $3x \equiv 4 \pmod{7}$;
+   2) $2x \equiv 5 \pmod{14}$;
+   3) $6x \equiv 4 \pmod{10}$;
+   4) $34x \equiv 2 \pmod{55}$;
+   5) $x^2 \equiv 3 \pmod{5}$.
+5. What are the las to digits of $1789^{1969^{2013}}$ (in the decimal
+   number system)? Justifie your answer.
+6. 
+   1) Solve the following (simultaneous) system of congruences:
+      \begin{align*}
+      x&\equiv 2 \pmod{5}\\
+      x&\equiv 3 \pmod{6}\\
+      x&\equiv 1 \pmod{7} 
+      \end{align*}
+   2) There is an island with seven and nine headed dragons. How many
+      dragons live on the island if the sum of all heads is 107?
+
+* Solutions

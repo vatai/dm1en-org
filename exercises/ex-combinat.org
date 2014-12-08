@@ -1,0 +1,278 @@
+# -*- mode: org; mode: flyspell; -*-
+#+INCLUDE: ../test-common.org
+* Problems
+1. How many different ways can 6 people sit down at a round table, if
+   we consider arrangements which can be rotated into each other equal?
+2. How many different 10 digit numbers are there with each digit
+   different?  
+3. How many different ways can 3 men and 7 women enter a room?  
+4. How many ways can 12 people be assigned to a room with 3 beds, a
+   room with 4 beds and a room with 5 beds.  
+5. We have balls labeled with numbers 1, 2, 3, 4, 5, 6 in an urn.  We
+   remove 4 balls one-by-one without returning them:
+   #+ATTR_LATEX: :environment inparaenum
+   - how many possibilities are there;
+   - how many possibilities if the first ball is labeled 1;
+   - how many possibilities if the last one's label is even?
+6. A /Boole function (or map)/ with $n$ parameters (inputs), and $m$
+   (outputs) values has a signature $f:\{\uparrow, \downarrow\}^n
+   \rightarrow \{\uparrow, \downarrow\}^m$. How many such maps are
+   there?
+7. How many 6 digit numbers are there with
+   #+ATTR_LATEX: :environment inparaenum
+   - different consecutive digits; 
+   - every digit different;
+   - exactly one 0;
+   - with at least one 0 digit?
+8. How many lottery tickets do we have to fill out to win for sure?
+9. 7 men and 8 women applied for a job.  The company wants to hire 5
+   men and 4 women. How many ways is this possible?
+10. How many ways can we divide 10 candies among 3 kids?
+11. In a post office there are 10 kinds of postcards.  How many ways
+    can we by 12 postcards?
+12. How many ways can we fill out a TOTO ticket (soccer bet)?
+13. 25 people are competing in a race.  How many ways can they cross
+    the finish line (there are no ties and everyone finishes)?
+14. How many subsets does the set $\{1,2,\ldots,n\}$ have? How many of
+    these subsets:
+   #+ATTR_LATEX: :environment inparaenum
+    - contain the number 1;
+    - contain both 1 and 2;
+    - contain 1 or 2?
+15. How many sequences can we make from $1, 2, \ldots, n$ where 1 and
+    2 are not next to each other? 
+16. How many words can we make from the letters of the word
+    MISSISSIPPI, so that four S's aren't next to each other?
+17. In the expression $(a+b)^{22}$, what is the coefficient of
+    $a^{14}b^{8}$ and of $a^{17}b^{5}$? 
+18. On a $3\times 10$ chess board, how many ways are there from the
+    bottom-left to the top-right square if we can step only right, up
+    or diagonally (up-right)?
+19. On a plane, we have two parallel lines, with $p$ points on the
+    first one, and $q$ points on the second one. How many triangles
+    can we make with these points as the vertices? 
+20. Let $C_N^k$ be the coefficient of $x^{n-k}y^{k}$ in the expression
+    $(x+y)^n$.  These numbers constitute the Pascal triangle.  What is
+    sum of the elements of a row of the Pascal triangle?  What is the
+    sum with alternating signs? 
+21. How many trailing zeros does the number $11^{100}-1$ have? 
+22. A class with 25 students wants to form a delegation of 6 members,
+    with one president and one secretary.  How many ways can they be
+    elected if each position has to be fulfilled by a different
+    person.
+23. How many different ways can we divide $n$ one forint coins among
+    $k$ people? What if each person gets at leas one coin? 
+24. In the pastry shop there are 5 kinds of pasties. There is at least
+    20 of each. How many ways can we eat 3 if:
+    #+ATTR_LATEX: :environment inparaenum
+    - the order does count; 
+    - the order doesn't count?
+25. If the order counts, how many way can we partition 
+    #+ATTR_LATEX: :environment inparaenum
+    - 100 into a sum of 7 positive integers 
+    - 200 into a sum of 12 non-negative integers 
+    - 12 into a sum of ones and twos.
+26. How many ways can we cover a $2\times12$ chess board with
+    $2\times1$ dominoes (which can be placed vertically or
+    horizontally). 
+27. In a set of (french) cards has four suits, each containing 13
+    cards, one of which is the ace of the corresponding suite.  For
+    players is dealt 13 cards each. How many ways can the cards be
+    dealt (i.e. how many different hands can the players get)?  How
+    many ways can each player get an ace?  How many ways can all the
+    aces end up at the same person. 
+28. How many ways can $n$ zeros and $k$ ones be arranged in a sequence
+    so that two ones are never next to each other? 
+29. We have 10 red, 20 white and 40 green balls in a box.  How many do
+    we have to choose so that we surely have:
+    #+ATTR_LATEX: :environment inparaenum
+    - 1 white; 
+    - 3 different; 
+    - 3 of the same color; 
+    - 5 of the same color; 
+    - 15 of the same color; 
+    - chosen 2 green balls consecutively.
+30. What is the minimal number of students in a class so that:
+    #+ATTR_LATEX: :environment inparaenum
+    - 4 students have their birthday in the same month;
+    - there are at least 3 birthdays in each month?
+31. At most how many integers can have, so that the difference of any
+    two numbers will not be divisible by 8? 
+32. Show that at least one of the numbers $\pi, 2\pi, \ldots, 100\pi$
+    is closer to an integer than $1/101$. Generalize the statement.
+33. Prove that for any $m\in\mathbb{N^+}$ there exists an
+    $n\in\mathbb{N^+}$, so that $mn$ written in the decimal number
+    system has only digits 0 or 1? 
+34. How many TOTO tickets do we have to fill, to have at least 5 hits
+    (good predictions)? 
+35. For how many 6 digit numbers are the following statements true:
+    #+ATTR_LATEX: :environment inparaenum
+    - consecutive digits are different; 
+    - every digit is different;
+    - exactly one digit is 0; 
+    - at least one of the digits is zero?
+36. A flea is jumping left and right on the integers of the number
+    line. How many ways can it jump to the number $+24$ after a minute
+    of jumping, if it started from $0$, and jumps once every second.
+37. In a class of 30 students, 12 are studying mathematics, 5
+    mathematics and physics, 14 physics, 4 mathematics and chemistry, 13
+    chemistry, 7 physics and chemistry and 3 all three subjects. How
+    many are studying none of the above subjects. 
+38. How many natural numbers less than 100 are not divisible by 2, 3 nor
+    1. And how less then 1000 many are not divisible by 2, 3, 5 nor 7?
+39. How many ways can we put 30 balls into 100 boxes, if every non-empty
+    box has to have exactly 6 balls, and 
+    #+ATTR_LATEX: :environment inparaenum
+    - all the balls are the same; 
+    - the balls differ and we are considering the order of the balls
+      in each box;
+    - the balls differ but we disregard the order of the balls?
+40. 12 knights sit at the Round Table of King Arthur.  Everybody
+    dislikes the two knights sitting next to them.  5 knights have to be
+    selected to slay the dragon and save the princess.  How many ways
+    can we select the knights so they don't dislike each other? What if
+    there are $n$ knights and $k$ of them have to go save the princess?
+* Bonus
+1. We have a scale with two trays, which can tell us the
+   objects in which tray is heavier.  
+   We also have 9 coins, which look identical, but one of them is
+   false, and that one is lighter.  
+   How many measurements do we need to find the false coin (if we ken
+   put more than one coin in the trays)?  
+   Provide strategy and prove that doing it in less measurements is not
+   possible. 
+2. How many ways can we place 8 rooks on an $8\times8$ chess board, so
+   that no two rooks attack each other?  What is the number of
+   possibilities if placements which can be rotated or mirrored into
+   each other are considered as one (e.g. a1-b2-c3-d4-e8-f7-g6-h5 and
+   a4-b3-c2-d1-e5-f6-g7-h8 are not strictly the same, but one is the
+   center-mirror image of the other).
+3. How many ways can we partition one million into the product of 3
+   numbers if the order 
+   #+ATTR_LATEX: :environment inparaenum
+   - does count; 
+   - doesn't count?  
+4. 
+   #+ATTR_LATEX: :environment inparaenum
+   - We have 10000 red and 100 blue balls in a box. We choose
+     100 of them at random.  What is the probability that there is a blue
+     among them. 
+   - We pour a liter of water into the Atlantic and stir it
+     thoroughly.  What is the probability of finding a molecule of our
+     initial water, if we collect a liter on the shore of another
+     continent. 
+   - What is the probability of a slice of pizza from the
+     University's buffet containing a carbon atom was in the right tie
+     of the last living T-rex, To find the needed data and to do the
+     calculations, Wofram Alpha may be used. 
+* Answers
+  1. $\frac{6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot
+     1}{6}=\frac{6!}{6}=5!$. Count all the possible arrangements and
+     divide by 6 (the number of rotations). Or fix one person, and put
+     the remaining 5 relative to that one.
+  2. $9\cdot 9!=10!-9$. We have 9 choices for the first digit
+     (non-zero digit), and 9 left for the second, 8 for the third and
+     so on. Or we can count all the at most 10 digit numbers and
+     subtract the ones which start with zero.
+  3. $\binom{10}{3}=\binom{10}{7}=\frac{10!}{3!7!}$. We have 10
+     positions, and we choose the 3 positions of the men (or 7
+     position of women). Or we count all possible arrangements of all
+     the 10 people, and divide with all the possible arrangements of 3
+     men and 7 women.
+  4. $\binom{12}{3}\cdot \binom{9}{4} \cdot{5}{5}$. Choose 3 for the
+     first room, 9 remain. Choose 4 for the second room 5 remain who
+     go to the third room.
+  5. 
+     1) $6 \cdot 5 \cdot 4 \cdot 3$.
+     2) $5 \cdot 4 \cdot 3$.
+     3) $3 \cdot (5 \cdot 4 \cdot 3)$.
+  6. $M^N$ where $N=2^n$ and $M=2^m$.
+  7. 
+     1) $9^7$.
+     2) $9 \cdot 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5$.
+     3) $5 \cdot 9^5$.
+     4) $9 \cdot 10^5 - 9^6$.
+  8. $\binom{90}{5}$. From 90 possibilities we choose 5.
+  9. $\binom{7}{4} \cdot \binom{8}{4}$. The number of choices of men
+     multiplied by the number of choices of women.
+  10. $\binom{12}{10}=\binom{3+10-1}{10}$. The 10 candies choose one
+      of 3 people.
+  11. $\binom{21}{12}=\binom{10+12-1}{12}$. Combinations with
+      repetition for $n=10$ and $k=12$.
+  12. $3^{14}$. There are $14$ squares, each one can be filled with 3
+      possibilities (1, 2 or X).
+  13. $25!$. Permutations
+  14. Each subset can be represented with an $n$ long string of 1's and 0's.
+      1) $2^{n-1}$. First element is 1.
+      2) $2^{n-2}$. First two elements are 1's.
+      3) $3\cdot 2^{n-2} = 2^{n-2} + 2^{n-2} + 2^{n-2}$. Sequences
+         starting with 01, 10 and 11.
+  15. $n! - 2 \cdot (n-1)!$. Stick 1 and 2 to together and treat it as
+      a single element, as "12" or as "21". Remove these from all the
+      possibilities.
+  16. $\frac{ 11! }{ 1! \cdot 4! \cdot 4! \cdot 2!} - \frac{ 8! }{ 1!
+      \cdot 4! \cdot 2! }$. All the possibilities (permutations with
+      repetitions: 11 letters, 1 M, 4 I's, 4 S's, 2 P's) minus the
+      possibilities where the four S's are together (1 M, 4 I's, 1
+      SSSS, 2 P's).
+  17. $\binom{22}{17}$. See the binomial theorem.
+  18. $\binom{11}{2} + 10\cdot9 + \binom{9}{2}$. Only up and right
+      steps plus one diagonal step plus two diagonal steps.
+  19. $\binom{p}{1} \cdot \binom{q}{2} + \binom{p}{2} \cdot
+      \binom{q}{1}$. One point from the first two point from the
+      second line plus two point from the first and one point from the
+      second line.
+  20. $2^n=(1+1)^n$ and $0=(1-1)^n$. Binomial theorem.
+  21. 3 zeros, because the number ends with
+      $(10+1)^{100}=11^{100}...6001$.
+      \begin{align*}
+      1&=\binom{100}{0}\\
+      100\phantom{1}&=\binom{100}{1}\\
+      +\quad 4950\phantom{01}&=\frac{100 \cdot 99}{2 \cdot 1}=\binom{100}{2}\\
+      \hline
+      ...6001&
+      \end{align*}
+  22. $\binom{25}{6} \cdot \binom{6}{1} \cdot \binom{5}{1} \cdot =
+      \binom{25}{1} \cdot \binom{24}{1} \cdot \binom{23}{4} =
+      \frac{25!}{4! \cdot 19!}$. Choose the 6 members, and from those
+      6 members choose 1 president and 1 secretary. Or from the 25
+      people choose 1 president, from the remaining 24 choose 1
+      secretary and and from the remaining 23 choose the 4 "regular"
+      members.
+  23. $\binom{n+k-1}{n}$. Combination with repetition - each of $n$
+      coins choose one of $k$ people.  $\binom{n-1}{n-k} =
+      \binom{n-k+k-1}{n-k}$ same, but now $n-k$ coins since each of
+      $k$ people got 1 coin from $n$.
+  24. 
+      1) $5^3$. Variations with repetition.
+      2) $\binom{5+3-1}{3}$. Combinations with repetition.
+  25. 
+      1) $\binom{99}{6}$
+      2) $\binom{199+11-1}{11}$
+      3) $\binom{6}{0} + \binom{7}{2} + \binom{8}{4} + \binom{9}{6} +
+         \binom{10}{8} + \binom{11}{10} + \binom{12}{12} = 1 + 21$. 6
+         twos, 5 twos 2 ones, 4 twos 4 ones, etc. 
+  26. Sames as the last subproblem of the previous problem. Consider
+      comparing with the Fibonacci numbers.
+  27. $\frac{52!}{(13!)^4} = \binom{52}{13} \cdot \binom{39}{13} \cdot
+      \binom{26}{13} \cdot \binom{13}{13}$. Choose 13 from all 52 then
+      39 remain, choose 13 from 39 26 remain, choose 13 from 26 and we
+      are done.  $4! \cdot \frac{48!}{(12!)^4}$. The aces can be
+      divided $4!$ ways, and the same as the previous answer for the
+      remaining $48$ cards.  $4 \cdot \frac{48!}{9! \cdot
+      (13!)^3}$. One of 4 people gets all the aces.
+  28. $\binom{n+1}{n-k+1}$.  Put down all $k$ ones and $k-1$ zeros
+      like this $1010...0101$. There are $n-k+1$ zeros left, and $k+1$
+      places to put them.
+  29. 
+      1) $51$: 10 red + 40 green
+      2) $61$: 20 white + 40 green + 1 red
+      3) $7$: 2 + 2 + 3
+      4) $13$: 4 + 4 + 5
+      5) $39$ 10 red + 14 + 15
+      6) $62$: (30 green + 30 non-gree mixed) + 2 green
+  30. 
+      1) $37=3\cdot 12 +1$
+      2) There is no answer. All students can have their birthday in
+         the same month.
+  31. 
