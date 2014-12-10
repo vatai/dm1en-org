@@ -216,7 +216,7 @@
     | $3$  | $3$   | $5$   | $46$  |
     | $4$  | $1$   | $1$   | $-55$ |
     | $5$  | $0$   | $3$   | --    |
-*** $\color{white}23x\equiv 4 \pmod{211}$ 		    :B_example:BMCOL:
+*** $\usebeamercolor{block title}\color{fg}23x\equiv 4 \pmod{211}$ 		    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -257,7 +257,7 @@
 
     These are solutions: $x_1=14$: $10\cdot 14-8=132=6\cdot 22$
     $x_2=3$: $10\cdot 3-8=22=1\cdot 22$.
-** TODO Linear Diophantine equations
+** Linear Diophantine equations
 *** Linear Diophantine equations
     Definition: equations with *integer* solutions.
 
@@ -549,7 +549,7 @@
     For a fixed modulus $m$, let $\Z_m$ be the set of residue classes
     modulo $m$.  Then addition and multiplication can be defined on
     this set.
-*** $\color{white}\Z_3,+$						    :B_example:BMCOL:
+*** $\usebeamercolor{block title}\color{fg}\Z_3,+$						    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -558,7 +558,7 @@
          | $\overline{0}$ | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ |
          | $\overline{1}$ | $\overline{1}$ | $\overline{2}$ | $\overline{0}$ |
          | $\overline{2}$ | $\overline{2}$ | $\overline{0}$ | $\overline{1}$ |
-*** $\color{white}\Z_3,\cdot$ 				    :B_example:BMCOL:
+*** $\usebeamercolor{block title}\color{fg}\Z_3,\cdot$ 				    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -571,7 +571,7 @@
 
 
 ** Example
-*** $\color{white}\Z_4,+$ 				    :B_example:BMCOL:
+*** $\usebeamercolor{block title}\color{fg}\Z_4,+$ 				    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -582,7 +582,7 @@
     | $\overline{2}$ | $\overline{2}$ | $\overline{3}$ | $\overline{0}$ | $\overline{1}$ |
     | $\overline{3}$ | $\overline{3}$ | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ |
 
-*** $\color{white}\Z_4,\cdot$ 				    :B_example:BMCOL:
+*** $\usebeamercolor{block title}\color{fg}\Z_4,\cdot$ 				    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -627,7 +627,7 @@
     \pmod{m}$ \ie $\overline{a}\cdot \overline{x}=\overline{1}$. 
 
 * Euler-Fermat theorem and the totient function
-** Euler's totient $\color{white}\varphi$ function
+** Euler's totient $\usebeamercolor{block title}\color{fg}\varphi$ function
 *** Totient function 					       :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
@@ -648,7 +648,7 @@
     modulo $m$.
 ** Euler function
    $\varphi (m)=|\{i: \ 0<i<m, (m,i)=1\}|$
-*** Calculating the $\color{white}\varphi(n)$			  :B_theorem:
+*** Calculating the $\usebeamercolor{block title}\color{fg}\varphi(n)$			  :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
@@ -657,7 +657,7 @@
  
      \[ \varphi(m)=m\cdot \prod_{i=1}^\ell \left(1-\frac{1}{p_i^{e_i}}
      \right) \]
-*** Calculating the $\color{white}\varphi(n)$			  :B_example:
+*** Calculating the $\usebeamercolor{block title}\color{fg}\varphi(n)$			  :B_example:
     :PROPERTIES:
     :BEAMER_env: example
     :END:
