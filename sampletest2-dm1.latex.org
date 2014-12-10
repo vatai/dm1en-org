@@ -2,48 +2,65 @@
 # Set no title
 #+BIND: org-latex-title-command ""
 * Second sample test - Discrete mathematics 1.
-1. How many ways can 10 prizes be awarded to 30 contestants, if
-   1) The prizes are different, and the contestant get at most one
-      prize;
-   2) The prizes are different, and the contestants may receive more
-      prizes;
-   3) The prizes are the same, and the contestants get at most one
-      prize;
-   4) The prizes are the same, and the contestants may receive more
-      prizes;
-   5) How many ways can 10 prizes be divided among 5 contestants, if
-      every one gets at least one prize and the prizes are the same?
-2. How many ways can 10 small balls be placed in 100 numbered boxes,
-   if
-   1) the balls are also numbered;
-   2) the balls are numbered, and in every non-empty box there has to
-      be two of them;
-   3) the balls are the same, and in every non-empty box there has to
-      be two of them;
-   4) the balls are the same, and they can not be placed in
-      neighbouring boxes;
-   5) the balls are numbered (form 1 to 10), and they have to be
-      placed so the parity of the balls and the boxes has to be the
-      same?
-3. How many 100 digit numbers are there in the binary number system,
-   where each digit appears at least once?  And how many in the
-   decimal number system?
-4. Solve the following congruences:
-   1) $3x \equiv 4 \pmod{7}$;
-   2) $2x \equiv 5 \pmod{14}$;
-   3) $6x \equiv 4 \pmod{10}$;
-   4) $34x \equiv 2 \pmod{55}$;
-   5) $x^2 \equiv 3 \pmod{5}$.
-5. What are the las to digits of $1789^{1969^{2013}}$ (in the decimal
-   number system)? Justifie your answer.
-6. 
-   1) Solve the following (simultaneous) system of congruences:
-      \begin{align*}
-      x&\equiv 2 \pmod{5}\\
-      x&\equiv 3 \pmod{6}\\
-      x&\equiv 1 \pmod{7} 
-      \end{align*}
-   2) There is an island with seven and nine headed dragons. How many
-      dragons live on the island if the sum of all heads is 107?
+  1. How many ways can 10 prizes be awarded to 30 contestants, if
+     1) The prizes are different, and the contestant get at most one
+	prize;
+     2) The prizes are different, and the contestants may receive more
+	prizes;
+     3) The prizes are the same, and the contestants get at most one
+	prize;
+     4) The prizes are the same, and the contestants may receive more
+	prizes;
+     5) How many ways can 10 prizes be divided among 5 contestants, if
+	every one gets at least one prize and the prizes are the same?
+  2. How many ways can 10 small balls be placed in 100 numbered boxes,
+     if
+     1) the balls are also numbered;
+     2) the balls are numbered, and in every non-empty box there has to
+	be two of them;
+     3) the balls are the same, and in every non-empty box there has to
+	be two of them;
+     4) the balls are the same, and they can not be placed in
+	neighbouring boxes;
+     5) the balls are numbered (form 1 to 10), and they have to be
+	placed so the parity of the balls and the boxes has to be the
+	same?
+  3. How many 100 digit numbers are there in the binary number system,
+     where each digit appears at least once?  And how many in the
+     decimal number system?
+  4. Solve the following congruences:
+     1) $3x \equiv 4 \pmod{7}$;
+     2) $2x \equiv 5 \pmod{14}$;
+     3) $6x \equiv 4 \pmod{10}$;
+     4) $34x \equiv 2 \pmod{55}$;
+     5) $x^2 \equiv 3 \pmod{5}$.
+  5. What are the last to digits of $1789^{1969^{2013}}$ (in the decimal
+     number system)? Justify your answer.
+  6. 
+     1) Solve the following (simultaneous) system of congruences:
+	\begin{align*}
+	x&\equiv 2 \pmod{5}\\
+	x&\equiv 3 \pmod{6}\\
+	x&\equiv 1 \pmod{7} 
+	\end{align*}
+     2) There is an island with seven and nine headed dragons. How many
+	dragons live on the island if the sum of all heads is 107?
 
 * Solutions
+  1. 
+  2. 
+  3. Binary: $2^{99}-1$. All possibilities (must not start with zero)
+     minus the one case with all one's.
+
+     Decimal: Use the logical sieve: $\frac{9}{10}\left(
+     \binom{10}{10}10^{100}-\binom{10}{9} 9^{100}+\binom{10}{8}
+     8^{100}-\cdots-\binom{10}{1}1^{100}+\binom{10}{0}0^{100}\right)$
+     The $\frac{9}{10}$ multiplier is because $1/9$ of the numbers
+     starts with zero.  The rest of the terms come as follows:
+     $\binom{10}{10}10^{100}$ we select all 10 digits (don't worry if
+     not all are used), then subtract when only 9 digits were uset
+     $\binom{10}{9}9^{100}$ (10 choose 9 ways to select the digits,
+     and $9^{100} to build the numbers for the selected digit), then
+     add back $\binom{10}{8}8^{100}$ numbers with only 8 digits and so
+     on.
+     
