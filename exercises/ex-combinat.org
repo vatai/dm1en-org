@@ -179,7 +179,7 @@
      position of women). Or we count all possible arrangements of all
      the 10 people, and divide with all the possible arrangements of 3
      men and 7 women.
-  4. $\binom{12}{3}\cdot \binom{9}{4} \cdot{5}{5}$. Choose 3 for the
+  4. $\binom{12}{3}\cdot \binom{9}{4} \cdot\binom{5}{5}$. Choose 3 for the
      first room, 9 remain. Choose 4 for the second room 5 remain who
      go to the third room.
   5. 
@@ -193,7 +193,7 @@
      3) $5 \cdot 9^5$.
      4) $9 \cdot 10^5 - 9^6$.
   8. $\binom{90}{5}$. From 90 possibilities we choose 5.
-  9. $\binom{7}{4} \cdot \binom{8}{4}$. The number of choices of men
+  9. $\binom{7}{5} \cdot \binom{8}{4}$. The number of choices of men
      multiplied by the number of choices of women.
   10. $\binom{12}{10}=\binom{3+10-1}{10}$. The 10 candies choose one
       of 3 people.
