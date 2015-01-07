@@ -21,7 +21,7 @@
      3) the balls are the same, and in every non-empty box there has to
 	be two of them;
      4) the balls are the same, and they can not be placed in
-	neighbouring boxes;
+	neighboring boxes;
      5) the balls are numbered (form 1 to 10), and they have to be
 	placed so the parity of the balls and the boxes has to be the
 	same?
@@ -34,7 +34,7 @@
      3) $6x \equiv 4 \pmod{10}$;
      4) $34x \equiv 2 \pmod{55}$;
      5) $x^2 \equiv 3 \pmod{5}$.
-  5. What are the last to digits of $1789^{1969^{2013}}$ (in the decimal
+  5. What are the last two digits of $1789^{1969^{2013}}$ (in the decimal
      number system)? Justify your answer.
   6. 
      1) Solve the following (simultaneous) system of congruences:
@@ -48,7 +48,52 @@
 
 * Solutions
   1. 
+     1) $\frac{30!}{20!}=30 \cdot 29 \cdots 21$. The first prize goes
+        to one of the 30 contestants, the second to one of the 29,
+        etc.  (Variations without repetition)
+     2) $30^{10}$. All of the prizes can go to one of the 30
+        contestants (no restrictions). (Variation with repetition).
+     3) $\binom{30}{10}$. 10 winners are chosen from 30 contestants
+        and are given one prize. (Combination without repetition).
+     4) $\binom{30+10-1}{10}=\binom{39}{10}$. If we select one
+        "winner" multiple times it means he/she receives multiple
+        gifts. (Combination with repetition)
+     5) $\binom{5+5-1}{5}=\binom{9}{5}$. We give one prize to each,
+        and we are left with 5 prizes to divide among 5 contestants,
+        so that they can receive 0 or more prizes. So the remaining 5
+        prizes choose from 5 contestants with repetition. (Combination
+        with repetition).
   2. 
+     1) $100^{10}$. The first ball can be placed in one out of 100
+        boxes, and similarly with all the balls so $100\cdot 100
+        \cdots 100=100{10}$. (Variations with repetition).
+     2) $\binom{100}{5}\binom{10}{2}\binom{8}{2}\binom{6}{2}\binom{4}{2}$.
+        If every non-empty box has to have two balls, then there will
+        be 5 boxes. First we choose 5 boxes out of 100 which
+        $\binom{100}{5}$ ways, then, for each such choice we choose 2
+        balls from 10 to put in the first box $\binom{10}{2}$ ways, 2
+        from 8 for the second box, 2 from 6 for the third, 2 from 4
+        for the fourth, and the last two we put in the last selected
+        box. OR $\binom{100}{5}\cdot\frac{10!}{(2!)^5}$, which is the
+        same result, only now the second part is a permutation with
+        repetition.
+     3) $\binom{100}{5}$. See the explanation of the previous problem.
+     4) $\binom{11+81-1}{81}=\binom{91}{81}$. For simplicity, assume
+        each box can contain at most one ball, then the solution is
+        $\binom{1}{2}$.  We can deduce this solution by making an
+        alternating sequence of non-empty and empty boxes which starts
+        and ends with a non-empty box (\ie NE,E,NE,E,..,E,NE). There
+        are 10 non-empty boxes so in the sequence we have 9 empty
+        boxes and all together $100-10-9=81$ unused boxes which we can
+        put at the beginning or at the end of the sequence or beside
+        any of the nine empty boxes (it doesn't matter on which
+        side). So each of the not used 81 boxes has to choose one of
+        the 11 places. (Combination with repetition).
+     5) $\binom{50}{5}\binom{50}{5}$ The problem implies that each box
+        can contain at most one ball, and the "same parity" means if
+        the box has an even number then the ball also has to have an
+        even number or both the numbers have to be odd. So we have 50
+        odd boxes and 50 even boxes and 5 even balls and 5 odd balls.
   3. Binary: $2^{99}-1$. All possibilities (must not start with zero)
      minus the one case with all one's.
 
@@ -58,9 +103,165 @@
      The $\frac{9}{10}$ multiplier is because $1/9$ of the numbers
      starts with zero.  The rest of the terms come as follows:
      $\binom{10}{10}10^{100}$ we select all 10 digits (don't worry if
-     not all are used), then subtract when only 9 digits were uset
+     not all are used), then subtract when only 9 digits were used
      $\binom{10}{9}9^{100}$ (10 choose 9 ways to select the digits,
      and $9^{100} to build the numbers for the selected digit), then
      add back $\binom{10}{8}8^{100}$ numbers with only 8 digits and so
      on.
-     
+  4. 
+     1) There is one incongruent solution because $\gcd(3,7)=1 \mid 4$
+        and that is $x\equiv 6 \pmod{7}$ because:
+	\begin{align*}
+	3&x \equiv 4 \pmod{7}\\
+	3&x \equiv 4-7=-3 \pmod{7}\\
+	&x \equiv -1 \equiv 6 \pmod{7}
+	\end{align*}
+     2) $2&x \equiv 5 \pmod{14}$ has no solutions because
+        $\gcd(2,14)=2\nmid5$
+     3) There are 2 incongruent solutions because $\gcd(6,10)=2\mid 4$,
+        namely $x_0\equiv 4 \pmod{10}$ and $x_1\equiv 9 \pmod{10}$
+        because:
+	\begin{align*}
+	6&x \equiv 4 \pmod{10}\\
+	3&x \equiv 2 \pmod{5} \text{ note that we divided the modulus also}\\
+	3&x \equiv 2+2\cdot 5 = 12 \pmod{5}\\
+	&x \equiv 4 \pmod{5} \text{ or } x=4+5t \text{ for } t\in\mathbb{Z}
+	\end{align*}
+     4) To solve this we can use the extended euclidean algorithm:
+        $34x \equiv 2 \pmod{55}$ is the same as $-55y=34x-2$ \ie
+        $34x+55y=2$
+        |                        | $1$   | $0$  |
+        |                        | $0$   | $1$  |
+        | $34 = 0 \cdot 55 + 34$ | $1$   | $0$  |
+        | $55 = 1 \cdot 34 + 21$ | $-1$  | $1$  |
+        | $34 = 1 \cdot 21 + 13$ | $2$   | $-1$ |
+        | $21 = 1 \cdot 13 + 8$  | $-3$  | $2$  |
+        | $13 = 1 \cdot 8  + 5$  | $5$   | $-3$ |
+        | $8  = 1 \cdot 5  + 3$  | $-8$  | $5$  |
+        | $5  = 1 \cdot 3  + 2$  | $13$  | $-8$ |
+        | $3  = 1 \cdot 2  + 1$  | $-21$ | $13$ |
+        | $2  = 2 \cdot 1  + 0$  |       |      | 
+	Now we have $34 \cdot (-21) + 55 \cdot 13 = 1$, multiplied by
+        $2$ we get \[34 \cdot (-42) + 55 \cdot 26 = 2$.  So $x=-42
+        \equiv 13 \pmod(55)$ is a good solution, let's check: $34\cdot
+        13 = 442 \equiv 2 \pmod{55}$ is true!
+     5) We did not learn any special way to solve non-linear
+        congruences, so we have to use brute force.
+	+ $0^2=0 \not\equiv 3 \pmod{5}$
+	+ $1^2=1 \not\equiv 3 \pmod{5}$
+	+ $2^2=4 \not\equiv 3 \pmod{5}$
+	+ $3^2=4 \not\equiv 3 \pmod{5}$
+	+ $4^2=1 \not\equiv 3 \pmod{5}$
+	So $x^2\equiv 3 \pmod{5}$ has no solutions.
+  5. The last two digits are $09$.  First we can reduce $1789\bmod 100
+     = 89$, and we want to find $x\equiv 89^{1969^{2013}}$. We use the
+     Euler-Fermat theorem, so we check that $\gcd(100,89)=1$ is true
+     (it is true, so we can use the theorem).  The theorem say
+     $a^{\varphi(m)}\equiv 1 \pmod{m}$ where $a=89$ and $m=100$.
+     First calculate $\varphi(100) = \varphi(2^2\cdot5^2) = 2^{2-1}
+     \cdot (2-1) \cdot 5^{2-1} \cdot (5-1) = 2 \cdot 1 \cdot 5 \cdot 4
+     = 40$, so $89^{40}\equiv 1 \pmod{100}$. If we find $r=1969^{2013}
+     \bmod 40$ we are finished because then $1969^{2013}=q\cdot 40 +
+     r$ and $89^{1969^{2013}}=89^{q \cdot 40 + r}=(89^{40})^q \cdot
+     89^r \equiv 89^r \pmod{100}$.
+
+     So now we are looking for the solution of $1969^{2013}\equiv r
+     \pmod{40}$. First we reduce $1969 \bmod 40 = 9$. So again we use
+     Euler-Fermat, $\varphi(40) = \varphi(2^3 \cdot 5) = 2^{3-1} \cdot
+     (2-1) \cdot 5^{1-1} \cdot (5-1) = 4 \cdot 1 \cdot 1 \cdot 4 =
+     16$, so $9^{16} \equiv 1 \pmod{40}$.  And now we calculate $r' =
+     2013 \bmod 16 = 13$.  
+
+     Substituting backwards $r \equiv 9^{13} \pmod{40}$. Luckily
+     $9^3=729 \equiv 9 \pmod{40}$, so $r=9^{13}=9^{4\cdot3}\cdot
+     9\equiv 9 \pmod{40}$. Again, substituting back, we have $x\equiv
+     89^9\pmod{100}$ which we can calculate as follows:
+     \begin{align*}
+     89^2 &\equiv 21 \pmod{100}\\ 
+     89^4 \equiv 21^2 &\equiv 41 \pmod{100} \\
+     89^8 \equiv 41^2 &\equiv 81 \pmod{100} \\
+     89^9 \equiv 81\cdot89 &\equiv 9 \pmod{100}
+     \end{align*}
+  6. 
+     1) The solution is $x \equiv 57 \pmod{210}$. 
+
+	- First solve 
+	  \begin{align*}
+	  x&\equiv 2 \pmod{5}\\ 
+	  x&\equiv 3 \pmod{6}
+	  \end{align*}
+          and now $c_1=2, m_1=5, c_2=3, m_2=6$:
+	  - Solve: $m_1x_1+m_2x_2=1$ for $x_1,x_2=?$. We use the
+            extended Euclidean algorithm on $5x_1+6x_2=1$:
+            |               | $1$  | $0$ |
+            |               | $0$  | $1$ |
+            | $5=0\cdot6+5$ | $1$  | $0$ |
+            | $6=1\cdot5+1$ | $-1$ | $1$ |
+            | $5=5\cdot1+0$ |      |     |
+	    So $x_1=-1,x_2=1$ and using the formula
+            $c_{1,2}=m_1x_1c_2+m_2x_2c_1$ our solution is
+            $c_{1,2}=5\cdot(-1)\cdot3+6\cdot1\cdot2=-15+12=-3$ $x\equiv
+            -3 \pmod{30}$
+	- Now we substitute the first two congruences with our
+          previous solution, so we have
+	  \begin{align*}
+	  x&\equiv -3 \pmod{30}\\ 
+	  x&\equiv 1 \pmod{7}
+	  \end{align*}
+          and now $c_{1,2}=-3, m_{1,2}=30, c_3=1, m_3=7$:
+	  - Solve: $m_{1,2}x_{1,2}+m_3x_3=1$ for $x_{1,2},x_3=?$. We
+            use the extended Euclidean algorithm on $30x_{1,2}+7x_3=1$:
+            |                | $1$  | $0$  |
+            |                | $0$  | $1$  |
+            | $30=4\cdot4+2$ | $1$  | $-4$ |
+            | $7=3\cdot2+1$  | $-3$ | $13$ |
+            | $2=2\cdot1+0$ |      |      |
+	    So $x_{1,2}=-3,x_3=13$ and using the formula
+            $c_{1,2,3}=m_{1,2}x_{1,2}c_3+m_3x_3c_{1,2}$ our final
+            solution is $c_{1,2,3} =
+            30\cdot(-3)\cdot1+7\cdot13\cdot(-3)=-153$ ergo $x\equiv 57
+            \pmod{210}$.
+
+     2) There are $13$ (5 seven headed and 8 nine headed) or $15$
+        dragons (14 seven headed and 8 nine headed). Say $x$ is the
+        number of seven headed dragons and $y$ is the number of nine
+        headed dragons, then we have to solve the Diophantine
+        equation $7x+9y=107$. Now $a=7,b=9,c=107$ and we use the
+        Euclidean algorithm:
+        |                     | $1$  | $0$  |
+        |                     | $0$  | $1$  |
+        | $7 = 0 \cdot 9 + 7$ | $1$  | $0$  |
+        | $9 = 1 \cdot 7 + 2$ | $-1$ | $1$  |
+        | $7 = 3 \cdot 2 + 1$ | $4$  | $-3$ |
+        | $2 = 2 \cdot 1 + 0$ |      |      |
+	From the last complete row we can see that 
+	\begin{equation}
+	\label{eq:d}
+	7 \cdot 4 + 9  \cdot -3=1
+	\end{equation}
+	which gives us $d=\gcd(a,b)=1$. Because $d=1\mid 107=c$ is
+        true, there are solutions. To find them by multiply the
+        equation \eqref{eq:d} with $\frac{c}{d}=107$ so we have
+	\begin{equation}
+	\label{eq:dmul}
+	7 \cdot 428 + 9  \cdot (-321)=107
+	\end{equation}
+	From this we see that one possible solution is $x_0=428$ and 
+        $y_0=-321$ and from the formula we know all the solutions can
+        be obtained as $x_t=x_0+t\cdot\frac{b}{d}$ and
+        $y_t=y_0-t\cdot\frac{a}{d}$ for different values of
+        $t\in\mathbb{Z}$ so we have
+	\begin{align*}
+	x_t&=428+9t & y_t&=-321-7t
+	\end{align*}
+	Now since we can't have a negative number of dragons on the
+        island, we have to find a $t$ for which both $x_t$ and $y_t$
+        are non-negative. Because $x_t=428+9t$ let's $\lfloor
+        \frac{428}{9} \rfloor=47$, ergo $x_{-47}=428-47\cdot9=5$ is
+        the smallest non-negative value for $x_t$ the next
+        non-negative value is $x_{-46}=x_{-47}+9=14$ (note
+        $x_{-48}=428-48\cdot 9=-4$ is negative).  Now for $y_{-47} =
+        -321 - (-47)\cdot 7=8$ and $y_{-46}= -321 - (-46)\cdot 7=1$
+        (again note that $y_{-45} = -6$ is negative).  Ergo the pairs
+        $(x_{-47},y=_{-47})=(5,8)$ and $(x_{-46},y_{-46})=(14,1)$ are
+        the two acceptable (non-negative) solutions.

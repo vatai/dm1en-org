@@ -14,5 +14,7 @@
 #+LATEX_HEADER: \pagestyle{empty}
 #+LATEX: \thispagestyle{empty}
 
+#+LATEX_HEADER: \def\ie{i.e.\ }
+
 # Org-Mode config
 #+OPTIONS: toc:nil num:nil
