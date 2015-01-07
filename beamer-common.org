@@ -10,6 +10,7 @@
 #+LATEX_CLASS_OPTIONS: [10pt,a4paper,xcolor=dvipsnames]
 #+LATEX_HEADER: \usepackage[]{babel}
 #+LATEX_HEADER: \usepackage{lmodern}
+#+LATEX_HEADER: \usepackage{multicol}
 #+LATEX_HEADER: \usepackage{tikz}
 #+LATEX_HEADER: \usetikzlibrary{arrows,positioning} 
 

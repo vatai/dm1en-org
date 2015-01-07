@@ -29,12 +29,10 @@
       n=n$;
     - $6\mid 12$, because $6\cdot 2=12$; $-6\mid 12$, because
       $(-6)\cdot (-2)=12$.
-    
-    The definition can be extended to Gaussian-integers: $\{a+bi:\
-    a,b\in\Z\}$.
-
-    - $i\mid 13$, because $i\cdot (-13i)=13$
-    - $1+i\mid 2$, because $(1+i)\cdot (1-i)=2$.
+      - The definition can be extended to Gaussian-integers: $\{a+bi:\
+	a,b\in\Z\}$.
+	- $i\mid 13$, because $i\cdot (-13i)=13$
+	- $1+i\mid 2$, because $(1+i)\cdot (1-i)=2$.
 ** Properties of divisibility
 *** Properies						      :B_block:BMCOL:
     :PROPERTIES:
@@ -166,7 +164,6 @@
 
 * Euclidean division
 ** Euclidean division
-   The primary tool of number theory is Euclidean division:
 *** Euclidean division						  :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
@@ -190,8 +187,7 @@
          Then $a=b(q^*+1)+r^*$ and let $q=q^*+1$, $r=r^*$.   
     2. Uniqueness: Let $a=bq+r=bq^*+r^*$.
        Then  $b(q-q^*)=r^*-r$. 
-       This can be only if $q=q^*$ and$r=r^*$.
-
+       This can be only if $q=q^*$ and$ r=r^*$.
 ** Euclidean division
 *** mod 						       :B_definition:
     :PROPERTIES:
@@ -247,10 +243,10 @@
 
    In the base \alert{2} numeral system the number $123$:
    \begin{align*}
-   1111011_{(2)} &= 1\cdot {\color{blue} 2^6} + 1\cdot {\color{blue}
+   1111011_{(2)} &= 1\cdot{\color{blue}2^6} + 1\cdot {\color{blue}
    2^5} + 1\cdot {\color{blue} 2^4} + 1\cdot {\color{blue} 2^3} +
    0\cdot {\color{blue} 2^2} + 1\cdot {\color{blue} 2^1} +1\cdot
-   {\color{blue} 2^0}_{(10)}\\
+   {\color{blue} 2^0}\\
    &=1\cdot
    {\color{blue} 64} + 1\cdot {\color{blue} 32} + 1\cdot {\color{blue}
    16} + 1\cdot {\color{blue} 8} + 0\cdot {\color{blue} 4} + 1\cdot
@@ -261,18 +257,16 @@
     :BEAMER_env: theorem
     :END:
     Let $q>1$ be a fixed integer.  Then each non-negative integer $n$
-    can uniquely be written in the form $\alert{\displaystyle
-    n=\sum_{i=0}^k a_i q^i}$, where $0\leq a_i<q$ is an integer,
-    $a_k\neq 0$.
+    can uniquely be written in the form $\alert{n=\sum_{i=0}^k a_i
+    q^i}$, where $0\leq a_i<q$ is an integer, $a_k\neq 0$.
     1. This expression is the number $n$ written in the base $q$
        num. sys.
     2. $q$ is the base of the numeral system.
     3. $a_0,\dots, a_k$ are the digits of $n$.
     4. $k=\lceil \log_q n \rceil$. 
 ** Numeral systems
-
-   $n$ written in the base $q$ numeral system: $\displaystyle
-   n=\sum_{i=0}^k a_i q^i$.
+   $n$ written in the base $q$ numeral system: $n=\sum_{i=0}^k a_i
+   q^i$.
 *** Proof							    :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
@@ -357,17 +351,17 @@
     If one of the numbers is $0$, then the other one will be the gcd.
     Lat $a$ and $b$ be non-zero integers. Let us do the following
     divisions:
-    \begin{equation*}
-    \begin{split}
+    
+    \begin{align*}
     a&=bq_1+r_1, \quad 0<r_1<|b|,\\
     b&=r_1q_2+r_2, \quad 0<r_2<r_1,\\
     r_1&=r_2q_3+r_3, \quad 0<r_3<r_2,\\
     & \vdots \\
     r_{n-2}&=r_{n-1}q_n+r_n, \quad 0<r_n<r_{n-1},\\
     r_{n-1}&=r_{n}q_{n+1}
-    \end{split}
-    \end{equation*}
-    Gcd is the last $\neq0$ remainder: $\alert{(a,b)=r_n}$.
+    \end{align*}
+    
+Gcd is the last $\neq0$ remainder: $\alert{(a,b)=r_n}$.
     Here $a=r_{-1}$, $b=r_{0}$,
 ** Correctness of the euclidean algorithm
 *** Proof (continued)						    :B_proof:
