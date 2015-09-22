@@ -1,12 +1,11 @@
 # -*- mode: org; mode: flyspell; -*-
-#+STARTUP: beamer
-#+INCLUDE: "beamer-common.org"
+#+SETUPFILE: l-common.org
 #+TITLE: Discrete mathematics I - Sets
 #+SHORT_TITLE: Sets
 #+LATEX_HEADER: \def\iff{\Leftrightarrow}
 #+LATEX_HEADER: \def\tru{\top}
 #+LATEX_HEADER: \def\fls{\perp}
-# #+LATEX_CLASS_OPTIONS: [draft]
+
 * Naive set theory
 ** Sets and elements
 *** Set theory

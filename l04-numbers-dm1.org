@@ -1,11 +1,9 @@
 # -*- mode: org; mode: flyspell; -*-
-#+STARTUP: beamer
-#+INCLUDE: "beamer-common.org"
+
+#+SETUPFILE: l-common.org
+
 #+TITLE: Discrete mathematics I - Expansion of the notion of numbers
 #+SHORT_TITLE: Numbers
-#+COLUMNS: %30ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
-
-# #+LATEX_CLASS_OPTIONS: [draft]
 
 * Natural numbers
 ** Peano axioms

@@ -1,6 +1,6 @@
 # -*- mode: org; mode: flyspell; -*-
-#+STARTUP: beamer
-#+INCLUDE: "beamer-common.org"
+#+SETUPFILE: l-common.org
+
 #+TITLE: Discrete mathematics I - Logic
 #+SHORT_TITLE: Logic
 #+LATEX_HEADER: \def\A{\mathcal{A}}
@@ -9,7 +9,7 @@
 #+LATEX_HEADER: \def\iff{\Leftrightarrow}
 #+LATEX_HEADER: \def\tru{\top}
 #+LATEX_HEADER: \def\fls{\perp}
-# #+LATEX_CLASS_OPTIONS: [draft]
+
 * Basics
 ** Logic: The science of correct reasoning 
 *** Definition
@@ -52,16 +52,21 @@
 ** Terms
 *** Definition
     1) If $t\in U$ then $t$ is a *term*.
-    2) If $f$ is an $n$-ary function symbol, and $t_1,t_2,\ldots,t_n$ are terms, then $f(t_1,t_2,\ldots,t_n)$ is a *term*.
-    3) *Every term* can be obtained by the finite application of the previous two rules.
+    2) If $f$ is an $n$-ary function symbol, and $t_1,t_2,\ldots,t_n$
+       are terms, then $f(t_1,t_2,\ldots,t_n)$ is a *term*.
+    3) *Every term* can be obtained by the finite application of the
+       previous two rules.
 *** Examples
-    - $f(t)=$ the nearest student to $t$ 
-    - $f(n,m)=n+m$ (note we can think of $+$ as a $+(\cdot,\cdot)$ binary function
+    - $f(t)=$ the nearest student to $t$
+    - $f(n,m)=n+m$ (note we can think of $+$ as a $+(\cdot,\cdot)$
+      binary function
 ** Predicates 
 *** Definition
-    - A *predicate* takes an entity or entities in the *domain of discourse* as *input* and *outputs* either *True or False*.
+    - A *predicate* takes an entity or entities in the *domain of
+      discourse* as *input* and *outputs* either *True or False*.
     - $P$ is an $n$-ary predicate if $P:U^n\to \mathbb{L}$.
-    - Predicates are statements about the entities of the domain of discourse.
+    - Predicates are statements about the entities of the domain of
+      discourse.
 *** Examples
     - $F(t)$: $t$ is female
     - $D(m,n)$: $m$ divides $n$
@@ -77,9 +82,10 @@
     3) Yes, we even not that it is a true statement
 ** Logical operators
 *** Definition
-    - Logical operators are map of the form $\mathbb{L}^n \to \mathbb{L}$ (for some positive integer $n$).
-    - They come from well-known everyday logical operations, 
-      \eg *and*, *or*, *if...then*, *if and only if*, *not*
+    - Logical operators are map of the form $\mathbb{L}^n \to
+      \mathbb{L}$ (for some positive integer $n$).
+    - They come from well-known everyday logical operations, \eg
+      *and*, *or*, *if...then*, *if and only if*, *not*
     - They connect predicated \ie statements to form larger statements
 *** Examples
     - Binary logical operators: $\land$ (and, conjunction), $\lor$ (/inclusive or, disjunction), 
@@ -113,7 +119,8 @@
     - What is the number of binary operators?
 ** Different OR's
 *** Inclusive, exclusive, conflicting\footnote{In lack of better translation} OR
-    1. Inclusive or $\lor$: Those who had good weapons *or* good reflexes were victorious.
+    1. Inclusive or $\lor$: Those who had good weapons *or* good
+       reflexes were victorious.
     2. Inclusive or $\oplus$: We have to go left *or* right.
     3. "Conflicting" or: Drink *or* drive!
       | $\A$   | $\B$   | $1$    | $2$    | $3$    |
@@ -127,46 +134,64 @@
 *** How to evaluate the 
 ** Remarks and Questions
 *** Remarks
-    - The variables $A$ and $B$ in the truth-tables above are propositional variables, \ie $A\in \mathbb{L}$ (and not $\in U$).
-    - These propositional variables denote some predicates, \ie $A=P(t)$ or $B=D(m,n)$.
-    - Note the distinction between the entities in the domain of discourse and the operations on them, versus the predicates (\ie statements) and the /logical operations/ connection them.
+    - The variables $A$ and $B$ in the truth-tables above are
+      propositional variables, \ie $A\in \mathbb{L}$ (and not $\in
+      U$).
+    - These propositional variables denote some predicates, \ie
+      $A=P(t)$ or $B=D(m,n)$.
+    - Note the distinction between the entities in the domain of
+      discourse and the operations on them, versus the predicates (\ie
+      statements) and the /logical operations/ connection them.
 *** Questions
     - Is the following a valid statement, and is it true?
       - "If $1=2$ then I am the Pope!"
 #+BEAMER: \pause
-    - Yes, it is a valid statement. It is also true, because "false implies everything". (Check the truth-tables)
+    - Yes, it is a valid statement. It is also true, because "false
+      implies everything". (Check the truth-tables)
 ** Well-formed formulas
 *** Definition
-    1) If $P$ is a $n$-ary predicate, and $t_1,t_2,\ldots,t_n$ are terms, then
-       $P(t_1,t_2,\ldots,t_n)$ is called an *atomic formula* and it is a well-formed 
-       formula.
-    2) If $\A$ and $\B$ are well-formed formulas then $\A\land\B$, 
-       $\A\lor\B$, $\A\Rightarrow\B$, 
-       $\A\Leftrightarrow\B$ and $\lnot\A$ are also well-formed formulas.
-    3) *Every well-formed formula* can be obtained by the finite application of the previous two rules.
+    1) If $P$ is a $n$-ary predicate, and $t_1,t_2,\ldots,t_n$ are
+       terms, then $P(t_1,t_2,\ldots,t_n)$ is called an *atomic
+       formula* and it is a well-formed formula.
+    2) If $\A$ and $\B$ are well-formed formulas then $\A\land\B$,
+       $\A\lor\B$, $\A\Rightarrow\B$, $\A\Leftrightarrow\B$ and
+       $\lnot\A$ are also well-formed formulas.
+    3) *Every well-formed formula* can be obtained by the finite
+       application of the previous two rules.
 *** Example
     - Both $F(x)$ and $F(y)$ are well-formed formulas,
     - Then $F(x)\lor F(y)$ and $(F(x)\land F(y) ) \Rightarrow F(y)$.
 ** Interpretation, Satisfiability, Validity
 *** Definitions
-    - An *interpretation* of a formula is an assignment of meaning to the variables in the formula, \ie substituting the variables with concrete values from $U$. 
-    - A formula is *satisfiable* if it is possible to find an interpretation which makes the formula true.
-    - A formula is *valid* if all interpretations of the formula make it true.
-    - Valid formulas are also called *tautologies* or rules. 
-    - The opposite concepts are *unsatisfiable* (always false) and *invalid* (some interpretations make it false).
+    - An *interpretation* of a formula is an assignment of meaning to
+      the variables in the formula, \ie substituting the variables
+      with concrete values from $U$.
+    - A formula is *satisfiable* if it is possible to find an
+      interpretation which makes the formula true.
+    - A formula is *valid* if all interpretations of the formula make
+      it true.
+    - Valid formulas are also called *tautologies* or rules.
+    - The opposite concepts are *unsatisfiable* (always false) and
+      *invalid* (some interpretations make it false).
 ** Interpretation, Satisfiability, Validity
 *** Examples
-    - Let $M(t)$ mean that $t$ is male (over the students of ELTE) and let $\A=M(x)\land M(y)$ be a formula. 
+    - Let $M(t)$ mean that $t$ is male (over the students of ELTE) and
+      let $\A=M(x)\land M(y)$ be a formula.
     - Possible interpretations of $\A$ are:
-      - The interpretation $\A(x/Attila,y/Istvan)$ yields $M(Attila) \land M(Istvan)$ which is true.
-      - The interpretation $\A(x/Attila,y/Anna)$ yields $M(Attila) \land M(Anna)$ which is false.
+      - The interpretation $\A(x/Attila,y/Istvan)$ yields $M(Attila)
+        \land M(Istvan)$ which is true.
+      - The interpretation $\A(x/Attila,y/Anna)$ yields $M(Attila)
+        \land M(Anna)$ which is false.
     - $\A$ is *satisfiable*, because of the first interpretation.
-    - $\A$ is *invalid*, because the second interpretation makes it false (\ie it is not always true).
-    - $\B=M(x) \land M(y) \Rightarrow M(x)$ is a *valid formula*, because it is always true. It is a *tautology*. 
+    - $\A$ is *invalid*, because the second interpretation makes it
+      false (\ie it is not always true).
+    - $\B=M(x) \land M(y) \Rightarrow M(x)$ is a *valid formula*,
+      because it is always true. It is a *tautology*.
     - $\lnot\B$ is an *unsatisfiable* fromula.
 ** Questions
 *** Questions
-    - For each of the bellow points determine if the statement or "vice versa" is true, or both or neither are true:
+    - For each of the bellow points determine if the statement or
+      "vice versa" is true, or both or neither are true:
       - All satisfiable statements are valid formulas.
       - All satisfiable formulas are invalid.
       - Some satisfiable formulas are invalid.
@@ -198,19 +223,18 @@
   | $((\A\Rightarrow\B)\land(\B\Rightarrow\A))\iff(\A\iff\B)$                  |          |
 ** Proof
 *** Proof of $\A\land(\A \lor \B) \iff \A$
-    Let $\mathcal{F}=\A\land(\A \lor \B) \iff \A$ and 
-    $lhs=\A\land(\A \lor \B)$ (left hand side), 
-    $rhs=\A$ (right hand side).
+    Let $\mathcal{F}=\A\land(\A \lor \B) \iff \A$ and $lhs=\A\land(\A
+    \lor \B)$ (left hand side), $rhs=\A$ (right hand side).
 
-    If $\A=\fls$ then $lhs$ is false because of the definition of conjunction.
-    If $\A=\tru$ then $\A \lor \B$ is true because of the definition of disjunction,
-    so $lhs$ is $\A\land\tru$ which is $\tru$. In both cases the $rhs$ equals $lhs$,
-    so by the definition of equivalence the formula is always true, \ie valid.
-    $\qed$
+    If $\A=\fls$ then $lhs$ is false because of the definition of
+    conjunction.  If $\A=\tru$ then $\A \lor \B$ is true because of
+    the definition of disjunction, so $lhs$ is $\A\land\tru$ which is
+    $\tru$. In both cases the $rhs$ equals $lhs$, so by the definition
+    of equivalence the formula is always true, \ie valid.  $\qed$
 
-    *Proof using truth-tables* is done by filling out the first two columns of the 
-    table as given bellow, and then the rest using the definitions of the 
-    logical operations:
+    *Proof using truth-tables* is done by filling out the first two
+    columns of the table as given bellow, and then the rest using the
+    definitions of the logical operations:
     | $\A$   | $\B$   | $\A\lor\B$ | $lhs$  | $rhs$  | $\mathcal{F}$ |
     |        |        | <c>        | <c>    | <c>    |               |
     | $\tru$ | $\tru$ | $\tru$     | $\tru$ | $\tru$ | $\tru$        |
@@ -220,55 +244,70 @@
 * First-order logic
 ** Well-formed formulas
 *** Definition
-    1) If $P$ is a $n$-ary predicate, and $t_1,t_2,\ldots,t_n$ are terms, then
-       $P(t_1,t_2,\ldots,t_n)$ is called an *atomic formula* and it is a well-formed 
-       formula.
-    2) If $\A$ and $\B$ are well-formed formulas then $\A\land\B$, 
-       $\A\lor\B$, $\A\Rightarrow\B$, 
-       $\A\Leftrightarrow\B$ and $\lnot\A$ are also well-formed formulas.
-    3) If $\A$ is a well-formed, $x$ a variable of the domain of discourse, 
-       then $\forall x\A$ and $\exists x\A$ are also well-formed formulas
-       (these are *universally* and *existentially* quantified formulas)
-    4) *Every well-formed formula* can be obtained by the finite application of the previous two rules.
+    1) If $P$ is a $n$-ary predicate, and $t_1,t_2,\ldots,t_n$ are
+       terms, then $P(t_1,t_2,\ldots,t_n)$ is called an *atomic
+       formula* and it is a well-formed formula.
+    2) If $\A$ and $\B$ are well-formed formulas then $\A\land\B$,
+       $\A\lor\B$, $\A\Rightarrow\B$, $\A\Leftrightarrow\B$ and
+       $\lnot\A$ are also well-formed formulas.
+    3) If $\A$ is a well-formed, $x$ a variable of the domain of
+       discourse, then $\forall x\A$ and $\exists x\A$ are also
+       well-formed formulas (these are *universally* and
+       *existentially* quantified formulas)
+    4) *Every well-formed formula* can be obtained by the finite
+       application of the previous two rules.
 ** Examples
 *** Example
     - Continuing with the example from propositional logic:
-    - $\exists x F(x)$ and $\exists x\lnot F(y)$ are well-formed formulas.
+    - $\exists x F(x)$ and $\exists x\lnot F(y)$ are well-formed
+      formulas.
     - $\forall x\exists y(F(x)\land \lnot F(y) )$.
 ** Quantifiers
 *** Universal quantifier
-    - Symbol: \forall 
+    - Symbol: \forall
     - Read: for all, for each
-    - $\forall x P(x,y) \iff P(x_1,y) \land P(x_2,y) \land \cdots$
-      (if $U=\{x_1,x_2,\ldots\}$)
+    - $\forall x P(x,y) \iff P(x_1,y) \land P(x_2,y) \land \cdots$ (if
+      $U=\{x_1,x_2,\ldots\}$)
 *** Existential quantifier
     - Symbol: \exists
     - Read: exists, there is
-    - $\exists x P(x,y) \iff P(x_1,y) \lor P(x_2,y) \lor \cdots$
-      (if $U=\{x_1,x_2,\ldots\}$)
-    - $\exists! x$ denotes "there exists a *unique* $x$" or "there is exactly one $x$"
+    - $\exists x P(x,y) \iff P(x_1,y) \lor P(x_2,y) \lor \cdots$ (if
+      $U=\{x_1,x_2,\ldots\}$)
+    - $\exists! x$ denotes "there exists a *unique* $x$" or "there is
+      exactly one $x$"
 ** Scope, Free and bound occurrences
 *** Definition
-    - If $Q$ is a quantifier ($\forall$ or $\exists$) and $x$ is a variable then 
-      the *scope* of $Q$ is the narrowest sub-formula after $Qx$.
-    - All the occurrences of $x$ in the scope of $Q$ are *quantified* by $Q$.
+    - If $Q$ is a quantifier ($\forall$ or $\exists$) and $x$ is a
+      variable then the *scope* of $Q$ is the narrowest sub-formula
+      after $Qx$.
+    - All the occurrences of $x$ in the scope of $Q$ are *quantified*
+      by $Q$.
     Let $\A$ be a formula and $x$ a variable, then
-    - An occurrence of $x$ is a *free occurrence* if it is not quantified.
-    - An occurrence of $x$ is a *bound occurrence* if it is quantified.
+    - An occurrence of $x$ is a *free occurrence* if it is not
+      quantified.
+    - An occurrence of $x$ is a *bound occurrence* if it is
+      quantified.
 ** Free and bound variables, closed and open formulas
 *** Definitions
-    - The variable $x$ is a *bound variable* in $\A$, if its every occurrence is bound.
-    - The variable $x$ is a *free variable* in $\A$, if its every occurrence is free.
-    - The variable $x$ has mixed occurrence if it has both free and bound occurrences.
-    - The formula $\A$ is a *closed formula* (or a sentence) if all of its variables are bound.
-    - The formula $\A$ is an *open formula* if it has at least one 
-    - The formula $\A$ is quantifierless if all of its variables are free.
+    - The variable $x$ is a *bound variable* in $\A$, if its every
+      occurrence is bound.
+    - The variable $x$ is a *free variable* in $\A$, if its every
+      occurrence is free.
+    - The variable $x$ has mixed occurrence if it has both free and
+      bound occurrences.
+    - The formula $\A$ is a *closed formula* (or a sentence) if all of
+      its variables are bound.
+    - The formula $\A$ is an *open formula* if it has at least one
+    - The formula $\A$ is quantifierless if all of its variables are
+      free.
 ** Examples
 *** Examples
-   - $\A= \forall x (P(x)\land Q(x,y))\Rightarrow \exists x \forall z R(x,y,z)$
-   - The scope of the first universal quantifier is $(P(x)\land Q(x,y)$, 
-     the scope of the existential quantifier is $\forall z R(x,y,z)$,
-     the scope of the second universal quantifier is $R(x,y,z)$.
+   - $\A= \forall x (P(x)\land Q(x,y))\Rightarrow \exists x \forall z
+     R(x,y,z)$
+   - The scope of the first universal quantifier is $(P(x)\land
+     Q(x,y)$, the scope of the existential quantifier is $\forall z
+     R(x,y,z)$, the scope of the second universal quantifier is
+     $R(x,y,z)$.
    - The free variable is $y$
 ** Rules of first order logic
 *** Rules
@@ -279,18 +318,22 @@
    5) $\exists x \forall y P(x,y) \Rightarrow \forall y \exists x P(x,y)$
 *** Example to remember the last rule
     If $U=\{1,2\}$ then consider the following two formulas:
-    - $\exists x \forall y (x=y)$ is false because it is:
-      $\exists x (x=1 \land x=2)$ which is $(1=1\land 1=2) \lor (2=1\land 2=2)$ 
-    - $\forall y \exists x (x=y)$ is true because it is:
-      $\forall y (1=y \lor 2=y)$ which is $(1=1 \lor 2=1) \land (1=2 \lor 2=2)$
-    - And by the definition of implication $\tru\Rightarrow\fls$ is false and
-      $\fls \Rightarrow\tru$ is true.
+    - $\exists x \forall y (x=y)$ is false because it is: $\exists x
+      (x=1 \land x=2)$ which is $(1=1\land 1=2) \lor (2=1\land 2=2)$
+    - $\forall y \exists x (x=y)$ is true because it is: $\forall y
+      (1=y \lor 2=y)$ which is $(1=1 \lor 2=1) \land (1=2 \lor 2=2)$
+    - And by the definition of implication $\tru\Rightarrow\fls$ is
+      false and $\fls \Rightarrow\tru$ is true.
 * Theories
 ** Axioms,  theorems
 *** Definition
-    - *Axioms* (or postulates) are formulas in a theory which we consider *trivially true*.
-    - *Theorems* are formulas *derived* from axioms using the rules of logic.
+    - *Axioms* (or postulates) are formulas in a theory which we
+      consider *trivially true*.
+    - *Theorems* are formulas *derived* from axioms using the rules of
+      logic.
 *** Example
-    - In euclidean geometry one of the postulates (axioms) is: A straight line segment can be drawn joining any two points.
-      A theorem is that the sum of angles in a triangle is $\pi$ radians (or 180\textdegree)
+    - In euclidean geometry one of the postulates (axioms) is: A
+      straight line segment can be drawn joining any two points.  A
+      theorem is that the sum of angles in a triangle is $\pi$ radians
+      (or 180\textdegree)
 
