@@ -4,13 +4,13 @@
    \tikzstyle{rel}=[shorten <=1pt,shorten >=1pt];
    \draw 
    node (1) [label={below:1}] {}
-   node (2) [label={left:2},above=of 1] {}
-   node (3) [label={right:3},right=of 2] {}
-   node (4) [label={left:4},above=of 2] {}
-   node (5) [label={left:5},left=of 2] {}
-   node (6) [label={right:6},above=of 3] {}
-   node (7) [label={left:7},left=of 4] {}
-   node (8) [label={left:8},above=of 4] {}
+   node (2) [label={left:2},above of=1] {}
+   node (3) [label={right:3},right of=2] {}
+   node (4) [label={left:4},above of=2] {}
+   node (5) [label={left:5},left of=2] {}
+   node (6) [label={right:6},above of=3] {}
+   node (7) [label={left:7},left of=4] {}
+   node (8) [label={left:8},above of=4] {}
    ;
    \path
    (1) edge (2)
