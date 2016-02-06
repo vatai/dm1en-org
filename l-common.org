@@ -1,13 +1,19 @@
-#+OPTIONS: H:3 -:t tags:nil ^:nil toc:nil
+#+OPTIONS: H:2 -:t tags:nil ^:nil toc:nil email:t ':t
 #+STARTUP: beamer
 
+# comment the next line to make article (OPTIONS are set in the first line)
+#z+BEGIN_COMMENT
 #+OPTIONS: toc:t
 #+LATEX_CLASS: article
-#+LATEX_CLASS_OPTIONS: [a4paper]
 #+LATEX_HEADER: \usepackage[]{beamerarticle}
+#+BEGIN_COMMENT
+#+END_COMMENT
+#+LATEX_CLASS_OPTIONS: [a4paper]
 
-#+AUTHOR: Emil Vatai
-#+EMAIL: vatai@inf.elte.hu
+
+#+AUTHOR: Emil Vatai <vatai@inf.elte.hu> (based on hungarian slides by László Mérai)
+#+EMAIL: Financed from the financial support ELTE won from the Higher Education Restructuring Fund of the Hungarian Government.
+#+CREATOR: Based on the slides by László Mérai, email: merai@cs.elte.hu
 #+LANGUAGE: en
 
 #+LATEX_HEADER: \usepackage[]{lmodern}
