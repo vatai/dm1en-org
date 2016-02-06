@@ -116,7 +116,7 @@
 	3&x \equiv 4-7=-3 \pmod{7}\\
 	&x \equiv -1 \equiv 6 \pmod{7}
 	\end{align*}
-     2) $2&x \equiv 5 \pmod{14}$ has no solutions because
+     2) $2x \equiv 5 \pmod{14}$ has no solutions because
         $\gcd(2,14)=2\nmid5$
      3) There are 2 incongruent solutions because $\gcd(6,10)=2\mid 4$,
         namely $x_0\equiv 4 \pmod{10}$ and $x_1\equiv 9 \pmod{10}$

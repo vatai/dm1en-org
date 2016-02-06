@@ -175,7 +175,7 @@
    Ergo $R$ is not an equivalence relation, or an ordering, so there
    is no maximal/minimal element, and no classification.
    
-2. Calculate the rectangular form of the following numbers ($a$ and
+5. Calculate the rectangular form of the following numbers ($a$ and
    $b$ are non-zero real numbers):
    1. $(2+i)^2$; 
    2. $(a+3i)(b-2ai)$;
@@ -183,13 +183,38 @@
    4. $1/(a+bi) + 1/(a-bi)$; 
    5. $i^{2013}$.
    
-3. Using the polar form, calculate the value of $z$, both the polar
+6. Using the polar form, calculate the value of $z$, both the polar
    and rectangular form, then give all complex values of $w$ in polar
    for, for which $w^6=z$ is true.
    \[ z = \frac{(2+2\sqrt{3}i)^{24}}{(-1+i)^{90}} \]
-4. 
+7. 
    1. Solve the following equation on the set of complex numbers:
       \[ (1+i)z^2 + (2+3i)z + (1+2i) = 0 \]
    2. What are the points dividing the PQ line segment into 3 equal
       segments, if $P = 2+3i$, $Q=-4+5i$.
 
+* Solutions
+  1. 
+  2. 
+  3. 
+  4. 
+  5. 
+  6. 
+     \begin{align*}
+     z &
+     = \frac{(2+2\sqrt{3} i)^{24}}{(-1+i)^{90}} 
+     = \frac{(4       \cdot (\cos\frac{\pi}{3} + i \sin\frac{\pi}{3}) )^{24}}
+     {(\sqrt{2}\cdot (\cos\frac{3\pi}{4} + i\sin\frac{3\pi}{4}))^{90}}
+     = \frac{2^{48} \cdot(\cos\frac{24\pi}{3} +i\sin\frac{24\pi}{3})}
+     {2^{45}\cdot(\cos\frac{270\pi}{4}+i\sin\frac{270\pi}{4})}
+     \\&=2^3\cdot \frac{\cos8\pi+i\sin8\pi}
+     {\cos\frac{135\pi}{2}+i\sin\frac{135\pi}{2}}
+     =2^3\cdot \frac{\cos0\pi+i\sin0\pi}
+     {\cos\frac{3\pi}{2}+i\sin\frac{3\pi}{2}}
+     =2^3\cdot \cos(0-\frac{3\pi}{2})+i\sin(0-\frac{3\pi}{2})
+     =8\cdot(\cos\frac{\pi}{2} + i \sin\frac{\pi}{2})
+     \end{align*}
+  7. $z_{0,1}=\frac{-b\pm\sqrt{b^2-4ac}}{2a} =
+     \frac{-(2+3i)\pm\sqrt{(2+3i)^2 -4\cdot(1+i)\cdot (1+2i)}}{2\cdot
+     (1+i)}$ and my software says,
+     $z=-\frac{1+2i}{i+1}=-\frac{3}{2}-\frac{i}{2}$ and $z=-1$.
