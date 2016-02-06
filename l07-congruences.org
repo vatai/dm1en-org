@@ -1,10 +1,6 @@
 # -*- mode: org; mode: flyspell; -*-
-#+STARTUP: beamer
-#+INCLUDE: "beamer-common.org"
-# #+LATEX_CLASS: article
-# #+LATEX_HEADER: \usepackage{beamerarticle}
-# #+LATEX_CLASS_OPTIONS: [draft]
 
+#+SETUPFILE: l-common.org
 #+TITLE: Discrete mathematics I - Number theory Congruences
 #+SHORT_TITLE: Congruences
 #+COLUMNS: %30ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
@@ -207,6 +203,7 @@
     :BEAMER_env: example
     :BEAMER_col: 0.45
     :END:
+    
     # Let us solve the congruence!
     | $i$  | $r_n$ | $q_n$ | $x_i$ |
     | $-1$ | $23$  | --    | $1$   |
@@ -216,7 +213,7 @@
     | $3$  | $3$   | $5$   | $46$  |
     | $4$  | $1$   | $1$   | $-55$ |
     | $5$  | $0$   | $3$   | --    |
-*** $\usebeamercolor{block title}\color{fg}23x\equiv 4 \pmod{211}$ 		    :B_example:BMCOL:
+*** $23x\equiv 4 \pmod{211}$ 		    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -549,7 +546,7 @@
     For a fixed modulus $m$, let $\Z_m$ be the set of residue classes
     modulo $m$.  Then addition and multiplication can be defined on
     this set.
-*** $\usebeamercolor{block title}\color{fg}\Z_3,+$						    :B_example:BMCOL:
+*** $\Z_3,+$ 						    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -558,7 +555,7 @@
          | $\overline{0}$ | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ |
          | $\overline{1}$ | $\overline{1}$ | $\overline{2}$ | $\overline{0}$ |
          | $\overline{2}$ | $\overline{2}$ | $\overline{0}$ | $\overline{1}$ |
-*** $\usebeamercolor{block title}\color{fg}\Z_3,\cdot$ 				    :B_example:BMCOL:
+*** $\Z_3,\cdot$ 				    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -571,7 +568,7 @@
 
 
 ** Example
-*** $\usebeamercolor{block title}\color{fg}\Z_4,+$ 				    :B_example:BMCOL:
+*** $\Z_4,+$ 	    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -582,7 +579,7 @@
     | $\overline{2}$ | $\overline{2}$ | $\overline{3}$ | $\overline{0}$ | $\overline{1}$ |
     | $\overline{3}$ | $\overline{3}$ | $\overline{0}$ | $\overline{1}$ | $\overline{2}$ |
 
-*** $\usebeamercolor{block title}\color{fg}\Z_4,\cdot$ 				    :B_example:BMCOL:
+*** $\Z_4,\cdot$ 				    :B_example:BMCOL:
     :PROPERTIES:
     :BEAMER_env: example
     :BEAMER_col: 0.45
@@ -627,7 +624,7 @@
     \pmod{m}$ \ie $\overline{a}\cdot \overline{x}=\overline{1}$. 
 
 * Euler-Fermat theorem and the totient function
-** Euler's totient $\usebeamercolor{block title}\color{fg}\varphi$ function
+** Euler's totient $\varphi$ function
 *** Totient function 					       :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
@@ -648,7 +645,7 @@
     modulo $m$.
 ** Euler function
    $\varphi (m)=|\{i: \ 0<i<m, (m,i)=1\}|$
-*** Calculating the $\usebeamercolor{block title}\color{fg}\varphi(n)$			  :B_theorem:
+*** Calculating the $\varphi(n)$ 				  :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
@@ -657,7 +654,7 @@
  
      \[ \varphi(m)=m\cdot \prod_{i=1}^\ell \left(1-\frac{1}{p_i^{e_i}}
      \right) \]
-*** Calculating the $\usebeamercolor{block title}\color{fg}\varphi(n)$			  :B_example:
+*** Calculating the $\varphi(n)$			  :B_example:
     :PROPERTIES:
     :BEAMER_env: example
     :END:

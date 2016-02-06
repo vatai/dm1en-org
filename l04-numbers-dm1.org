@@ -7,7 +7,7 @@
 
 * Natural numbers
 ** Peano axioms
-*** The set of natural numbers $\color{white}\N$
+*** The set of natural numbers $\N$
     Let $\N$ be a set and $f:\N\to\N$ a function so that the
     following statements are true:
     1. $0\in\N$.
@@ -67,7 +67,7 @@
     - distributivity: $k\cdot(m+n)=k\cdot m + k\cdot n$ and
       $(m+n)\cdot k = m\cdot k + n\cdot k$.
 ** Ordering of natural numbers
-*** Definition of $\color{white}\leq$
+*** Definition of $\leq$
    We can define the relation $R\subset \N\times\N$ as follows:
    $(n,m)\in R \iff \exists k (k\in \N \land n+k=m)$. Instead
    $(n,m)\in R$ we usually write $n\leq m$.
@@ -85,7 +85,7 @@
      k_3 (k_3 \in \N \land n_1 + k_3 =n_3)$ where $k_3=k_1+k_2$.
 * Integers
 ** Definition of integers
-*** The set $\color{white}\Z$
+*** The set $\Z$
    We can define the set of integers $\Z$ using $\N$ with its
    operations as follows.
    - Let $=_\Z\subset \N^2\times\N^2$ and $(m,n)=_\Z(m',n')\iff m+n'=m'+n$.
@@ -114,7 +114,7 @@
    - Of course instead of class of $(7,0)$ we just write 7, and
      instead of $(0,42)$ we write just $-42$.
 ** Ordering of integers
-*** Embedding of $\color{white}\N$ into $\color{white}\Z$
+*** Embedding of $\N$ into $\Z$
     - There is a homomorphism from $\N$ to the equivalence classes
       which contain the pairs $(m,0)$ ($m\in\N$)
     # - This means that there is a natural connection between the
@@ -149,7 +149,7 @@
       commutative \ie $a\otimes b = b \otimes a$ for each $a,b\in G$.
 * Rational numbers
 ** Definition
-*** Definition of $\color{white}\Q$
+*** Definition of $\Q$
     Usually the set of rational numbers is defined as a set of
     fractions \ie numbers $\frac{p}{q}$ where $p,q\in \Z$. The precise
     definition is as follows:
@@ -217,7 +217,7 @@
       even, and we could have simplified $p$ and $q$ by dividing them
       with $2$ which would make them smaller (which is a
       contradiction).
-*** Definition of $\color{white}\R$
+*** Definition of $\R$
     The set of *real numbers* $\R$ is defined as an ordered field
     which has the leas upper bound property. The properties of real
     numbers are further discussed in analysis/calculus.
@@ -246,7 +246,7 @@
     $w=u+vi$ becomes $z+w=(x+yi)+(u+vi)=(x+u)+(y+v)i$; multiplication
     becomes $zw=(x+yi)(u+vi)=xu +xvi +yui + yvi^2=(xu-yv) + (xv +yu)i$
     because $i^2=-1$.
-*** Functions on $\color{white}z=x+yi$
+*** Functions on $z=x+yi$
     If $z\in \C$ and $z=x+yi$ where $x,y\in\R$ then 
     - $x=\Re(z)$ is the *real* and $y=\Im(z)$ is the *imaginary
       part* of $z$;
@@ -290,59 +290,77 @@
     - multiplication: $zw=rs(\cos(t+q)+i\sin(t+q))$
     - division: $z/w=\frac{r}{s}(\cos(t-q)+i\sin(t-q))$
     - exponentiation: $z^n=r^n(\cos(nt)+i\sin(nt))$
-*** $\color{white}n$-th root of a complex number
-    Let $z=r(\cos t+i\sin t)$ and $n\in\N$.  $w\in\C$ is the *$n$-th
+*** \(n\)-th root of a complex number
+    Let $z=r(\cos t+i\sin t)$ and $n\in\N$.  $w\in\C$ is the *\(n\)-th
     root of $z$* if $w^n=z$ \ie the roots of the polynomial $x^n-z$
     sometimes written as $w=\sqrt[n]{z}$.
 
     By the fundamental theorem of algebra, there are $n$ number of
-    $n$-th roots of $z$, and these can be obtained using the following
+    \(n\)-th roots of $z$, and these can be obtained using the following
     formula: \[w_k=\sqrt[n]{r}\left(\cos\frac{t+2k\pi}{n}
     +i\sin\frac{t+2k\pi}{n}\right) \text{ for } k=0,1,2,\ldots,n-1\]
-* COMMENT Graphical representations
+* Graphical representations
+  \usetikzlibrary{decorations.pathreplacing}
   \begin{tikzpicture}[scale=2]
   \def\sqrtthree{1.732050808}
   \def\zcords{(1/2,\sqrtthree/2)}
-  % grid, axis, circle
-  \draw[style=help lines,step=0.5] (-1.4,-1.4) grid (1.4,1.4);
-  \draw (0,0) circle (1);
-  \draw[<->] (-1.5,0) -- (1.5,0);
-  \draw[<->] (0,-1.5) -- (0,1.5);
+
+  \clip(-0.3,-0.3) rectangle (3,1.5);  
   
+  % grid, axis, circle
+  \draw[style=help lines,step=0.5,color=gray,densely dotted] 
+  (-1.2,-1.2) grid (1.2,1.2);
+  \draw[->] (-1.2,0) -- (1.2,0); % X axis
+  \draw[->] (0,-1.2) -- (0,1.2); % Y axis
+  \draw[dashed,color=gray] (0,0) circle (1);
+  
+  \filldraw[fill=green!20,draw=cyan] (0,0) -- (3mm,0pt) arc(0:60:3mm);
+  \node[color=cyan] at (0.2,0.1) {$\alpha$};
+
+  % r = |z| etc
+  \node[rotate=60,color=magenta] at (-0.1,0.6) {$r=|z|$};
+  \draw[color=magenta,decorate,decoration={brace,amplitude=10pt,mirror,raise=4pt}] \zcords -- (0,0) node{};
+
+  % cos alpha
+  \draw[color=blue] (0,0) -- (1/2,0)   (1/4,-0.1) node{$\cos \alpha$};
+
+  % sin alpha
+  \draw[color=red] (1/2,0) -- \zcords (0.6,0.4) node[rotate=90]{$\sin \alpha$};
+
+  % arrow to z and z's label
+  \draw[->,>=latex] (0,0) -- \zcords;
   \draw \zcords 
-  node[draw, >=latex, label=45:{$z$}, circle, 
-  minimum width=2pt, inner sep=0pt, fill=black] {};
-  \draw[->] (0,0) -- \zcords;
-  \filldraw[fill=green!20,draw=anglecolor] (0,0) -- (3mm,0pt) arc(0:60:3mm);
+  node [draw, label=45:{$z=r(\cos \alpha + i \sin \alpha)$}, circle, 
+  minimum width=1pt, inner sep=1pt, fill=black] {};
 
   \end{tikzpicture}
 * Roots of unity
-** $n$-th roots of unity
+** \(n\)-th roots of unity
 *** Definition
-    For $n\in\N^+$ the $\varepsilon\in\C$ is an *$n$-th root of unity*
+    For $n\in\N^+$ the $\varepsilon\in\C$ is an *\(n\)-th root of unity*
     if $\varepsilon^n=1$.
 
-    The set of $n$-th roots of unity are denoted by $E_n$.
+    The set of \(n\)-th roots of unity are denoted by $E_n$.
 *** Example
-    - 1 is a $n$-th root of unity for each $n\in\N^+$.
-    - $2$-nd roots of unity are $+1$ and $-1$.
+    - 1 is a \(n\)-th root of unity for each $n\in\N^+$.
+    - second roots of unity are $+1$ and $-1$.
     - $E_4=\{1,i,-1,-i\}$.
     - $\varepsilon=\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}=-\frac{1}{2}+i\frac{\sqrt{3}}{2}$
-      is a $3$-rd root of unity, but it is not a $4$-th root of unity.
+      is a third root of unity, but it is not a \(4\)-th root of unity.
     - $E_n=\{\varepsilon_0,\varepsilon_1,\ldots,\varepsilon_{n-1}\}$
       where $\varepsilon_k=\cos\frac{2\pi k}{n}+i\sin\frac{2\pi
       k}{n}$.
-** Primitive $n$-th roots of unity
+** Primitive \(n\)-th roots of unity
 *** Definition
-    For $n\in\N^+$ the $\varepsilon\in\C$ is an *primitive $n$-th root
-    of unity* if $\varepsilon^n=1$ \ie it is an $n$-th root of unity
+    For $n\in\N^+$ the $\varepsilon\in\C$ is an *primitive \(n\)-th root
+    of unity* if $\varepsilon^n=1$ \ie it is an \(n\)-th root of unity
     and $\{\varepsilon^k:k\in\N\}=E_n$.
 *** Example
     - $E_2=\{1,-1\}$, $E_4=\{1,i,-1,-i\}$
-      - $-1$ is a $2$-nd and a $4$-th root of unity, 
-      - but it is only a primitive $2$-nd root of unity, 
-      - not a primitive $4$-th root of unity
+      - $-1$ is a second and a \(4\)-th root of unity, 
+      - but it is only a primitive second root of unity, 
+      - not a primitive \(4\)-th root of unity
     - $\varepsilon=\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}=-\frac{1}{2}+i\frac{\sqrt{3}}{2}$
-      is a primitive $3$-rd root of unity.
+      is a primitive third root of unity.
 
     

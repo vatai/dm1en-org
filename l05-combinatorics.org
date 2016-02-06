@@ -1,11 +1,10 @@
 # -*- mode: org; mode: flyspell; -*-
-#+STARTUP: beamer
-#+INCLUDE: "beamer-common.org"
+
+#+SETUPFILE: l-common.org
 #+TITLE: Discrete mathematics I - Combinatorics
 #+SHORT_TITLE: Combinatorics
 #+COLUMNS: %30ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
 
-# #+LATEX_CLASS_OPTIONS: [draft]
 
 * Combinatorics
 ** Combinatorics
@@ -118,7 +117,7 @@
     *A permutation with repetition* is a sequence of $m$ different
      kinds of elements, so that there are $k_1$ number of elements of
      the first kind, $k_2$ of the second kind, \dots, $k_m$ of the
-     $m$-th kinds, and their number is:
+     \(m\)-th kinds, and their number is:
      \begin{equation}\label{eq:permrep}
      \frac{(k_1+k_2+\dots+k_m)!}{k_1!k_2!\cdots k_m!} 
      \end{equation}
@@ -129,7 +128,7 @@
     :END:
     - If we distinguish each of the element: $(k_1+k_2+\dots+k_m)!$.
  
-    - If we don't distinguish the elements of the $i$-th kind: $k_i!$
+    - If we don't distinguish the elements of the \(i\)-th kind: $k_i!$
       of the sequences are equal.
     - If we don't distinguish the elements of the same kind:
       $k_1!k_2!\cdots k_m!$ of the sequences are equal.
@@ -160,7 +159,7 @@
     :BEAMER_env: proof
     :END:
     The number of choices for the first element from the set $A$ is
-    $n$, for the second element $(n-1)$, \dots, for the $k$-the
+    $n$, for the second element $(n-1)$, \dots, for the \(k\)-th
     element $n-k+1$ choices.
 
 ** Variations with repetition
@@ -212,7 +211,7 @@
 
 * Combinations
 ** Combinations
-*** Number of combinationc					  :B_theorem:
+*** Number of combinations 					  :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
@@ -225,8 +224,8 @@
     :BEAMER_env: proof
     :END:
      First choose $k$ elements from $A$ considering the order they are
-     chosen. This can be done $n(n-1)\dots
-     (n-k+1)=\frac{n!}{(n-k)!}$-different ways.
+     chosen. This can be done \(n(n-1)\dots
+     (n-k+1)=\frac{n!}{(n-k)!}\) different ways.
     
      If we ignore the order they were chosen, in the previous
      enumeration every subset of $k$ elements appeared exactly $k!$
@@ -259,8 +258,8 @@
     \underset{\text{\color{black}choices of } a_n}{\underbrace{1, 1,
     \dots , 1}}\]
 
-    Then the sequences contain $k$ number of $1$'s (the number of
-    chosen elements), $n-1$ number of $0$'s (separators). Together
+    Then the sequences contain $k$ number of \(1\)'s (the number of
+    chosen elements), $n-1$ number of \(0\)'s (separators). Together
     $n-1+k$ positions, $k$ of them are chosen.  The number of such
     sequences is $\binom{n+k-1}{k}$.
 
@@ -293,7 +292,7 @@
      \[\binom{n}{k}=\frac{n!}{k!(n-k)!}\]
 ** Summary (with repetition)
    - Permutations with repetition: the number of sequences of
-     $n=k_1+k_2+\dots +k_m$ elements, where number of $i$-th kind of
+     $n=k_1+k_2+\dots +k_m$ elements, where number of \(i\)-th kind of
      elements is $k_i$ (order counts, elements can appear multiple
      times). \[\frac{(k_1+k_2+\dots+k_m)!}{k_1!k_2!\cdots k_m!} \]
    - Variations with repetition: the number of $k$ long sequences made
@@ -316,7 +315,7 @@
     :END:
     $(x+y)^n=(x+y)(x+y)\cdots (x+y)$ The multiplication, yields terms
     of the form $x^k y^{n-k}$, and the number of such a term is the
-    number of possibilities when $k$ number of $x$'s were chosen from
+    number of possibilities when $k$ number of \(x\)'s were chosen from
     $n$ terms.
   
 *** Definition						       :B_definition:
@@ -339,9 +338,9 @@
     :BEAMER_env: proof
     :END:
     $\binom{n}{k}$ is the number of $n$ long $\{0,1\}$ sequences,
-    with $k$ number of $1$'s.
+    with $k$ number of \(1\)'s.
     1. The number of $n$ long $\{0,1\}$ sequences equals to the number of
-       sequences which have $n-k$ number of $1$'s.
+       sequences which have $n-k$ number of \(1\)'s.
     2. The number of $n$ long $\{0,1\}$ sequences, with first element
        $1$: $\binom{n-1}{k-1}$.  The number of $n$ long $\{0,1\}$
        sequences, with first element $0$: $\binom{n-1}{k}$.

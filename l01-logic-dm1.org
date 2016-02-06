@@ -52,7 +52,7 @@
 ** Terms
 *** Definition
     1) If $t\in U$ then $t$ is a *term*.
-    2) If $f$ is an $n$-ary function symbol, and $t_1,t_2,\ldots,t_n$
+    2) If $f$ is an \(n\)-ary function symbol, and $t_1,t_2,\ldots,t_n$
        are terms, then $f(t_1,t_2,\ldots,t_n)$ is a *term*.
     3) *Every term* can be obtained by the finite application of the
        previous two rules.
@@ -64,7 +64,7 @@
 *** Definition
     - A *predicate* takes an entity or entities in the *domain of
       discourse* as *input* and *outputs* either *True or False*.
-    - $P$ is an $n$-ary predicate if $P:U^n\to \mathbb{L}$.
+    - $P$ is an \(n\)-ary predicate if $P:U^n\to \mathbb{L}$.
     - Predicates are statements about the entities of the domain of
       discourse.
 *** Examples
@@ -150,7 +150,7 @@
       implies everything". (Check the truth-tables)
 ** Well-formed formulas
 *** Definition
-    1) If $P$ is a $n$-ary predicate, and $t_1,t_2,\ldots,t_n$ are
+    1) If $P$ is a \(n\)-ary predicate, and $t_1,t_2,\ldots,t_n$ are
        terms, then $P(t_1,t_2,\ldots,t_n)$ is called an *atomic
        formula* and it is a well-formed formula.
     2) If $\A$ and $\B$ are well-formed formulas then $\A\land\B$,
@@ -244,7 +244,7 @@
 * First-order logic
 ** Well-formed formulas
 *** Definition
-    1) If $P$ is a $n$-ary predicate, and $t_1,t_2,\ldots,t_n$ are
+    1) If $P$ is a \(n\)-ary predicate, and $t_1,t_2,\ldots,t_n$ are
        terms, then $P(t_1,t_2,\ldots,t_n)$ is called an *atomic
        formula* and it is a well-formed formula.
     2) If $\A$ and $\B$ are well-formed formulas then $\A\land\B$,
