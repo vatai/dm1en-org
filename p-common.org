@@ -1,26 +1,22 @@
-#+OPTIONS: H:2 -:t tags:nil ^:nil toc:nil email:t ':t
-#+STARTUP: beamer
-
-# comment the next line to make article (OPTIONS are set in the first line)
-#+BEGIN_COMMENT
-#+OPTIONS: toc:t
+#+OPTIONS: H:3 -:t tags:nil ^:nil toc:nil num:nil
+# #+STARTUP: beamer
 #+LATEX_CLASS: article
 #+LATEX_HEADER: \usepackage[]{beamerarticle}
-#+BEGIN_COMMENT
-#+END_COMMENT
-#+LATEX_CLASS_OPTIONS: [a4paper]
 
+#+LATEX_CLASS_OPTIONS: [a4paper,twocolumn]
 
-#+AUTHOR: Emil Vatai <vatai@inf.elte.hu> (based on hungarian slides by László Mérai)
-#+EMAIL: Financed from the financial support ELTE won from the Higher Education Restructuring Fund of the Hungarian Government.
-#+CREATOR: Based on the slides by László Mérai, email: merai@cs.elte.hu
+#+AUTHOR: Emil Vatai
+#+EMAIL: vatai@inf.elte.hu
 #+LANGUAGE: en
 
+#+LATEX_HEADER: \usepackage{paralist}
 #+LATEX_HEADER: \usepackage[]{lmodern}
 #+LATEX_HEADER: \usepackage[T1]{fontenc}
 #+LATEX_HEADER: \usepackage[utf8]{inputenc}
 #+LATEX_HEADER: \usepackage[]{babel}
+#+LATEX_HEADER: \usepackage[margin=1.5cm]{geometry}
 
+#+LATEX_HEADER: \usepackage{multicol}
 #+LATEX_HEADER: \usepackage[]{mathtools}
 #+LATEX_HEADER: \usepackage[]{tikz}
 #+LATEX_HEADER: \usetikzlibrary{arrows}

@@ -1,0 +1,469 @@
+# -*- mode:org; mode: flyspell; -*-
+
+#+SETUPFILE: p-common.org
+
+#+TITLE: Discrete mathematics I. practice - Combinatorics
+#+SHORT_TITLE: Combinatorics
+
+* Problems
+  1. How many different ways can 6 people sit down at a round table, if
+     we consider arrangements which can be rotated into each other as
+     equal?
+
+  2. How many different 10 digit numbers are there with each digit
+     different?
+
+  3. How many different ways can 3 men and 7 women enter a room?
+
+  4. How many ways can 12 people be assigned to a room with 3 beds, a
+     room with 4 beds and a room with 5 beds.
+
+  5. We have marbles labeled with numbers 1, 2, 3, 4, 5, 6 in an box.
+     We remove 4 marbles one-by-one without returning them. 
+     1) how many possibilities are there; 
+     2) how many possibilities if the first marble is labeled 1;
+     3) how many possibilities if the last one's label is even?
+
+  6. An $f:\{\uparrow, \downarrow\}^n\to \{\uparrow, \downarrow\}^m$
+     function is called a /Boole function (or map)/ with $n$
+     parameters (inputs), and $m$ values (outputs). How many such maps
+     are there?
+
+  7. How many 6 digit numbers are there with
+     1) different consecutive digits;
+     2) every digit different;
+     3) exactly one 0;
+     4) with at least one 0 digit?
+
+  8. How many lottery tickets do we have to fill out to win for sure?
+     (A lottery ticket has 90 numbers and you can choose 5).
+
+  9. 7 men and 8 women applying for a job.  The company wants to hire
+     5 men and 4 women. How many ways is this possible?
+
+  10. How many ways can we divide 10 candies among 3 kids?
+
+  11. In a post office there are 10 kinds of postcards.  How many ways
+      can we buy 12 postcards?
+
+  12. We have a scale with two trays, which can determine which tray
+      contains the heavier object.  We also have 9 coins, which look
+      identical, but one of them is fake, and that one is lighter.
+      How many measurements do we need to find the fake coin (if we
+      can put more than one coin in the trays)?  Provide strategy and
+      prove that doing it in less measurements is not possible.
+
+  13. 25 people are competing in a race.  How many ways can they cross
+      the finish line (there are no ties and everyone finishes)?
+
+  14. How many subsets does the set $\{1,2,\ldots,n\}$ have? How many of
+      these subsets:
+     #+ATTR_LATEX: :environment inparaenum
+      1. contain the number 1;
+      2. contain both 1 and 2;
+      3. contain 1 or 2?
+
+  15. How many sequences can we make from $1, 2, \ldots, n$ where 1 and
+      2 are not next to each other? 
+
+  16. How many words can we make from the letters of the word
+      MISSISSIPPI, so that four S's aren't next to each other?
+
+  17. In the expression $(a+b)^{22}$, what is the coefficient of
+      $a^{14}b^{8}$ and of $a^{17}b^{5}$? 
+
+  18. On a $3\times 10$ chess board, how many ways are there from the
+      bottom-left to the top-right square if we can step only right
+      $\rightarrow$, up $\uparrow$ or diagonally (up-right)?
+
+  19. On a plane, we have two parallel lines, with $p$ points on the
+      first one, and $q$ points on the second one. How many triangles
+      can we make with these points as the vertices? 
+
+  20. Let $C_N^k$ be the coefficient of $x^{n-k}y^{k}$ in the expression
+      $(x+y)^n$.  These numbers constitute the Pascal triangle.  What is
+      sum of the elements of a row of the Pascal triangle?  What is the
+      sum with alternating signs? 
+
+  21. How many trailing zeros does the number $11^{100}-1$ have? 
+
+  22. A class with 25 students wants to form a delegation of 6 members,
+      with one president and one secretary.  How many ways can they be
+      elected if each position has to be fulfilled by a different
+      person.
+
+  23. How many different ways can we divide $n$ coins among $k$
+      people? What if each person gets at leas one coin?
+ 
+  24. In the pastry shop there are 5 kinds of pasties. There is at least
+      20 of each. How many ways can we eat 3 if:
+      #+ATTR_LATEX: :environment inparaenum
+      1) the order does count; 
+      2) the order doesn't count?
+
+  25. If the order counts, how many way can we partition 
+      #+ATTR_LATEX: :environment inparaenum
+      1) 100 into a sum of 7 positive integers 
+      2) 200 into a sum of 12 non-negative integers 
+      3) 12 into a sum of ones and twos.
+
+  26. How many ways can we cover a $2 \times 12$ chess board with $2
+      \times 1$ dominoes (which can be placed vertically or
+      horizontally).
+
+  27. A set of (french) cards has four suits, each containing 13
+      cards, one of which is the ace of the corresponding suite.  Four
+      players are dealt 13 cards each. 
+      #+ATTR_LATEX: :environment inparaenum
+      1) How many ways can the cards be dealt (i.e. how many different
+         hands can the players get)?
+      2) How many ways can each player get an ace?
+      3) How many ways can all the aces end up at the same person.
+
+  28. How many ways can $n$ zeros and $k$ ones be arranged in a sequence
+      so that two ones are never next to each other? 
+  29. We have 10 red, 20 white and 40 green balls in a box.  How many do
+      we have to choose so that we surely have:
+      #+ATTR_LATEX: :environment inparaenum
+      - 1 white; 
+      - 3 different; 
+      - 3 of the same color; 
+      - 5 of the same color; 
+      - 15 of the same color; 
+      - chosen 2 green balls consecutively.
+  30. What is the minimal number of students in a class so that:
+      #+ATTR_LATEX: :environment inparaenum
+      - 4 students have their birthday in the same month;
+      - there are at least 3 birthdays in each month?
+  31. At most how many integers can have, so that the difference of any
+      two numbers will not be divisible by 8? 
+  32. Show that at least one of the numbers $\pi, 2\pi, \ldots, 100\pi$
+      is closer to an integer than $1/101$. Generalize the statement.
+  33. Prove that for any $m\in\mathbb{N^+}$ there exists an
+      $n\in\mathbb{N^+}$, so that $mn$ written in the decimal number
+      system has only digits 0 or 1? 
+  34. How many TOTO tickets do we have to fill, to have at least 5 hits
+      (good predictions)? 
+  35. For how many 6 digit numbers are the following statements true:
+      #+ATTR_LATEX: :environment inparaenum
+      - consecutive digits are different; 
+      - every digit is different;
+      - exactly one digit is 0; 
+      - at least one of the digits is zero?
+  36. A flea is jumping left and right on the integers of the number
+      line. How many ways can it jump to the number $+24$ after a minute
+      of jumping, if it started from $0$, and jumps once every second.
+  37. In a class of 30 students, 12 are studying mathematics, 5
+      mathematics and physics, 14 physics, 4 mathematics and chemistry, 13
+      chemistry, 7 physics and chemistry and 3 all three subjects. How
+      many are studying none of the above subjects. 
+  38. How many natural numbers less than 100 are not divisible by 2, 3 nor
+      1. And how less then 1000 many are not divisible by 2, 3, 5 nor 7?
+  39. How many ways can we put 30 balls into 100 boxes, if every non-empty
+      box has to have exactly 6 balls, and 
+      #+ATTR_LATEX: :environment inparaenum
+      - all the balls are the same; 
+      - the balls differ and we are considering the order of the balls
+	in each box;
+      - the balls differ but we disregard the order of the balls?
+  40. 12 knights sit at the Round Table of King Arthur.  Everybody
+      dislikes the two knights sitting next to them.  5 knights have to be
+      selected to slay the dragon and save the princess.  How many ways
+      can we select the knights so they don't dislike each other? What if
+      there are $n$ knights and $k$ of them have to go save the princess?
+
+* Solutions
+  1. $5!$. One person is fixed, and the others can sit $5!$ ways in
+     the remaining seats.  
+
+     Other solution: $6!$ all the solutions, but
+     each arrangement can be rotated 6 different ways. So we get
+     $6!/6 = 5!$.
+  2. $9 \cdot 9!$. We have 9 non-zero digits for the first digit, and
+     $9!$ for the rest. 
+
+     Other solution: $10! - 9! = 10\cdot 9! - 9! = (10-1)\cdot 9!$, \ie
+     all possibilities minus the wrong ones.
+  3. $P_{10}^{3,7}=\frac{10!}{3!\cdot 7!}$ \ie permutations with
+     repetition.
+
+     Other solution: $\binom{10}{3}=\binom{10}{7}=\frac{10!}{3!\cdot
+     7!}$, where $\binom{n}{k} = \frac{n!}{k!(n-k)!}$.
+  4. $\binom{12}{3} \cdot \binom{9}{4} \cdot \binom{5}{5}$ this is
+     equal to \[ \frac{12!}{3!\cdot 9!} \cdot \frac{9!}{4!\cdot 5!}
+     \cdot \frac{5!}{5!\cdot 0!} = \frac{12!}{3!\cdot 4! \cdot 5!}\]
+     
+     Other answer: $P_{12}^{3,4,5} = \frac{12!}{3!\cdot 4! \cdot 5!}$.
+
+  5. Answers:
+     1) $6\cdot 5 \cdot 4 \cdot 3$. This is variations (without
+        repetition).
+
+     2) $1 \cdot 5 \cdot 4 \cdot 3$. First is 1 and the rest can be
+        chosen $5 \cdot 4 \cdot 3$ ways.
+
+     3) $3 \cdot 5 \cdot 4 \cdot 3$. The last one can be chosen $3$
+        ways (2, 4 or 6), and rest $5 \cdot 4 \cdot 3$.
+
+  6. Each function can be represented as a table with two columns:
+     input and output! The first column has to have all the possible
+     inputs, and the values in the second column can be arbitrary.
+     Number of inputs $N=2^n$, so this is the number of rows in the
+     table. How many different way can we fill out the second column?
+     Each value in the second column can be on of $M=2^m$ outputs.
+     The second column of the first row can have $M$ possibilities,
+     the second row also $M$ possibilities and so on, \ie $M\cdot M
+     \cdots M=M^N=(2^m)^{(2^n)}$.
+
+  7. Answers:
+
+     1) $9^6$, because for the first digit we have 9 possibilities (it
+        can not start with 0), for each of the next digits, it can not
+        be the same as the one before, so $9 \cdot 9 \cdot 9 \cdot 9
+        \cdot 9 \cdot 9 = 9^6$.
+
+     2) $9 \cdot 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5$, because for the
+        first digit we have 9 possibilities (it can not start with 0),
+        and for the second digit again 9 possibilities (different from
+        the first one), then we are left with 8 possibilities for the
+        third, 7 for the fourth 6 for the fifth and 5 for the last
+        one.
+
+     3) $5 \cdot 9^5$. The $9^5$ part because we need 5 non-zero
+        digits (of which there are 9 of), and we multiply this with 5
+        because the zero can be in one of five digits (excluding the
+        first digit).
+
+     4) $9\cdot 10^5-9^6$. The number of all six digit number is
+        $9\cdot 10^5$ and we subtract the number of six digit numbers
+        without zeros \ie $9^6$. Or $10^6 - 10^5 - 9^6$, all six digit
+        numbers, minus the five digit numbers \ie which start with
+        zero, minus the ones which don't have zeros.
+
+  8. Answer one: to hit the jackpot \ie all five numbers are winners:
+     $\binom{90}{5}$.  Only one combination will win, so this value is
+     the number of all possible ways to fill out a lottery ticket.
+
+     Different answer: if winning is when at least two of your numbers
+     are winning numbers, then the answer is different:
+     $\binom{85}{5} + \binom{85}{4} \cdot \binom{5}{1} + 1$. If we
+     fill out this many tickets in a different way, we can be sure,
+     that the number of our tickets is greater then the number of
+     tickets with 0 or 1 winning number.
+
+  9. $\binom{7}{5} \cdot \binom{8}{4}$, the first term is the number
+     of possibilities to hire 5 men out of 7, and the second is for 4
+     women out of 8.
+
+  10. Combination with repetition
+
+  11. Combination with repetition
+      $\binom{n+k-1}{k}=\binom{10+12-1}{12} = \binom{21}{12}$.
+
+  12. Two steps.
+
+  13. $25!$.
+
+  14. $2^n$.  First explanation: Count all the subsets with $0, 1, 2,
+      \ldots, n$ element and add them up, and you get the number of
+      all subsets, and this is \[ \binom{n}{0} + \binom{n}{1} +
+      \binom{n}{2} + \cdots + \binom{n}{n} = \sum_{k=0}^{n}
+      \binom{n}{k} \] but this is the same as \[ 2^n = (1 + 1)^n =
+      \sum_{k=0}^{n} \binom{n}{k} \cdot 1^k \cdot 1^{n-k} \] because
+      of the binomial theorem which says: \[ (a + b)^n = \sum_{k=0}^n
+      \binom{n}{k} a^k b^{n-k} \]
+	 
+      Second explanation: you can represent all the subsets of
+      $\{1,2,\ldots, n\}$ with an $n$ long sequence of bits. \Eg if
+      $n=3$, then $\emptyset = 000$, $\{1\} = 100$, $\{3\}=001$ or
+      $\{1,2\} = 110$. The number of such bit sequences is $2^n$.
+	 
+      1) $2^{n-1}$. The bit sequence has to start with 1, and
+         everywhere else we can have whatever we want, and everywhere
+         else has $n-1$ bits.
+
+      2) $2^{n-2}$, because, the sequences have to start with
+         $11\ldots$, so there are $n-2$ bits to choose as we like.
+
+      3) $2^{n-1} + 2^{n-2} = 3\cdot 2^{n-2}$, because, if the first
+         two bits are predetermined, then there are $2^{n-2}$, but the
+         first two bits can be: $01,10,11$, \ie 3 possibilities.
+
+  15. $n! - 2 \cdot (n-1)!$, all the cases $n!$, minus the wrong ones
+      \ie where 1 and 2 are next to each other.  We glue together 1
+      and 2 and treat it as one element, so now we have $n-1$ element,
+      they can be arranged $(n-1)!$ ways, but we can have to
+      possibilities 12 and 21 (so that's why we multiply with 2).
+
+  16. Number of letters: M:1, I:4, S:4, P:2, all together 11! So all
+      the possibilities \[ \frac{11!}{1!\cdot 4! \cdot 4! \cdot 2!}
+      \] Here the four S's are allowed to be next to each other, so we
+      subtract these cases: \[ \frac{8!}{1! \cdot 4! \cdot 1! \cdot
+      2!}  \] because we stick the four S's together, and treat is as
+      one letter, so now we have M:1, I:4, SSSS:1, P:2 all together 8.
+      The final answer is
+      \[ \frac{11!}{1!\cdot 4! \cdot 4! \cdot 2!} - \frac{8!}{1! \cdot 4! \cdot 1! \cdot
+      2!} \]
+
+  17. We use the binomial theorem for $n=22$ \[ (a + b)^{22} =
+      \sum_{k=0}^{22} \binom{22}{k} a^k b^{22-k} \] so the coefficient
+      of $a^{14}b^{8}$ is $\binom{22}{8}= \binom{22}{14}$, and the coefficient of
+      $a^{17}b^{5}$ is $\binom{22}{5}= \binom{22}{17}$.
+
+  18. 
+   :           10
+   :      OOOOOOOOOB 
+   :    3 OOOOOOOOOO
+   :      AOOOOOOOOC
+
+      Using only right and up steps, you need 9 right steps and 2
+      up steps to get from $A$ to $B$, so there are $\binom{11}{2}
+      = \binom{11}{9}$ possibilities (choose the places of the up
+      steps and fill the rest with right steps).
+
+      If you can step diagonally once, then you $10 \cdot 9 = 2
+      \cdot \binom{10}{2}$.
+
+      If you use two diagonal steps, you don't need up steps and 7
+      right steps, and you need 9 steps all together, so
+      $\binom{9}{2} = \binom{9}{7}$.
+
+      So the final answer is $\binom{11}{2} + 2 \cdot
+      \binom{10}{2} + \binom{9}{2}$.
+
+  19. 
+      : -o----o-o----o-- p number of points
+      :       \ /
+      : --o-o--o---o--o- q number of points
+      
+      \[ \binom{p}{2}\cdot \binom{q}{1} + \binom{q}{2}\cdot
+      \binom{p}{1} \] because 2 from $p$ and 1 from $q$, or 2 from $p$
+      and 1 from $q$.
+
+  20. Pascal triangle
+      : row
+
+      : 0: 1
+      : 1: 1 1
+      : 2: 1 2 1
+      : 3: 1 3 3 1
+      : 4: 1 4 6 4 1
+      : 5: 1 5 10 10 5 1
+      : ...
+      The $n$-th row of the $k$-th column equals $\binom{n}{k}$.
+
+      The sum of the elements in a row is $\sum_{k=0}^n \binom{n}{k}=
+      2^n$.
+
+      The sum of the elements in a row with alternating sign is $0$
+      because $0 = (1 -1)^n = \sum_{k=0}^n \binom{n}{k} \cdot
+      (-1)^{n-k}$.
+
+  21. The answer is 3.
+
+  22. $\binom{25}{6} \cdot \binom{6}{1} \cdot \binom{5}{1} =
+      \binom{25}{4} \cdot \binom{21}{1} \cdot \binom{20}{1}$.  We
+      either choose 6 people and from those 6 choose the president and
+      then from the remaining 5 the secretary, or we choose 4 regular
+      members from 25 people, and choose one president from the
+      remaining 21, and one secretary from the remaining 20.
+
+  23. Combinations with repetition: the coins choose the people,
+      $\binom{n+k-1}{n} = \binom{n+k-1}{k-1}$.  If each person has to
+      get at least one coin, $\binom{n-k+k-1}{n-k}= \binom{n-1}{k-1}$.
+
+  24. 
+      1) If the order matters, then we have /variations with
+         repetition/ $V_5^{3,*}=5^3$
+
+      2) If the order does not matter, then we have /combinations with
+         repetition/ $C_5^{3,*}=\binom{5+3-1}{3}$
+
+  25. 
+      1) $\binom{99}{6}$, because imagine 100 ones, with 99 pluses
+         between each, we choose 6 of them, and execute the rest.
+
+      2) $\binom{201+11-1}{11}$: imagine 200 ones, and 2 more zeros
+         (one one each end), then we have 201 pluses between them, and
+         we need to choose 11 with repetition allowed.
+
+      3) If we have $1+1+\cdots+1 = 12$, \ie we only use ones, then
+         this can be done in only one way \ie $\binom{12}{0}$ (\ie 12
+         ones and no twos).  Let's say, we allow 2 once in the sum,
+         \ie $2+1+\cdots+1 = 12$ or $1+2+\cdots+1=12$, then the sum
+         has 11 terms and we can make the sum $\binom{11}{1}$ ways
+         (\ie from the 11 terms, we choose one which is the number 2).
+         If we allow 2 twice, 1 eight times, then we can make the sum
+         $\binom{10}{2}$ different ways \etc. so the final answer is:
+         \[ \binom{12}{0} + \binom{11}{1} + \binom{10}{2} +
+         \binom{9}{3} + \binom{8}{4} + \binom{7}{5} + \binom{6}{6} =
+         F_{12}\] where $F_n$ is the $n$-th Fibonacci number (we wont
+         prove this).
+
+  26. 
+      : **************
+      : *|--||--|||--*
+      : *|--||--|||--*
+      : **************
+      : Dominoes:  |
+      : --   or    |
+
+      If all are vertical then there that's one way to cover the chess
+      board (\ie $\binom{12}{0}$).  We can not rotate only one domino,
+      we need to rotate them in pairs. If we rotate one pair, then
+      they will form a column of width 2, so we have 11 columns, and
+      we need to choose one, which is the horizontal one, ergo
+      $\binom{11}{1}$ possibilities.  If we rotate one more pair, then
+      $\binom{10}{2}$ possibilities, \etc. So the answer is: \[
+      \binom{12}{0} + \binom{11}{1} + \binom{10}{2} + \binom{9}{3} +
+      \binom{8}{4} + \binom{7}{5} + \binom{6}{6} = F_{12} \]
+
+  27. 
+      1) One answer is permutation with repetition:
+         $P_{52}^{13,13,13,13}= \frac{52!}{13! \cdot 13! \cdot 13!
+         \cdot 13!}$. \Eg how many ways can you arrange 13 marbles
+         marked with numbers 1, 2, 3, 4? 
+
+	 Another answer: $\frac{52!}{13! \cdot 13! \cdot 13!  \cdot
+         13!}$, because we can arrange the cards $52!$ different ways
+         on the table, and the first 13 goes to the first person, the
+         second 13 goes to the second person \etc, but we don't care
+         about the order of cards in one hand, \ie we should divide
+         with $13!$ for each hand/person.
+
+	 A third answer: $\binom{52}{13} \cdot \binom{39}{13} \cdot
+         \binom{26}{13} \cdot \binom{13}{13}$.
+
+      2) $4!$ ways can each of them get one ace (because 4 aces and 4
+         people). And we have $48$ non-ace cards, and each person gets
+         12 from these. So the final answer is: $4! \cdot
+         \frac{48!}{(12!)^4}$.
+
+      3) There are 4 people, so 4 ways to choose which one gets all
+         the aces, as he gets 9 more cards which are not aces, and the
+         rest get what they can: $4 \cdot \binom{48}{9} \cdot
+         \binom{39}{13} \cdot \binom{26}{13} \cdot \binom{13}{13}$.
+
+  28. 
+
+  29. 
+
+  30. 
+
+  31. 
+
+  32. We can split the $[0,1]$ interval into 101 intervals with length
+      $1/101$.  If there is a $k$ so that $\{k\pi\}$ is in the first
+      or last such interval, then we are done! If not, there are 99
+      other intervals, and by the pigeonhole principle one of them
+      will have to ``$\{k\pi\}$'s'', \ie $\exists i,j$ so that $1\le j
+      < i \le 100$, $\{i\pi\}$ and $\{j\pi\}$ belong to the same
+      $1/101$ long interval.  But then: $i\pi = \lfloor i\pi \rfloor +
+      \{ i\pi \}$, $j\pi = \lfloor j\pi \rfloor + \{ j\pi \}$, so \[
+      (i-j)\pi = i\pi - j\pi = \lfloor i\pi \rfloor + \{ i\pi \} - (
+      \lfloor j\pi \rfloor + \{ j\pi \}) \] so $(i-j)\pi = n + x$
+      where $1\le i-j \le 100$, $n = \lfloor i\pi \rfloor - \lfloor
+      j\pi \rfloor$ is an integer and $x = \{ i\pi \} - \{ j\pi \}$ is
+      less then $1/101$ because $\{ i\pi \}$ and $\{ j\pi \}$ belongs
+      to the same interval.
+

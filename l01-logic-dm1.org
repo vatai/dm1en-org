@@ -1,5 +1,6 @@
 # -*- mode: org; mode: flyspell; -*-
 #+SETUPFILE: l-common.org
+# (plist-put org-format-latex-options :scale 2)
 
 #+TITLE: Discrete mathematics I - Logic
 #+SHORT_TITLE: Logic
@@ -88,8 +89,10 @@
       *and*, *or*, *if...then*, *if and only if*, *not*
     - They connect predicated \ie statements to form larger statements
 *** Examples
-    - Binary logical operators: $\land$ (and, conjunction), $\lor$ (/inclusive or, disjunction), 
-      $\Rightarrow$ (if..then, implication), $\Leftrightarrow$ (if and only if, iff, equivalence).
+    - Binary logical operators: $\land$ (and, conjunction), $\lor$
+      (/inclusive/ or, disjunction), $\Rightarrow$ (if..then,
+      implication), $\Leftrightarrow$ (if and only if, iff,
+      equivalence).
     - Unary logical operator: $\lnot$ (not, negation)
 ** Truth-tables
 *** Conjunction and disjunction
@@ -121,9 +124,9 @@
 *** Inclusive, exclusive, conflicting\footnote{In lack of better translation} OR
     1. Inclusive or $\lor$: Those who had good weapons *or* good
        reflexes were victorious.
-    2. Inclusive or $\oplus$: We have to go left *or* right.
+    2. Exclusive or $\oplus$: We have to go left *or* right.
     3. "Conflicting" or: Drink *or* drive!
-      | $\A$   | $\B$   | $1$    | $2$    | $3$    |
+      | $A$    | $B$    | $1$    | $2$    | $3$    |
       |--------+--------+--------+--------+--------|
       |        |        | <c>    | <c>    | <c>    |
       | $\tru$ | $\tru$ | $\tru$ | $\fls$ | $\fls$ |
