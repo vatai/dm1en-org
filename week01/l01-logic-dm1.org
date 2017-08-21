@@ -1,6 +1,8 @@
 # -*- mode: org; mode: flyspell; -*-
-#+SETUPFILE: l-common.org
+#+SETUPFILE: ../inc/lecture.h.org
 # (plist-put org-format-latex-options :scale 2)
+# (org-tree-slide-mode)
+
 
 #+TITLE: Discrete mathematics I - Logic
 #+SHORT_TITLE: Logic
@@ -8,37 +10,162 @@
 #+LATEX_HEADER: \def\B{\mathcal{B}}
 #+LATEX_HEADER: \def\C{\mathcal{C}}
 #+LATEX_HEADER: \def\iff{\Leftrightarrow}
-#+LATEX_HEADER: \def\tru{\top}
-#+LATEX_HEADER: \def\fls{\perp}
 
 * Basics
 ** Logic: The science of correct reasoning 
 *** Definition
     - *Logic* (from the Ancient Greek: logike) is the use and study of
       *valid reasoning*.
-    - Independently of the object of discussion.
+    - Independent of the objects of discussion.
     - Logic discusses *statements* which have a unique *truth value*.
+
 *** Truth values
-    - *Truth values* can be either *true* ($\uparrow$, 1, $\tru$) or
-      *false* ($\downarrow$, 0, $\fls$).
-    - $\mathbb{L}=\{\tru,\fls\}$.
+    - *Truth values* can be either
+      - *true* ($\uparrow$, 1, $\top$, $T$) or
+      - *false* ($\downarrow$, 0, $\perp$, $F$).
+    - $\mathbb{L}=\{T,F\}$.
     - *Propositional variables* are variables which range over truth
       values, (they must be either true or false, but never both).
-* Zeroth-order logic
-** Zeroth-order logic
+
+** What we need to know
+*** Different kinds of logic
+    1. Zeroth-order logic - *Propositional* calculus
+    2. First-order logic - *Predicate* calclulus
+    3. Second-order logic (we're not doing this in detail)
+
+*** Why do we need it
+    - To *express* ourselves (not in an emo/artsy way!), 
+    - To *understand* the mathematics and
+    - To be able to apply it *properly*.
+    - Remark: the order (zero, first, second) denotes the *expressive
+      strength* of the logic.
+
+* Zeroth-order 
+** Propositional calculus
 *** Definition
     - In mathematical logic, a *propositional calculus* or *logic*
       (also called *sentential calculus* or *sentential logic*) is a
       formal system in which formulas of a formal language may be
       interpreted to represent propositions.
-    - It is formal, \ie it uses (well-formed) formulas to approximate
-      reality.
+    - It is formal, \ie it uses (well-formed) formulas defined by
+      rules (to approximate reality).
     - It deals only with statements which are either true or false
-      (not both).
+      (not both/neither).
     - Mathematical logic does not address the contents of the
       statement, only it's truth-value.
-    - Propositional logic discusses the properties and rules of
-      logical operations.
+    - Propositional logic discusses the properties and *rules of
+      logical operations*.
+** Logical operators
+*** Definition
+    - Logical operators are map of the form $\mathbb{L}^n \to
+      \mathbb{L}$ (for some positive integer $n$). 
+    - \Eg =bool LogOp(bool v1, bool v2, bool v3){...}=
+    - They come from well-known everyday logical operations, \eg
+      and, or, if...then, if and only if, not
+    - They connect predicated \ie statements to form larger statements
+
+*** Examples
+    - Binary logical operators: $\land$ (and, *conjunction*), $\lor$
+      (/inclusive/ or, *disjunction*), $\Rightarrow$ (if..then,
+      *implication*), $\Leftrightarrow$ (if and only if, iff,
+      *equivalence*).
+    - Unary logical operator: $\lnot$ (not, *negation*)
+** Truth-tables
+*** Conjunction and disjunction
+    1. Conjunction: $A\land B$
+    2. Disjunction: $A\lor B$
+    | $A$ | $B$ | 1   |   | $A$ | $B$ | 2   |
+    |-----+-----+-----+---+-----+-----+-----|
+    | /   |     | >   |   |     |     |     |
+    | $T$ | $T$ | $T$ |   | $T$ | $T$ | $T$ |
+    | $T$ | $F$ | $F$ |   | $T$ | $F$ | $T$ |
+    | $F$ | $T$ | $F$ |   | $F$ | $T$ | $T$ |
+    | $F$ | $F$ | $F$ |   | $F$ | $F$ | $F$ |
+** Truth-tables
+*** Implication and equivalence
+    1. Implication: $A\Rightarrow B$
+    2. Equivalence: $A\Leftrightarrow B$
+    | $A$ | $B$ | 1   |   | $A$ | $B$ | 2   |
+    |-----+-----+-----+---+-----+-----+-----|
+    | /   |     | >   |   |     |     |     |
+    | $T$ | $T$ | $T$ |   | $T$ | $T$ | $T$ |
+    | $T$ | $F$ | $F$ |   | $T$ | $F$ | $F$ |
+    | $F$ | $T$ | $T$ |   | $F$ | $T$ | $F$ |
+    | $F$ | $F$ | $T$ |   | $F$ | $F$ | $T$ |
+** Truth-tables
+*** Negation
+    | $A$ | $\lnot A$ |
+    |-----+-----------|
+    | $T$ | $F$       |
+    | $F$ | $T$       |
+
+*** Number of unary and binary operators
+    1. What is the number of unary operators?
+    2. What is the number of binary operators?
+#+BEAMER: \pause
+    1. $2^2=4$
+    2. $2^4=16$
+** Different OR's
+*** Inclusive, exclusive, conflicting\footnote{In lack of better translation} OR
+    1. Inclusive or $\lor$: Those who had good weapons *or* good
+       reflexes were victorious.
+    2. Exclusive or $\oplus$: We have to go left *or* right.
+    3. "Conflicting" or: Drink *or* drive!
+      | $A$ | $B$ | 1   | 2   | 3   |
+      |-----+-----+-----+-----+-----|
+      |     |     | <c> | <c> | <c> |
+      | $T$ | $T$ | $T$ | $F$ | $F$ |
+      | $T$ | $F$ | $T$ | $T$ | $T$ |
+      | $F$ | $T$ | $T$ | $T$ | $T$ |
+      | $F$ | $F$ | $F$ | $F$ | $T$ |
+
+** Some rules of propositional logic
+*** Rules
+    1. $\A \land \B \iff \B \land \A$, $\A \lor \B \iff \B \lor \A$ (commutativity)
+    2. $(\A \land \B) \land \C \iff \A \land (\B \land \C)$ (associativity)
+    3. $(\A \lor \B) \lor \C \iff \A \lor (\B \lor \C)$ (associativity)
+    4. $\A\land (\B \lor \C) \iff (\A \land \B ) \lor (\A \land \C)$ (distributivity)
+    5. $\A\lor (\B \land \C) \iff (\A \lor \B ) \land (\A \lor \C)$ (distributivity)
+    6. $\A\land(\A \lor \B) \iff \A$, $A\lor(\A \land \B)\iff \A$ (absorption)
+    7. $\A\land\A\iff\A$, $\A\lor\A\iff\A$ (idempotency)
+    8. $\A\lor\lnot\A$ 
+    9. $\lnot(\A\land\lnot\A)$ 
+    10. $\lnot(\lnot(\A))\iff\A$ 
+** Some rules of propositional logic
+*** Rules
+    1. $\A \land T \iff \A$ 
+    2. $\A \land F \iff F$ 
+    3. $\A \lor  T \iff T$ 
+    4. $\A \lor  F \iff \A$ 
+    5. $\lnot(\A\land\B)\iff\lnot\A\lor\lnot\B$ (DeMorgan)
+    6. $\lnot(\A\lor\B)\iff\lnot\A\land\lnot\B$ (DeMorgan)
+    7. $\A\Rightarrow\B \iff \lnot\B \Rightarrow \lnot \A$ 
+    8. $(\A\Rightarrow\B)\land\A \Rightarrow \B$ 
+    9. $(\A\Rightarrow\B)\land\lnot\B \Rightarrow \lnot \A$ 
+    10. $(\A\Rightarrow \B) \land (\B\Rightarrow\C) \Rightarrow (\A\Rightarrow\C)$ 
+    11. $((\A\Rightarrow\B)\land(\B\Rightarrow\A))\iff(\A\iff\B)$ 
+** Proof
+*** Proof of $\A\land(\A \lor \B) \iff \A$
+    Let $\mathcal{F}=\A\land(\A \lor \B) \iff \A$ and $lhs=\A\land(\A
+    \lor \B)$ (left hand side), $rhs=\A$ (right hand side).
+
+    If $\A=F$ then $lhs$ is false because of the definition of
+    conjunction.  If $\A=T$ then $\A \lor \B$ is true because of the
+    definition of disjunction, so $lhs$ is $\A\land T$ which is
+    $T$. In both cases the $rhs$ equals $lhs$, so by the definition of
+    equivalence the formula is always true, \ie valid.  $\qed$
+
+    *Proof using truth-tables* is done by filling out the first two
+    columns of the table as given bellow, and then the rest using the
+    definitions of the logical operations:
+    | $\A$ | $\B$ | $\A\lor\B$ | $lhs$ | $rhs$ | $\mathcal{F}$ |
+    |      |      | <c>        | <c>   | <c>   |               |
+    | $T$  | $T$  | $T$        | $T$   | $T$   | $T$           |
+    | $T$  | $F$  | $T$        | $T$   | $T$   | $T$           |
+    | $F$  | $T$  | $T$        | $F$   | $F$   | $T$           |
+    | $F$  | $F$  | $F$        | $F$   | $F$   | $T$           |
+** COMMENT TODO Truth-tables
+*** How to evaluate the 
 ** Domain of discourse
 *** Definition
     - *The domain of discourse*, also called the *universe of
@@ -47,6 +174,7 @@
       in some formal treatment may range.
     - It is the set of "things we are discussing".
     - Usually it is denoted by $U$
+
 *** Examples
     - $U=$ the students in this class
     - $U=\N$
@@ -57,6 +185,7 @@
        are terms, then $f(t_1,t_2,\ldots,t_n)$ is a *term*.
     3) *Every term* can be obtained by the finite application of the
        previous two rules.
+
 *** Examples
     - $f(t)=$ the nearest student to $t$
     - $f(n,m)=n+m$ (note we can think of $+$ as a $+(\cdot,\cdot)$
@@ -65,92 +194,45 @@
 *** Definition
     - A *predicate* takes an entity or entities in the *domain of
       discourse* as *input* and *outputs* either *True or False*.
-    - $P$ is an \(n\)-ary predicate if $P:U^n\to \mathbb{L}$.
+    - $P$ is an \(n\)-ary predicate if $P(t_1,t_2,\ldots,t_n)$ is true
+      or false and $t_1,\ldots,t_n$ are terms (from the universe of
+      discourse).
     - Predicates are statements about the entities of the domain of
       discourse.
+
 *** Examples
+    - $M(m,n)$: $m$ is a multiple $n$
+    - ~bool Multiple(int a, int b){ return (a%b)==0; }~
     - $F(t)$: $t$ is female
-    - $D(m,n)$: $m$ divides $n$
-** COMMENT TODO Questions
+    - ~bool Palindrome(std::string s) {...}~
+** Questions
 *** Are these valid statements in formal logic?
     1) Two is larger.
     2) The car is fast.
     3) There is an even prime number.
 #+BEAMER: \pause
+
 *** Answers
     1) No, we can not determine the it's truth value.
     2) Yes, depends on the definition of /fast/.
-    3) Yes, we even not that it is a true statement
-** Logical operators
-*** Definition
-    - Logical operators are map of the form $\mathbb{L}^n \to
-      \mathbb{L}$ (for some positive integer $n$).
-    - They come from well-known everyday logical operations, \eg
-      *and*, *or*, *if...then*, *if and only if*, *not*
-    - They connect predicated \ie statements to form larger statements
-*** Examples
-    - Binary logical operators: $\land$ (and, conjunction), $\lor$
-      (/inclusive/ or, disjunction), $\Rightarrow$ (if..then,
-      implication), $\Leftrightarrow$ (if and only if, iff,
-      equivalence).
-    - Unary logical operator: $\lnot$ (not, negation)
-** Truth-tables
-*** Conjunction and disjunction
-    | $A$    | $B$    | $A\land B$ |   | $A$    | $B$    | $A\lor B$ |
-    |--------+--------+------------+---+--------+--------+-----------|
-    | /      |        | >          |   |        |        |           |
-    | $\tru$ | $\tru$ | $\tru$     |   | $\tru$ | $\tru$ | $\tru$    |
-    | $\tru$ | $\fls$ | $\fls$     |   | $\tru$ | $\fls$ | $\tru$    |
-    | $\fls$ | $\tru$ | $\fls$     |   | $\fls$ | $\tru$ | $\tru$    |
-    | $\fls$ | $\fls$ | $\fls$     |   | $\fls$ | $\fls$ | $\fls$    |
-*** Implication and equivalence
-    | $A$    | $B$    | $A\Rightarrow B$ |   | $A$  | $B$  | $A\Leftrightarrow B$ |
-    |--------+--------+------------------+---+------+------+----------------------|
-    | /      |        | >                |   |      |      |                      |
-    | $\tru$ | $\tru$ | $\tru$           |   | $\tru$ | $\tru$ | $\tru$               |
-    | $\tru$ | $\fls$ | $\fls$           |   | $\tru$ | $\fls$ | $\fls$               |
-    | $\fls$ | $\tru$ | $\tru$           |   | $\fls$ | $\tru$ | $\fls$               |
-    | $\fls$ | $\fls$ | $\tru$           |   | $\fls$ | $\fls$ | $\tru$               |
-** Truth-tables
-*** Negation
-    | $A$    | $\lnot A$ |
-    |--------+-----------|
-    | $\tru$ | $\fls$    |
-    | $\fls$ | $\tru$    |
-*** Number of unary and binary operators
-    - What is the number of unary operators?
-    - What is the number of binary operators?
-** Different OR's
-*** Inclusive, exclusive, conflicting\footnote{In lack of better translation} OR
-    1. Inclusive or $\lor$: Those who had good weapons *or* good
-       reflexes were victorious.
-    2. Exclusive or $\oplus$: We have to go left *or* right.
-    3. "Conflicting" or: Drink *or* drive!
-      | $A$    | $B$    | $1$    | $2$    | $3$    |
-      |--------+--------+--------+--------+--------|
-      |        |        | <c>    | <c>    | <c>    |
-      | $\tru$ | $\tru$ | $\tru$ | $\fls$ | $\fls$ |
-      | $\tru$ | $\fls$ | $\tru$ | $\tru$ | $\tru$ |
-      | $\fls$ | $\tru$ | $\tru$ | $\tru$ | $\tru$ |
-      | $\fls$ | $\fls$ | $\fls$ | $\fls$ | $\tru$ |
-** COMMENT TODO Truth-tables
-*** How to evaluate the 
+    3) Yes, 2 is an even prime
 ** Remarks and Questions
 *** Remarks
     - The variables $A$ and $B$ in the truth-tables above are
       propositional variables, \ie $A\in \mathbb{L}$ (and not $\in
       U$).
     - These propositional variables denote some predicates, \ie
-      $A=P(t)$ or $B=D(m,n)$.
+      $A=P(t)$ or $B=M(m,n)$.
     - Note the distinction between the entities in the domain of
       discourse and the operations on them, versus the predicates (\ie
       statements) and the /logical operations/ connection them.
+
 *** Questions
     - Is the following a valid statement, and is it true?
       - "If $1=2$ then I am the Pope!"
 #+BEAMER: \pause
-    - Yes, it is a valid statement. It is also true, because "false
-      implies everything". (Check the truth-tables)
+    - Yes, it is a valid statement. It is true, because "false implies
+      everything". (Check the truth-tables)
 ** Well-formed formulas
 *** Definition
     1) If $P$ is a \(n\)-ary predicate, and $t_1,t_2,\ldots,t_n$ are
@@ -161,6 +243,7 @@
        $\lnot\A$ are also well-formed formulas.
     3) *Every well-formed formula* can be obtained by the finite
        application of the previous two rules.
+
 *** Example
     - Both $F(x)$ and $F(y)$ are well-formed formulas,
     - Then $F(x)\lor F(y)$ and $(F(x)\land F(y) ) \Rightarrow F(y)$.
@@ -188,7 +271,7 @@
     - $\A$ is *satisfiable*, because of the first interpretation.
     - $\A$ is *invalid*, because the second interpretation makes it
       false (\ie it is not always true).
-    - $\B=M(x) \land M(y) \Rightarrow M(x)$ is a *valid formula*,
+    - $\B=M(x) \lor \lnot M(y)$ is a *valid formula*,
       because it is always true. It is a *tautology*.
     - $\lnot\B$ is an *unsatisfiable* fromula.
 ** Questions
@@ -199,51 +282,6 @@
       - All satisfiable formulas are invalid.
       - Some satisfiable formulas are invalid.
       - All valid formulas are not unsatisfiable.
-** Some rules of propositional logic
-*** Rules
-  | $\A \land \B \iff \B \land \A$, $\A \lor \B \iff \B \lor \A$   | commutativity  |
-  | $(\A \land \B) \land \C \iff \A \land (\B \land \C)$           | associativity  |
-  | $(\A \lor \B) \lor \C \iff \A \lor (\B \lor \C)$               | associativity  |
-  | $\A\land (\B \lor \C) \iff (\A \land \B ) \lor (\A \land \C)$, | distributivity |
-  | $\A\lor (\B \land \C) \iff (\A \lor \B ) \land (\A \lor \C)$   | distributivity |
-  | $\A\land(\A \lor \B) \iff \A$, $A\lor(\A \land \B)\iff \A$     | absorption     |
-  | $\A\land\A\iff\A$, $\A\lor\A\iff\A$                            | idempotency    |
-  | $\A\lor\lnot\A$                                                |                |
-  | $\lnot(\A\land\lnot\A)$                                        |                |
-  | $\lnot(\lnot(\A))\iff\A$                                       |                |
-** Some rules of propositional logic
-*** Rules
-  | $\A\land\tru\iff\A$                                                        |          |
-  | $\A\land\fls\iff\fls$                                                      |          |
-  | $\A\lor\tru\iff\tru$                                                       |          |
-  | $\A\lor\fls\iff\A$                                                         |          |
-  | $\lnot(\A\land\B)\iff\lnot\A\lor\lnot\B$                                   | DeMorgan |
-  | $\lnot(\A\lor\B)\iff\lnot\A\land\lnot\B$                                   | DeMorgan |
-  | $\A\Rightarrow\B \iff \lnot\B \Rightarrow \lnot \A$                        |          |
-  | $(\A\Rightarrow\B)\land\A \Rightarrow \B$                                  |          |
-  | $(\A\Rightarrow\B)\land\lnot\B \Rightarrow \lnot \A$                       |          |
-  | $(\A\Rightarrow \B) \land (\B\Rightarrow\C) \Rightarrow (\A\Rightarrow\C)$ |          |
-  | $((\A\Rightarrow\B)\land(\B\Rightarrow\A))\iff(\A\iff\B)$                  |          |
-** Proof
-*** Proof of $\A\land(\A \lor \B) \iff \A$
-    Let $\mathcal{F}=\A\land(\A \lor \B) \iff \A$ and $lhs=\A\land(\A
-    \lor \B)$ (left hand side), $rhs=\A$ (right hand side).
-
-    If $\A=\fls$ then $lhs$ is false because of the definition of
-    conjunction.  If $\A=\tru$ then $\A \lor \B$ is true because of
-    the definition of disjunction, so $lhs$ is $\A\land\tru$ which is
-    $\tru$. In both cases the $rhs$ equals $lhs$, so by the definition
-    of equivalence the formula is always true, \ie valid.  $\qed$
-
-    *Proof using truth-tables* is done by filling out the first two
-    columns of the table as given bellow, and then the rest using the
-    definitions of the logical operations:
-    | $\A$   | $\B$   | $\A\lor\B$ | $lhs$  | $rhs$  | $\mathcal{F}$ |
-    |        |        | <c>        | <c>    | <c>    |               |
-    | $\tru$ | $\tru$ | $\tru$     | $\tru$ | $\tru$ | $\tru$        |
-    | $\tru$ | $\fls$ | $\tru$     | $\tru$ | $\tru$ | $\tru$        |
-    | $\fls$ | $\tru$ | $\tru$     | $\fls$ | $\fls$ | $\tru$        |
-    | $\fls$ | $\fls$ | $\fls$     | $\fls$ | $\fls$ | $\tru$        |
 * First-order logic
 ** Well-formed formulas
 *** Definition
@@ -259,18 +297,21 @@
        *existentially* quantified formulas)
     4) *Every well-formed formula* can be obtained by the finite
        application of the previous two rules.
+
 ** Examples
 *** Example
     - Continuing with the example from propositional logic:
     - $\exists x F(x)$ and $\exists x\lnot F(y)$ are well-formed
       formulas.
     - $\forall x\exists y(F(x)\land \lnot F(y) )$.
+
 ** Quantifiers
 *** Universal quantifier
     - Symbol: \forall
     - Read: for all, for each
     - $\forall x P(x,y) \iff P(x_1,y) \land P(x_2,y) \land \cdots$ (if
       $U=\{x_1,x_2,\ldots\}$)
+
 *** Existential quantifier
     - Symbol: \exists
     - Read: exists, there is
@@ -278,6 +319,7 @@
       $U=\{x_1,x_2,\ldots\}$)
     - $\exists! x$ denotes "there exists a *unique* $x$" or "there is
       exactly one $x$"
+
 ** Scope, Free and bound occurrences
 *** Definition
     - If $Q$ is a quantifier ($\forall$ or $\exists$) and $x$ is a
@@ -290,6 +332,7 @@
       quantified.
     - An occurrence of $x$ is a *bound occurrence* if it is
       quantified.
+
 ** Free and bound variables, closed and open formulas
 *** Definitions
     - The variable $x$ is a *bound variable* in $\A$, if its every
@@ -297,12 +340,13 @@
     - The variable $x$ is a *free variable* in $\A$, if its every
       occurrence is free.
     - The variable $x$ has mixed occurrence if it has both free and
-      bound occurrences.
+      bound occurrences. (Not really common, and very misleading)
     - The formula $\A$ is a *closed formula* (or a sentence) if all of
       its variables are bound.
     - The formula $\A$ is an *open formula* if it has at least one
-    - The formula $\A$ is quantifierless if all of its variables are
-      free.
+      free variable.
+    - The formula $\A$ is "quantifierless" if all of its variables are
+      free. (Basically formulas from propositional calculus)
 ** Examples
 *** Examples
    - $\A= \forall x (P(x)\land Q(x,y))\Rightarrow \exists x \forall z
@@ -312,6 +356,7 @@
      R(x,y,z)$, the scope of the second universal quantifier is
      $R(x,y,z)$.
    - The free variable is $y$
+
 ** Rules of first order logic
 *** Rules
    1) $\lnot\forall x P(x) \iff \exists x \lnot P(x)$
@@ -319,14 +364,16 @@
    3) $\forall x \forall y P(x,y) \iff \forall y \forall x P(x,y)$
    4) $\exists x \exists y P(x,y) \iff \exists y \exists x P(x,y)$
    5) $\exists x \forall y P(x,y) \Rightarrow \forall y \exists x P(x,y)$
+
 *** Example to remember the last rule
     If $U=\{1,2\}$ then consider the following two formulas:
     - $\exists x \forall y (x=y)$ is false because it is: $\exists x
       (x=1 \land x=2)$ which is $(1=1\land 1=2) \lor (2=1\land 2=2)$
     - $\forall y \exists x (x=y)$ is true because it is: $\forall y
       (1=y \lor 2=y)$ which is $(1=1 \lor 2=1) \land (1=2 \lor 2=2)$
-    - And by the definition of implication $\tru\Rightarrow\fls$ is
-      false and $\fls \Rightarrow\tru$ is true.
+    - And by the definition of implication $True\Rightarrow False$ is
+      false and $False \Rightarrow True$ is true.
+
 * Theories
 ** Axioms,  theorems
 *** Definition
@@ -334,9 +381,9 @@
       consider *trivially true*.
     - *Theorems* are formulas *derived* from axioms using the rules of
       logic.
+
 *** Example
     - In euclidean geometry one of the postulates (axioms) is: A
       straight line segment can be drawn joining any two points.  A
       theorem is that the sum of angles in a triangle is $\pi$ radians
       (or 180\textdegree)
-

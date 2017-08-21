@@ -11,7 +11,7 @@
 #+LATEX_CLASS_OPTIONS: [a4paper]
 
 
-#+AUTHOR: Emil Vatai <vatai@inf.elte.hu> (based on hungarian slides by László Mérai)
+#+AUTHOR: Emil Vatai <vatai@inf.elte.hu> @@latex:\\@@ (based on hungarian slides by László Mérai)
 #+EMAIL: Financed from the financial support ELTE won from the Higher Education Restructuring Fund of the Hungarian Government.
 #+CREATOR: Based on the slides by László Mérai, email: merai@cs.elte.hu
 #+LANGUAGE: en

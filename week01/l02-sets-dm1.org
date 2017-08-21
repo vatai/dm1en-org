@@ -1,5 +1,5 @@
 # -*- mode: org; mode: flyspell; -*-
-#+SETUPFILE: l-common.org
+#+SETUPFILE: ../inc/lecture.h.org
 
 #+TITLE: Discrete mathematics I - Sets
 #+SHORT_TITLE: Sets
@@ -48,6 +48,8 @@
     - The powerset of $A$ is denoted by $\wp(A)=\{x : x\subset A\}$
 *** Example
     - $\wp(\{a,b,c\})=\{\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\},\}$
+    - If $A$ has $n$ elements, then $\wp(A)$ has $2^n$
+      elements.  Therefore sometimes we denote the power\-set of $A$ as $2^A$.
 * Set operations
 ** Union, intersection
 *** Definition: Axiom of union
@@ -72,13 +74,13 @@
     :BEAMER_env: block
     :BEAMER_col: 0.49
     :END:
-    [[file:union.tikz]]
+    file:../figs/union.tikz
 *** Intersection 					      :B_block:BMCOL:
     :PROPERTIES:
     :BEAMER_env: block
     :BEAMER_col: 0.49
     :END:
-    [[file:intersection.tikz]]
+    file:../figs/intersection.tikz
 ** Difference, complement
 *** Definition: Difference
     - The *set-theoretic difference* (or *relative complement*) of $A$ and $B$ 
@@ -95,13 +97,13 @@
     :BEAMER_env: block
     :BEAMER_col: 0.49
     :END:
-    [[file:setdiff.tikz]]
+    file:../figs/setdiff.tikz
 *** Complement 						      :B_block:BMCOL:
     :PROPERTIES:
     :BEAMER_env: block
     :BEAMER_col: 0.49
     :END:
-    [[file:setcompl.tikz]]
+    file:../figs/setcompl.tikz
 ** Examples
 *** Examples of unions and intersections
     - $\{a\}\cup\{b\}=\{a,b\}$, $\{a,b\}\cup\{b\}=\{a,b\}$
@@ -117,28 +119,23 @@
 * Theorems
 ** Theorems
 *** Some basic theorems
-   | (1) $A\cup B=B\cup A$                             | (2) $A\cap B = B \cap A$   |
-   | (3) $(A\cup B)\cup C = A\cup (B\cup C)$           |                            |
-   | (4) $(A\cap B)\cap C = A\cap (B\cap C)$           |                            |
-   | (5) $(A\cup B)\cap C = (A \cap C) \cup (B\cap C)$ |                            |
-   | (6) $(A\cap B)\cup C = (A \cup C) \cap (B\cup C)$ |                            |
-   | (7) $A\cap (A \cup B) = A$                        | (8) $A\cup (A \cap B) = A$ |
-   | (9) $A\cup A = A$                                 | (10) $A\cap A = A$         |
-
-   - (1) and (2) show $\cup$ and $\cap$ is /commutative/.
-   - (3) and (4) show $\cup$ and $\cap$ is /associative/.
-   - (5) and (6) show $\cup$ and $\cap$ is /distributive/.
-   - (7) and (8) show $\cup$ and $\cap$ have the /absorption/ property.
-   - (5) and (6) show $\cup$ and $\cap$ is /idempotent/.
+   - $A\cup B=B\cup A$, $A\cap B = B \cap A$: *commutative* property
+   - $(A\cup B)\cup C = A\cup (B\cup C)$, $(A\cap B)\cap C = A\cap
+     (B\cap C)$: *associative* property
+   - $(A\cup B)\cap C = (A \cap C) \cup (B\cap C)$, $(A\cap B)\cup C =
+     (A \cup C) \cap (B\cup C)$: *distributive* property
+   - $A\cap (A \cup B) = A$, $A\cup (A \cap B) = A$: *absorption*
+     property
+   - $A\cup A = A$, $A\cap A = A$: *idempotency*
 ** Proof
 *** Homework!
    - *HW*: Try to prove these simple equations at home! 
    - Remember, a proof is not the same as giving an example, what if
      the sets have infinitely many elements!?
-   - \Eg the proof of (1) is as follows:
+   - \Eg the proof of the first equation is as follows:
      - $x$ is an element of the lhs iff $x\in A \lor x\in B$.
      - By definition $\lor$ is commutative, so $\cup$ is also.
-   - \Eg the proof of (7) is as follows:
+   - \Eg the proof of the seventh is as follows:
      - If $x\in A$ then $x\in A\cup B$, and so $x\in A\cap(A\cup B)$.
      - If $x\not\in A$ then $x\not \in A\cap X$ for every set $X$ 
        (by the definition of $\cap$).
@@ -180,7 +177,7 @@
     :BEAMER_env: block
     :BEAMER_col: 0.5
     :END:
-    [[file:symmdiff.tikz]]
+    file:../figs/symmdiff.tikz
 * ZFC
 ** Russell's paradox
 *** Russell's paradox
