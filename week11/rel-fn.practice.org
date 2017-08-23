@@ -1,6 +1,6 @@
 # -*- mode:org; mode: flyspell; -*-
 
-#+SETUPFILE: p-common.org
+#+SETUPFILE: ../inc/practice.h.org
 
 #+TITLE: Discrete mathematics I. practice - Relations and functions
 #+SHORT_TITLE: Relations and functions

@@ -1,13 +1,19 @@
-# -*- mode: org; mode: flyspell; -*-
-#+INCLUDE: ../test-common.org
-#+TITLE: Number theory problems
+# -*- mode:org; mode: flyspell; -*-
+
+#+SETUPFILE: ../inc/practice.h.org
+
+#+TITLE: Discrete mathematics I. practice - Number theory
+#+SHORT_TITLE: Number theory
+
 * Problems
-  # 3
-  1. Prove that $6$ is the divisor of $n(n + 1)(2n + 1)$, where $n$ is
+  1. Prove that $6$ is a divisor of $n(n + 1)(2n + 1)$, where $n$ is
      an arbitrary integer.
+
   2. Let $m$ be an integer. Prove, that $30$ is a divisor of $m^5 -m$.
+     
   3. Prove that if $a$ is an even integer no divisible by $4$, then
      $a(a^2 - 1)(a^2 - 4)$ is divisible by $960$.
+
   4. Prove that the sub of the cube of three consecutive integers is
      1) divisible by $3$ times the middle number; 
      2) divisible by 9.
@@ -178,28 +184,48 @@
       3) $3x   \equiv 8  \pmod{13}$;
       4) $12x  \equiv 9  \pmod{18}$.
   32. Show that $a^{1729}\equiv a \pmod{1729}$ although 1729 is not prime.
-* Bonus questions
-1. Prove that the sum of squares of five consecutive integers will
-   never be a perfect square.
-2. Binary gcd: Prove the following relations: $(a,b)=(|a|,|b|)$,
-   $(2a,2b)=2(a,b)$, $(a,b)=(a-b,b)$ for odd values of $b$ show that
-   $(2a,b)=(a,b)$. Using these observations, write an efficient
-   algorithm which calculates the gcd on a binary computer.
-   # * bonus 4
-3. Write a program to solve a system of linear congruences in the
-   general case (when the moduli aren't necessarily relative prime).
-    # * bonus 5
-4. Similarly to the rules for divisibility by A 2 (the last digit is
-   even), by 3 (the sum of digits is divisible by 3), by 4 (the last
-   two digits are divisible by 4), by 5 (the last digit is divisible
-   by 5) etc
-   1) find a rule for divisibility by 7;
-   2) find a general rule for divisibility by $m$, when $m>1$ is an
-      integer!
-5. Write a program which finds a generator modulo $p$ for a given
-   prime $p$, and generates the corresponding discrete logarithm
-   table!
 
-* COMMENT Solutions
-  1. 
-  2. 
+
+* Solutions
+  
+  Divisibility: we say that $a$ divides $b$ ($a,b \in \mathbb{Z}$) if
+  $\exists k \in \mathbb{Z}$ so that $ak=b$ and we write $a \mid b$
+  (if $a$ doesn't divide $b$ then we write $a \nmid b$).
+
+  1. Let $N=n(n + 1)(2n + 1)$, and to show that $6 \mid N$ we have to
+     show that $2 \mid N$ and $3 \mid N$.  If $n$ is even, then $2
+     \mid N$, if $n$ is odd, then $2 \mid n+1$, so $2 \mid N$.  If $3
+     \mid n$, we are done, if not, then $n = 3k+1$ or $n = 3k+2$ (for
+     some integer $k$).  If $n = 3k + 2$ then $n + 1 = 3k + 2 + 1 =
+     3k + 3$ which is divisible by 3, and if $n = 3k + 1$ then $2n + 1
+     = 2(3k+1) +1 = 6k + 2 + 1 = 6k + 3$ which is also divisible
+     by 3. So $N$ is divisible by 2 and 3 so it is divisible by 6.
+
+  2. $M=m^5-m$. To prove that $30 \mid M$ we need to show that $2 \mid
+     M$, $3 \mid M$ and $5 \mid M$. 
+
+     $M= m (m^4 - 1) = m (m^2 -1 ) (m^2 + 1) = m (m-1)(m+1) (m^2 +
+     1)$.  So it is trivial that $2 \mid M$ and $3 \mid M$ because,
+     $m-1$, $m$ and $m+1$ are three consecutive numbers, \ie at least
+     one of them has to be divisible by 2 and at least one by 3.
+     
+     #+BEGIN_SRC C
+       int i;
+       int n = 5;
+       for(i=0; i<n; i++)
+         printf("%d mod %d = %d\n", i, 3, i%3);
+     #+END_SRC
+
+     #+RESULTS:
+     | 0 | mod | 3 | = | 0 |
+     | 1 | mod | 3 | = | 1 |
+     | 2 | mod | 3 | = | 2 |
+     | 3 | mod | 3 | = | 0 |
+     | 4 | mod | 3 | = | 1 |
+
+     But how to show that $5 \mid M$? So $m=5k$ or $m=5k \pm 1$ or
+     $m=5k\pm2$ ($k\in\mathbb{Z}$).  So if $m=5k$ then $5 \mid M$, if
+     $m=5k+1$ then $5 \mid m-1 \mid M$, if $m=5k-1$ then $5 \mid m+1
+     \mid M$, if $m = 5k \pm 2$ then $m^2 = 25k^2 \pm 20 k + 4$, so
+     $m^2 + 1 = 25k^2 \pm 20 k + 4 +1$ which is divisible by 5. So we
+     are done, bye bye!

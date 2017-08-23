@@ -116,6 +116,11 @@
     - $\{a,b\}\setminus\{c,d\}=\{a,b\}$
     - If $X=\{a,b,c,d\}$, 
       then $\{a,c\}\subset X$ and $\overline{\{a,c\}}=\{b,d\}$
+** Question
+*** What is the union, intersection, complement, difference?
+    file:../figs/beaver-platypus-duck.jpg 
+
+    The platypus's instrument is a keytar! (Lame spelling checker)
 * Theorems
 ** Theorems
 *** Some basic theorems
@@ -178,6 +183,11 @@
     :BEAMER_col: 0.5
     :END:
     file:../figs/symmdiff.tikz
+** Question
+*** What is the symmetric difference?
+    file:../figs/beaver-platypus-duck.jpg 
+
+    The platypus's instrument is a keytar! (Lame spelling checker)
 * ZFC
 ** Russell's paradox
 *** Russell's paradox

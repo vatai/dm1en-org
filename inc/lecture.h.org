@@ -21,6 +21,7 @@
 #+LATEX_HEADER: \usepackage[utf8]{inputenc}
 #+LATEX_HEADER: \usepackage[]{babel}
 
+# #+LATEX_HEADER: \usepackage[]{paralist}
 #+LATEX_HEADER: \usepackage[]{mathtools}
 #+LATEX_HEADER: \usepackage[]{tikz}
 #+LATEX_HEADER: \usetikzlibrary{arrows}

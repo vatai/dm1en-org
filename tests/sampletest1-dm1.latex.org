@@ -1,0 +1,245 @@
+# -*- mode: org; mode: flyspell; -*-
+#+INCLUDE: ../inc/test.h.org
+#+LATEX_CLASS_OPTIONS: [a4paper,twocolumn]
+# Set no title
+# #+BIND: org-latex-title-command ""
+#+TITLE: First sample test - Discrete mathematics 1.
+#+DATE: 
+
+1. Negate (logically) the following sentences (but not just by putting
+   ``It is not true that'' before them):
+   1. The line $e$ intersects the line $f$ , and it's perpendicular to
+      $g$. ($I(e,f)\land P(e,f)$, where $I$ is intersect, $P$ is
+      perpendicular)
+   2. Every red car has a black component.  ($\forall a ((R(a) \land
+      A(a))\Rightarrow(\exists c (C(c,a)\land B(c))))$ where $R$ is
+      red, $A$ is car, $C$ is component $B$ is black).
+   3. For every even integer $n$ greater than 10, there exist primes
+      $p$ and $q$, so that $p+q=n$. ($\forall n (n\in \mathbb{Z}\land
+      n>10)\Rightarrow (\exists p \exists q (P(p)\land P(q)\land
+      p+q=n))$ where $P$ is prime)
+   4. If the degree of every vertex in a graph is even, then it
+      contains an Euler line. ($\forall g \forall v ((V(v,g)\land
+      E(v))\Rightarrow \exists l (L(l,g)\land O(l)))$ where $V(x,y)$
+      means that $x$ is a vertex of $y$, $E(x)$ means that the degree
+      of $x$ is even, $L(x,y)$ means $x$ is a line in $y$, and $O(x)$
+      means $x$ is an Euler line)
+   5. For every thingy there is a gadget which has only two coloured
+      widgets. (HW)
+
+2. Each of the following statements is either true for every set, or
+   there are counter examples.  If the statement is not true for every
+   set find sets for which it is NOT true (counter examples).
+   1. $A\cup B = A\cap B$ (not true: $A=\{1\}, B=\{2\}$)
+   2. $(A\setminus B) \setminus C = A\setminus (B \setminus C)$ (not
+      true: $A=B=C\neq\emptyset$)
+   3. $(A\cup B) \cup C = A \cup (B\cup C)$ (true: associativity)
+   4. $(A\Delta B) \cup C = (A\cup C) \Delta (B\cup C)$ (not true:
+      $A=\emptyset,B=\emptyset,C\neq\emptyset$)
+   5. $A \setminus (B \cup C) = A\cap \overline{B}\cap
+      \overline{C}$. (true: rule for the subtraction and DeMorgan)
+
+3. In a department store the set of workers doing restocking is:
+   $X=\{Adam, Bob, Cecil\}$.  The set of departments: $Y=\{Bakery,
+   Drinks, Sweets, Cashier\}$.  The products are $Z = \{chocolate,
+   cola, rolls, croissant \}$.  
+   - The following relation describes which worker is responsible for
+     restocking which department:
+     #+BEGIN_EXPORT latex
+     \begin{multline*}
+     R=\{(Adam, Bakery), (Adam, Drinks), \\(Bob, Cashier), (Cecil,
+       Sweets)\}
+     \end{multline*}
+     #+END_EXPORT
+   - The products can be found at the following departments (provided
+     as a relation): 
+     #+BEGIN_EXPORT latex
+     \begin{multline*}
+     S= \{(chocolate, Sweets), (chocolate, Cashier),\\
+     (cola, Drinks), (cola, Cashier), (rolls, Bakery), \\
+     (croissant, Bakery), (croissant, Sweets)\}
+     \end{multline*}
+     #+END_EXPORT
+   Answer the following questions.
+   - What are the elements of the set: $R\circ S$.
+   - Which are functions: $R, R^{-1}, S, S^{-1}$?
+   - Let $R_2 = R|_{\{\textnormal{Adam}\}}$ What is
+     $\textrm{rng}(S^{-1}\circ R_2)$?
+   - Using the relations $R$ and $S$, who can we formulate the query
+     who is responsible for restocking chocolate?
+   - Is $R$ transitive?
+
+4. Provided the following relation on the set $E$ of eight complex
+   roots of unity $R = \{(x,y) \mid \exists k\in\mathbb{Z} \ (x^k = y)
+   \}$.  Illustrate (draw) the relation using arrows, connecting the
+   points of $E$.  Examine, if the relations i reflexive, symmetrical,
+   transitive, anti-symmetrical?  Is the relation an equivalence
+   relation?  If (and only if) it is, list all the equivalence
+   classes.  Is it a partial ordering?  If (and only if) it is, list
+   the minimal i.e. the maximal elements.
+   
+5. Calculate the rectangular form of the following numbers ($a$ and
+   $b$ are non-zero real numbers):
+   1. $(2+i)^2$; 
+   2. $(a+3i)(b-2ai)$;
+   3. $(1+i)(1-i)(-1+i)(-1-i)$;
+   4. $1/(a+bi) + 1/(a-bi)$; 
+   5. $i^{2013}$.
+   
+6. Using the polar form, calculate the value of $z$, both the polar
+   and rectangular form, then give all complex values of $w$ in polar
+   for, for which $w^6=z$ is true.
+   \[ z = \frac{(2+2\sqrt{3}i)^{24}}{(-1+i)^{90}} \]
+7. 
+   1. Solve the following equation on the set of complex numbers:
+      \[ (1+i)z^2 + (2+3i)z + (1+2i) = 0 \]
+   2. What are the points dividing the PQ line segment into 3 equal
+      segments, if $P = 2+3i$, $Q=-4+5i$.
+      
+* Solutions
+  1. Formally negate, and try to "read" the formula.
+  2. The solution is in parenthesis.
+  3. HW. By definition.
+  4. 
+     #+BEGIN_EXPORT latex
+     \begin{figure}[H]
+     \centering
+     \begin{tikzpicture}
+     \draw[<->,gray] (-1.5,0) -- (1.5,0);
+     \draw[<->,gray] (0,-1.5) -- (0,1.5);
+     \draw[gray] (0,0) circle (1);
+     \path (0,0) node[label=45:0]{};
+     \foreach \s in {0,...,7}{
+     \path + (\s*45:1) node[label={\s*45:$\varepsilon_\s$}] (E\s) {};
+     }
+     \path[->] 
+     (E0) edge[loop left] (E0)
+     \foreach \s in {0,...,7}{
+     (E\s) edge[red,dashed] (E0)
+     (E1) edge[green,dashed] (E\s)
+     (E3) edge[blue,dashed] (E\s)
+     (E5) edge[yellow,dashed] (E\s)
+     (E7) edge[dotted] (E\s)
+     }
+     (E2) edge (E0) 
+     (E2) edge (E2) 
+     (E2) edge (E4)
+     (E2) edge (E6) 
+
+     (E6) edge (E0)
+     (E6) edge (E2)
+     (E6) edge (E4)
+     (E6) edge (E6)
+
+     (E4) edge (E0)
+     ;
+     \end{tikzpicture}
+     \caption{The relation in problem 4.}
+     \label{fig:prob4}
+     \end{figure}
+     #+END_EXPORT
+   
+     Figure \ref{fig:prob4} might be a little confusing, so the relation is as follows:
+       #+BEGIN_EXPORT latex
+       \begin{align*}
+       R=\{ & 
+       (\varepsilon_1,\varepsilon_0),  
+       (\varepsilon_1,\varepsilon_1),
+       (\varepsilon_1,\varepsilon_2),  
+       (\varepsilon_1,\varepsilon_3),\\
+       &(\varepsilon_1,\varepsilon_4),  
+       (\varepsilon_1,\varepsilon_5),
+       (\varepsilon_1,\varepsilon_6),  
+       (\varepsilon_1,\varepsilon_7),\\
+       %
+       &(\varepsilon_3,\varepsilon_0), 
+       (\varepsilon_3,\varepsilon_1), 
+       (\varepsilon_3,\varepsilon_2),
+       (\varepsilon_3,\varepsilon_3),\\
+       &(\varepsilon_3,\varepsilon_4),  
+       (\varepsilon_3,\varepsilon_5),
+       (\varepsilon_3,\varepsilon_6),  
+       (\varepsilon_3,\varepsilon_7),\\
+       %
+       &(\varepsilon_5,\varepsilon_0),
+       (\varepsilon_5,\varepsilon_1),
+       (\varepsilon_5,\varepsilon_2),
+       (\varepsilon_5,\varepsilon_3),\\
+       &(\varepsilon_5,\varepsilon_4),
+       (\varepsilon_5,\varepsilon_5),
+       (\varepsilon_5,\varepsilon_6),
+       (\varepsilon_5,\varepsilon_7),\\
+       %
+       &(\varepsilon_7,\varepsilon_0),
+       (\varepsilon_7,\varepsilon_1),
+       (\varepsilon_7,\varepsilon_2),
+       (\varepsilon_7,\varepsilon_3),\\
+       &(\varepsilon_7,\varepsilon_4),
+       (\varepsilon_7,\varepsilon_5),
+       (\varepsilon_7,\varepsilon_6),
+       (\varepsilon_7,\varepsilon_7),\\
+       %
+       &(\varepsilon_2,\varepsilon_0),
+       (\varepsilon_2,\varepsilon_2),
+       (\varepsilon_2,\varepsilon_4),
+       (\varepsilon_2,\varepsilon_6),\\
+       %
+       &(\varepsilon_6,\varepsilon_0),
+       (\varepsilon_6,\varepsilon_2),
+       (\varepsilon_6,\varepsilon_4),
+       (\varepsilon_6,\varepsilon_6),\\
+       %
+       &(\varepsilon_4,\varepsilon_4),
+       (\varepsilon_4,\varepsilon_0),\\
+       %
+       &(\varepsilon_0,\varepsilon_0)
+       \}
+       \end{align*}
+
+       #+END_EXPORT
+
+       For example $\varepsilon_3= \cos\frac{3\cdot
+     2\pi}{8}+i\sin\frac{3\cdot 2\pi}{8}$ there exists $k=2$ so that
+     $\varepsilon_3^k=\varepsilon_1$ because \[\varepsilon_3^k=
+     \cos\frac{2\cdot3\cdot 2\pi}{8}+i\sin\frac{2\cdot3\cdot 2\pi}{8}=
+     \cos\frac{2\pi}{8}+i\sin\frac{2\pi}{8}=\varepsilon_1\] so
+     $(\varepsilon_3,\varepsilon_1)\in R$. However
+     $\varepsilon_2^0=\varepsilon_0$, $\varepsilon_2^1=\varepsilon_2$,
+     $\varepsilon_2^2=\varepsilon_4$, $\varepsilon_2^3=\varepsilon_6$,
+     $\varepsilon_2^4=\varepsilon_0$ ...
+
+       $R$ is reflexive, since $\varepsilon_k^1=\varepsilon_k$. $R$ is
+     transitive because if $\varepsilon_a^k=\varepsilon_b$ and
+     $\varepsilon_b^l = \varepsilon_c$ then $\varepsilon_a^{kl} =
+     \varepsilon_c$. But it is *not* symmetric because
+     $(\varepsilon_1,\varepsilon_0)\in R$ but
+     $(\varepsilon_0,\varepsilon_1)\not\in R$.  And it is *not*
+     anti-symmetric because $(\varepsilon_2,\varepsilon_6)\in R$ and
+     $(\varepsilon_6,\varepsilon_2)\in R$ are both true.
+
+       Ergo $R$ is not an equivalence relation, or an ordering, so
+     there is no maximal/minimal element, and no classification.
+
+  5. Verify using SageMath, Maxima or some other computer algebra
+     system. Make sure to work with exact values (not numerical
+     approximations, \ie $\pi$ is $\pi$ not $3.14$)
+  6. 
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     z &= \frac{(2+2\sqrt{3} i)^{24}}{(-1+i)^{90}} 
+     = \frac{(4       \cdot (\cos\frac{\pi}{3} + i \sin\frac{\pi}{3}) )^{24}}
+     {(\sqrt{2}\cdot (\cos\frac{3\pi}{4} + i\sin\frac{3\pi}{4}))^{90}}
+     \\&= \frac{2^{48} \cdot(\cos\frac{24\pi}{3} +i\sin\frac{24\pi}{3})}
+     {2^{45}\cdot(\cos\frac{270\pi}{4}+i\sin\frac{270\pi}{4})}
+     \\&=2^3\cdot \frac{\cos8\pi+i\sin8\pi}
+     {\cos\frac{135\pi}{2}+i\sin\frac{135\pi}{2}}
+     \\&=2^3\cdot \frac{\cos0\pi+i\sin0\pi}
+     {\cos\frac{3\pi}{2}+i\sin\frac{3\pi}{2}}
+     \\&=2^3\cdot \cos(0-\frac{3\pi}{2})+i\sin(0-\frac{3\pi}{2})
+     \\&=8\cdot(\cos\frac{\pi}{2} + i \sin\frac{\pi}{2})
+     \end{align*}
+     #+END_EXPORT
+  7. $z_{0,1}=\frac{-b\pm\sqrt{b^2-4ac}}{2a} =
+     \frac{-(2+3i)\pm\sqrt{(2+3i)^2 -4\cdot(1+i)\cdot (1+2i)}}{2\cdot
+     (1+i)}$ and my software says,
+     $z=-\frac{1+2i}{i+1}=-\frac{3}{2}-\frac{i}{2}$ and $z=-1$.

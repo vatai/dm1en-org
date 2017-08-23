@@ -1,0 +1,97 @@
+# -*- mode: org; mode: flyspell; -*-
+#+SETUPFILE: ../inc/lecture.h.org
+# (plist-put org-format-latex-options :scale 2)
+# (org-tree-slide-mode)
+
+
+#+TITLE: Discrete mathematics I - Orientation
+#+SHORT_TITLE: Orientation
+
+* Basics
+** Contacts
+*** About me
+   - Emil Vatai
+   - Email: vatai@inf.elte.hu
+   - Facebook page: "Emil Vatai - lecturer"
+   - Webpage http://compalg.inf.elte.hu/~vatai/
+*** The semester
+    - Study period: classes and tests! From September to the middle of
+      December.
+    - Exam period: exams!  From middle of December to the end of
+      January.
+** Contacting me
+   - I prefer email mailto:vatai@inf.elte.hu
+   - The subject should start with "dm1en" and include a shortened
+     version of your question, remark, requests etc.
+   - The body should start with your name, the class (day and time \eg
+     "Wednesday 9:00 lecture"), neptun id. Then state your question,
+     remark, request etc in detail.
+   - Facebook and Canvas (http://canvas.elte.hu/ - an official forum
+     and CMS) is also preferred, especially for group
+     communication. (Canvas is new for me, I will see if it is useful)
+   - Contacting me if something is not 100% clear is, not just okay,
+     but *welcome*!!!
+** Syllabus
+*** Basics
+    Logic, Sets, Relations, Functions
+*** Number sets
+    Natural numbers $\N$, Integers $\Z$, Rational numbers $\Q$, Real
+    numbers $\R$, *Complex numbers $\C$*
+*** Combinatorics
+    Permutations, Variations, Combinations, Pigeon hole principle,
+    Inclusion exclusion principle
+*** Number theory
+    Divisibility, congruences, Euler-Fermat theorem, Chinese reminder theorem
+* Requirements
+** Practice and Lectures
+*** Practice
+    Solve problems, apply theory from lectures, prepare for tests.
+    - Quick +/- test every week.
+    - 2 test, 1 retake in the semester.
+    - You *pass* if you
+      - Have more pluses than minuses *and*
+      - Pass two of the tests (you can retake only one test), \ie have
+        at least 60% of points. 
+*** Lectures
+    Learn theorems, prove theorems, prepare for exams.
+    - You *pass* if
+      - Passed the practice *and*
+      - Pass the exam (you need to register in neptun, you can retake
+        the exam 2 times)
+** Contents 
+*** Tests
+    Solve (approximately 6) problems. Usually involves calculation,
+    application of certain methods, minor proofs.
+
+    *Example*: Calculate the rectangular form of the following
+    numbers ($a$ and $b$ are non-zero real numbers): (a) $(2+i)^2$;
+    (b) $(a+3i)(b-2ai)$; (c) $(1+i)(1-i)(-1+i)(-1-i)$; (d) $1/(a+bi) +
+    1/(a-bi)$; (e) $i^{2013}$.
+*** Taking tests
+    Tests will be held during *practice classes*.  *First test* will
+    be on the last week before the autumn brake. *Second test* is on
+    the last week of the study period.  *Retake test* is on the first
+    week of the exam period.  *No registration* is required.
+    
+    You need 60% for 2, 70% for 3, 80% for 4 and 90% for 5.
+** Contents
+*** +/- tests
+    One question. Usually from the list of questions.  Example:
+    "Define the set of natural numbers!" or "State the Chinese
+    remainder theorem!"
+*** Exams
+    12 simple questions (see +/- tests, worth 1 point each) and 3
+    theorems with proofs (worth 2 points each). Example: "State and
+    prove the Chinese remainder theorem!"
+
+    You need at least 9 out of the first 12 simple questions *and* at
+    least 1 out of the 3 proofs.  You need 10 points to pass, 12 for a
+    3, 14 for a 4 and 16 for a 5.
+*** Taking the exam
+    You have to *register* for the exams on neptun!  The exam schedule
+    will be published a few weeks before the exam period.
+    
+    It is (mostly) a written exam.  All questions are answered on
+    paper.  If needed and time permits it, the answers will be
+    discussed.
+    

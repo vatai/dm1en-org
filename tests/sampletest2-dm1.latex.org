@@ -1,7 +1,10 @@
-#+INCLUDE: test-common.org
+#+INCLUDE: ../inc/test.h.org
+#+LATEX_CLASS_OPTIONS: [a4paper,twocolumn]
 # Set no title
-#+BIND: org-latex-title-command ""
-* Second sample test - Discrete mathematics 1.
+# #+BIND: org-latex-title-command ""
+#+TITLE: Second sample test - Discrete mathematics 1.
+#+DATE:
+
   1. How many ways can 10 prizes be awarded to 30 contestants, if
      1) The prizes are different, and the contestant get at most one
 	prize;

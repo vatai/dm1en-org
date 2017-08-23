@@ -1,5 +1,5 @@
 # -*- mode: org; mode: flyspell; -*-
-#+SETUPFILE: l-common.org
+#+SETUPFILE: ../inc/lecture.h.org
 
 #+TITLE: Discrete mathematics I - Relations
 #+SHORT_TITLE: Relations
@@ -106,7 +106,7 @@
     :PROPERTIES:
     :BEAMER_COL: 0.3
     :END:
-    [[file:dmnrngimgres.tikz]]
+    file:../figs/dmnrngimgres.tikz
 * Composition
 ** Composition
 *** Definition (Composition)
@@ -130,7 +130,7 @@
 ** Example (Composition)
 #+ATTR_LATEX: :height 4.5cm
 #+ATTR_LATEX: :float t
-     [[file:comp.tikz]]
+     file:../figs/comp.tikz
 *** Composition
    $R \circ S = \{(x,z): \exists y ( (x,y)\in S \land
    (y,z) \in R) \}$
@@ -231,7 +231,7 @@
    *reflexive*, but if defined on $\C$ then it is *not
    reflexive*.
    
-   [[file:relexample.tikz]]
+   file:../figs/relexample.tikz
    
    |----------------------+-------------------------------+--------------------|
    | transitive: *NO*     | strictly anti-symmetric: *NO* | trichotomous: *NO* |
@@ -514,13 +514,13 @@
     :BEAMER_col: 0.5
     :END:
     #+ATTR_LATEX: :width 4cm
-    [[file:hasse-wa.tikz]]
+    file:../figs/hasse-wa.tikz
 *** Hasse-diagram without arrows 				      :BMCOL:
     :PROPERTIES:
     :BEAMER_col: 0.5
     :END:
     #+ATTR_LATEX: :width 4cm
-    [[file:hasse.tikz]]
+    file:../figs/hasse.tikz
 ** Least, greatest, minimum, maximum element
 *** Definition(Least, greatest, minimal, maximal elements)
     In the partially ordered set $X$ we define $x\in X$ to be the
@@ -545,7 +545,7 @@
     :BEAMER_col: 0.3
     :END:
     #+ATTR_LATEX: :width 4cm
-    [[file:hasse.tikz]]
+    file:../figs/hasse.tikz
 ** Least, greatest, minimum, maximum element
 *** Remarks
     - There is *at least* one minimal and maximal element.
@@ -567,7 +567,7 @@
     :BEAMER_col: 0.3
     :END:
     #+ATTR_LATEX: :width 4cm
-    [[file:hasse.tikz]]
+    file:../figs/hasse.tikz
 ** Bounds 
 *** Definition (Bounds)
     Let $(X,\preceq)$ be a partially ordered set $x\in X$ and $Y\subset X$.
@@ -596,7 +596,7 @@
     :BEAMER_col: 0.3
     :END:
     #+ATTR_LATEX: :width 4cm
-    [[file:hasse.tikz]]
+    file:../figs/hasse.tikz
 ** Least-upper-bound property
 *** Definition (LUB and GLB property)
     Let $(X,\preceq)$ be a partially ordered set.

@@ -1,0 +1,688 @@
+# -*- mode: org; mode:flyspell;  -*- 
+
+#+LATEX_CLASS_OPTIONS: [a4paper,twocolumn]
+#+LATEX_HEADER: \DeclareMathOperator{\sgn}{sgn}
+#+LATEX_HEADER: \usepackage[]{babel}
+#+LANGUAGE: en
+#+OPTIONS: ':t
+* Basics
+** Logic 9
+   1) What are possible values of predicates?  How are they denoted?
+   2) Give at least three examples for predicates?
+   3) Enumerate all logical operators!
+   4) Which quantifiers do you know?  What is their symbol?
+   5) How do we obtain logical formulae?
+   6) When is a variable in the scope of a quantifier?
+   7) Which formulae are open and which are closed?
+   8) Give two examles for an open formulae!
+   9) Give an example of a closed formula!
+** Sets 26
+   1) Which are the predicates of set-theory?
+   2) Formulate the axiom of extensionality!
+   3) Define the notion of a subset and a proper subset and give
+      their notation!
+   4) What are the properties of the concept of "subset"?
+   5) What are the properties of the equality of sets?
+   6) What is the notion of a subset! What notation do we use to
+      define a subset?
+   7) Prove that there is no set which contains everything!
+   8) What is the Russel-paradox? Explain it!
+   9) What is the notion of an empty set!
+   10) Is it true that there is only one empty set?
+       # - Bizonyítsa be, hogy az a feltevés, hogy van halmaz, a rész\-halmaz-axióma mellett ekvivalens az üres halmaz axiómájával.
+   11) What is the notion of a pair!  What is the associated notation?
+       # - Fogalmazzon meg a részhalmaz-axióma mellett a pár\-axiómával ekvivalens feltevést, és bizonyítsa be az ekvivalenciát.
+   12) What is the union of two sets and what is the used notation?
+   13) What is the union of a system of sets and what is the used notation?
+       # 24) Fogalmazza meg az unióaxiómát.  Milyen jelölések kapcsolódnak hozzá?
+       # 24) Fogalmazzon meg a részhalmaz-axióma mellett az unióaxiómával ekvivalens feltevést és bizonyítsa be az ekvivalenciát.
+   14) Formulate the basic properties of the union of sets!
+   15) Formulate the commutative, associative and idempotent
+       properties of the union operation, and prove them!
+   16) Define the intersection of two sets and a system of sets and
+       give the proper notation!
+   17) Define the notion of disjoint and pairwise disjoint sets!
+   18) Formulate the basic properties of intersection of sets!
+   19) Formulate the commutative, associative and idempotent
+       properties of the intersection operation, and prove them!
+   20) Formulate the distributive properties of the union and
+       intersection operation!
+   21) Formulate and prove the distributive properties of the union
+       and intersection operation!
+   22) Define the difference, symmetric difference and complement of
+       sets.
+   23) Formulate the basic properties of the complement of sets.
+   24) Formulate and prove the De Morgan equalities  for two sets.
+   25) What is the power\-set of a set?  What is the associated
+       notation?
+   27) Formulate the axiom of infinity!
+       # - Mit jelöl $\bom$?  Bizonyítsa a kapcsolódó, létezésre és egyértelműségre vonatkozó állításokat.
+** Relations 44
+   1) Define the notion of an ordered pair and coordinates!
+   2) What is the basic property of ordered pairs? Prove that ordered
+      pairs have this property!
+   3) Define the Cartesian product of two sets!
+   4) Define the notion of binary relations and give the associated notation!
+   5) Give three examples of binary relations!
+   6) What is the meaning of $R$ being a relation between $X$ and $Y$?
+      What is meaning of $R$ being a relation on $X$?
+   7) Define the domain and range of a binary relation, and give the
+      associated notation!
+   8) Define the extension, restriction and restriction to a set of
+      binary relation and give the associated notation!
+   9) Define the inverse of a binary relation, and list three of its
+      properties!
+   10) Define the image and pre\-image and give the associated
+       notation!
+   11) Define the compostion of binary relations! Can the composition
+       be empty?
+   12) Formulate three properties of binary relations!
+   13) Prove that the composition of relations is associative!
+   14) Formulate statement about the inverse of the composition of two
+       relations and prove it!
+   15) What does it mean if a relation is transitive, symmetric, or
+       dichotomous?  Which of these properties depend only on the
+       relation?
+   16) What does it mean if a relation is intransitive, anti-symmetric
+       or trichotomous?  Which of these properties depend only on the
+       relation?
+   17) What does it mean if a relation is strictly anti-symmetric,
+       reflexive or irreflexive?  Which of these properties depend
+       only on the relation?
+   18) Define equivalence relations and the notion of classification!
+   19) What is the connection between equivalence relations and
+       classifications?
+   20) Formulate and prove the connection between equivalence
+       relations and classifications!
+   21) Define the notion of partially ordering and partially ordered
+       set!  What can we say about the subset of a partially ordered
+       set?
+   22) Define the notions of ordering, ordered sets and chains!
+   23) Give an example for a partially ordered, but not ordered set!
+   24) For a given relation, define the corresponding strict and
+       non-strict relations.
+   25) Define strict partial ordering and state what is its connection
+       with the partial ordering!
+   26) Formulate the connection between a partial ordering and the
+       corresponding strict partial ordering and prove the statement!
+   27) What is the meaning of less than, greater than, predecessor and
+       successor?
+   28) Define intervals and give the associated notation!
+   29) What is the immediate predecessor and immediate successor of an
+       element?
+   30) Define the initial segment and give the associated notation!
+   31) Define the least and the greatest element!
+   32) Define the minimal and maximal element and give the
+       corresponding notation!
+   33) Give an example of a partially ordered set, which has more than
+       one minimal element!
+   34) Give an example of a partially ordered set, which has no
+       minimal element!
+   35) Is it true, that in an ordered set the notion of the least and
+       minimal element is the same?
+   36) Define the notion of upper and lower bounds!
+   37) Is it true, that a subset of a partially ordered set can
+       contain at most one of the upper and one of the lower bound
+       elements of that subset?
+       # ???
+   38) Is it true, that if a subset of a partially ordered set
+       contains its lower bound, then this lower bound must also be
+       its minimum?
+       # ???
+   39) Define the notion of infimum and supremum!
+   40) Define the notion of well-order and well-ordered sets!
+   41) Give an example of an ordered set which is not well ordered!
+   42) Can there be a well-ordered set which is not ordered?
+   43) Give an example for a well-ordered set!
+   44) Construct a partial ordering of a Cartesian product of two
+       partially ordered sets, using the partial orderings of the
+       component sets!
+** Függvények 26
+   1) Definiálja a függvény fogalmát.  Ismertesse a kapcsolódó
+      jelöléseket.
+   2) Mi a különbség a között, hogy $f\in X\to Y$ és hogy $f:X\to Y$?
+   3) Mikor nevezünk egy függvény kölcsönösen egyértelműnek?
+   4) Igaz-e, hogy az identikus leképezés mindig szürjektív?
+   5) Igaz-e, hogy két függvény összetétele függvény?
+   6) Mikor állíthatjuk hogy két függvény összetétele injektív, szürjektív
+      illetve bijektív?
+   7) Mikor állíthatjuk hogy két függvény összetétele injektív, szürjektív
+      illetve bijektív? Bizonyítsa be állítását.
+   8) Mi a kapcsolat függvények és ekvivalenciarelációk között?
+   9) Mikor nevezünk egy függvényt monoton növekedőnek illetve monoton
+      csökkenőnek?
+   10) Mikor nevezünk egy függvényt szigorúan monoton növekedőnek illetve
+       szigorúan monoton csökkenőnek?
+   11) Mi a kapcsolat a szigorúan monoton növekedő függvények, a
+       kölcsönösen egyértelmű függvények és az inverz függvényük között?
+   12) Mi a kapcsolat a szigorúan monoton növekedő függvények, a
+       kölcsönösen egyértelmű függvények és az inverz függvényük között?
+       A megfogalmazott állítást bizonyítsa be.
+   13) Mit értünk indexhalmaz, indexezett halmaz és család alatt?
+   14) Definiálja halmazcsaládok unióját és metszetét.
+   15) Fogalmazza meg a halmazcsaládokra vonatkozó De Morgan-szabályokat.
+   16) Fogalmazza meg a halmazcsaládokra vonatkozó De Morgan-szabályokat és
+       bizonyítsa be őket.
+   17) Fogalmazza meg a halmazműveletek és egy függvény kapcsolatáról
+       tanult állításokat.
+   18) Definiálja véges sok halmaz Descartes-szorzatát és ismertesse a
+       kapcsolódó jelöléseket.
+   19) Definiálja a (nem feltétlenül binér) reláció fogalmát és a
+       kapcsolódó jelöléseket.
+   20) Definiálja a kiválasztási függvény fogalmát.
+   21) Definiálja tetszőleges halmazcsalád Descartes-szorzatát és
+       ismertesse a kapcsolódó jelöléseket.
+   22) Definiálja a projekció fogalmát.
+   23) Definiálja a binér, unér és nullér művelet fogalmát és ismertesse a
+       kapcsolódó jelöléseket.
+   24) Adjon meg egy binér és egy unér műveletet táblázattal.
+   25) Hogyan definiálunk műveleteket függvénytereken?
+   26) Definiálja a művelettartó leképezés fogalmát.
+* Szám\-fogalom
+** Természetes számok 47
+   1) Fogalmazza meg a Peano-axiómákat.
+   2) Mi a rákövetkező, a rákövetkezés, és a teljes indukció elve?
+   3) Bizonyítsa be, hogy ha $n\in\mathbb{N}$, akkor $n\not=n^+$ és ha
+      $0\not=n\in\mathbb{N}$, akkor van olyan $m\in\mathbb{N}$, hogy
+      $n=m^+$.
+   4) Definiálja a számjegyeket.
+   5) Definiálja a sorozat fogalmát.
+   6) Fogalmazza meg a rekurziótételt.
+   7) Fogalmazza meg a rekurziótételt és bizonyítsa be az
+      egyértelműséget.
+   8) Fogalmazza meg a rekurziótételt és bizonyítsa be a létezést.
+   9) Fogalmazza meg a természetes számok egyértelműségére vonatkozó
+      tételt.
+   10) Fogalmazza meg és bizonyítsa be a természetes számok
+       egyértelműségére vonatkozó tételt.
+   11) Fogalmazza meg a természetes számok létezésére vonatkozó tételt.
+   12) Definiálja a karakterisztikus függvény fogalmát és ismertesse a
+       kapcsolódó jelöléseket.
+   13) Definiálja természetes számok összeadását.
+   14) Fogalmazza meg a természetes számok összeadásának
+       alaptulajdonságait kimondó tételt.
+   15) Fogalmazza meg és bizonyítsa be a természetes számok
+       összeadásának alaptulajdonságait kimondó tételt, a
+       kommutativitást kivéve.
+   16) Fogalmazza meg a természetes számok összeadásának
+       alaptulajdonságait kimondó tételt és bizonyítsa be a
+       kommutativitást.
+   17) Definiálja természetes számok szorzását.
+   18) Fogalmazza meg a természetes számok szorzásának
+       alaptulajdonságait kimondó tételt.
+   19) Fogalmazza meg és bizonyítsa be a természetes számok szorzásának
+       alaptulajdonságait kimondó tételt, a kommutativitást kivéve.
+   20) Fogalmazza meg a természetes számok szorzásának
+       alaptulajdonságait kimondó tételt, és bizonyítsa be a
+       kommutativitást.
+   21) Definiálja a baloldali semleges elem, a jobboldali semleges elem
+       és a semleges elem fogalmát.
+   22) Igaz-e, hogy legfeljebb egy baloldali semleges elem van?
+   23) Igaz-e, hogy legfeljebb egy semleges elem van?
+   24) Definiálja a félcsoport, a balinverz, a jobbinverz és az inverz
+       fogalmát.
+   25) Igaz-e, hogy egy egységelemes félcsoportban egy elemhez
+       legfeljebb egy inverz elem létezik?
+   26) Igaz-e, hogy egy egységelemes multiplikatív félcsoportban ha
+       \(h\)-nak és \(g\)-nek van inverze, akkor \(hg\)-nek is, és ha
+       igen, mi?
+   27) Definiálja a csoport és az Abel-csoport fogalmát.
+   28) Igaz-e, hogy ha $X$ tetszőleges halmaz, akkor
+       $\bigl(\wp(X),\cap\bigl)$ egy egységelemes félcsoport?
+   29) Igaz-e, hogy ha $X$ tetszőleges halmaz, akkor
+       $\bigl(\wp(X),\cup\bigl)$ egy csoport?
+   30) Igaz-e, hogy ha $X$ tetszőleges halmaz, akkor
+       $\bigl(\wp(X),\setminus\bigl)$ egy félcsoport?
+   31) Igaz-e, hogy ha $X$ tetszőleges halmaz, akkor az \(X\)-beli binér
+       relációk a kompozícióval egységelemes félcsoportot alkotnak?
+   32) Igaz-e, hogy ha $X$ tetszőleges halmaz, akkor az \(X\)-et
+       \(X\)-re képező bijektív leképezések a kompozícióval, mint
+       művelettel csoportot alkotnak?
+   33) Definiálja természetes számokra a $\le$ relációt.
+   34) Bizonyítsa be, hogy a természetes számok halmaza a $\le$
+       relációval rendezett.
+   35) Fogalmazza meg a természetes számokra a $\le$ reláció és a
+       műveletek kapcsolatát leíró tételt.
+   36) Fogalmazza meg és bizonyítsa be a természetes számokra a $\le$
+       reláció és a műveletek kapcsolatát leíró tételt.
+   37) Bizonyítsa be, hogy a természetes számok halmaza a $\le$
+       relációval jólrendezett.  Azt, hogy rendezett, nem kell
+       bizonyítania.
+   38) Definiálja a véges sorozatokat.
+       # 144) Fogalmazza meg az általános rekurzió\-tételt.
+       # 145) Fogalmazza meg az általános rekurzió tételt és bizonyítsa be az egyértelműségi részt.
+       # 144) Fogalmazza meg az általános rekurziótételt és bizonyítsa be a létezési részt.
+       # 145) Hogyan használható az általános rekurziótétel a Fibonacci-számok definiálására?
+   39) Definiálja véges sok elem szorzatát félcsoportban és egység\-elemes
+       fél\-csoportban.
+   40) Fogalmazza meg a hatványozás két tulajdonságát félcsoportban és
+       egységelemes fél\-csoportban.
+   41) Fogalmazza meg a hatványozásnak azt a tulajdonságát, amely csak
+       felcserélhető elemekre érvényes.
+   42) Hogyan értelmeztük a $\sum_{a\in A} x_a$ jelölést?
+   43) Fogalmazza meg a maradékos osztás tételét.
+   44) Fogalmazza meg és bizonyítsa be a maradékos osztás tételét.
+   45) Definiálja a hányadost és a maradékot természetes számok
+       osztásánál, a páros és páratlan természetes számokat.
+   46) Fogalmazza meg a számrendszerekre vonatkozó tételt.
+   47) Fogalmazza meg és bizonyítsa be a számrendszerekre vonatkozó
+       tételt.
+** Egész számok 22
+   1) Mikor mondjuk, hogy egy binér művelet kompatibilis egy
+      osztályozással?  Adjon ekvivalens megfogalmazást, és definiálja a
+      műveletet az osztályok között.
+   2) Mikor mondjuk, hogy egy binér reláció kompatibilis egy
+      osztályozással?  Adjon ekvivalens megfogalmazást, és definiálja a
+      relációt az osztályok között.
+   3) Definiálja az egész számokat a műveletekkel és a rendezéssel és
+      fogalmazza meg az egész számok tulajdonságait leíró tételt.
+   4) Definiálja az egész számokat az összeadással és a szorzással és
+      mutassa meg, hogy mindkét művelet kompatibilis az osztályozással.
+   5) Definiálja az egész számokat az összeadással, a szorzással és a
+      rendezéssel, bizonyítsa be, hogy a rendezés kompatibilis az
+      osztályozással és a műveletek monotonak.
+   6) Adja meg \(\mathbb{N}\)-nek \(\mathbb{Z}\)-be való beágyazását és
+      fogalmazza meg a beágyazás tulajdonságait.
+   7) Definiálja egy csoportban az egész kitevős hatványozást és
+      fogalmazza meg két tulajdonságát.
+   8) Definiálja egy csoportban az egész kitevős hatványozást és
+      fogalmazza meg egy olyan tulajdonságát, amely csak felcserélhető
+      elemekre érvényes.
+   9) Definiálja a gyűrű, a kommutatív gyűrű és az egységelemes gyűrű
+      fogalmát.
+   10) Fogalmazza meg gyűrűben a nullával való szorzás tulajdonságait és
+       az előjel\-szabályt és bizonyítsa be őket.
+   11) Fogalmazza meg gyűrűben az egész együtthatóval való szorzás
+       tulajdonságait.
+   12) Definiálja a null\-gyűrű és a zéró\-gyűrű fogalmát.
+   13) Definiálja a bal és jobb oldali nullosztó és a nullosztópár
+       fogalmát.
+   14) Fogalmazza meg az általános disztributivitás tételét.
+   15) Fogalmazza meg az általános disztributivitás tételét és
+       bizonyítsa be.
+   16) Definiálja a bal és jobb oldali nullosztó és a nullosztópár
+       fogalmát. Adjon meg két lényegesen különböző, nullosztókkal
+       kapcsolatos állítást, és bizonyítsa be őket.
+   17) Definiálja az integritási tartomány fogalmát.
+   18) Definiálja a rendezett integritási tartomány fogalmát.
+   19) Fogalmazzon meg szükséges és elégséges feltételt arra
+       vonatkozóan, hogy egy integritási tartomány rendezett integritási
+       tartomány legyen.
+   20) Fogalmazzon meg szükséges és elégséges feltételt arra
+       vonatkozóan, hogy egy integritási tartomány rendezett integritási
+       tartomány legyen, és bizonyítsa be az állítást.
+   21) Fogalmazza meg a rendezett integritási tartományban az
+       egyenlőtlenségekkel való számolás szabályait leíró tételt.
+   22) Fogalmazza meg a rendezett integritási tartományban az
+       egyenlőtlenségekkel való számolás szabályait leíró tételt és
+       bizonyítsa be.
+** Racionális számok 9
+   1) Definiálja a racionális számok halmazát a műveletekkel és a
+      rendezéssel és fogalmazza meg a racionális számok tulajdonságait
+      leíró tételt.
+   2) Definiálja a racionális számok halmazát az összeadással,
+      bizonyítsa be, hogy az összeadás kompatibilis az osztályozással,
+      és az összeadással a racionális számok halmaza Abel-csoport.
+   3) Definiálja a racionális számok halmazát a műveletekkel,
+      bizonyítsa be, hogy a szorzás kompatibilis az osztályozással, és
+      felhasználva, hogy az összeadással a racionális számok halmaza
+      Abel-csoport, bizonyítsa be hogy test.
+   4) Definiálja a racionális számok halmazát a műveletekkel és a
+      rendezéssel, és felhasználva, hogy test, bizonyítsa be a rendezés
+      tulajdonságait, beleértve, hogy kompatibilis az osztályozással.
+   5) Adja meg \(\mathbb{Z}\)-nek \(\mathbb{Q}\)-ba való beágyazását és
+      fogalmazza meg a beágyazás tulajdonságait.
+   6) Definiálja a test és a ferde\-test fogalmát és adjon három példát
+      testre.
+   7) Definiálja a rendezett test fogalmát és adjon példát olyan testre,
+      amely nem tehető rendezett testté.
+   8) Adja meg \(\mathbb{Q}\)-nak egy rendezett testbe való beágyazását
+      és fogalmazza meg a beágyazás tulajdonságait.
+   9) Van-e olyan racionális szám, amelynek a négyzete 2?  Bizonyítsa be
+      állítását.
+** Valós számok 25
+   1) Fogalmazza meg a felső határ tulajdonságot és az Archimédészi
+      tulajdonságot.
+   2) Fogalmazza meg a felső határ tulajdonságot és az Archimédészi
+      tulajdonságot.  Mi a kapcsolatuk?  Bizonyítsa be állítását.
+   3) Fogalmazza meg a racionális számok felső határ tulajdonságára és
+      az Archimédészi tulajdonságára vonatkozó tételt.
+   4) Bizonyítsa be, hogy a racionális számok rendezett teste nem
+      felső határ tulajdonságú.
+   5) Bizonyítsa be, hogy a racionális számok rendezett teste
+      Archimédészi tulajdonságú.
+   6) Fogalmazza meg a valós számok egyértelműségét leíró tételt.
+   7) Definiálja a valós számokat.
+   8) Definiálja valós szám abszolút értékét és a $\sgn$ függvényt.
+   9) Definiálja valós szám alsó és felső egész részét, és bizonyítsa be
+      ezek létezését.
+   10) Fogalmazza meg a valós számok létezését leíró tételt.
+       # - Definiálja a valós számokat az intervallumskatulyázási tulajdonsággal.
+   11) Definiálja a komplex számok halmazát a műveletekkel.
+   12) Definiálja a komplex számok halmazát a műveletekkel és bizonyítsa
+       be, hogy test.
+   13) Adja meg $\mathbb{R}$ beágyazását \(\mathbb{C}\)-be.
+   14) Definiálja \(i\)-t, komplex szám valós és képzetes részét,
+       konjugáltját és a képzetes számok fogalmát.
+   15) Fogalmazza meg a komplex konjugálás tulajdonságait.
+   16) Definiálja komplex szám abszolút értékét.  Milyen analízisbeli
+       tételt használt?
+   17) Fogalmazza meg komplex számok abszolút értékének tulajdonságait.
+   18) Fogalmazza meg komplex számok abszolút értékének tulajdonságait és
+       bizonyítsa be.
+   19) Definiálja komplex számokra a $\sgn$ függvényt és fogalmazza meg
+       tulajdonságait.
+   20) Definiálja komplex számok trigonometrikus alakját és argumentumát.
+   21) Írja fel két komplex szám szorzatát és hányadosát trigonometrikus
+       alakjuk segítségével.
+   22) Ha $n\in\mathbb{N}^+$ és $w\in\mathbb{C}$, írja fel a $z^n=w$
+       egyenlet összes megoldását.
+   23) Írja fel az \(n\)-edik komplex egység\-gyököket.  Mit értünk
+       primitív \(n\)-edik egység\-gyök alatt?
+   24) Ha $n\in\mathbb{N}^+$ és $w\in\mathbb{C}$, írja fel a $z^n=w$
+       egyenlet összes megoldását az \(n\)-edik egység\-gyökök
+       segítségével.
+   25) Fogalmazza meg az algebra alap\-tételét.
+** Kvaterniók 12
+   1) Definiálja a kvaterniók halmazát a műveletekkel.
+   2) Milyen algebrai struktúrát alkotnak a kvaterniók?
+   3) Adja meg a komplex számok beágyazását a kvaterniókba.
+   4) Definiálja a $j$ és $k$ kvaterniókat.  Hogyan írhatunk fel egy
+      kvaterniót $i$, $j$ és $k$ segítségével?
+   5) Igaz-e, hogy bármely kvaternió bármely valós számmal
+      felcserélhető?}
+   6) Igaz-e, hogy bármely kvaternió bármely komplex számmal
+      felcserélhető?
+   7) Adja meg a $i$, $j$, $k$ kvaterniók "szorzótábláját".
+   8) Definiálja kvaternió valós és képzetes részét és konjugáltját.
+   9) Fogalmazza meg a kvaterniók konjugáltjára vonatkozó állításokat.
+   10) Definiálja a belső és a külső szorzást a kvaterniók segítségével.
+   11) Definiálja kvaterniók abszolút értékét és sorolja fel a
+       tulajdonságait.
+   12) Sorolja fel kvaterniók abszolút értékének a tulajdonságait és
+       bizonyítsa be ezeket.
+* Számosság
+** Ekvivalencia 8
+   1. Definiálja halmazok ekvivalenciáját és sorolja fel tulajdonságait.
+   2. Ha az $X$ és $X'$ illetve $Y$ és $Y'$ halmazok ekvivalensek,
+      milyen más halmazok ekvivalenciájára következtethetünk még ebből?
+   3. Bizonyítsa be, hogy bármely \(n\in\mathbb{N}\)-re
+      $\{1,2,\ldots,n\}$ bármely valódi rész\-halmaza ekvivalens egy
+      $m<n$ természetes számra \(\{1,2,\ldots,m\}\)-mel.
+   4. Bizonyítsa be, hogy bármely \(n\in\mathbb{N}\)-re nem létezik
+      ekvivalencia $\{1,2,\ldots,n\}$ és egy valódi rész\-halmaza
+      között.
+   5. Definiálja a véges és a végtelen halmazok fogalmát.
+   6. Definiálja egy véges halmaz elemeinek számát.  Hogyan jelöljük?
+      Mit használt fel a definícióhoz?
+   7. Fogalmazza meg a véges halmazok és elem\-számuk tulajdonságait
+      leíró tételt.
+   8. Fogalmazza meg a véges halmazok és elem\-számuk tulajdonságait
+      leíró tételt és bizonyítsa be.
+** Kombinatorika 17
+   1) Fogalmazza meg a skatulya\-elvet.
+   2) Fogalmazza meg a skatulya\-elvet és bizonyítsa be.
+   3) Mit mondhatunk véges halmazban minimális és maximális elem
+      létezéséről?
+   4) Mit mondhatunk véges halmazban minimális és maximális elem
+      létezéséről?  Bizonyítsa be állítását.
+   5) Definiálja a permutációk fogalmát.  Mi a szokásos művelet és milyen
+      algebrai struktúrát kapunk?
+   6) Mit mondhatunk egy véges halmaz összes permutációinak számáról?
+      Bizonyítsa be állítását.
+   7) Mit értünk egy véges halmaz variációin és mit mondhatunk az összes
+      variációk számáról?  Bizonyítsa be állítását.
+   8) Definiálja az ismétléses variációk fogalmát.  Mit mondhatunk egy
+      véges halmaz összes ismétléses variációinak számáról?
+   9) Mit értünk egy véges halmaz kombinációin és mit mondhatunk az összes
+      kombinációk számáról?  Bizonyítsa be állítását.
+   10) Mit értünk egy véges halmaz ismétléses kombinációin és mit
+       mondhatunk az összes ismétléses kombinációk számáról?  Bizonyítsa be
+       állítását.
+   11) Mit értünk egy véges halmaz ismétléses permutációin és mit
+       mondhatunk az összes ismétléses permutációk számáról?  Bizonyítsa be
+       állítását.
+   12) Fogalmazza meg a binomiális tételt.
+   13) Fogalmazza meg a binomiális tételt és bizonyítsa be.
+   14) Fogalmazza meg a polinomiális tételt.
+   15) Fogalmazza meg a polinomiális tételt és bizonyítsa be.
+   16) Fogalmazza meg a logikai szita formulát.
+   17) Fogalmazza meg a logikai szita formulát és bizonyítsa be.
+* Szám\-elmélet 
+** Oszthatóság
+   1. Definiálja a természetes számok körében az
+      oszthatóságot és adja meg a jelölését.
+   2. Sorolja fel a természetes számok körében az
+      oszthatóság alaptulajdonságait.
+   3. Sorolja fel a természetes számok körében az
+      oszthatóság alaptulajdonságait és bizonyítsa be ezeket.
+   4. Definiálja a természetes számok körében a prímszám
+      és a törzs\-szám fogalmát.  Mi a kapcsolat a két fogalom
+      között?
+   5. Definiálja egység\-elemes integritási tartományban az
+      oszthatóságot és adja meg a jelölését.
+   6. Sorolja fel egység\-elemes integritási tartományban az
+      oszthatóság alaptulajdonságait.
+   7. Sorolja fel egység\-elemes integritási tartományban az
+      oszthatóság alaptulajdonságait és bizonyítsa be ezeket.
+   8. Definiálja az asszociáltak fogalmát és sorolja fel
+      ennek a kapcsolatnak a tulajdonságait.
+   9. Definiálja az egységek fogalmát és sorolja fel az
+      egységek halmazának tulajdonságait.
+   10. Mi a kapcsolat az egységek és az asszociáltak
+       között?
+   11. Mi a kapcsolat az egységek és az asszociáltak
+       között?  Bizonyítsa be állítását.
+   12. Definiálja a Gauss-egészek gyűrűjét.  Igaz-e,
+       hogy két egység van?
+   13. Definiálja egység\-elemes integritási tartományban a
+       prím\-elem és az irreducibilis elem fogalmát.  Mi a kapcsolat a két
+       fogalom között?
+   14. Mit értünk egység\-elemes integritási tartományban
+       legnagyobb közös osztó alatt?
+   15. Mikor mondjuk egység\-elemes integritási tartomány
+       elemeire, hogy relatív prímek?
+   16. Mit értünk egység\-elemes integritási tartományban legkisebb
+       közös többszörös alatt?
+   17. Mi a kapcsolat a természetes számok körében és az
+       egész számok körében vett oszthatóság között?
+   18. Egyértelmű-e az egész számok körében a legnagyobb
+       közös osztó?  Ismertesse a kapcsolódó jelölést.
+   19. Egyértelmű-e az egész számok körében a legkisebb
+       közös többszörös?  Ismertesse a kapcsolódó jelölést.
+   20. Ismertesse a bővített euklideszi algoritmust.
+   21. Ismertesse a bővített euklideszi algoritmust.
+       Bizonyítsa, hogy működik.
+   22. Mely tétel alapján számolhatjuk ki véges sok egész szám
+       legnagyobb közös osztóját prím\-felbontás nélkül?
+   23. Mi a kapcsolat \(\mathbb{Z}\)-ben a prím\-elemek és az irreducibilis
+       elemek között?  Bizonyítsa állítását.
+   24. Fogalmazza meg a szám\-elmélet alap\-tételét.
+   25. Definiálja prím\-tényezős
+       felbontásnál a kanonikus alakot.
+   26. Fogalmazza meg és bizonyítsa be a szám\-elmélet
+       alap\-tételét.
+   27. Fogalmazza meg Eukleidész tételét és a prímszámok
+       közötti résekre vonatkozó állítást, és mindkettőt
+       bizonyítsa be.
+   28. Hogyan határozhatók meg természetes számok esetén az
+       osztók, a legnagyobb közös osztó és a legkisebb közös
+       többszörös a prím\-tényezős felbontás segítségével?
+   29. Mi a kapcsolat két egész szám legnagyobb közös
+       osztója és legkisebb közös többszöröse között?
+   30. Hogyan számolhatjuk ki véges sok egész szám legkisebb
+       közös többszörösét prím\-felbontás nélkül?
+   31. Ismertesse Erathoszthenész szitáját.
+** Kongruenciák
+   1. Definiálja egész számok kongruenciáját és adja meg
+      a kapcsolódó jelöléseket.
+   2. Fogalmazza meg az egész számok kongruenciájának
+      egyszerű tulajdonságait.
+   3. Fogalmazza meg az egész számok kongruenciájának
+      egyszerű tulajdonságait és bizonyítsa be azokat.
+   4. Definiálja a maradék\-osztály, redukált maradék\-osztály,
+      teljes és redukált maradék\-rendszer fogalmát.
+   5. Definiálja \(\mathbb{Z}_m\)-et.  Milyen algebrai struktúra
+      $\mathbb{Z}_m$?
+   6. Fogalmazza meg a $\mathbb{Z}_m$ gyűrű tulajdonságait leíró
+      tételt.
+   7. Fogalmazza meg a $\mathbb{Z}_m$ gyűrű tulajdonságait leíró
+      tételt és bizonyítsa be.
+   8. Definiálja az Euler-féle $\varphi$ függvényt.
+   9. Mit mondhatunk az $aa_i+b$ számokról, ha $a_i$ egy
+      maradék\-rendszer, illetve egy redukált maradék\-rendszer elemeit futja
+      be?  Bizonyítsa be állítását.
+   10. Fogalmazza meg az Euler--Fermat--tételt.
+   11. Fogalmazza meg és bizonyítsa be az Euler--Fermat
+       tételt.
+   12. Fogalmazza meg a Fermat--tételt.
+   13. Fogalmazza meg és bizonyítsa be a Fermat--tételt.
+   14. Ismertesse a lineáris kongruenciák megoldásának
+       módszerét részletes indoklással.
+   15. Ismertesse lineáris kongruencia\-rendszerek megoldásának
+       módszerét részletes indoklással.
+   16. Mit értünk diofantikus problémán?
+   17. Mondjon két példát diofantikus problémára.
+   18. Fogalmazza meg a kínai maradék\-tételt.
+   19. Fogalmazza meg és bizonyítsa be a kínai maradéktételt.
+   20. Ismertesse az RSA eljárást részletes indoklással.
+       # - Ismertesse a Miller--Rabin-féle valószínűségi tesztet részletes indoklással.
+       # - Ismertesse a gyors hatványozási algoritmust részletes %indoklással.
+   21. Definiálja a szám\-elméleti függvény, az additív szám\-elméleti függvény
+       és a teljesen additív szám\-elméleti
+       függvény fogalmát.
+   22. Definiálja a számelméleti függvény, az
+       multiplikatív számelméleti függvény és a teljesen multiplikatív
+       számelméleti függvény fogalmát.
+   23. Fogalmazza meg az additív, multiplikatív, teljesen
+       additív és teljesen multiplikatív számelméleti függvények
+       kiszámítására vonatkozó tételt.
+   24. Fogalmazza meg az additív, multiplikatív, teljesen
+       additív és teljesen multiplikatív számelméleti függvények
+       kiszámítására vonatkozó tételt és bizonyítsa be.
+   25. Adjon egyszerű példák additív, multiplikatív,
+       teljesen additív és teljesen multiplikatív számelméleti
+       függvényekre.
+   26. Definiálja a $\mu$ és $\nu$ számelméleti
+       függvényeket.  Milyen tulajdonságúak?
+   27. Fogalmazza meg az Euler-féle $\varphi$ függvény
+       kiszámítására vonatkozó tételt.
+   28. Fogalmazza meg és bizonyítsa be az Euler-féle $\varphi$
+       függvény kiszámítására vonatkozó tételt.
+* COMMENT
+  - Definiálja számelméleti függvények konvolúcióját két alakban.
+  - Milyen struktúrát alkotnak a számelméleti függvények a
+    konvolúcióval?
+  - Milyen struktúrát alkotnak a számelméleti függvények a
+    konvolúcióval?  Bizonyítsa be állítását.
+  - Milyen struktúrát alkotnak a multiplikatív számelméleti függvények
+    a konvolúcióval?
+  - Bizonyítsa be, hogy multiplikatív számelméleti függvények
+    konvolúciója is multiplikatív.
+  - Mit értünk egy számelméleti függvény összegzési függvényén illetve
+    Möbius-transzformáltján?
+  - Fogalmazza meg a Möbius-féle inverziós formulát.
+  - Fogalmazza meg és bizonyítsa be a Möbius-féle inverziós formulát.
+  - Definiálja a $\tau$, $\sigma$ és $\sigma_k$ számelméleti
+    függvényeket.
+  - Írja fel a $\tau$ és $\sigma$ számelméleti függvények
+    kiszámítására használható formulákat.
+  - Fogalmazza meg az $E$, $I$, $I_{\mathbb{N}^+}$, $\mu$, $\tau$,
+    $\varphi$ és $\sigma$ számelméleti függvények közötti
+    kapcsolatokat tárgyaló tételt.
+  - Fogalmazza meg és bizonyítsa be az $E$, $I$, $I_{\mathbb{N}^+}$,
+    $\mu$, $\tau$, $\varphi$ és $\sigma$ számelméleti függvények
+    közötti kapcsolatokat tárgyaló tételt.
+  - Definiálja egy valós szám lánctört közelítéseit, bevezetve a
+    szükséges jelöléseket is.
+  - Mi a kapcsolat a lánctört közelítések és az euklideszi algoritmus
+    között és mi következik ebből?
+  - Fogalmazza meg a lánctört közelítések zárt alakjával foglalkozó
+    tételt.
+  - Fogalmazza meg és bizonyítsa be a lánctört közelítések zárt
+    alakjával foglalkozó tétel első felét, ami a közelítés zárt
+    alakját adja meg.
+  - Fogalmazza meg a lánctört közelítések zárt alakjával foglalkozó
+    tételt, és bizonyítsuk be a második felét, tehát kihagyva a
+    bizonyítás zárt alakra vonatkozó részét.
+  - Milyen alsó becslés adható a lánctört közelítések nevezőire?
+  - Fogalmazza meg a lánctört közelítések és egyéb racionális
+    közelítések közötti kapcsolatra vonatkozó tételt.
+  - Fogalmazza meg a kiválasztási axiómát.
+  - Fogalmazza meg a Zorn-lemmát.
+  - Fogalmazza meg a jólrendezési tételt.
+  - Mikor mondjuk, hogy egy halmaz majorál egy másikat?  Mikor
+    mondjuk, hogy egy halmaz szigorúan majorál egy másikat?
+  - Milyen nyilvánvaló tulajdonságai vannak halmazok majorálásának?
+  - Bizonyítsa be, hogy halmazok majorálása reflexív és tranzitív.
+  - Fogalmazza meg a Schröder--Bernstein-tételt.
+  - Fogalmazza meg és bizonyítsa be a Schröder--Bernstein-tételt.
+  - Fogalmazza meg a Schröder--Bernstein-tétel szigorú majorálásra
+    vonatkozó következményét.
+  - Fogalmazza meg és bizonyítsa be a Schröder--Bernstein-tétel
+    szigorú majorálásra vonatkozó következményét.
+  - Fogalmazza meg a halmazok összehasonlíthatóságára vonatkozó
+    tételt.
+  - Fogalmazza meg Cantor tételét.
+  - Fogalmazza meg és bizonyítsa be Cantor tételét.
+  - Definiálja a megszámlálható végtelen és a megszámlálható fogalmát.
+  - Adjon a megszámlálható végtelen fogalma segítségével szükséges és
+    elégséges feltételt arra, hogy egy halmaz végtelen legyen.
+  - Adjon a megszámlálható végtelen fogalma segítségével szükséges és
+    elégséges feltételt arra, hogy egy halmaz végtelen legyen, és
+    bizonyítsa be az állítást.
+  - Adjon $\mathbb{N}$ segítségével szükséges és elégséges feltételt
+    arra, hogy egy halmaz véges, megszámlálható illetve végtelen
+    legyen.
+  - Adjon $\mathbb{N}$ segítségével szükséges és elégséges feltételt
+    arra, hogy egy halmaz véges, megszámlálható illetve végtelen
+    legyen, és bizonyítsa be az állítást.
+  - Mit mondhatunk megszámlálható halmaz részhalmazáról?
+  - Mit mondhatunk megszámlálható halmaz részhalmazáról?  Bizonyítsa
+    be az állítást.
+  - Adjon $\mathbb{N}$ segítségével szükséges és elégséges feltételt
+    arra, hogy egy nem üres halmaz megszámlálható legyen.
+  - Adjon $\mathbb{N}$ segítségével szükséges és elégséges feltételt
+    arra, hogy egy nem üres halmaz megszámlálható legyen, és
+    bizonyítsa be az állítást.
+  - Bizonyítsa be, hogy $\mathbb{N}\times\mathbb{N}$ megszámlálható végtelen.
+  - Mely halmazműveletekre bizonyitítottuk, hogy nem vezetnek ki a
+    megszámlálható halmazok köréből?
+  - A $\mathbb{Z}$, $\mathbb{N}\times\mathbb{N}$, $\mathbb{Q}$,
+    $\mathbb{R}$, $\mathbb{C}$, $\mathbb{N}^n$ ($n\in\mathbb{N}$),
+    $\mathbb{R}^n$ ($n\in\mathbb{N}$),
+    $\cup_{n=0}^\infty\mathbb{N}^n$, $\wp(\mathbb{N})$ halmazok közül
+    melyek megszámlálhatóak?
+  - A $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$,
+    $\mathbb{N}^n$ ($n\in\mathbb{N}$), $\mathbb{R}^n$
+    ($n\in\mathbb{N}$), $\cup_{n=0}^\infty\mathbb{N}^n$,
+    $\wp(\mathbb{N})$ halmazok közül melyek megszámlálhatóak?
+    Bizonyítsa be az állítást.
+  - Egy végtelen halmaz és egy megszámlálható halmaz unióját képezzük.
+    Mit állíthatunk az unióról?
+  - Egy végtelen halmaz és egy megszámlálható halmaz unióját képezzük.
+    Mit állíthatunk az unióról?  Bizonyítsa be az állítást.
+  - Adjon valódi részhalmazok segítségével szükséges és elégséges
+    feltételt arra, hogy egy halmaz végtelen legyen.
+  - Adjon valódi részhalmazok segítségével szükséges és elégséges
+    feltételt arra, hogy egy halmaz végtelen legyen. Bizonyítsa be az
+    állítást.
+  - Definiálja a kontinuum számosságú halmaz fogalmát.
+  - Az $\mathbb{R}$ mely részhalmazairól bizonyítottuk, hogy kontinuum
+    számosságúak?
+  - Az $\mathbb{R}$ mely részhalmazairól bizonyítottuk, hogy kontinuum
+    számosságúak?  írja le a bizonyítást.
+  - A $\mathbb{Z}$, $\mathbb{N}\times\mathbb{N}$, $\mathbb{Q}$,
+    $\mathbb{R}$, $\mathbb{C}$, $\mathbb{N}^n$ ($n\in\mathbb{N}$),
+    $\mathbb{R}^n$ ($n\in\mathbb{N}$),
+    $\cup_{n=0}^\infty\mathbb{N}^n$, $\wp(\mathbb{N})$ halmazok közül
+    melyek kontinuum számosságúak?
+  - A $\mathbb{Z}$, $\mathbb{N}\times\mathbb{N}$, $\mathbb{Q}$,
+    $\mathbb{R}$, $\mathbb{C}$, $\mathbb{N}^n$ ($n\in\mathbb{N}$),
+    $\mathbb{R}^n$ ($n\in\mathbb{N}$), $\cup_{n=0}^\infty\mathbb{N}^n$
+    halmazok közül melyek kontinuum számosságúak?  Bizonyítsa be az
+    állítást.
+  - A $\mathbb{Z}$, $\mathbb{N}\times\mathbb{N}$, $\mathbb{Q}$,
+    $\wp(\mathbb{N})$, $\mathbb{N}^n$ ($n\in\mathbb{N}$),
+    $\cup_{n=0}^\infty\mathbb{N}^n$ halmazok közül melyek kontinuum
+    számosságúak?  Bizonyítsa be az állítást.

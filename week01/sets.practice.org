@@ -1,0 +1,155 @@
+# -*- mode:org; mode: flyspell; -*-
+
+#+SETUPFILE: ../inc/practice.h.org
+
+#+TITLE: Discrete mathematics I. practice - Sets
+#+SHORT_TITLE: Logic and sets
+* Sets
+  1. Find the sets $A,B,C$ which satisfy the following conditions: \[
+     A\cap B \ne \emptyset, \quad A\cap C = \emptyset, \quad (A\cap B)
+     \setminus C = \emptyset. \]
+
+  2. Prove that $A \cap B \subseteq C \Leftrightarrow A \subseteq
+     \overline{B} \cup C$.
+
+  3. Give a system of sets, which is disjoint but not mutually
+     (pairwise) disjoint! Is there a system of sets which is mutually
+     disjoint but not disjoint?
+
+  4. Let $\mathcal{A}=\{\{a,b,c\},\{a,d,e\},\{a,f\}\}$. What is $\cup
+     \cal A$ and $\cap \cal A$?
+
+  5. Let $x=\{\text{apple, plum}\}$ and $y=\{\text{dog, cat}\}$ be
+     sets. For which of these sets is it true that: $x$ in an element,
+     a subset of, $x$ is not an element, not subset of: $\{\{x\},y\}$,
+     $x$, $\{ \emptyset \} \cap x$, $\{x\} \setminus \{\{x\}\},
+     \{x\}\cup x, \{x\} \cup \{\emptyset\}$.
+
+  6. Prove the following:
+     1) $A \bigtriangleup \emptyset = A$; \hspace{5mm} 
+     2) $A \bigtriangleup A = \emptyset$; \hspace{5mm} 
+     3) $A \bigtriangleup (B \bigtriangleup C) = (A \bigtriangleup B)
+        \bigtriangleup C$; \hspace{5mm}
+     4) $A \bigtriangleup (A \bigtriangleup B)=B$.
+  
+  7. Using $\bigtriangleup$ and $\cap$ , express the following sets: $A
+     \setminus B$ and $A \cup B$.
+
+  8. Simplify the following $(A \cup (A\cap B)\cup (A \cap B \cap
+     C))\cap(A\cup B \cup C)$.
+
+  9. Prove that:
+     1) $\overline{A \cap B} = \overline{A} \cup \overline{B};$
+        \hspace{5mm}
+     2) $A \setminus B = A \cap \overline{B};$ \hspace{5mm}
+     3) $A \setminus (B \cap C)=(A\setminus B)\cup (A\setminus C);$
+        \hspace{5mm}
+     4) $A \setminus (B \cup C)= (A \setminus B) \setminus C$.
+  10. Identify which statements are true for arbitrary sets $A,B,C$:
+      1) $(A\cup B) \setminus A = B$;
+      2) $(A\cup B) \setminus C = A\cup (B \setminus C)$;
+      3) $(A \setminus B)\cap C = (A \cap C)\setminus B = (A\cap
+         C)\setminus (B\cap C)$.
+
+  11. Prove the following relation: $\overline{(\overline{A\cap B}\cup
+      C)\cap \overline{A}}\cup \overline{B}\cup \overline{C} = A \cup
+      \overline{B} \cup\overline{C}$.
+
+  12. Simplify the following: 
+      1) $\overline{A \cup(B\cap(C\cup \overline{D}))}$,
+      2) $\overline{(\overline{A}\cup B)\cap(A
+         \cup\overline{B})}$.
+
+  13. Write the power set of a 0, 1, 2 and 3 element set.
+
+  14. A group of software engineer lions (who think absolutely
+      perfectly) are standing in a circle around a slab of meat. All of
+      them would gladly eat, but none of them want to risk their lives
+      for it. If one of them eats the meat, he will fall asleep right
+      then and from then on, he is a potential lunch for the other
+      lions. How will the ultra-smart lions act if
+      1) there are 2 of them;
+      2) there are 3 of them;
+      3) if there are 99 of them;
+      4) if there are 100 of them?
+
+  15. There are 50 coins on the table, 25 heads, 25 tails. With our eyes
+      covered, how can we make two piles so that both piles have ther
+      same amount of coins facing heads.
+
+* Solutions
+  1. $A \cap B \neq \emptyset$, so $\exists x \in A \cap B$, so $A
+     \cap C = \emptyset$ implies that $x\not\in A \cap C$, so
+     $x\not\in C$, but then $x \in (A\cap B)\setminus C$ \ie $(A \cap
+     B) \setminus C = \emptyset$ can not be true.  We have proven
+     that there is no solution, \ie there are no such sets which
+     satisfy these properties.
+  2. HW***
+  3. $\mathcal{A}=\{ \{a,b\}, \{b,c\}, \{c,a\}\}$ is disjoint but not
+     pairwise disjoint.  Generally, pairwise disjoint sets are
+     disjoint, (with the exception of the special case of a single
+     non-empty set: \ie $\mathcal{B}=\{\{x\}\}$ is pairwise disjoint,
+     but not disjoint).
+  4. $\cup\mathcal{A}=\{a,b,c,d,e,f\}$, $\cap\mathcal{A} = \{a\}$.
+  5. Let's solve this with a small python program.
+     #+BEGIN_SRC python :results output :exports both
+       x = ["apple", "plumb"]
+       y = ["cat", "dog" ]
+       empty = []
+
+       def subset(A,B):
+           for a in A:
+               if not a in B: return False
+           return True
+
+       def intersect(A,B):
+           r = []
+           for a in A:
+               if a in B: r.append(a)
+           return r
+
+       def setminus(A,B):
+           r = []
+           for a in A:
+               if not a in B: r.append(a)
+           return r
+
+       def union(A,B):
+           r = []
+           for x in A:
+               if not x in r: r.append(x)
+           for x in B:
+               if not x in r: r.append(x)
+           return r
+            
+       testcases = [
+           [[x],y],
+           x,
+           intersect([empty],x),
+           setminus([x],[[x]]),
+           union([x],x),
+           union([x],[empty])
+       ]
+       print("The set                                 x in, x subset")
+       for t in testcases:
+           print( "{:<38}, {:<5}, {:<5}"
+               .format(str(t), str(x in t), str(subset(x,t))))
+        
+     #+END_SRC
+
+     #+RESULTS:
+     : [[['apple', 'plumb']], ['cat', 'dog']], False, False
+     : ['apple', 'plumb']                    , False, True 
+     : []                                    , False, False
+     : [['apple', 'plumb']]                  , True , False
+     : [['apple', 'plumb'], 'apple', 'plumb'], True , True 
+     : [['apple', 'plumb'], []]              , True , False
+  6. 
+  7. 
+  8. 
+  9. 
+  10. 
+  11. 
+  12. 
+  13. 
+  14. 

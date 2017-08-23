@@ -1,6 +1,6 @@
 # -*- mode:org; mode: flyspell; -*-
 
-#+SETUPFILE: p-common.org
+#+SETUPFILE: ../inc/practice.h.org
 #+LATEX_HEADER: \renewcommand{\Re}{\operatorname{Re}}
 #+LATEX_HEADER: \renewcommand{\Im}{\operatorname{Im}}
 
@@ -62,7 +62,8 @@
    4) $-3$;
    5) $\dfrac{10}{\sqrt{3}-i}$;
    6) $\dfrac{2+3i}{5+i}$;
-   7) $3-4i$;\textbf{h)} $-2+i$.
+   7) $3-4i$;
+   8) $-2+i$.
 
 9. Calculate the values of the following expressions using the polar form: 
    - $\dfrac{(1+i)^9}{(1-i)^7}$;

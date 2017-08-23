@@ -1,6 +1,6 @@
 # -*- mode: org; mode: flyspell; -*-
 
-#+SETUPFILE: l-common.org
+#+SETUPFILE: ../inc/lecture.h.org
 
 #+TITLE: Discrete mathematics I - Expansion of the notion of numbers
 #+SHORT_TITLE: Numbers
