@@ -267,8 +267,14 @@
     and $\theta$ is the angle from the positive real axis measured in
     radians counter clockwise.
 *** Argument
-    The argument of the complex number $z=x+yi$ (where $x,y\in\R$) is
-    $\arg z = \arctan \frac{y}{x}$.
+    Using the above notation, if $\theta \in [0,2\pi)$ then we say it
+    is the *argument of $z$* and this is denoted by *$\arg z$*.  It
+    can be calculated using $\arctan\frac{y}{x}$ and the signs of
+    $x$ and $y$.
+
+    # The argument of the complex number $z=x+yi$ (where $x,y\in\R$)
+    # is \(\arg z=\begin{cases}\arctan\frac{y}{x}&\text{if
+    # $x>0$}\\ \arctan\frac{y}{x}+\pi&\text{if $x<0$}\end{cases}\).
 ** Division in rectangular form
 *** Calculating the reciprocial
     Let $0\neq z=x+yi\in\C$ ($x,y\in\R$). Then
@@ -282,7 +288,7 @@
     \frac{z}{w} = \frac{z}{w}\cdot\frac{\overline{w}}{\overline{w}}=
     \frac{z\overline{w}}{\left\vert w\right\vert^2}=
     \frac{\Re(z\overline{w})}{\left\vert w\right\vert^2}+
-    \frac{\Im(z\overline{w})}{\left\vert w\right\vert^2}
+    \frac{\Im(z\overline{w})}{\left\vert w\right\vert^2}i
     \end{equation*}
 ** De Moivre formuls
 *** Operations in polar form
