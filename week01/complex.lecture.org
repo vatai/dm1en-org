@@ -404,9 +404,9 @@
       r(\cos \varphi +i \sin \varphi)= r(\cos(\varphi+2\pi)+i\sin(\varphi+2\pi))
       \end{equation*}
       #+END_EXPORT
-    - $z=a+bi$ is the rectangular form;
-    - $z=r(\cos \varphi +i \sin \varphi)$ is the polar form.
-    Here $a=r\cos \varphi, b=r \sin \varphi$.
+    - $z=r(\cos \varphi +i \sin \varphi)$ is the polar form;
+    - $z=a+bi$ is the rectangular form ($a=r\cos\varphi,
+      b=r\sin\varphi$)
 *** Argument :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
