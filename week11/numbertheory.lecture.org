@@ -88,7 +88,7 @@
     Conversely, if $\varepsilon$ is a unit, then $1=\varepsilon \cdot
     q$ for some integer $q$.  Because $|\varepsilon |\geq 1$,
     $|q |\geq 1$ $\color{black}\Rightarrow$ $|\varepsilon|=1$, that is
-    $\varepsilon=\pm 1$. \qed
+    $\varepsilon=\pm 1$. 
 *** Unit							  :B_example:
     :PROPERTIES:
     :BEAMER_env: example
@@ -215,9 +215,9 @@
     
       If it is $9$ o'clock now, what time will it be after $116$ hours?
     
-      Let us divide $116$ by $24$: $116=24\cdot 4+20$.  So $9+20=29$. We
-      have a \alert{reduction again:} $29=24\cdot 1+5$: it will be $5$
-      A.M.!
+      Let us divide $116$ by $24$: $116=24\cdot 4+20$.  So
+      $9+20=29$. We have a *reduction again*: $29=24\cdot 1+5$: it
+      will be $5$ A.M.!
  
     - Which day of the week will the 10th of November be next year?
       Which day of the week was the 14th of September before two
@@ -232,14 +232,14 @@
     - Divide $-(365+366)$ (2012 was a leap year) by $7$: $-731=7\cdot
       (-105)+4$.
       
-      Friday + 3 days $=4+4=8\overset{\alert{\text{reduction}}}{=}1=$
-      *Tuesday*
+      Friday + 3 days $=4+4=8\overset{\text{red.}}{=}1=$
+      *Tuesday*.
 ** Numeral systems
    In the base *10* numeral system the number $123$:
    $123=100+20+3=1\cdot {\color{blue}10^2}+2\cdot {\color{blue}
    10^1}+3\cdot {\color{blue} 10^0}$.
 
-   In the base \alert{2} numeral system the number $123$:
+   In the base *2* numeral system the number $123$:
    \begin{align*}
    1111011_{(2)} &= 1\cdot{\color{blue}2^6} + 1\cdot {\color{blue}
    2^5} + 1\cdot {\color{blue} 2^4} + 1\cdot {\color{blue} 2^3} +
@@ -255,8 +255,8 @@
     :BEAMER_env: theorem
     :END:
     Let $q>1$ be a fixed integer.  Then each non-negative integer $n$
-    can uniquely be written in the form $\alert{n=\sum_{i=0}^k a_i
-    q^i}$, where $0\leq a_i<q$ is an integer, $a_k\neq 0$.
+    can uniquely be written in the form *$n=\sum_{i=0}^k a_i q^i$*,
+    where $0\leq a_i<q$ is an integer, $a_k\neq 0$.
     1. This expression is the number $n$ written in the base $q$
        num. sys.
     2. $q$ is the base of the numeral system.
@@ -286,14 +286,15 @@
     :END:
     Let us write in base $2$ numeral system the number $n=123$
     (expressed in base $10$).
-   | $i$ | $n$   | $n \bmod 2$    | $\frac{n-a_i}{2}$ | Digits                           |
-   | $0$ | $123$ | $\color{red}1$ | $\frac{123-1}{2}$ | ${\color{white}111101}\alert{1}$ |
-   | $1$ | $61$  | $\color{red}1$ | $\frac{61-1}{2}$  | ${\color{white}11110}\alert{1}1$ |
-   | $2$ | $30$  | $\color{red}0$ | $\frac{30-0}{2}$  | ${\color{white}1111}\alert{0}11$ |
-   | $3$ | $15$  | $\color{red}1$ | $\frac{15-1}{2}$  | ${\color{white}111}\alert{1}011$ |
-   | $4$ | $7$   | $\color{red}1$ | $\frac{7-1}{2}$   | ${\color{white}11}\alert{1}1011$ |
-   | $5$ | $3$   | $\color{red}1$ | $\frac{3-1}{2}$   | ${\color{white}1}\alert{1}11011$ |
-   | $6$ | $1$   | $\color{red}1$ | $\frac{1-1}{2}$   | ${\color{white}}\alert{1}111011$ |
+   | $i$ | $n$   | $n \bmod 2$    | $\frac{n-a_i}{2}$ |     Digits |
+   | /   |       |                |                   |        <r> |
+   | $0$ | $123$ | $\color{red}1$ | $\frac{123-1}{2}$ |        *1* |
+   | $1$ | $61$  | $\color{red}1$ | $\frac{61-1}{2}$  |      *1* 1 |
+   | $2$ | $30$  | $\color{red}0$ | $\frac{30-0}{2}$  |     *0* 11 |
+   | $3$ | $15$  | $\color{red}1$ | $\frac{15-1}{2}$  |    *1* 011 |
+   | $4$ | $7$   | $\color{red}1$ | $\frac{7-1}{2}$   |   *1* 1011 |
+   | $5$ | $3$   | $\color{red}1$ | $\frac{3-1}{2}$   |  *1* 11011 |
+   | $6$ | $1$   | $\color{red}1$ | $\frac{1-1}{2}$   | *1* 111011 |
 * Euclidean algorithm
 ** Greatest common divisor
 *** Greatest common divisor				       :B_definition:
@@ -359,9 +360,13 @@
     r_{n-1}&=r_{n}q_{n+1}
     \end{align*}
     
-Gcd is the last $\neq0$ remainder: $\alert{(a,b)=r_n}$.
+Gcd is the last $\neq0$ remainder: *$(a,b)=r_n$*.
     Here $a=r_{-1}$, $b=r_{0}$,
-** Correctness of the euclidean algorithm
+** Correctness of the euclidean algorithm :B_ignoreheading:
+   :PROPERTIES:
+   :BEAMER_env: ignoreheading
+   :END:
+   
 *** Proof (continued)						    :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
@@ -558,8 +563,8 @@ Gcd is the last $\neq0$ remainder: $\alert{(a,b)=r_n}$.
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
-   $\tau (n)$ is the \alert{number of (positive) divisors}
-   for an integer $n>1$.
+    $\tau (n)$ is the *number of (positive) divisors* for an integer
+    $n>1$.
  
 *** Calculating $\color{white}\tau(n)$ 
     Let $n>1$ be an integer, $n=p_1^{\alpha_1}p_2^{\alpha_2}\cdots
