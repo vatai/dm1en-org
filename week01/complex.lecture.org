@@ -4,6 +4,7 @@
 #+LATEX_HEADER: \renewcommand{\Re}{\operatorname{Re}}
 #+LATEX_HEADER: \renewcommand{\Im}{\operatorname{Im}}
 
+#+LATEX_HEADER: \usetikzlibrary{decorations.pathreplacing}
 
 #+TITLE: Discrete mathematics I - Complex numbers
 #+SHORT_TITLE: Complex numbers
@@ -126,15 +127,55 @@
     :END:
     The *$\C$* is the *set of complex numbers*, where if $z\in\C$,
     then $z$ is an expression $a+bi$ with $a,b\in\R$. This is the
-    *rectangular form* of $z$.  $\Re(z)=a$ is the *real part* and
-    $\Im(z)=b$ is the *imaginary part* of $z$.  *Important warning*:
-    $\Im(z)\neq bi$!
+    *rectangular (or Cartesian or algebraic) form* of $z$.  $\Re(z)=a$
+    is the *real part* and $\Im(z)=b$ is the *imaginary part* of $z$.
+    *Important warning*: $\Im(z)\neq bi$!
 
     #+BEGIN_COMMENT
     The set of all expressions of the form $a+bi$, where $a,b\in\R$ is
     the set of complex numbers ($\C$). If $z=a+bi$ ($a,b\in\R$) then
     this is the *rectangular form* of the complex number $z$.
     #+END_COMMENT
+*** Graphical representation
+    #+BEGIN_CENTER
+    #+BEGIN_EXPORT latex
+    \begin{tikzpicture}[scale=2.5]
+    \def\sqrtthree{1.732050808}
+    \def\zcords{(\sqrtthree/2,1/2)}
+
+    %\begin{scope}
+    %\clip(-0.1,-0.1) rectangle (,1.5);  
+  
+    % grid, axis, circle
+    \draw[style=help lines,step=0.2,color=gray,densely dotted] 
+    (-0.1,-0.1) grid (1.5,0.9);
+    \draw[->] (-0.1,0) -- (1.5,0); % X axis
+    \draw[->] (0,-0.1) -- (0,0.7); % Y axis
+    %\draw[dashed,color=gray] (0,0) circle (1);
+    %\end{scope}
+  
+    \filldraw[fill=green!20,draw=cyan] (0,0) -- (3mm,0pt) arc(0:30:3mm);
+    %\node[color=cyan] at (0.4,0.1) {$\varphi$};
+
+    % r = |z| etc
+    \draw[color=magenta,decorate,decoration={brace,amplitude=5pt,mirror,raise=1pt}] \zcords -- (0,0) node[rotate=30,yshift=11,midway]{$|z|$};
+
+    % Re z
+    \draw[color=red] (0,1/2) -- \zcords  (\sqrtthree/4,1/2+0.1) node{$a=\Re(z)$};
+
+    % Im z
+    \draw[color=blue] (\sqrtthree/2,0) -- \zcords (\sqrtthree/2+0.4,1/4) node{$b=\Im(z)$};
+
+    % arrow to z and z's label
+    \draw[->,>=latex] (0,0) -- \zcords;
+    \draw \zcords 
+    node [draw, label=45:{$z={\color{red}a}+{\color{blue}b}i$}, circle, 
+    minimum width=1pt, inner sep=1pt, fill=black] {};
+
+    \end{tikzpicture}
+    #+END_EXPORT
+    #+END_CENTER
+** Opertaions on complex numbers
 *** Operations on $\C$ :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
@@ -146,7 +187,7 @@
 *** Remarks: let $z=a+bi$ (with $a,b\in\R$).
     - If $b=0$ then $z$ is a *real number*.
     - If $a=0$ then $z$ is a *pure imaginary number*.
-** COMMENT TODO FIGURE
+
 ** Alternative (more formal definition) of $\C$
 *** Complex numbers as ordered pairs                           :B_definition:
     :PROPERTIES:
@@ -294,7 +335,6 @@
 * Polar form
 ** Representation of complex numbers
    On the *complex plane*
-   #+LATEX_HEADER: \usetikzlibrary{decorations.pathreplacing}
    #+BEGIN_CENTER
    #+BEGIN_EXPORT latex
    \begin{tikzpicture}[scale=2.5]
@@ -353,9 +393,9 @@
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
-    The *polar form* of the non-zero $z\in \mathbb{C}$ is
-    *$z=r(\cos \varphi + i \sin \varphi)$*,
-    where $r>0$ is the *absolute value* (or length) of $z$.
+    The *polar (or tigonometric) form* of the non-zero $z\in
+    \mathbb{C}$ is *$z=r(\cos \varphi + i \sin \varphi)$*, where $r>0$
+    is the *absolute value* (or length) of $z$.
 *** Remarks
     - 0 does not have a polar form (because it has no argument).
     - The polar form is not unique:
