@@ -23,14 +23,12 @@
 *** Reminder: Solving $x^2+px+q=0$
     With the substitution $x=y-\frac{p}{2}$ we get $y^2+q'=0$.  From
     this we can easily obtain the solution by rearranging and taking
-    the square roots.  By substituting $y=x-b/3$ into \eqref{eq:cubcd}
+    the square roots.  By substituting $x=y-b/3$ into \eqref{eq:cubcd}
     #+BEGIN_EXPORT latex
     \begin{equation}\label{eq:cubic}
-    x^3 + px + q=0
+    y^3 + py + q=0
     \end{equation} 
     #+END_EXPORT
-
-    
 ** Solving $y^3+py+q=0$ 
 *** Idea: try to find the solution in a $y=u+v$ form!
    By rearranging $(u+v)^3=u^3+3u^2v+3uv^2+v^3$ we obtain
@@ -42,7 +40,6 @@
 
    Our goal: find $u,v$ for which $-3uv=p$, $-(u^3+v^3)=q$. Then
    $y=u+v$ will be a solution!
-
 *** Finding $u,v$ 
     $u^3v^3=(-\frac{p}{3})^3$ and $u^3+v^3=-q$, $u^3$, $v^3$ will be
    the roots of the quadratic equation $z^2+qz+(\frac{-p}{3})^3=0$.
@@ -187,7 +184,6 @@
 *** Remarks: let $z=a+bi$ (with $a,b\in\R$).
     - If $b=0$ then $z$ is a *real number*.
     - If $a=0$ then $z$ is a *pure imaginary number*.
-
 ** Alternative (more formal definition) of $\C$
 *** Complex numbers as ordered pairs                           :B_definition:
     :PROPERTIES:
@@ -199,8 +195,7 @@
     The two definitions are equivalent with $i = 0+1\cdot i \equiv
     (0,1)$.  $a+bi$ is more convenient when calculating with pencil
     and paper, $(a,b)$ is used in computer programs.
-
-*** Fundamental theorem of algebra NP                    :B_theorem:
+*** Fundamental theorem of algebra NP                             :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
@@ -306,7 +301,7 @@
     5. $z-\overline{z}=2\Im(z)\cdot i$;
     6. $z\cdot \overline{z}=|z|^2$;
     7. If $z\neq 0$, then $z^{-1}=\frac{\overline{z}}{|z|^2}$;
-    8. If $|0|=0$ and $z\neq 0$, then $|z|>0$;
+    8. $|0|=0$ and $z\neq 0$, then $|z|>0$;
     9. $|\overline{z}|=|z|$;
     10. $|z\cdot w|=|z| \cdot |w|$;
     11. $|z+w|\le |z| + |w|$ (triangle inequality theorem).
@@ -359,10 +354,10 @@
    \draw[color=magenta,decorate,decoration={brace,amplitude=10pt,mirror,raise=4pt}] \zcords -- (0,0) node{};
 
    % cos varphi
-   \draw[color=red] (0,0) -- (1/2,0)   (1/4,-0.1) node{$\cos \varphi$};
+   \draw[color=red] (0,0) -- (1/2,0)   (1/4,-0.1) node{$r \cos \varphi$};
 
    % sin varphi
-   \draw[color=blue] (1/2,0) -- \zcords (0.6,0.4) node[rotate=90]{$\sin \varphi$};
+   \draw[color=blue] (1/2,0) -- \zcords (0.6,0.4) node[rotate=90]{$r\sin \varphi$};
 
    % arrow to z and z's label
    \draw[->,>=latex] (0,0) -- \zcords;
@@ -414,14 +409,13 @@
     The *argument* of a non-zero $z\in \mathbb{C}$ is
     $\varphi=arg(z)\in [0,2\pi)$, such that $z=|z|(\cos \varphi +i\sin
     \varphi)$.
-
 ** Converting rectangular to polar form
 *** Using the inverse of $\tan$
     Let $a+bi=r(\cos\varphi + i\sin\varphi)$, which implies
     $a=r\cos\varphi$ and $b=r\sin\varphi$.
     
     If $a\ne 0$, then 
-    $\textrm{tg}\varphi
+    $\tan\varphi
     =\frac{b}{a}$, so 
     \[
     \varphi = \begin{cases}
@@ -434,7 +428,8 @@
     \operatorname{sign}(a)\frac{\pi}{2}\]
 
     Note: $\varphi$ is not the argument, because $\varphi \in
-    [\frac{-\pi}{2},0]$ is possible.  But this can be fixed by adding $2\pi$.
+    [-\frac{\pi}{2},\frac{3\pi}{2})$ is possible.  But this can be
+    fixed by adding $2\pi$.
 ** Multiplication with complex in polar form
 # *** Multiplication in polar form
     Let $z,w \in \mathbb{C}$ non-zero complex numbers: $z=|z|(\cos
@@ -463,7 +458,6 @@
     \arg(z) + \arg(w) - 2\pi& \text{ if } 2\pi\le\arg(z)+\arg(w)<4\pi \
     \end{cases}\]
     \ie the arguments are summed and then reduced by $2\pi$.
-
 ** Multiplication in polar form
 *** De Moivre's formula :B_theorem:
     :PROPERTIES:
@@ -514,15 +508,16 @@
     \]
     #+END_EXPORT
 
-    if $|z|=|w|$ and $\varphi = \psi +k \cdot 2 \pi$ for some $k \in \mathbb{Z}$
-*** Taking the \(n\)-th root: Let $z^n=w$:
+    if $|w|=|z|$ and $\psi = \varphi +k \cdot 2 \pi$ for some $k \in
+    \mathbb{Z}$
+*** Taking the \(n\)-th root: Let $w^n=z$ ($w$ is unknown):
     # #+BEGIN_EXPORT latex
-    If $z^n=|z|^n(\cos n\varphi +i \sin n\varphi )=|w|(\cos \psi +i \sin \psi )$
+    If $w^n=|w|^n(\cos n\psi +i \sin n\psi )=|w|(\cos \varphi +i \sin \varphi )$
     # #+END_EXPORT
     then:
-    - $|z|^n=|w| \Rightarrow |z|=\sqrt[n]{|w|}$ and
-    - $n\varphi=\psi+k \cdot 2\pi$ for some $k \in \mathbb{Z}$, \ie
-      - $\varphi= \frac{\psi}{n}+k \cdot \frac{2\pi}{n}$
+    - $|w|^n=|z| \Rightarrow |w|=\sqrt[n]{|z|}$ and
+    - $n\psi=\varphi+k \cdot 2\pi$ for some $k \in \mathbb{Z}$, \ie
+      - $\psi= \frac{\varphi}{n}+k \cdot \frac{2\pi}{n}$
         for some $k \in \mathbb{Z}$.
 
     If $k\in \{0,1,\dots ,n-1\}$, then these are all different
@@ -534,9 +529,9 @@
     :END:
     Let $z=|z|(\cos \varphi +i \sin \varphi)$, $n\in \N$. The values
     of $w\in\C$ are the \(n\)-th root of $z$ if $w^n=z$:
-    $$w=\sqrt[n]{|z|}\left(\cos\left(\frac{\varphi}{n}+\frac{2k\pi}{n}\right)+i
-    \sin\left(\frac{\varphi}{n}+\frac{2k\pi}{n}\right)\right)$$
-    $k=0,1,\dots, n-1$.
+    $$w=\sqrt[n]{|z|}\left(\cos\left(\frac{\varphi}{n}+\frac{2\pi
+    k}{n}\right)+i \sin\left(\frac{\varphi}{n}+\frac{2\pi
+    k}{n}\right)\right)$$ $k=0,1,\dots, n-1$.
 ** Example for: taking the \(n\)-th root
    \[w=\sqrt[n]{|z|}\left(\cos\left(\frac{\varphi}{n}+\frac{2k\pi}{n}\right)+i
    \sin\left(\frac{\varphi}{n}+\frac{2k\pi}{n}\right)\right): k=0,1,\dots, n-1\]
@@ -591,7 +586,6 @@
     \end{tikzpicture}
     #+END_EXPORT
     #+END_CENTER
-
 ** Taking the \(n\)-th root
    The square roots a of a positive real number $r$ is are the
     solutions of $x^2=r$ \ie $\pm \sqrt{r}$.
@@ -695,7 +689,7 @@
     - Primitive 2-nd root of unity: $-1$;
     - Primitive 3-rd roots of unity: $\frac{-1\pm i \sqrt{3}}{2}$;
     - Primitive 4-th roots of unity: $\pm i;$
-    - Primitive 5-th roots of unity: $\dots$ (HF)
+    - Primitive 5-th roots of unity: $\dots$ (HW)
     - Primitive 6-th roots of unity: $\frac{1\pm i \sqrt{3}}{2}$.
 
 *** Statement :B_theorem:
