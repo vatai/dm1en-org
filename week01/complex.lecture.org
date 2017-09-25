@@ -228,15 +228,14 @@
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
-    Let $|z|=|a+bi|\ge 0$, then $|z|=|a+bi|=0 \iff z=a+bi=0$
-
+    If $z\in\C$, then $|z|\ge 0$, and $|z|=0 \iff z=0$
 ** Calculation with complex numbers: reciprocal
 *** Reciprocal, multiplicative inverse :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
     $y$ is the *reciprocal* (or *multiplicative inverse*) of $x$ if
-    $x\cdot y = 1$.  For $r\in\R\setminus\{0\}$ the reciprocal if
+    $x\cdot y = 1$.  For $r\in\R\setminus\{0\}$ the reciprocal is
     $1/r$ sometimes denoted as $r^{-1}$.
 *** Reciprocal of complex numbers: rationalisation
     What is the rectangular form of $\frac{1}{1+i}$? Idea:
@@ -301,7 +300,7 @@
     5. $z-\overline{z}=2\Im(z)\cdot i$;
     6. $z\cdot \overline{z}=|z|^2$;
     7. If $z\neq 0$, then $z^{-1}=\frac{\overline{z}}{|z|^2}$;
-    8. $|0|=0$ and $z\neq 0$, then $|z|>0$;
+    8. $|0|=0$ and if $z\neq 0$, then $|z|>0$;
     9. $|\overline{z}|=|z|$;
     10. $|z\cdot w|=|z| \cdot |w|$;
     11. $|z+w|\le |z| + |w|$ (triangle inequality theorem).
@@ -425,7 +424,7 @@
     \]
 
     If $a=0$ then we have a pure imaginary number, so \[\varphi =
-    \operatorname{sign}(a)\frac{\pi}{2}\]
+    \operatorname{sign}(b)\frac{\pi}{2}\]
 
     Note: $\varphi$ is not the argument, because $\varphi \in
     [-\frac{\pi}{2},\frac{3\pi}{2})$ is possible.  But this can be
@@ -500,8 +499,8 @@
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
-    Two complex number $z=|z|(\cos \varphi +i \sin \varphi )$ and
-    $w=|w|(\cos \psi+i \sin \psi)$ in polar form are *equal* if
+    Two complex numbers $z=|z|(\cos \varphi +i \sin \varphi )$ and
+    $w=|w|(\cos \psi+i \sin \psi)$ in polar form are *equal*
     #+BEGIN_EXPORT latex
     \[
     |z|(\cos \varphi +i \sin \varphi )=|w|(\cos \psi+i \sin \psi)
@@ -577,8 +576,9 @@
     \draw[help lines] (0,0) circle (1);
 
     \node[dot,label={below right:$O$}] (O) at (0,0) {};
-    \foreach \i in {1,...,\n} {
-    \node[dot,label={\i*360/\n-(\i==\n)*45:$w_{\i}$}] (w\i) at (\i*360/\n:1) {};
+    \pgfmathtruncatemacro{\nmo}{\n-1}
+    \foreach \i in {0,...,\nmo} {
+    \node[dot,label={\i*360/\n-(\i==\n)*45:$\varepsilon_{\i}$}] (w\i) at (\i*360/\n:1) {};
     \draw[->] (O) -- (w\i);
     }
     \draw[->] (0:.3) arc (0:360/\n:.3);
@@ -641,9 +641,9 @@
     A complex number $z$ 
     - either has all pairs of integer powers different, then
       $o(z)=\infty$,
-    - of if there are two integer powers equal, and then powers of $z$
-      are periodic, with the period equal to $o(z)$.
-    Also, $o(z)=\min\{d:z^d=1\}$, \ie the order is the smallest
+    - or there are two integer powers equal, and then the powers of
+      $z$ are periodic, with the period equal to $o(z)$.
+    Also, $o(z)=\min\{d\in\N:z^d=1\}$, \ie the order is the smallest
     positive integer $d$ such that $z^d=1$.
 
     Furthermore, $z^k=z^l \Leftrightarrow o(z) \mid k-l$. 
@@ -653,14 +653,14 @@
     :BEAMER_env: proof
     :END:
     Let $o(z)<\infty$.  Then there are $k,\ell$ integers, such that
-    $z^k=z^\ell$.  Suppose $k>l$. Then $z^{k-\ell}=1$.
+    $z^k=z^\ell$.  Suppose $k>\ell$. Then $z^{k-\ell}=1$.
 
-    Let $d$ be the smallest positive integer, such that $z^d=1$.  If
-    $z^n=1$, then if we divide $n$ by $d$ (with a remainder) \ie
-    $n=q\cdot d+r$, wher $0\le r <d$. So $1=z^n=z^{q\cdot d+r}=(z^d)^q
-    z^r=1^qz^r=z^r$. Since $d$ is the smallest such integer$r=0$
-    implying $d\mid n$.  In the other direction: $d\mid n \Rightarrow z^n=1$.
-    So: $d\mid n \iff z^n=1$.
+    Let $d$ be the smallest positive integer, such that $z^d=1$.
+    Let's divide $n$ by $d$ (with a remainder), so $n=q\cdot d+r$,
+    where $0\le r <d$. Now $1=z^n=z^{q\cdot d+r}=(z^d)^q
+    z^r=1^qz^r=z^r$. Since $d$ is the smallest such integer, $r=0$
+    implying $d\mid n$.  In the other direction: $d\mid n$ \ie $dq=n
+    \Rightarrow z^n=1$.  So: $d\mid n \iff z^n=1$.
 ** Primitive roots of unity
     Not all \(n\)-th roots of unity have order equal to $n$:
 
