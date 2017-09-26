@@ -643,7 +643,7 @@
       $o(z)=\infty$,
     - or there are two integer powers equal, and then the powers of
       $z$ are periodic, with the period equal to $o(z)$.
-    Also, $o(z)=\min\{d\in\N:z^d=1\}$, \ie the order is the smallest
+    Also, $o(z)=\min\{d\in\N^+:z^d=1\}$, \ie the order is the smallest
     positive integer $d$ such that $z^d=1$.
 
     Furthermore, $z^k=z^l \Leftrightarrow o(z) \mid k-l$. 
@@ -663,15 +663,13 @@
     \Rightarrow z^n=1$.  So: $d\mid n \iff z^n=1$.
 ** Primitive roots of unity
     Not all \(n\)-th roots of unity have order equal to $n$:
-
-*** 4-th roots of unity egységgyökök: $1,i,-1,-i$.
+*** 4-th roots of unity: $1,i,-1,-i$.
     - $o(1)=1$;
     - $o(-1)=2$
     - $o(i)=4$
 *** Primitive \(n\)-th roots of unity
     The \(n\)-th roots of unity which have order equal to $n$ are the
     *primitive \(n\)-th roots of unity*
-
 *** Corollary (proof for homework)                                :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
@@ -691,7 +689,6 @@
     - Primitive 4-th roots of unity: $\pm i;$
     - Primitive 5-th roots of unity: $\dots$ (HW)
     - Primitive 6-th roots of unity: $\frac{1\pm i \sqrt{3}}{2}$.
-
 *** Statement :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
@@ -700,5 +697,3 @@
     \frac{2k\pi}{n}\right)+i\sin\left( \frac{2k\pi}{n}\right)$ is a
     primitive \(n\)-th root of unity, if and only if
     $\operatorname{gcd}(n,k)=1$.
-
-
