@@ -544,7 +544,7 @@
     :PROPERTIES:
     :BEAMER_col: 0.3
     :END:
-    #+ATTR_LATEX: :width 4cm
+    #+ATTR_LATEX: :width 3cm
     file:../figs/hasse.tikz
 ** Least, greatest, minimum, maximum element
 *** Remarks
@@ -566,7 +566,7 @@
     :PROPERTIES:
     :BEAMER_col: 0.3
     :END:
-    #+ATTR_LATEX: :width 4cm
+    #+ATTR_LATEX: :width 3cm
     file:../figs/hasse.tikz
 ** Bounds 
 *** Definition (Bounds)
@@ -595,7 +595,7 @@
     :PROPERTIES:
     :BEAMER_col: 0.3
     :END:
-    #+ATTR_LATEX: :width 4cm
+    #+ATTR_LATEX: :width 3cm
     file:../figs/hasse.tikz
 ** Least-upper-bound property
 *** Definition (LUB and GLB property)
