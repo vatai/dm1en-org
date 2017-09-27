@@ -80,8 +80,8 @@
 
 13. Let $z\neq w$ be two complex numbers!  Using $z$ and $w$, express
     the midpoint of the line segment between them, also express the
-    third points (angles?) of the two regular triangles defined by $z$
-    and $w$ and balance point of these triangles.
+    third vertices (angles?) of the two regular triangles defined by
+    $z$ and $w$ and balance points of these triangles.
 
 14. What is the square root of the following numbers:
     1) $3-4i$;
@@ -121,7 +121,7 @@
 24. Express the value of $\sin(n\alpha)$ and $\cos(n\alpha)$
     using $\sin(\alpha)$, $\cos(\alpha)$!
  
-* Solutions
+* COMMENT Solutions
 1. 
    #+ATTR_LATEX: :environment inparaenum
    1) $3+11i$;
