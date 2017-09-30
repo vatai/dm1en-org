@@ -1,0 +1,310 @@
+# -*- mode: org; mode: flyspell; -*-
+#+SETUPFILE: ../inc/lecture.h.org
+# (plist-put org-format-latex-options :scale 2)
+# (org-tree-slide-mode)
+
+
+#+TITLE: Discrete mathematics I - Logic
+#+SHORT_TITLE: Logic
+#+LATEX_HEADER: \def\A{\mathcal{A}}
+#+LATEX_HEADER: \def\B{\mathcal{B}}
+#+LATEX_HEADER: \def\C{\mathcal{C}}
+# #+LATEX_HEADER: \def\iff{\Leftrightarrow}
+#+LATEX_HEADER: \usepackage{wasysym}
+
+* Basics
+** Logic: The science of correct reasoning 
+*** Definition
+    - *Logic* (from the Ancient Greek: logike) is the use and study of
+      *valid reasoning*.
+    - Independent of the objects of discussion.
+    - Logic discusses *statements* which have a unique *truth value*.
+
+*** Truth values
+    - *Truth values* can be either
+      - *true* ($\uparrow$, 1, $\top$, $T$) or
+      - *false* ($\downarrow$, 0, $\perp$, $F$).
+    - $\mathbb{L}=\{T,F\}$.
+    - *Propositional variables* are variables which range over truth
+      values, (they must be either true or false, but never both).
+
+** What we need to know
+*** Different kinds of logic
+    1. Zeroth-order logic - *Propositional* calculus
+    2. First-order logic - *Predicate* calclulus
+    3. Second-order logic (we're not doing this in detail)
+
+*** Why do we need it
+    - To *express* ourselves (not in an emo/artsy way!), 
+    - To *understand* the mathematics and
+    - To be able to apply it *properly*.
+    - Remark: the order (zero, first, second) denotes the *expressive
+      strength* of the logic.
+
+** Application and examples
+*** Application
+    - Mathematics,
+    - Computer science,
+    - Artificial intelligence
+*** Statements and negations                                      :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - Every bug is an insect. *Negation*: There are bugs which are not
+      insects.
+    - It is raining, but it's warm, although the sun is hiding, and it
+      is getting late. *Negation*: ???
+** The axiomatic approach
+*** Our goal is to approximate reality using a mathematical model!
+    The axiomatic approach uses (undefined) /primitive/ concepst
+    (predicates, see later) and *axioms*: a set of rules between these
+    concepts which we assume to be true with out proof.  From these
+    rules, we derive our theory (by proving theorems using the rules
+    of logic).  
+*** The *advantage* of such a method
+    One needs to prove the theorems only once, and the model can be
+    reused for other concepts, just by checking the axioms.
+*** Basic concepts and axioms :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - Concepts: point, line, plane;
+    - Axioms: Euclid's famous fifth postulate (Playfair's axiom)lP - In
+      a plane, given a line and a point not on it, at most one line
+      parallel to the given line can be drawn through the point.
+* Propositional calculus
+** Predicates 
+*** COMMENT Definition
+    - A *predicate* takes an entity or entities in the domain of
+      discourse as *input* and *outputs* either *True or False*.
+    - $P$ is an \(n\)-ary predicate if $P(t_1,t_2,\ldots,t_n)$ is true
+      or false and $t_1,\ldots,t_n$ are terms (from the universe of
+      discourse).
+    - Predicates are statements about the entities of the domain of
+      discourse.
+*** Predicate                                                  :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    A *pradecite* is a fundamental concept in our theory, which,
+    depending on the value of its variables (arguments), returns a
+    truth value: true or false (but not both).
+*** Predicates :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - $B()$: Every parrot is a bird. $B()=T$.
+    - $F(t)$: $t$ is female. $F(\female)=T$, $F(\male)=F$.
+    - $P(s)$: $s$ is a palindrome.
+      - $P("asantaatnasa")=T$, $P("asantainfinland")=F$.
+      - ~bool Palindrome(std::string s) {...}~
+    - $M(a,b)$: $a$ is a multiple $b$. $M(2,6)=F$, $M(6,2)=T$.
+      - ~bool Multiple(int a, int b){ return (a%b)==0; }~
+    - $C(x,y,z)$: $x$ is a child of $y$ and $z$.
+** Prolog - GOT
+*** Prolog :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+** Logical operators
+*** Logical operator                                          :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    - Logical operators are map of the form $\mathbb{L}^n \to
+      \mathbb{L}$.
+    - =bool implicat(bool A, bool B){return (!A)||B;}=
+    - They come from well-known everyday logical operations, \eg
+      *negation* (not), *conjunction* (and), *disjunction* (or), *implication*
+      (if...then), *equivalence* (if and only if). 
+    - They connect predicated \ie statements to form larger statements
+
+*** Truth tables of basic logical operations                   :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    #+ATTR_LATEX: :align ccccccc
+    | $\A$  | $\B$ | $\lnot\A$ | $\A\land\B$ | $\A\lor\B$ | $\A\implies\B$ | $\A\iff\B$ |
+    |-------+------+-----------+-------------+------------+-------------------+------------|
+    | T     | T    | F         | T           | T          | T                 | T          |
+    | T     | F    | F         | F           | T          | F                 | F          |
+    | F     | T    | T         | F           | T          | T                 | F          |
+    | F     | F    | T         | F           | F          | T                 | T          |
+** Different OR's
+*** Inclusive, exclusive, conflicting\footnote{In lack of better translation} OR
+    1. Inclusive or $\lor$: Those who had good weapons *or* good
+       reflexes were victorious.
+    2. Exclusive or $\oplus$: We have to go left *or* right.
+    3. "Conflicting" or: Drink *or* drive!
+       #+ATTR_LATEX: :align ccccc
+       | $\A$ | $\B$ | $\A\lor\B$ | $\A\oplus\B$ | Conflicting |
+       |------+------+------------+--------------+-------------|
+       | $T$  | $T$  | $T$        | $F$          | $F$         |
+       | $T$  | $F$  | $T$        | $T$          | $T$         |
+       | $F$  | $T$  | $T$        | $T$          | $T$         |
+       | $F$  | $F$  | $F$        | $F$          | $T$         |
+** Remarks about implication
+   #+ATTR_LATEX: :align ccc
+   | $\A \implies \B$ | T | F |
+   |------------------+---+---|
+   | T                | T | F |
+   | F                | T | T |
+*** Logic vs usage in English
+    Logical implication /describes/ the logical relation. It doesn't
+    imply causality.
+    - $2\cdot2=4 \implies i^2=-1$ is true.
+    - $2\cdot2=4 \implies i^2=5$ is false.
+    - $2\cdot2=5 \implies i^2=-1$ is true.
+    - $2\cdot2=5 \implies i^2=5$ is true, since $F\implies*$
+      is always true.
+    - Similarly: "If pigs can fly than parrots can swim." is also
+      true.
+*** A logical operation can be expressed in different ways
+    $(A\implies B)\iff(\lnot A \lor B)$
+** Some rules of propositional logic
+*** Rules                                                        :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    1. $\A \land \B \iff \B \land \A$, $\A \lor \B \iff \B \lor \A$ (commutativity)
+    2. $(\A \land \B) \land \C \iff \A \land (\B \land \C)$ (associativity)
+    3. $(\A \lor \B) \lor \C \iff \A \lor (\B \lor \C)$ (associativity)
+    4. $\A\land (\B \lor \C) \iff (\A \land \B ) \lor (\A \land \C)$ (distributivity)
+    5. $\A\lor (\B \land \C) \iff (\A \lor \B ) \land (\A \lor \C)$ (distributivity)
+    6. $\A\land(\A \lor \B) \iff \A$, $A\lor(\A \land \B)\iff \A$ (absorption)
+    7. $\A\land\A\iff\A$, $\A\lor\A\iff\A$ (idempotency)
+    8. $\A\lor\lnot\A$ 
+    9. $\lnot(\A\land\lnot\A)$ 
+    10. $\lnot(\lnot(\A))\iff\A$ 
+** Some rules of propositional logic
+*** Rules :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    1. $\A \land T \iff \A$ 
+    2. $\A \land F \iff F$ 
+    3. $\A \lor  T \iff T$ 
+    4. $\A \lor  F \iff \A$ 
+    5. $\lnot(\A\land\B)\iff\lnot\A\lor\lnot\B$ (DeMorgan)
+    6. $\lnot(\A\lor\B)\iff\lnot\A\land\lnot\B$ (DeMorgan)
+    7. $(\A\implies\B) \iff (\lnot\B \implies \lnot \A)$ 
+    8. $\bigl((\A\implies\B)\land\A\bigr) \implies \B$ 
+    9. $\bigl((\A\implies\B)\land\lnot\B\bigr) \implies \lnot \A$ 
+    10. $\bigl((\A\implies \B) \land (\B\implies\C)\bigr) \implies (\A\implies\C)$ 
+    11. $\bigl((\A\implies\B)\land(\B\implies\A)\bigr)\iff(\A\iff\B)$ 
+** Proof
+*** $\A\land(\A \lor \B) \iff \A$                                 :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
+    Let $\mathcal{F}=\A\land(\A \lor \B) \iff \A$ and $lhs=\A\land(\A
+    \lor \B)$ (left hand side), $rhs=\A$ (right hand side).
+
+    If $\A=F$ then $lhs$ is false because of the definition of
+    conjunction.  If $\A=T$ then $\A \lor \B$ is true because of the
+    definition of disjunction, so $lhs$ is $\A\land T$ which is
+    $T$. In both cases the $rhs$ equals $lhs$, so by the definition of
+    equivalence the formula is always true, \ie valid.  $\qed$
+
+    *Proof using truth-tables* is done by filling out the first two
+    columns of the table as given bellow, and then the rest using the
+    definitions of the logical operations:
+    | $\A$ | $\B$ | $\A\lor\B$ | $lhs$ | $rhs$ | $\mathcal{F}$ |
+    |      |      | <c>        | <c>   | <c>   |               |
+    | $T$  | $T$  | $T$        | $T$   | $T$   | $T$           |
+    | $T$  | $F$  | $T$        | $T$   | $T$   | $T$           |
+    | $F$  | $T$  | $T$        | $F$   | $F$   | $T$           |
+    | $F$  | $F$  | $F$        | $F$   | $F$   | $T$           |
+* Predicate calculus
+** Quantifiers
+*** Existential and universal quantifier :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    - $\exists$ is the *existential* quantifier: "exists", "there is".
+    - $\forall$ is the *universial* quantifier: "every", "for all".
+*** Predicate calculus                                          :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - $B(x)$: $x$ is a bird; $P(x)$: $x$ is a parrot.
+    - $\forall x (P(x) \implies B(x))$: Every parrot is a bird.
+    - $\exists x (\lnot P(x) \land B(x))$: There are birds which are
+      not parrots.
+    - $\forall x (P(x) \implies B(x)) \land \exists x (\lnot P(x)
+      \land B(x))$: Every parrot is a bird, but there are some birds
+      which are not parrots.
+** Well-formed formulas
+*** Formulas
+    1) Predicates are the simplest, so called  *atomic
+       formulas*.
+    2) If $\A$ and $\B$ are formulas then $(\A\land\B)$,
+       $(\A\lor\B)$, $(\A\implies\B)$, $(\A\iff\B)$ and $\lnot\A$ are
+       also formulas.
+    3) If $\A$ is a formula, $x$ a variable $(\forall x\A)$ and
+       $(\exists x\A)$ are also formulas (they *universally* and
+       *existentially* quantified).
+    4) *Every formula* can be obtained by the finite application of
+       the previous three rules.
+*** Formula :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $\forall x (P(x) \implies B(x)) \land \exists x (\lnot P(x) \land
+    B(x))$ is a formula. (If it is not ambiguous, parenthesis can be
+    omitted.)
+** Scope, Free and bound occurrences
+*** Scope :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Let $Q\in \{\exists,\forall\}$ be a quantifier, $\A$ a formula and
+    $x$ a variable.
+    - In the formula $(Qx\A)$, every occurrence of $x$ in $\A$ is in
+      the *scope* of the quantifier $Q$.
+    - An occurrence of a variable is *bound* if it is the scope of a quantifier, otherwise the occurrence is *free*.
+    - A *free variable* in a formula has at least on free occurrence,
+      while all occurrences of a *bound variable* are bound.
+    - An *open formula* has at least one free variable, other wise it
+      is a *closed formula* (\ie all of its variables are bound).
+** Examples
+*** Geometry :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    $P(x)$: $x$ is a point; $L(x)$: $x$ is a line; $O(x,y)$: $x$ is on
+    $y$.
+    - $P(x)$, $L(x)$ and $O(x,y)$ are open (atomic) formulas.
+    - Let $\A(x,y)$ be $L(x)\land P(y) \land O(y,x)$: A point $y$ is
+      on the line $x$. $\A(x,y)$ is an open formula, with two free
+      variables.
+    - Let $\B(x,y)$ be $P(x) \land P(y) \land \lnot (x=y)$: $x$ and
+      $y$ are two different points. $\B(x,y)$ is an open formula with
+      two free variables.
+    - Let $\C(x)$ be $\exists y(L(x)\land P(y) \land O(x,y))$: There
+      is a point which on the line $x$.  $\C(x)$ is an open formula,
+      because of the free variable $x$ (while $y$ is a bound
+      variable).
+    - Let $\mathcal{D}()$ be $\exists x\Bigr(L(x) \implies \exists
+      y\bigl(L(x)\land P(y) \land O(x,y)\bigr)\Bigr)$: For every line
+      there is a point which is on the line. $\mathcal{D}()$ is a
+      closed formula. The first occurrence of $x$ is in the scope of
+      the universal quantifier but not in the scope of existential
+      quantifier.
+** Rules of first order logic
+*** Rules
+   1) $\lnot\forall x P(x) \iff \exists x \lnot P(x)$
+   2) $\lnot\exists x P(x) \iff \forall x \lnot P(x)$
+   3) $\forall x \forall y P(x,y) \iff \forall y \forall x P(x,y)$
+   4) $\exists x \exists y P(x,y) \iff \exists y \exists x P(x,y)$
+   5) $\exists x \forall y P(x,y) \implies \forall y \exists x P(x,y)$
+
+*** Example to remember the last rule
+    If $U=\{1,2\}$ then consider the following two formulas:
+    - $\exists x \forall y (x=y)$ is false because it is: $\exists x
+      (x=1 \land x=2)$ which is $(1=1\land 1=2) \lor (2=1\land 2=2)$
+    - $\forall y \exists x (x=y)$ is true because it is: $\forall y
+      (1=y \lor 2=y)$ which is $(1=1 \lor 2=1) \land (1=2 \lor 2=2)$
+    - And by the definition of implication $True\implies False$ is
+      false and $False \implies True$ is true.
+      
