@@ -511,7 +511,7 @@
     \mathbb{Z}$
 *** Taking the \(n\)-th root: Let $w^n=z$ ($w$ is unknown):
     # #+BEGIN_EXPORT latex
-    If $w^n=|w|^n(\cos n\psi +i \sin n\psi )=|w|(\cos \varphi +i \sin \varphi )$
+    If $w^n=|w|^n(\cos n\psi +i \sin n\psi )=|z|(\cos \varphi +i \sin \varphi )$
     # #+END_EXPORT
     then:
     - $|w|^n=|z| \Rightarrow |w|=\sqrt[n]{|z|}$ and
@@ -543,7 +543,7 @@
     \begin{align*}
     1-i&=\sqrt{2}\left(\tfrac{\sqrt{2}}{2}-i\tfrac{\sqrt{2}}{2}\right)=\sqrt{2}\left(\cos
     \tfrac{7\pi}{4}+i \sin\tfrac{7\pi}{4}\right)\\
-    \sqrt{3}+i&=2\left(\tfrac{\sqrt{3}}{2}-i\tfrac{1}{2}\right)=2\left(\cos
+    \sqrt{3}+i&=2\left(\tfrac{\sqrt{3}}{2}+i\tfrac{1}{2}\right)=2\left(\cos
     \tfrac{\pi}{6}+i\sin\tfrac{\pi}{6}\right)
     \end{align*}
     #+END_EXPORT
@@ -553,8 +553,8 @@
     \sqrt[6]{\tfrac{1-i}{\sqrt{3}+i}}
     &=\sqrt[6]{\tfrac{1}{\sqrt{2}}\left(\cos
     \tfrac{19\pi}{12}+i\sin \tfrac{19\pi}{12}\right)}=\\
-    &=\tfrac{1}{\sqrt[12]{2}}\left(\cos \tfrac{19\pi+2k\pi}{72}+i
-    \sin\tfrac{19\pi+2k\pi}{72}\right): k=0,1,\dots ,5
+    &=\tfrac{1}{\sqrt[12]{2}}\left(\cos \tfrac{19\pi+24k\pi}{72}+i
+    \sin\tfrac{19\pi+24k\pi}{72}\right): k=0,1,\dots ,5
     \end{align*}
     #+END_EXPORT
 ** Complex roots of unity
@@ -595,9 +595,9 @@
     :BEAMER_env: theorem
     :END:
     Let $z\in \mathbb{C}$ be a non-zero complex number, $n\in
-    \mathbb{N}$ and $w\in \mathbb{C}$ such that $w^n=z$. Then $z$ the
-    \(n\)-th roots can be written as $w\varepsilon_k$ for $k=0,1,\dots
-    n-1$.
+    \mathbb{N}$ and $w\in \mathbb{C}$ such that $w^n=z$. Then the
+    \(n\)-th roots of $z$ can be written as $w\varepsilon_k$ for
+    $k=0,1,\dots n-1$.
 *** Proof :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
@@ -646,8 +646,8 @@
     Also, $o(z)=\min\{d\in\N^+:z^d=1\}$, \ie the order is the smallest
     positive integer $d$ such that $z^d=1$.
 
-    Furthermore, $z^k=z^l \Leftrightarrow o(z) \mid k-l$. 
-    Specially: $z^k=1 \iff o(z) \mid k$.
+    Furthermore, $z^k=z^\ell \Leftrightarrow o(z) \mid k-\ell$.
+    Specially: $z^k=1 \iff o(z) \mid k$
 *** Proof                                                           :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof

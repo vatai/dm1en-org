@@ -34,11 +34,11 @@
 #+LATEX_HEADER: \def\Eg{E.g.\ }
 
 #+LATEX_HEADER: \def\iff{\Leftrightarrow}
-#+LATEX_HEADER: \def\N{\mathbb{N}}
-#+LATEX_HEADER: \def\Z{\mathbb{Z}}
-#+LATEX_HEADER: \def\Q{\mathbb{Q}}
-#+LATEX_HEADER: \def\R{\mathbb{R}}
-#+LATEX_HEADER: \def\C{\mathbb{C}}
+#+LATEX_HEADER: \newcommand{\N}{\mathbb{N}}
+#+LATEX_HEADER: \newcommand{\Z}{\mathbb{Z}}
+#+LATEX_HEADER: \newcommand{\Q}{\mathbb{Q}}
+#+LATEX_HEADER: \newcommand{\R}{\mathbb{R}}
+#+LATEX_HEADER: \newcommand{\C}{\mathbb{C}}
 #+LATEX_HEADER: \DeclareMathOperator{\dmn}{dmn}
 #+LATEX_HEADER: \DeclareMathOperator{\rng}{rng}
 #+LATEX_HEADER: \newcommand{\card}[1]{\left\lvert #1 \right\rvert}

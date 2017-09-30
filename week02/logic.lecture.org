@@ -11,6 +11,7 @@
 #+LATEX_HEADER: \def\C{\mathcal{C}}
 #+LATEX_HEADER: \def\iff{\Leftrightarrow}
 
+
 * Basics
 ** Logic: The science of correct reasoning 
 *** Definition
@@ -42,7 +43,7 @@
 
 * Zeroth-order 
 ** Propositional calculus
-*** Definition
+*** Definition (informal)
     - In mathematical logic, a *propositional calculus* or *logic*
       (also called *sentential calculus* or *sentential logic*) is a
       formal system in which formulas of a formal language may be
@@ -56,7 +57,10 @@
     - Propositional logic discusses the properties and *rules of
       logical operations*.
 ** Logical operators
-*** Definition
+*** Logical operator                                          :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
     - Logical operators are map of the form $\mathbb{L}^n \to
       \mathbb{L}$ (for some positive integer $n$). 
     - \Eg =bool LogOp(bool v1, bool v2, bool v3){...}=
@@ -64,7 +68,10 @@
       and, or, if...then, if and only if, not
     - They connect predicated \ie statements to form larger statements
 
-*** Examples
+*** Logical operator                                             :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
     - Binary logical operators: $\land$ (and, *conjunction*), $\lor$
       (/inclusive/ or, *disjunction*), $\Rightarrow$ (if..then,
       *implication*), $\Leftrightarrow$ (if and only if, iff,
@@ -120,7 +127,10 @@
       | $F$ | $F$ | $F$ | $F$ | $T$ |
 
 ** Some rules of propositional logic
-*** Rules
+*** Rules                                                        :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
     1. $\A \land \B \iff \B \land \A$, $\A \lor \B \iff \B \lor \A$ (commutativity)
     2. $(\A \land \B) \land \C \iff \A \land (\B \land \C)$ (associativity)
     3. $(\A \lor \B) \lor \C \iff \A \lor (\B \lor \C)$ (associativity)
@@ -132,7 +142,10 @@
     9. $\lnot(\A\land\lnot\A)$ 
     10. $\lnot(\lnot(\A))\iff\A$ 
 ** Some rules of propositional logic
-*** Rules
+*** Rules :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
     1. $\A \land T \iff \A$ 
     2. $\A \land F \iff F$ 
     3. $\A \lor  T \iff T$ 
@@ -145,7 +158,10 @@
     10. $(\A\Rightarrow \B) \land (\B\Rightarrow\C) \Rightarrow (\A\Rightarrow\C)$ 
     11. $((\A\Rightarrow\B)\land(\B\Rightarrow\A))\iff(\A\iff\B)$ 
 ** Proof
-*** Proof of $\A\land(\A \lor \B) \iff \A$
+*** $\A\land(\A \lor \B) \iff \A$                                 :B_proof:
+    :PROPERTIES:
+    :BEAMER_env: proof
+    :END:
     Let $\mathcal{F}=\A\land(\A \lor \B) \iff \A$ and $lhs=\A\land(\A
     \lor \B)$ (left hand side), $rhs=\A$ (right hand side).
 
@@ -166,7 +182,7 @@
     | $F$  | $F$  | $F$        | $F$   | $F$   | $T$           |
 ** COMMENT TODO Truth-tables
 *** How to evaluate the 
-** Domain of discourse
+** COMMENT Domain of discourse
 *** Definition
     - *The domain of discourse*, also called the *universe of
       discourse* (or simply *universe*),
@@ -178,7 +194,7 @@
 *** Examples
     - $U=$ the students in this class
     - $U=\N$
-** Terms
+** COMMENT Terms
 *** Definition
     1) If $t\in U$ then $t$ is a *term*.
     2) If $f$ is an \(n\)-ary function symbol, and $t_1,t_2,\ldots,t_n$
@@ -191,21 +207,27 @@
     - $f(n,m)=n+m$ (note we can think of $+$ as a $+(\cdot,\cdot)$
       binary function
 ** Predicates 
-*** Definition
-    - A *predicate* takes an entity or entities in the *domain of
-      discourse* as *input* and *outputs* either *True or False*.
+*** COMMENT Definition
+    - A *predicate* takes an entity or entities in the domain of
+      discourse as *input* and *outputs* either *True or False*.
     - $P$ is an \(n\)-ary predicate if $P(t_1,t_2,\ldots,t_n)$ is true
       or false and $t_1,\ldots,t_n$ are terms (from the universe of
       discourse).
     - Predicates are statements about the entities of the domain of
       discourse.
-
+*** Predicate                                                  :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    A *pradecite* is a fundamental concept in our theory, which,
+    depending on the value of its variables (arguments), returns a
+    truth value: true or false (but not both).
 *** Examples
     - $M(m,n)$: $m$ is a multiple $n$
-    - ~bool Multiple(int a, int b){ return (a%b)==0; }~
     - $F(t)$: $t$ is female
+    - ~bool Multiple(int a, int b){ return (a%b)==0; }~
     - ~bool Palindrome(std::string s) {...}~
-** Questions
+** COMMENT Questions
 *** Are these valid statements in formal logic?
     1) Two is larger.
     2) The car is fast.
@@ -219,14 +241,12 @@
 ** Remarks and Questions
 *** Remarks
     - The variables $A$ and $B$ in the truth-tables above are
-      propositional variables, \ie $A\in \mathbb{L}$ (and not $\in
-      U$).
+      propositional variables, \ie $A\in \mathbb{L}$.
     - These propositional variables denote some predicates, \ie
       $A=P(t)$ or $B=M(m,n)$.
     - Note the distinction between the entities in the domain of
       discourse and the operations on them, versus the predicates (\ie
       statements) and the /logical operations/ connection them.
-
 *** Questions
     - Is the following a valid statement, and is it true?
       - "If $1=2$ then I am the Pope!"
@@ -247,7 +267,7 @@
 *** Example
     - Both $F(x)$ and $F(y)$ are well-formed formulas,
     - Then $F(x)\lor F(y)$ and $(F(x)\land F(y) ) \Rightarrow F(y)$.
-** Interpretation, Satisfiability, Validity
+** COMMENT Interpretation, Satisfiability, Validity
 *** Definitions
     - An *interpretation* of a formula is an assignment of meaning to
       the variables in the formula, \ie substituting the variables
@@ -259,7 +279,7 @@
     - Valid formulas are also called *tautologies* or rules.
     - The opposite concepts are *unsatisfiable* (always false) and
       *invalid* (some interpretations make it false).
-** Interpretation, Satisfiability, Validity
+** COMMENT Interpretation, Satisfiability, Validity
 *** Examples
     - Let $M(t)$ mean that $t$ is male (over the students of ELTE) and
       let $\A=M(x)\land M(y)$ be a formula.
@@ -274,7 +294,7 @@
     - $\B=M(x) \lor \lnot M(y)$ is a *valid formula*,
       because it is always true. It is a *tautology*.
     - $\lnot\B$ is an *unsatisfiable* fromula.
-** Questions
+** COMMENT Questions
 *** Questions
     - For each of the bellow points determine if the statement or
       "vice versa" is true, or both or neither are true:
