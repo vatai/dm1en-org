@@ -101,11 +101,34 @@
     - $M(a,b)$: $a$ is a multiple $b$. $M(2,6)=F$, $M(6,2)=T$.
       - ~bool Multiple(int a, int b){ return (a%b)==0; }~
     - $C(x,y,z)$: $x$ is a child of $y$ and $z$.
-** Prolog - GOT
+** Prolog - GOT :B_fullframe:
+   :PROPERTIES:
+   :BEAMER_env: fullframe
+   :END:
 *** Prolog :B_example:
     :PROPERTIES:
     :BEAMER_env: example
     :END:
+    #+BEGIN_SRC prolog
+      female('Arya Stark').
+      female('Catelyn Tully').
+      female('Joanna Lannister').
+      male('Eddard Stark').
+      male('Jon Snow').
+      male('Rickard Stark').
+      male('Tyrion Lannister').
+      male('Tywin Lannister').
+      parent('Rickard Stark','Eddard Stark').
+      parent('Eddard Stark','Jon Snow').
+      parent('Eddard Stark','Arya Stark').
+      parent('Catelyn Tully','Arya Stark').
+      parent('Tywin Lannister','Tyrion Lannister').
+      parent('Joanna Lannister','Tyrion Lannister').
+      descendant(X,Y) :- parent(Y,X).
+      descendant(X,Z) :- parent(Z,Y), descendant(X,Y).
+      mother(X,Y) :- parent(X,Y), female(X).
+      brother(X,Y) :- parent(Z,X), parent(Z,Y), male(X).
+    #+END_SRC
 ** Logical operators
 *** Logical operator                                          :B_definition:
     :PROPERTIES:
