@@ -189,16 +189,17 @@
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
-    1. $\A \land \B \iff \B \land \A$, $\A \lor \B \iff \B \lor \A$ (commutativity)
-    2. $(\A \land \B) \land \C \iff \A \land (\B \land \C)$ (associativity)
-    3. $(\A \lor \B) \lor \C \iff \A \lor (\B \lor \C)$ (associativity)
-    4. $\A\land (\B \lor \C) \iff (\A \land \B ) \lor (\A \land \C)$ (distributivity)
-    5. $\A\lor (\B \land \C) \iff (\A \lor \B ) \land (\A \lor \C)$ (distributivity)
-    6. $\A\land(\A \lor \B) \iff \A$, $A\lor(\A \land \B)\iff \A$ (absorption)
-    7. $\A\land\A\iff\A$, $\A\lor\A\iff\A$ (idempotency)
-    8. $\A\lor\lnot\A$ 
-    9. $\lnot(\A\land\lnot\A)$ 
-    10. $\lnot(\lnot(\A))\iff\A$ 
+    1. $\A \land \B \iff \B \land \A$, (commutativity)
+    2. $\A \lor \B \iff \B \lor \A$ (commutativity)
+    3. $(\A \land \B) \land \C \iff \A \land (\B \land \C)$ (associativity)
+    4. $(\A \lor \B) \lor \C \iff \A \lor (\B \lor \C)$ (associativity)
+    5. $\A\land (\B \lor \C) \iff (\A \land \B ) \lor (\A \land \C)$ (distributivity)
+    6. $\A\lor (\B \land \C) \iff (\A \lor \B ) \land (\A \lor \C)$ (distributivity)
+    7. $\A\land(\A \lor \B) \iff \A$, $A\lor(\A \land \B)\iff \A$ (absorption)
+    8. $\A\land\A\iff\A$, $\A\lor\A\iff\A$ (idempotency)
+    9. $\A\lor\lnot\A$ 
+    10. $\lnot(\A\land\lnot\A)$ 
+    11. $\lnot(\lnot(\A))\iff\A$ 
 ** Some rules of propositional logic
 *** Rules :B_theorem:
     :PROPERTIES:
