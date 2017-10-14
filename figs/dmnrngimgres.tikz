@@ -31,7 +31,7 @@
    \draw[red, dashed] 
    (-0.6,3) ..controls ++(up:1.7) and ++(up:1.7) .. ++(2.3,0)
    -- ++(down:0.6) ..controls ++(left:1.2) and ++(left:1.2) .. ++(down:0.8)
-   -- ++(down:1) .. controls ++(down:0.8) and ++(up:1.2) .. ++(-1.5,-1)
+   -- ++(down:0.5) .. controls ++(down:0.8) and ++(up:1.2) .. ++(-1.5,-1.2)
    ..controls ++(down:0.2) and ++(down:1)..   
    ++(-0.7,0.5) 
    --cycle;
