@@ -19,7 +19,6 @@
       *valid reasoning*.
     - Independent of the objects of discussion.
     - Logic discusses *statements* which have a unique *truth value*.
-
 *** Truth values
     - *Truth values* can be either
       - *true* ($\uparrow$, 1, $\top$, $T$) or
@@ -27,7 +26,6 @@
     - $\mathbb{L}=\{T,F\}$.
     - *Propositional variables* are variables which range over truth
       values, (they must be either true or false, but never both).
-
 ** What we need to know
 *** Different kinds of logic
     1. Zeroth-order logic - *Propositional* calculus
@@ -56,37 +54,29 @@
       is getting late. *Negation*: ???
 ** The axiomatic approach
 *** Our goal is to approximate reality using a mathematical model!
-    The axiomatic approach uses (undefined) /primitive/ concepst
+    The axiomatic approach uses (undefined) /fundamental/ concepts
     (predicates, see later) and *axioms*: a set of rules between these
-    concepts which we assume to be true with out proof.  From these
+    concepts which we assume to be true without proof.  From these
     rules, we derive our theory (by proving theorems using the rules
-    of logic).  
-*** The *advantage* of such a method
-    One needs to prove the theorems only once, and the model can be
-    reused for other concepts, just by checking the axioms.
-*** Basic concepts and axioms :B_example:
+    of logic).
+*** The *advantage* of the axiomatic approach
+    Our model is guaranteed to be sound, one needs just to check the
+    axioms.
+*** Geometry                                            :B_example:
     :PROPERTIES:
     :BEAMER_env: example
     :END:
     - Concepts: point, line, plane;
-    - Axioms: Euclid's famous fifth postulate (Playfair's axiom)lP - In
+    - Axioms: Euclid's famous fifth postulate (Playfair's axiom) - In
       a plane, given a line and a point not on it, at most one line
       parallel to the given line can be drawn through the point.
 * Propositional calculus
 ** Predicates 
-*** COMMENT Definition
-    - A *predicate* takes an entity or entities in the domain of
-      discourse as *input* and *outputs* either *True or False*.
-    - $P$ is an \(n\)-ary predicate if $P(t_1,t_2,\ldots,t_n)$ is true
-      or false and $t_1,\ldots,t_n$ are terms (from the universe of
-      discourse).
-    - Predicates are statements about the entities of the domain of
-      discourse.
 *** Predicate                                                  :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
-    A *pradecite* is a fundamental concept in our theory, which,
+    A *predicate* is a fundamental concept in our theory, which,
     depending on the value of its variables (arguments), returns a
     truth value: true or false (but not both).
 *** Predicates :B_example:
@@ -134,15 +124,15 @@
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
-    - Logical operators are map of the form $\mathbb{L}^n \to
+    - Logical operators are maps of the form $\mathbb{L}^n \to
       \mathbb{L}$.
     - =bool implicat(bool A, bool B){return (!A)||B;}=
     - They come from well-known everyday logical operations, \eg
-      *negation* (not), *conjunction* (and), *disjunction* (or), *implication*
-      (if...then), *equivalence* (if and only if). 
-    - They connect predicated \ie statements to form larger statements
+      *negation* (not), *conjunction* (and), *disjunction* (inclusive
+      or), *implication* (if...then), *equivalence* (if and only if).
+    - They connect predicates to form larger statements.
 
-*** Truth tables of basic logical operations                   :B_definition:
+*** Truth tables of basic logical operators                    :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
@@ -154,11 +144,11 @@
     | F     | T    | T         | F           | T          | T                 | F          |
     | F     | F    | T         | F           | F          | T                 | T          |
 ** Different OR's
-*** Inclusive, exclusive, conflicting\footnote{In lack of better translation} OR
+*** Inclusive or, exclusive or and alternative denial
     1. Inclusive or $\lor$: Those who had good weapons *or* good
        reflexes were victorious.
     2. Exclusive or $\oplus$: We have to go left *or* right.
-    3. "Conflicting" or: Drink *or* drive!
+    3. Alternative denial: Drink *or* drive!
        #+ATTR_LATEX: :align ccccc
        | $\A$ | $\B$ | $\A\lor\B$ | $\A\oplus\B$ | Conflicting |
        |------+------+------------+--------------+-------------|
@@ -197,7 +187,7 @@
     6. $\A\lor (\B \land \C) \iff (\A \lor \B ) \land (\A \lor \C)$ (distributivity)
     7. $\A\land(\A \lor \B) \iff \A$, $A\lor(\A \land \B)\iff \A$ (absorption)
     8. $\A\land\A\iff\A$, $\A\lor\A\iff\A$ (idempotency)
-    9. $\A\lor\lnot\A$ 
+    9. $\A\lor\lnot\A$ (law of excluded middle)
     10. $\lnot(\A\land\lnot\A)$ 
     11. $\lnot(\lnot(\A))\iff\A$ 
 ** Some rules of propositional logic
@@ -209,8 +199,8 @@
     2. $\A \land F \iff F$ 
     3. $\A \lor  T \iff T$ 
     4. $\A \lor  F \iff \A$ 
-    5. $\lnot(\A\land\B)\iff\lnot\A\lor\lnot\B$ (DeMorgan)
-    6. $\lnot(\A\lor\B)\iff\lnot\A\land\lnot\B$ (DeMorgan)
+    5. $\lnot(\A\land\B)\iff\lnot\A\lor\lnot\B$ (De Morgan's law)
+    6. $\lnot(\A\lor\B)\iff\lnot\A\land\lnot\B$ (De Morgan's law)
     7. $(\A\implies\B) \iff (\lnot\B \implies \lnot \A)$ 
     8. $\bigl((\A\implies\B)\land\A\bigr) \implies \B$ 
     9. $\bigl((\A\implies\B)\land\lnot\B\bigr) \implies \lnot \A$ 
@@ -221,24 +211,24 @@
     :PROPERTIES:
     :BEAMER_env: proof
     :END:
-    Let $\mathcal{F}=\A\land(\A \lor \B) \iff \A$ and $lhs=\A\land(\A
-    \lor \B)$ (left hand side), $rhs=\A$ (right hand side).
+    Let $lhs$ be $\A\land(\A \lor \B)$ (left hand side), and let $rhs$
+    be $\A$ (right hand side).
 
     If $\A=F$ then $lhs$ is false because of the definition of
     conjunction.  If $\A=T$ then $\A \lor \B$ is true because of the
     definition of disjunction, so $lhs$ is $\A\land T$ which is
     $T$. In both cases the $rhs$ equals $lhs$, so by the definition of
-    equivalence the formula is always true, \ie valid.  $\qed$
+    equivalence the formula is always true.
 
-    *Proof using truth-tables* is done by filling out the first two
+    *Proof using truth tables* is done by filling out the first two
     columns of the table as given bellow, and then the rest using the
-    definitions of the logical operations:
-    | $\A$ | $\B$ | $\A\lor\B$ | $lhs$ | $rhs$ | $\mathcal{F}$ |
-    |      |      | <c>        | <c>   | <c>   |               |
-    | $T$  | $T$  | $T$        | $T$   | $T$   | $T$           |
-    | $T$  | $F$  | $T$        | $T$   | $T$   | $T$           |
-    | $F$  | $T$  | $T$        | $F$   | $F$   | $T$           |
-    | $F$  | $F$  | $F$        | $F$   | $F$   | $T$           |
+    definitions of the logical operators:
+    | $\A$ | $\B$ | $\A\lor\B$ | $lhs$ | $rhs$ | $\A\land(\A \lor \B) \iff \A$ |
+    |      |      | <c>        | <c>   | <c>   | <c>                           |
+    | $T$  | $T$  | $T$        | $T$   | $T$   | $T$                           |
+    | $T$  | $F$  | $T$        | $T$   | $T$   | $T$                           |
+    | $F$  | $T$  | $T$        | $F$   | $F$   | $T$                           |
+    | $F$  | $F$  | $F$        | $F$   | $F$   | $T$                           |
 * Predicate calculus
 ** Quantifiers
 *** Existential and universal quantifier :B_definition:
@@ -246,7 +236,7 @@
     :BEAMER_env: definition
     :END:
     - $\exists$ is the *existential* quantifier: "exists", "there is".
-    - $\forall$ is the *universial* quantifier: "every", "for all".
+    - $\forall$ is the *universal* quantifier: "every", "for all".
 *** Predicate calculus                                          :B_example:
     :PROPERTIES:
     :BEAMER_env: example
@@ -265,11 +255,11 @@
     2) If $\A$ and $\B$ are formulas then $(\A\land\B)$,
        $(\A\lor\B)$, $(\A\implies\B)$, $(\A\iff\B)$ and $\lnot\A$ are
        also formulas.
-    3) If $\A$ is a formula, $x$ a variable $(\forall x\A)$ and
-       $(\exists x\A)$ are also formulas (they *universally* and
+    3) If $\A$ is a formula, $x$ is a variable $(\forall x\A)$ and
+       $(\exists x\A)$ are also formulas (they are *universally* and
        *existentially* quantified).
-    4) *Every formula* can be obtained by the finite application of
-       the previous three rules.
+    4) *Every formula* can be obtained by finite application of the
+       previous three rules.
 *** Formula :B_example:
     :PROPERTIES:
     :BEAMER_env: example
@@ -277,7 +267,7 @@
     $\forall x (P(x) \implies B(x)) \land \exists x (\lnot P(x) \land
     B(x))$ is a formula. (If it is not ambiguous, parenthesis can be
     omitted.)
-** Scope, Free and bound occurrences
+** Scope, free and bound occurrences of variables
 *** Scope :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
@@ -286,10 +276,11 @@
     $x$ a variable.
     - In the formula $(Qx\A)$, every occurrence of $x$ in $\A$ is in
       the *scope* of the quantifier $Q$.
-    - An occurrence of a variable is *bound* if it is the scope of a quantifier, otherwise the occurrence is *free*.
-    - A *free variable* in a formula has at least on free occurrence,
-      while all occurrences of a *bound variable* are bound.
-    - An *open formula* has at least one free variable, other wise it
+    - An occurrence of a variable is *bound* if it is in the scope of
+      a quantifier, otherwise the occurrence is *free*.
+    - A variable in a formula is a *free variable* if it has at least
+      one free occurrence, otherwise it is a *bound variable*.
+    - An *open formula* has at least one free variable, otherwise it
       is a *closed formula* (\ie all of its variables are bound).
 ** Examples
 *** Geometry :B_example:
@@ -305,15 +296,15 @@
     - Let $\B(x,y)$ be $P(x) \land P(y) \land \lnot (x=y)$: $x$ and
       $y$ are two different points. $\B(x,y)$ is an open formula with
       two free variables.
-    - Let $\C(x)$ be $\exists y(L(x)\land P(y) \land O(x,y))$: There
-      is a point which on the line $x$.  $\C(x)$ is an open formula,
-      because of the free variable $x$ (while $y$ is a bound
+    - Let $\C(x)$ be $\exists y(L(x)\land P(y) \land O(y,x))$: There
+      is a point which is on the line $x$.  $\C(x)$ is an open
+      formula, because of the free variable $x$ (while $y$ is a bound
       variable).
-    - Let $\mathcal{D}()$ be $\exists x\Bigr(L(x) \implies \exists
+    - Let $\mathcal{D}()$ be $\forall x\Bigr(L(x) \implies \exists
       y\bigl(L(x)\land P(y) \land O(x,y)\bigr)\Bigr)$: For every line
       there is a point which is on the line. $\mathcal{D}()$ is a
       closed formula. The first occurrence of $x$ is in the scope of
-      the universal quantifier but not in the scope of existential
+      the universal quantifier but not in the scope of the existential
       quantifier.
 ** Rules of first order logic
 *** Rules
@@ -323,7 +314,7 @@
    4) $\exists x \exists y P(x,y) \iff \exists y \exists x P(x,y)$
    5) $\exists x \forall y P(x,y) \implies \forall y \exists x P(x,y)$
 
-*** Example to remember the last rule
+*** An example to remember the last rule
     If $U=\{1,2\}$ then consider the following two formulas:
     - $\exists x \forall y (x=y)$ is false because it is: $\exists x
       (x=1 \land x=2)$ which is $(1=1\land 1=2) \lor (2=1\land 2=2)$
