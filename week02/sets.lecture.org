@@ -44,12 +44,14 @@
       the set of even integers.
 ** Powerset
 *** Definition: Axiom of power set
-    - Given a set $A$, set of all subsets of $A$ is called the *powerset* of $A$.
-    - The powerset of $A$ is denoted by $\wp(A)=\{x : x\subset A\}$
+    - Given a set $A$, the set of all subsets of $A$ is called the *powerset* of $A$.
+    - The powerset of $A$ is denoted by $\wp(A)$ or $2^A$, and
+      $\wp(A)=\{x : x\subset A\}$
 *** Example
     - $\wp(\{a,b,c\})=\{\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\},\}$
-    - If $A$ has $n$ elements, then $\wp(A)$ has $2^n$
-      elements.  Therefore sometimes we denote the power\-set of $A$ as $2^A$.
+    - If $A$ has $n$ elements, then $\wp(A)$ has $2^n$ elements \ie
+      $\lvert 2^A \rvert = 2^{\lvert A \rvert}$.  Therefore sometimes we denote the power\-set
+      of $A$ as $2^A$.
 * Set operations
 ** Union, intersection
 *** Definition: Axiom of union
@@ -110,7 +112,7 @@
     - $\{a\}\cap\{b\}=\emptyset$, $\{a,b\}\cap\{b\}=\{b\}$
     - $\{2k+1:k\in\mathbb{Z}\}\cup\{2k:k\in\mathbb{Z}\}=\mathbb{Z}$
     - If $\mathcal{A}=\{[i,i+1]\subset\mathbb{R}:i\in\mathbb{Z}\}$,
-      then $\cup\mathcal{A}=\mathbb{R}$ and $\cap\mathcal{A}=\mathbb{Z}$
+      then $\cup\mathcal{A}=\mathbb{R}$ and $\cap\mathcal{A}=\emptyset$
     - $\{a,b,c,d\}\setminus\{a,b\}=\{c,d\}$
     - $\{a,b,c\}\setminus\{c,d\}=\{a,b\}$
     - $\{a,b\}\setminus\{c,d\}=\{a,b\}$
@@ -152,7 +154,7 @@
     | $A \cap \emptyset = \emptyset$   | $A \cup \emptyset = A$    |
     | $A \cap X = A$                   | $A \cup X = X$            |
     | $A \cap \overline{A} =\emptyset$ | $A \cup \overline{A} = X$ | 
-*** The DeMorgan equalities
+*** The De Morgan equalities
     $\overline{A \cap B}=\overline{A} \cup \overline{B}$ and
     $\overline{A \cup B}=\overline{A} \cap \overline{B}$.
 *** Homework
@@ -163,11 +165,11 @@
       $A_1 \cap A_2 \cap \cdots \cap A_n=\emptyset$,
       or the system of sets $\mathcal{A}$ is disjoint if 
       $\cap\mathcal{A}=\emptyset$.
-    - The sets $A_1,A_2,\ldots,A_n$ are *pairwise (or mutually) disjoint* 
-      iff $A_i \cap A_j =\emptyset$ for each $i\neq j$ index,
-      or the system of sets $\mathcal{A}$ is disjoint if 
-      for each $A,B\in\mathcal{A}$ for which $A\neq B$ implies 
-      $A\cap B=\emptyset$.
+    - The sets $A_1,A_2,\ldots,A_n$ are *pairwise (or mutually)
+      disjoint* iff $A_i \cap A_j =\emptyset$ for each $i\neq j$
+      index, or the system of sets $\mathcal{A}$ is mutually disjoint
+      disjoint if for each $A,B\in\mathcal{A}$ for which $A\neq B$
+      implies $A\cap B=\emptyset$.
 *** Questions
     - Are all mutually disjoint sets disjoint?  
     - Are all disjoint sets mutually disjoint?
