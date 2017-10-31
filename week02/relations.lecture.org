@@ -223,7 +223,7 @@
       xRx)$; \quad ($<$)
    7. *trichotomous*, if for all $x,y$ from $X$ exactly one of the
       following holds: $x=y$, $xRy$ and $yRx$[fn::$\forall x \forall
-      y( (x\in X \land y \in Y) \implies((x=y \land \lnot xRy \land
+      y( (x\in X \land y \in X) \implies((x=y \land \lnot xRy \land
       \lnot yRx)\lor$ $(\lnot x=y \land xRy \land \lnot yRx)\lor(\lnot
       x=y \land \lnot xRy \land yRx)))$]; \quad ($<$)
    8. *dichotomous*, if $\forall x \forall y(x \in X \land y \in X
