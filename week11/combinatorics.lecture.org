@@ -1,4 +1,5 @@
 # -*- mode: org; mode: flyspell; -*-
+# (plist-put org-format-latex-options :scale 3)
 
 #+SETUPFILE: ../inc/lecture.h.org
 #+TITLE: Discrete mathematics I - Combinatorics
@@ -9,7 +10,7 @@
 * Combinatorics
 ** Combinatorics
 *** The goal of combinatorics:
-    - To organize of elements of finite sets;
+    - To organize elements of finite sets;
     - Counting the different possible arrangements.
 *** Examples:
 - Out of eight people, two were born on the same day of the week.
@@ -19,7 +20,7 @@
   January?
 - What is the number of all the possible registration plates /
   telephone numbers / IP addresses?
-- At least how many tickets do we have to fill out to win on lotto /
+- At least how many tickets do we have to fill out to win the lottery /
   bingo?
 ** Basic counting
 *** Counting  
@@ -35,8 +36,8 @@
 *** Example
     In a pastry shop, they have $3$ kinds of sweet pastries (cakes
     like: isler, zserbó, coconut cube) and $2$ kinds of salty pastries
-    (scones, pretzels). In how many different ways can we choose one
-    sweet *or* one salty pastry? Solution: $3+2=5$.
+    (croissant, pretzels). In how many different ways can we choose
+    one sweet *or* one salty pastry? Solution: $3+2=5$.
 ** Basic counting
 *** Counting  
     Given two finite, disjoint sets:
@@ -88,13 +89,11 @@
      Therefore the number of all possibilities is $n (n-1)\cdots
      2\cdot 1$.  
 
-
-** Permutations with repetition (Multi\-set permutations)
+** 
 *** Example
     - $5$ students attend an exam. What are the possible outcomes if
       - $2$ of them got grade 4, 
       - $3$ of them got grade 5. 
-
     
     Making a distinction between the five student's grades: $(2+3)!=5!$.
     | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{blue} 5}$  |          |
@@ -109,7 +108,7 @@
 
      - All possibilities: $\frac{5!}{2!\cdot 3!}=\frac{120}{2\cdot 6}=10$
 
-** Permutations with repetition (Multi\-set permutationsO)
+** Permutations with repetition (Multi\-set permutations)
 *** Number of permutations with repetition			  :B_theorem:
     :PROPERTIES:
     :BEAMER_env: theorem
@@ -183,8 +182,8 @@
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
-    The number of $k$ long sequences with elements from a $n$ kind of
-    elements elements is $n^k$.
+    The number of $k$ long sequences of $n$ kinds of elements is
+    $n^k$.
 *** Proof 							    :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
@@ -232,7 +231,7 @@
      times. So we should divide by $k!$ to obtain the number of
      subsets with $k$ elements. 
 *** Example  
-    The number of different ways to fill out a lotto ticket ($5$ out
+    The number of different ways to fill out a lottery ticket ($5$ out
     of $90$) is: $\binom{90}{5} = \frac{90!}{5!85!}=\frac{90\cdot
     89\cdot 88\cdot 87\cdot 86}{5\cdot 4\cdot 3\cdot 2 \cdot
     1}=\alert{43\,949\,268}$
@@ -242,9 +241,8 @@
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
-    The number of ways to choose $k$ elements, if we allow to choose
-    one element multiple times, out of a set $A$ of $n$ elements is
-    $\binom{n+k-1}{k}$
+    The number of ways to choose $k$ elements out of $n$ kind of
+    elements is $\binom{k+n-1}{k}$
 *** Proof							    :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
@@ -261,7 +259,7 @@
     Then the sequences contain $k$ number of \(1\)'s (the number of
     chosen elements), $n-1$ number of \(0\)'s (separators). Together
     $n-1+k$ positions, $k$ of them are chosen.  The number of such
-    sequences is $\binom{n+k-1}{k}$.
+    sequences is $\binom{k+n-1}{k}$.
 
 ** Combinations with repetition
 *** Example
@@ -379,7 +377,7 @@
     $\binom{n}{i_1}\binom{n-i_1}{i_2}
     \binom{n-i_1-i_2}{i_3}\dots
     \binom{n-i_1-i_2-\dots-i_{r-1}}{i_r}$ =
-    $\frac{n!}{i_1!(n-i_1)!}\frac{(n-i_1)!}{i_2!(n-i_2)!}\dots
+    $\frac{n!}{i_1!(n-i_1)!}\frac{(n-i_1)!}{i_2!(n-i_1-i_2)!}\dots
     \frac{(n-i_1-i_2-\dots-i_{r-1})!}{i_r!(n-i_1-i_2-\dots-i_{r-1}-i_r)!}
     =\frac{n!}{i_1!i_2!\dots i_r!}$
 ** Polynomial theorem

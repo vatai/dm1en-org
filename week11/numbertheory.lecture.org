@@ -108,19 +108,27 @@
     :END:
     $a$ and $b$ are associated if and only if $a\mid b$ *and* $b\mid
     a$.
-*** Trivial divisor					       :B_definition:
+*** Trivial divisor                                            :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
-    Trivial divisors of $n$ are the numbers associated with $n$
-    and the units.
+    Trivial divisors of $n$ are the numbers associated with $n$ and
+    the units.  Other divisors are proper divisors.
+*** Divisor of 6                                           :B_example:
+    :PROPERTIES:
+    :BEAMER_env: example
+    :END:
+    - The divisors: $\{\pm 1, \pm 2, \pm 3, \pm 6\}$
+    - Trivial divisors are: $\{\pm1, \pm6\}$
+    - The proper divisors: $\{\pm2, \pm3\}$
 * Primes, irreducible elements
 ** Primes, irreducible elements
 *** Irreducible						       :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
-    A nonzero number is *irreducible* if it has only trivial divisors.
+    A nonzero and non-unit number is *irreducible* if it has only
+    trivial divisors.
 *** Irreducible elements 					  :B_example:
     :PROPERTIES:
     :BEAMER_env: example
@@ -132,7 +140,7 @@
     :BEAMER_env: definition
     :END:
     A non-zero, non-unit $p$ number is a *prime* number, if $p\mid ab
-    \Rightarrow (p\mid a \lor p\mid b)$.
+    \Rightarrow (p\mid a \lor p\mid b)$ (for any $a,b$).
 *** Primes							  :B_example:
     :PROPERTIES:
     :BEAMER_env: example
@@ -183,9 +191,9 @@
          written as \eqref{eq:eucdiv}.
          Let $a-b=bq^*+r^*$. 
          Then $a=b(q^*+1)+r^*$ and let $q=q^*+1$, $r=r^*$.   
-    2. Uniqueness: Let $a=bq+r=bq^*+r^*$.
-       Then  $b(q-q^*)=r^*-r$. 
-       This can be only if $q=q^*$ and $r=r^*$.
+    2. Uniqueness: Let $a=bq+r=bq'+r'$.
+       Then  $b(q-q')=r'-r$. 
+       This can be only if $q=q'$ and $r=r'$.
 ** Euclidean division
 *** mod 						       :B_definition:
     :PROPERTIES:
@@ -274,10 +282,10 @@
     2. Suppose each integer less than $n$ can be written uniquely in a
        base $q$ numeral system.  Because of the *Euclidean division
        theorem*, there exists a unique integer $0\leq a_0<q$, for
-       which $q\mid n-a_0$.  Because of the induction hypothesis we
-       can express $\frac{n-a_0}{q}= \sum_{i=1}^ka_iq^{i-1}$ (in a
-       base $q$ numeral system), and this expression is unique.  Then
-       $n=\sum_{i=0}^k a_i q^i$.
+       which $n=cq+a_0$, that is, $q\mid n-a_0$.  Because of the
+       induction hypothesis we can express $\frac{n-a_0}{q}=
+       \sum_{i=1}^ka_iq^{i-1}$ (in a base $q$ numeral system), and
+       this expression is unique.  Then $n=\sum_{i=0}^k a_i q^i$.
 ** Numeral systems
    The previous proof provides a method to express the numbers:
 *** Representation 						  :B_example:
@@ -348,9 +356,8 @@
     :BEAMER_env: proof
     :END:
     If one of the numbers is $0$, then the other one will be the gcd.
-    Lat $a$ and $b$ be non-zero integers. Let us do the following
+    Let $a$ and $b$ be non-zero integers. Let us do the following
     divisions:
-    
     \begin{align*}
     a&=bq_1+r_1, \quad 0<r_1<|b|,\\
     b&=r_1q_2+r_2, \quad 0<r_2<r_1,\\
@@ -359,8 +366,7 @@
     r_{n-2}&=r_{n-1}q_n+r_n, \quad 0<r_n<r_{n-1},\\
     r_{n-1}&=r_{n}q_{n+1}
     \end{align*}
-    
-Gcd is the last $\neq0$ remainder: *$(a,b)=r_n$*.
+    Gcd is the last $\neq0$ remainder: *$(a,b)=r_n$*.
     Here $a=r_{-1}$, $b=r_{0}$,
 ** Correctness of the euclidean algorithm :B_ignoreheading:
    :PROPERTIES:
@@ -463,7 +469,10 @@ Gcd is the last $\neq0$ remainder: *$(a,b)=r_n$*.
     $x_i=x_{i-2}-q_ix_{i-1}$.  Similarly let $y_{-1}=0$, $y_0=1$ and
     for $i\geq 1$ let $y_i=y_{i-2}-q_iy_{i-1}$.
  
-    Then for $i\geq 1$, $x_{i}a+y_ib=r_i$. (Proof: HW, Induction)
+    Then for $i\geq 1$, $x_{i}a+y_ib=r_i$.  Suppose for all $\forall
+    j<i$, $x_{j}a+y_jb=r_j$ is true. $r_i=r_{i-2} - r_{i-1}q_{i}$, so
+    $r_i = x_{i-2} a + y_{i-2}b - (x_{i-1} a + y_{i-1}b)q_i$ after
+    rearranging, $r_i= x_ia + y_ib$. 
 
     Ergo $x_{n}a+y_nb=r_n=(a,b)$. 
 ** Extended euclidean algorithm
@@ -516,7 +525,7 @@ Gcd is the last $\neq0$ remainder: *$(a,b)=r_n$*.
     :BEAMER_env: theorem
     :END:
     Every non-zero, non-unit number can uniquely be written as a
-    product of primes ignoring associated elements and units.
+    product of primes ignoring associated elements and order.
 *** Proof							    :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
@@ -559,14 +568,14 @@ Gcd is the last $\neq0$ remainder: *$(a,b)=r_n$*.
     
     - $(a,b)\cdot [a,b]=a\cdot b$.
 ** Number of divisors
-*** The $\color{white}\tau$ function :B_definition:
+*** The $\tau$ function                                        :B_definition:
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
     $\tau (n)$ is the *number of (positive) divisors* for an integer
     $n>1$.
  
-*** Calculating $\color{white}\tau(n)$ 
+*** Calculating $\tau(n)$ 
     Let $n>1$ be an integer, $n=p_1^{\alpha_1}p_2^{\alpha_2}\cdots
     p_\ell^{\alpha_\ell}$ its canonical form. Then $\tau (n)=(\alpha_1
     +1)\cdot (\alpha_2 +1)\cdots (\alpha_\ell +1)$.
@@ -582,11 +591,11 @@ Gcd is the last $\neq0$ remainder: *$(a,b)=r_n$*.
     There are $\alpha_i+1$ choices for each exponent.
 
  
-*** $\color{white}\tau(n)$ 					  :B_example:
+*** $\tau(n)$ 					  :B_example:
     :PROPERTIES:
     :BEAMER_env: example
     :END:
-     $\tau(6)=4$: divisors: $1$, $2$, $3$, $6$;\quad $\tau(96)=12$:
+     $\tau(6)=4$: divisors: $1$, $2$, $3$, $6$;$\tau(96)=12$:
      divisors: $1$, $2$, $3$, $4$, $6$, \dots
      
      # % $\tau(32)=6$: osztók: $2$, $4$, $8$, $16$, $32$.

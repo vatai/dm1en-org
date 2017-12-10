@@ -202,7 +202,7 @@
        ((w,x)\in T \land (x, y)\in S \land (y, z)\in R )\} =(R\circ S )\circ T$
     3. $(R \circ S)^{-1}=\{(z,x): \exists y((x,y)\in S \land (y, z)\in
        R )\} =\{(z,x): \exists y((y,x)\in S^{-1}\land (z, y)\in
-       R^{-1})\}=S^{-1}\circ R^{-1}$
+       R^{-1})\}=S^{-1}\circ R^{-1}$.
 * Properties of relations
 ** Properties of relations
   Example relations: $=$, $<$, $\leq$, $\mid$, $\subset$ and
@@ -309,13 +309,23 @@
   (4) edge[bend left] (7)
   (5) edge[bend left] (8)
   ;
-  \end{tikzpicture}
+  \end{tikzpicture}              
 * Equivalence and partition
 ** Equivalence relations and Partitions
-*** Definition (equivalence relation)
+*** Equivalence relation
+    :PROPERTIES:
+    :BEAMER_ENV: definition
+    :END:
     Let $X$ be a set, $R \subset X \times X$ be a relation on $X$.
     The relation $R$ is an *equivalence relation*, if it is
     *reflexive*, *symmetric* and  *transitive*.
+*** Equivalence classes
+    :PROPERTIES:
+    :BEAMER_ENV: definition
+    :END:
+    Given a set $X$ and an equivalence relation $R$ on $S$, the
+    *equivalence class of an element* $a$ in $S$ is the set $\tilde{a}
+    = \{x\in X : x\sim a\}$ of elements which are equivalent to $a$.
 *** Example
     - 1. $=$ \quad 2. $3 \mid x-y$ \quad 3. similarity on the set of
       all triangles
@@ -386,24 +396,33 @@
       \times Y$.
 * Ordering
 ** Partial ordering
-*** Definition (Partial ordering)
+*** Partial ordering
+    :PROPERTIES:
+    :BEAMER_ENV: definition
+    :END:
     A /reflexive/, /transitive/ and /anti-symmetric/ relation defined
     on the set $X$ is a *partial ordering*. (symbol: $\leq$, $\preceq$
     $\preccurlyeq$, \dots)
-*** Definition (Total ordering)
+*** 
+    :PROPERTIES:
+    :BEAMER_ENV: definition
+    :END:
+    We say that, the set $X$ is a *(partially) ordered set* and the
+    elements $x,y\in X$ are *comparable* if $x \preceq y$ or $y
+    \preceq x$,
+*** Total ordering
+    :PROPERTIES:
+    :BEAMER_ENV: definition
+    :END:
     If all elements are comparable, the relation is dichotomous.
   
     A /reflexive/, /transitive/, /anti-symmetric/ and /dichotomous/
     relation defined on the set $X$ is a *total ordering* (or just
     ordering).
-*** Note
-    We say that, the set $X$ is a *(partially) ordered set* and the
-    elements $x,y\in X$ are *comparable* if $x \preceq y$ or $y
-    \preceq x$,
 *** Examples
     - $\R$ with $\leq$ is a *ordered set*: $\forall x,y\in \R$: $x\leq
       y$ or $y \leq x$.
-    - On $\Z$ the $\mid$ (divisor) relation is a *partial ordering*:
+    - On $\N$ the $\mid$ (divisor) relation is a *partial ordering*:
       $4\nmid 5$, $5 \nmid 4$.
     - On $\wp(X)$ the $\subset$ relation is a *partial ordering*
       $X=\{a,b,c\}$, $\{a\}\not\subset \{b,c\}$, $\{b,c\}\not\subset \{a\}$
@@ -422,8 +441,8 @@
     - The strict relation associated with $\leq$ is: $<$.
     - The strict relation associated with $\subset$ is:
       $\subsetneq$.
-    - The strict relation associated with the *divisor* relation is:
-      *non-trivial divisor*.
+    - The strict relation associated with the *divisor* relation on
+      the set $\N$ is: *proper divisor*.
 ** Strict and non-strict partial ordering
 *** Definition (Strict partial ordering)
     A /transitive/ and /irreflexive/ relation defined on the set $X$
@@ -440,12 +459,6 @@
 *** Statement
     The partial ordering $\preceq$ is a total ordering if and only if
     $\prec$ is trichotomous.
-    If the $\preceq$ relation is an ordering,
-    then $\prec$ is /trichotomous/.
-
-    Conversely, if $\prec$ is a trichotomous strict partial ordering,
-    then the corresponding non-strict partial ordering $\preceq$ is a
-    (total) ordering.
 *** Proof
     We need $x=y$, $x\prec y$ and $y\prec x$ not to be true
     simultaneously. If $x=y$, then the statement is true because of
@@ -488,7 +501,7 @@
       precedes $\{a,b\}$ and $\{a,c\}$.
     - For $\N$ with divisibility: $2$ precedes $4$, $6$, $10$, $14$.
 *** Definition (Initial segment)
-    The subset $\{y\in X: y\leq x\}$ is the *initial segment* associated
+    The subset $\{y\in X: y\preceq x\}$ is the *initial segment* associated
     with the element $x$.
 *** Example
     Let $X$ the power set of $\{a,b,c\}$ with the /subset/ relation.
@@ -517,10 +530,12 @@
     In the partially ordered set $X$ we define $x\in X$ to be the
     - *least*    element if $\forall y \, (y\in X \Rightarrow  x\preceq y)$;
     - *greatest* element if $\forall y \, (y\in X \Rightarrow  y\preceq x)$;
-    - *min.*  elem. if $\forall y \, (y\in X \Rightarrow  \lnot(y\preceq x))$ 
-      \ie $\lnot\exists y\, (y\in X \land y \prec x)$;
-    - *max.*  elem. if $\forall y \, (y\in X \Rightarrow  \lnot(x\preceq y))$
-      \ie $\lnot\exists y\, (y\in X \land x \prec y)$;
+    - *min.* elem. if $\forall y \, (y \in X \Rightarrow \lnot (y
+      \prec x) )$ which is the same as $\lnot\exists y\, (y\in X \land
+      y\neq x \land y \preceq x)$;
+    - *max.* elem. if $\forall y \, (y\in X \Rightarrow \lnot(x\prec
+      y))$ which is the same as $\lnot\exists y\, (y\in X \land y\neq
+      x \land x \preceq y)$;
 *** Example						      :B_block:BMCOL:
     :PROPERTIES:
     :BEAMER_col: 0.6
@@ -539,18 +554,18 @@
     file:../figs/hasse.tikz
 ** Least, greatest, minimum, maximum element
 *** Remarks
-    - There is *at least* one minimal and maximal element.
+    - Finite (partially ordered) sets have *at least* one minimal and
+      maximal element.
     - There can be *at most* one least and greatest element.
-    - If the set is (totally) ordered, then 
-      - *minimal* = *least* element, *maximal* = *greatest* element
+    - If a set is (totally) ordered set has a minimal (or maximal) element,
+      then *minimal* = *least* (or *maximal* = *greatest*).
     - If the set $X$ has a unique minimal or maximal element, then it
       is denoted by $\min X$ and $\max X$.
-*** Example						      :B_block:BMCOL:
+*** $X=\{1,2,\dots,8\}$ with divisibility						      :B_block:BMCOL:
     :PROPERTIES:
     :BEAMER_col: 0.6
     :BEAMER_env: block
     :END:
-  Let $X=\{1,2,\dots,8\}$ with divisibility:
   - minimal element: $1$, so $\min X=1$
   - maximal elements: $5$, $6$, $7$, $8$ there is no $\max X$
 *** Hasse-diagram 					      :BMCOL:
@@ -560,21 +575,29 @@
     #+ATTR_LATEX: :width 3cm
     file:../figs/hasse.tikz
 ** Bounds
-*** Definition (Bounds)
+*** Bounds
+    :PROPERTIES:
+    :BEAMER_ENV: definition
+    :END:
     Let $(X,\preceq)$ be a partially ordered set $x\in X$ and $Y\subset X$.
     - $x$ is a *lower bound* of $Y$ if $\forall y\, (y\in Y
       \Rightarrow x\preceq y)$, 
     - $x$ is an *upper bound* of $Y$ if $\forall
       y\, (y\in Y \Rightarrow y\preceq x)$,
-    - The /least upper bound/ of $Y$ is the *supremum* of $Y$ \ie $\sup Y$,
-    - The /greatest lower bound/ of $Y$ is the *infimum* of $Y$ \ie $\inf Y$.
-  
-*** Example						      :B_block:BMCOL:
+    - The /least upper bound/ of $Y$ (if it exists) is the *supremum*
+      of $Y$ \ie $\sup Y$,
+    - The /greatest lower bound/ of $Y$ (if it exists) is the
+      *infimum* of $Y$ \ie $\inf Y$.
+    - $Y$ is *bounded from below* (in $X$) if $Y$ has a lower bound in
+      $X$.
+    - $Y$ is *bounded from above* (in $X$) if $Y$ has an upper bound
+      in $X$.
+** Example: bounds, supremum and infimum      
+*** $X=\{1,2,\dots,8\}$ with divisibility						      :B_block:BMCOL:
     :PROPERTIES:
     :BEAMER_col: 0.6
     :BEAMER_env: block
     :END:
-    Let $X=\{1,2,\dots,8\}$ with divisibility:
     - for $Y=\{1,2,3\}$ 
       - lower bound: $1$, upper bound: $6$,
       - infimum: $1$, supremum: $6$.
@@ -589,21 +612,24 @@
     #+ATTR_LATEX: :width 3cm
     file:../figs/hasse.tikz
 ** Least-upper-bound property
-*** Definition (LUB and GLB property)
+*** LUB and GLB property
+    :PROPERTIES:
+    :BEAMER_ENV: definition
+    :END:
     Let $(X,\preceq)$ be a partially ordered set.
     - $X$ has the *least-upper-bound property*, if every non-empty
-      $Y\subset X$ has a supremum,
+      $Y\subset X$ which is bounded from above has a supremum,
     - $X$ has the *greatest-lower-bound property*, if every non-empty
-      $Y\subset X$ has an infimum,
+      $Y\subset X$ which is bounded from below has an infimum.
 *** Examples
     The set $\N$ with divisibility has the least-upper-bound property:
     - If $Y=\{n_1,n_2,\ldots,n_k\}$ then $\inf Y =gcd(n_1,n_2,\ldots,n_k)$
       and $\sup Y = lcm(n_1,n_2,\ldots,n_k)$.
     The set $(\Q,\le)$ does not have the least-upper-bound property:
-    - If $Y=\{y\in\Q : y^2\le 2\}=\{y\in\Q : y \le \sqrt{2}\}$ then
-      $Y$ has upper bounds (\eg $2$, $10$, $42$) but the least upper
-      bound would be $\sqrt{2}$ and $\sqrt{2}\not\in\Q$.
-** Well ordered sets
+    - If $Y=\{y\in\Q : y^2\le 2\}$ then $Y$ has upper bounds (\eg $2$,
+      $10$, $42$) but the least upper bound would be $\sqrt{2}$ and
+      $\sqrt{2}\not\in\Q$.
+** COMMENT Well ordered sets
 *** Definition
     A partially ordered set $(X,\preceq)$ is *well ordered* if every
     non-empty subset of $X$ has a least element.
@@ -615,7 +641,7 @@
 ** Definition
 *** Definition (Functions)
     - A relation $f\subset X \times Y$ is a *function* (or map,
-      operator, transformation) if $(x,y) \in f \land (x,y')\in f
+      operator, transformation) if $\forall x,y,y' : (x,y) \in f \land (x,y')\in f
       \Rightarrow y=y'$ (for all $x\in X$ and $y\in Y$). 
     - Since $f(\{x\})$ has at most one element the $f(x)=y$ (of
       $x\mapsto y$ or $f_x=y$) notation is used.
@@ -670,8 +696,8 @@
        *function*.
     2. If $f$ and $g$ are *injective*, then $g \circ f$ is also
        *injective*.
-    3. If $f:X\rightarrow Y$, $g:Y\rightarrow Z$, then $g \circ f : X
-       \rightarrow Z$.
+    3. If $f:X\rightarrow Y$, $g:Y\rightarrow Z$ are *surjective*,
+       then $g \circ f : X \rightarrow Z$ is also *surjective*.
 *** Proof							    :B_proof:
     :PROPERTIES:
     :BEAMER_env: proof
@@ -697,12 +723,12 @@
       f(x)\succ f(y)$.
 ** Example
 *** Example
-    - Let $X=\R$ with the usual ordering. Then $f(x)=x^3$ is a
+    - Let $X=Y=\R$ with the usual ordering. Then $f(x)=x^3$ is a
       /strictly increasing/ function.
-    - Let $X=\Z$ with the divisor relation. Then $f(x)=5x$ is a
+    - Let $X=Y=\N$ with the divisor relation. Then $f(x)=5x$ is a
       /strictly increasing/ function: $x \mid y \Rightarrow 5x \mid
       5y$.
-    - Let $X=\wp(\{a,b,c\})$ with the subset partial ordering.  Then
+    - Let $X=Y=\wp(\{a,b,c\})$ with the subset partial ordering.  Then
       - $f(A)=A\setminus \{a\}$ /monotonically increasing/: 
         $A \subset B$ $\color{black} \Rightarrow$ $A \setminus \{a\}\subset
         B\setminus \{a\}$; 
@@ -761,9 +787,10 @@
 *** Example
     - The operations $+$ and $\cdot$ operation is /associative/ and
       /commutative/ on the set $\R$.
-    - The function /composition/ as an operation, is /associative/:
-      $(f\circ g) \circ h=f\circ (g \circ h)$.
-    - The function /composition/ as an operation, is *not*
+    - The function /composition/ as an operation on $X\to X$
+      functions, is /associative/: $(f\circ g) \circ h=f\circ (g \circ
+      h)$.
+    - The function /composition/ as an operation on $X\to X$, is *not*
       /commutative/: $f(x)=x+1$, $g(x)=x^2$: $x^2+1=(f\circ g)(x)\neq
       (g \circ f)(x)=(x+1)^2$.
     - /Division/ is *not* /associative/: $\frac{a}{bc}=(a\div b) \div
