@@ -36,11 +36,11 @@
      5) $((S \Longleftrightarrow R) \land (\neg F \vee C))$; 
 
   3. Considering the set of all the people in the world, let $L(x)$,
-     $J(x)$, $S(x)$, $O(x)$, $E(x)$, $P(x)$, $R(x)$, $F(x)$, $M(x, y)$,
-     and $R(x, y)$ mean that $x$ is a lawyer, judge, smarty pants, old,
-     energetic, politician, representative, female, and that $x$ and $y$
-     are married, and $x$ respects $y$. Formalise the following
-     statements:
+     $J(x)$, $S(x)$, $O(x)$, $E(x)$, $P(x)$, $R(x)$, $F(x)$, $M(x,
+     y)$, and $R(x, y)$ mean that $x$ is a lawyer, a judge, a smarty
+     pants, old, energetic, a politician, a representative, female,
+     and that $x$ and $y$ are married, and $x$ respects $y$. Formalize
+     the following statements:
      1. every judge is a lawyer;
      2. there are smarty pants lawyers;
      3. there are no smarty pants judges;

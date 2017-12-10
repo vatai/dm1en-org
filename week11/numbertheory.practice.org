@@ -22,7 +22,6 @@
      consecutively, the obtained six digit number will be divisible by
      $7$, $11$ and $13$.
   6. Do the calculations in the indicated numeral system:
-     #+LATEX: \begin{multicols}{2}
      #+ATTR_LATEX: :environment compactenum
      1) $10011001_{(2)}+101011010_{(2)}$; 
      2) $1001_{(2)} \cdot 1101_{(2)}$;
@@ -33,11 +32,10 @@
      7) $10011001_{(2)} : 101_{(2)}$; 
      8) $110110010101101_{(2)}:101111001_{(2)}$; 
      9) $12011_{(3)} : 201_{(3)}$.
-     #+LATEX: \end{multicols}
 
   7. Using the euclidean algorithm, calculate the greatest common
      divisor and the least common multiple of the following numbers.
-     #+LATEX: \begin{multicols}{4}
+     #+LATEX: \begin{multicols}{2}
      #+ATTR_LATEX: :environment compactenum
      1) $a=86, b=31$; 
      2) $a=139, b=102$;
@@ -60,16 +58,14 @@
      the greatest common divisor in the following form $ax+by=(a,b)$.
   9. For $a,b\in\mathbb{Z}$ from the previous exercise, express
      the greatest common divisor in the following form $ax+by=(a,b)$.
-     # * 4
   10. Solve the following Diophantine equations:
-      #+LATEX: \begin{multicols}{4}
+      #+LATEX: \begin{multicols}{2}
       1) $172x+62y=38$;
       2) $82x+22y=34$;
       3) $450x+86y=100$;
       4) $125x+45y=-20$.
       #+LATEX: \end{multicols}
   11. Solve the following congruences:
-      #+LATEX: \begin{multicols}{4}
       1) $21x  \equiv 14 \pmod{35}$;
       2) $172x \equiv 6  \pmod{62}$; 
       3) $3x   \equiv 8  \pmod{13}$;
@@ -78,7 +74,6 @@
       6) $20x  \equiv 19 \pmod{22}$; 
       7) $16x  \equiv 36 \pmod{28}$; 
       8) $126x \equiv 46 \pmod{99}$.
-      #+LATEX: \end{multicols}
   12. Find the integer solutions of the following equations using
       congruences.
       #+ATTR_LATEX: :environment inparaenum
@@ -95,9 +90,8 @@
       the cashier return our change if he only has 20 and 50 forint
       coins?
   16. Solve the following systems of congruences:
-      #+LATEX: \begin{multicols}{4}
       # #+ATTR_LATEX: :environment asparablank
-      #+ATTR_LATEX: :environment compactenum
+      # #+ATTR_LATEX: :environment compactenum
       1) 
 	 \begin{align*}
 	 5x &\equiv 3 \pmod{7} \\
@@ -142,7 +136,6 @@
 	 3x &\equiv 9 \pmod{10} \\
 	 8x &\equiv 9 \pmod{15} 
 	 \end{align*}
-      #+LATEX: \end{multicols}
   17. Which natural numbers less then 100 have the property that, when
       multiplied by 23, the obtained number written in the base 7 numeral
       system, have 5 as the last digit and 2 as the one before the last?
@@ -150,7 +143,6 @@
   18. Using the Chinese remainder theorem, find those integers which have
       remainders 1 when divided by 3, 2 when divided by 4 and 3 when
       divided by 5.
-      # * 5
   19. Calculate $\varphi(n)$ for $n=1,2,3,4,10,24,96, 100$!
   20. Prove that
       #+ATTR_LATEX: :environment inparaenum
@@ -186,7 +178,7 @@
   32. Show that $a^{1729}\equiv a \pmod{1729}$ although 1729 is not prime.
 
 
-* Solutions
+* COMMENT Solutions
   
   Divisibility: we say that $a$ divides $b$ ($a,b \in \mathbb{Z}$) if
   $\exists k \in \mathbb{Z}$ so that $ak=b$ and we write $a \mid b$
