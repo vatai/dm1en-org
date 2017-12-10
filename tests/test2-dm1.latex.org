@@ -1,0 +1,92 @@
+#+INCLUDE: ../inc/test.h.org
+# Set no title
+#+BIND: org-latex-title-command ""
+#+TITLE: 
+* Second test - Discrete mathematics 1.
+  1. How many possibilities are there?
+     1) How many 8 digit numbers are there with a prime for each
+        digit?
+     2) How many 15 long sequences of the 26 letters of the English
+        alphabet are there, so that two consecutive letters are not
+        same?
+     3) How many different flights do you have to have between the 30
+        biggest cities in China, so that you can travel directly
+        between these cities (each flight goes both ways)?
+     4) At least how many bits do we need to store the unique id's of
+        each of the 10000 employees in a company?
+     5) How many way can we arrange 20 books on a bookshelf so that
+        the 3 volumes of LOTR are next to each other (in the right
+        order)?
+  2. We have 10 boxes and 10 balls, both enumerated with numbers from
+     1 to 10.
+     1) How many ways can we put the ten balls into the boxes?
+     2) What if we can put at most one ball into each box?
+     3) What if the parity of the balls and boxes have to match?
+     4) What if each box contains two balls?
+     5) What if we don't use all the balls, but at least 2 and at most
+        4 balls?
+  3. How many 10 digit numbers are there in the 2, 3 and 7 based
+     number system, where each digit appears at least once?  And how
+     many $n$ digit numbers?
+  1. Solve the following congruences:
+
+     #+ATTR_LATEX: :environment inparaenum
+     1) $17x \equiv 6 \pmod 117$;
+     2) $15x \equiv 5 \pmod {20}$;
+     3) $26x \equiv 5 \pmod {91}$;
+     4) $x^2 \equiv 1 \pmod {13}$.
+  2. What are the last to digits of $221^{1000}$ in the $6$ base
+     numeral system? Justify your answer.
+  3. A Coruscanton is a military unit of at most 500 soldiers. When
+     the drill sergeant orders them to stand in line with eleven
+     soldiers in each column, one soldier is left alone in the last
+     column; if he orders them to stand in line with eight soldiers in
+     each column, again, one is left alone in the last column; if they
+     try columns of five soldiers, there will be two soldiers in the
+     last column. How many soldiers can there be in the unit?
+* Second test - Discrete mathematics 1.
+  1. How many possibilities are there?
+     1) How many 8 digit numbers are there with a prime for each
+        digit?
+     2) How many 15 long sequences of the 26 letters of the English
+        alphabet are there, so that two consecutive letters are not
+        same?
+     3) How many different flights do you have to have between the 30
+        biggest cities in China, so that you can travel directly
+        between these cities (each flight goes both ways)?
+     4) At least how many bits do we need to store the unique id's of
+        each of the 10000 employees in a company?
+     5) How many way can we arrange 20 books on a bookshelf so that
+        the 3 volumes of LOTR are next to each other (in the right
+        order)?
+  2. We have 10 boxes and 10 balls, both enumerated with numbers from
+     1 to 10.
+     1) How many ways can we put the ten balls into the boxes?
+     2) What if we can put at most one ball into each box?
+     3) What if the parity of the balls and boxes have to match?
+     4) What if each box contains two balls?
+     5) What if we don't use all the balls, but at least 2 and at most
+        4 balls?
+  3. How many 10 digit numbers are there in the 2, 3 and 7 based
+     number system, where each digit appears at least once?  And how
+     many $n$ digit numbers?
+  1. Solve the following congruences:
+
+     #+ATTR_LATEX: :environment inparaenum
+     1) $17x \equiv 6 \pmod 117$;
+     2) $15x \equiv 5 \pmod {20}$;
+     3) $26x \equiv 5 \pmod {91}$;
+     4) $x^2 \equiv 1 \pmod {13}$.
+  2. What are the last to digits of $221^{1000}$ in the $6$ base
+     numeral system? Justify your answer.
+  3. A Coruscanton is a military unit of at most 500 soldiers. When
+     the drill sergeant orders them to stand in line with eleven
+     soldiers in each column, one soldier is left alone in the last
+     column; if he orders them to stand in line with eight soldiers in
+     each column, again, one is left alone in the last column; if they
+     try columns of five soldiers, there will be two soldiers in the
+     last column. How many soldiers can there be in the unit?
+
+
+
+

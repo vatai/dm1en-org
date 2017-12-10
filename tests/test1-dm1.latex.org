@@ -1,0 +1,52 @@
+#+INCLUDE: ../inc/test.h.org
+# Set no title
+#+BIND: org-latex-title-command ""
+#+TITLE: First test - Discrete mathematics 1.
+#+DATE: 
+
+
+
+1. Calculate the rectangular form of the following numbers ($a$ and $b$
+   are non-zero real numbers):
+   1) $(2+3i)^2$;
+   2) $(a+i)(a-3ai)$;
+   3) $(2i)^2/(1-2i)^2$;
+   4) $1/(a+bi) + 1/(a-bi)$;
+   5) $(1-i)^{10}$.
+
+2. Using the polar form, calculate the value of $z$, and write both the
+   polar and rectangular form, then find all complex values of $w$ (in
+   polar form), for which $w^6=z$ is true.  \[ z =
+   \frac{(1+i)^{24}}{(-1+\sqrt{3}i)^{40}} \]
+
+3. If we know that $A=1+6i$ and $B=10-7i$ are two points of the square
+   $ABCD$, then what are the possible values of $C$ and $D$.
+
+4. Consider the following predicates: $P(n)$ : $n$ is prime, $Q(n)$ :
+   $n$ is a square, $E(n)$ : $n$ is even, $D(n,m)$ : $n$ is a divisor
+   of $m$, $S(n,m,k)$ : $n+m=k$.  Write down the following sentences
+   and their negation using formulas:
+   1) Two is an even prime.
+   2) There is a prime which is the sum of two primes.
+   3) None of the primes are divisible by 10.
+   4) Seven is a prime, ten isn't.
+   5) The integer $x$ is a not a prime, it's divisible by 7 and it is a
+      divisor of 140.
+   
+5. Let $A=\mathbb{N}$, $B=2\mathbb{Z}$ i.e. the set of even numbers.  Try to determine, if there exists a set $C$ for which the following equations (each separately), and if there is, provide an example
+   1) $A\cap B = C\cup A$?
+   2) $A\cup B = C \cup B$?
+   3) $A\cup B = C \Delta B$?
+   4) $(A\setminus B)\setminus C = (A\cup B)\setminus C$?
+   5) $A \cap B \cap C = A \Delta B \Delta C$?
+    
+6. Let $R$ and $S$ be the following relations:
+   \begin{align*}
+   R=\{&(0,3), (0,7), (1,3), (2,1), (2,3), (2,5), (2,7), (3,3), (4,3), (4,7), \\
+   &(5,3), (6,0), (6,1), (6,2), (6,3), (6,4), (6,5), (6,6), (6,7), (7,3)\} \\ 
+   S=\{&(1,2), (2,1), (2,5), (3,6), (5,2), (6,3), (6,7), (7,6)\}
+   \end{align*}
+   Determine the domain and range of $R$, the image and pre\-image of
+   $A=\{0,1,2\}$ (by $R$), and the $R\circ S$ composition.  Is $S$ and
+   equivalence relation? If not which properties are true and which
+   aren't?

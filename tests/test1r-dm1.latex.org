@@ -1,0 +1,50 @@
+#+INCLUDE: ../inc/test.h.org
+# Set no title
+#+BIND: org-latex-title-command ""
+#+TITLE: First test - Discrete mathematics 1.
+#+DATE: 
+
+1. Calculate the rectangular form of the following numbers ($a$ and
+   $b$ are non-zero real numbers):
+   1. $(2+i)^3$; 
+   2. $(a+i)(4ab-3ai)$;
+   3. $(1+i)^2/(1+2i)^2$;
+   4. $1/(a+2bi) + 1/(a-2bi)$; 
+   5. $(1+i)^{10}$.
+2. Using the polar form, calculate the value of $z$, and write both
+   the polar and rectangular form, then find all complex values of $w$
+   (in polar form), for which $w^5=z$ is true.  \[ z =
+   \frac{(-2+2i)^{24}}{(1+\sqrt{3}i)^{40}} \]
+
+3. The sum of two complex numbers $z$ and $w$ is $6-4i$, and their
+   product is $7-24i$.  What are the values of $z$ and $w$?
+4. Consider the following predicates: $P(n)$ : $n$ is prime, $Q(n)$ :
+   $n$ is a square, $E(n)$ : $n$ is even, $D(n,m)$ : $n$ is a divisor
+   of $m$, $L(m,n)$ : $m$ is less than $n$, $M(n,m)$ : $n+1=m$.  Find
+   at least two values of $x$ for which the following formulas are
+   true (individually):
+   1) $P(x)\land D(x,10)$;
+   2) $(P(x)\lor Q(x)))\land L(5,x)\land L(x,10)$;
+   3) $P(x)\land (D(2,x)\lor (L(x,20) \land D(x,17))$;
+   4) $L(x,10)\land (\exists s( D(x,s) \land Q(s)))$;
+   5) $(\exists a(\exists b( Q(a) \land Q(b) \land M(x,b))))$
+
+5. Let $A=\{1,2,3,4\}$, $B=\{2,4,6,8,10\}$.  Try to determine, if
+   there exists a set $C$ for which the following equations (each
+   separately), and if there is, provide an example
+   1) What is $(A\Delta B)\setminus(A \cap B)$?
+   2) What are the possibilities for $C$ if $A\cup B = A \cup C$?
+   3) What are the elements of the power set of $A\setminus B$,
+      i.e. $2^{A\setminus B}=?$?
+   4) Determine if $X$ exists for which $(A\setminus B)\setminus X =
+      (A\cap B)\setminus X$.
+6. Let $R$ and $R$ be the following relations:
+   \begin{align*}
+   R&=\{(x,y)\in\mathbb{Z}_8\times\mathbb{Z}_8:(x+4)(y+5)=0\} & 
+   S&=\{(x,y)\in\mathbb{Z}_8\times\mathbb{Z}_8: xy=2\}
+   \end{align*}
+   Determine the domain and range of $R$, the image and pre\-image of
+   $A=\{0,1,2\}$ (by $R$), and the $R\circ S$ composition.  Is $S$ and
+   equivalence relation? If not which properties are true and which
+   aren't?
+

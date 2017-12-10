@@ -1,0 +1,51 @@
+#+INCLUDE: ../inc/test.h.org
+# Set no title
+#+BIND: org-latex-title-command ""
+
+* Second retake test - Discrete mathematics 1.
+  1. How many possibilities are there?
+     1) How many ways can we arrange 10 books on a bookshelf?
+     2) How many 8 digit numbers are there with all digits different?
+     3) How many matches are there on a tournament with 20 teams,
+        where each team plays with each team (twice, a match and a
+        rematch).
+     4) How many ways can we award the bronze, silver and gold medal
+        in a race with 100 contenders (if there are no draws and
+        everyone finishes)?
+     5) How many ways can we divide 10 hundred-forint-coins between 3
+        people (if the coins are exactly the same)?
+  2. Harry, Hermione and Ron are eating candy from a candy mix with 10
+     kinds of candy (there is plenty of candy from each kind):
+     1) How many ways can Harry pick 4 candies if the order does not
+        count?
+     2) How many ways can Harry pick 4 candies if the order does not
+        matter, but each candy is of different kind?
+     3) How many ways can the three of them pick 2 candies each, if
+        the order does not matter?
+     4) How many ways can the three of them pick 2 candies each, and
+        all 6 candies are of different kind (and the order does not
+        matter)?
+  3. How many numbers are there from 0 to 1000, which are not
+     divisible by 2, 3 nor 5?
+  4. Solve the following congruences:
+     1) $172x \equiv 6 \pmod {62}$;
+     2) $21x \equiv 5 \pmod {14}$;
+     3) $18x \equiv 5 \pmod {73}$;
+     4) $x^2 \equiv 4 \pmod {9}$;
+  5. What are the last two digits of $1789^{2001}$ in the decimal
+     numeral system? Justifie your answer.
+  6. In the anime Dragonball they use the currency called
+     zeni. Suppose they have only 7 and 12 zeni coins.  How many
+     different ways can you pay for a gadget made by Capsule corp
+     which costs 200 zenis using only such coins?  At most how many
+     coins will you need?
+  7. An old woman goes to the market with a basket of eggs. She sets
+     the basket down and a horse accidentally steps on it, crushing
+     all the eggs. The rider offers to pay her for the damaged eggs
+     and asks how many eggs did she have. She tells the rider that she
+     can’t remember but that when she had taken all of the eggs out 3
+     at a time, there were 2 left in the basket. When she took them
+     out 5 at a time, there were 3 left and when she took them out 7
+     at a time, there were 2 left. What is the smallest number of eggs
+     she could have had?
+
