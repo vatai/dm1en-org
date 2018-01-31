@@ -1,7 +1,7 @@
 # -*- mode: org; mode: flyspell; -*-
 
 #+SETUPFILE: ../inc/lecture.h.org
-#+TITLE: Discrete mathematics I - Number theory Congruences
+#+TITLE: Discrete mathematics I - Congruences
 #+SHORT_TITLE: Congruences
 #+COLUMNS: %30ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
 
