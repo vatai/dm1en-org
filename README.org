@@ -26,3 +26,7 @@
 *** Congruences
 *** Euler's totient function
 *** System of linear congruences (Chinese remainder theorem)
+* COMMENT Todo's
+** TODO Make it nice like dm2en
+** TODO Fix auto exporting as in dm2en with beamerarticle
+** TODO Write a list of questions
