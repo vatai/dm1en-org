@@ -1,5 +1,5 @@
 # -*- mode: org; mode: flyspell; -*-
-#+INCLUDE: ../inc/test.h.org
+#+INCLUDE: ../include/test.h.org
 #+LATEX_CLASS_OPTIONS: [a4paper,twocolumn]
 # Set no title
 # #+BIND: org-latex-title-command ""

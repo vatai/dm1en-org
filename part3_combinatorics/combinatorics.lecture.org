@@ -1,512 +1,513 @@
 # -*- mode: org; mode: flyspell; -*-
 # (plist-put org-format-latex-options :scale 3)
 
-#+SETUPFILE: ../inc/lecture.h.org
+#+SETUPFILE: ../include/lecture.h.org
 #+TITLE: Discrete mathematics I - Combinatorics
 #+SHORT_TITLE: Combinatorics
 #+COLUMNS: %30ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
 
-
-* Combinatorics
+* Basic combinatorics
 ** Combinatorics
-*** The goal of combinatorics:
-    - To organize elements of finite sets;
-    - Counting the different possible arrangements.
-*** Examples:
-- Out of eight people, two were born on the same day of the week.
-- At least how many people do we need for two of them to have their
-  birthday on the same day?
-- At least how many people do we need for two of them to be born in
-  January?
-- What is the number of all the possible registration plates /
-  telephone numbers / IP addresses?
-- At least how many tickets do we have to fill out to win the lottery /
-  bingo?
-** Basic counting
-*** Counting  
-    Given two finite, disjoint sets: 
+*** Combinatorics
+**** The goal of combinatorics:
+     - To organize elements of finite sets;
+     - Counting the different possible arrangements.
+**** Examples:
+ - Out of eight people, two were born on the same day of the week.
+ - At least how many people do we need for two of them to have their
+   birthday on the same day?
+ - At least how many people do we need for two of them to be born in
+   January?
+ - What is the number of all the possible registration plates /
+   telephone numbers / IP addresses?
+ - At least how many tickets do we have to fill out to win the lottery /
+   bingo?
+*** Basic counting
+**** Counting  
+     Given two finite, disjoint sets: 
     
-    $A=\{a_1, a_2, \dots, a_n\}$, \quad $B=\{b_1, b_2,\dots, b_m\}$.
+     $A=\{a_1, a_2, \dots, a_n\}$, \quad $B=\{b_1, b_2,\dots, b_m\}$.
     
-    In how many ways can we choose one element from $A$ *or* $B$?
+     In how many ways can we choose one element from $A$ *or* $B$?
   
-    The possible answers: $a_1, a_2, \dots, a_n, b_1, b_2,\dots, b_m$.
+     The possible answers: $a_1, a_2, \dots, a_n, b_1, b_2,\dots, b_m$.
   
-    Their number: $n+m$.
-*** Example
-    In a pastry shop, they have $3$ kinds of sweet pastries (cakes
-    like: isler, zserbó, coconut cube) and $2$ kinds of salty pastries
-    (croissant, pretzels). In how many different ways can we choose
-    one sweet *or* one salty pastry? Solution: $3+2=5$.
-** Basic counting
-*** Counting  
-    Given two finite, disjoint sets:
+     Their number: $n+m$.
+**** Example
+     In a pastry shop, they have $3$ kinds of sweet pastries (cakes
+     like: isler, zserbó, coconut cube) and $2$ kinds of salty pastries
+     (croissant, pretzels). In how many different ways can we choose
+     one sweet *or* one salty pastry? Solution: $3+2=5$.
+*** Basic counting
+**** Counting  
+     Given two finite, disjoint sets:
 
-    $A=\{a_1, a_2, \dots, a_n\}$, \quad $B=\{b_1, b_2,\dots, b_m\}$.
+     $A=\{a_1, a_2, \dots, a_n\}$, \quad $B=\{b_1, b_2,\dots, b_m\}$.
 
-    In how many ways can we choose one element from $A$ *and* $B$?
+     In how many ways can we choose one element from $A$ *and* $B$?
 
 
-    The possible answers: $n\cdot m$.
+     The possible answers: $n\cdot m$.
     
-    |          | $b_1$       | $b_2$       | $\dots$  | $b_m$       |
-    |----------+-------------+-------------+----------+-------------|
-    | /        | <           |             |          |             |
-    | $a_1$    | $(a_1,b_1)$ | $(a_1,b_2)$ | $\dots$  | $(a_1,b_m)$ |
-    | $a_2$    | $(a_2,b_1)$ | $(a_2,b_2)$ | $\dots$  | $(a_2,b_m)$ |
-    | $\vdots$ |             |             | $\ddots$ |             |
-    | $a_n$    | $(a_n,b_1)$ | $(a_n,b_2)$ | $\dots$  | $(a_n,b_m)$ |
+     |          | $b_1$       | $b_2$       | $\dots$  | $b_m$       |
+     |----------+-------------+-------------+----------+-------------|
+     | /        | <           |             |          |             |
+     | $a_1$    | $(a_1,b_1)$ | $(a_1,b_2)$ | $\dots$  | $(a_1,b_m)$ |
+     | $a_2$    | $(a_2,b_1)$ | $(a_2,b_2)$ | $\dots$  | $(a_2,b_m)$ |
+     | $\vdots$ |             |             | $\ddots$ |             |
+     | $a_n$    | $(a_n,b_1)$ | $(a_n,b_2)$ | $\dots$  | $(a_n,b_m)$ |
  
-*** Example
-    In a pastry shop, they have $3$ kinds of sweet pastries and $2$
-    kinds of salty pastries. In how many different ways can we choose
-    one sweet *and* one salty pastry? Solution: $3\cdot 2=6$.
-* Permutations
-** Permutation
-*** Number of permutations 					  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    Let $A$ be a set of $n$ elements.  Then the number of possible
-    sequences of elements of $A$ is: $n!=n(n-1)(n-2)\cdots 2\cdot 1$
-    ($n$ *factorial*).  Here $0!=1$.
-*** Example (sandwiches for breakfast)
-   - $2$ (different) sandwiches can be eaten in $2!=2\cdot 1=2$ ways.
-   - $3$ (different) sandwiches can be eaten in $3!=3\cdot 2\cdot 1=6$
-     ways.
-   - $4$ (different) sandwiches can be eaten in $4!=24$ ways.
+**** Example
+     In a pastry shop, they have $3$ kinds of sweet pastries and $2$
+     kinds of salty pastries. In how many different ways can we choose
+     one sweet *and* one salty pastry? Solution: $3\cdot 2=6$.
+** Permutations
+*** Permutation
+**** Number of permutations                                       :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     Let $A$ be a set of $n$ elements.  Then the number of possible
+     sequences of elements of $A$ is: $n!=n(n-1)(n-2)\cdots 2\cdot 1$
+     ($n$ *factorial*).  Here $0!=1$.
+**** Example (sandwiches for breakfast)
+    - $2$ (different) sandwiches can be eaten in $2!=2\cdot 1=2$ ways.
+    - $3$ (different) sandwiches can be eaten in $3!=3\cdot 2\cdot 1=6$
+      ways.
+    - $4$ (different) sandwiches can be eaten in $4!=24$ ways.
 
-   The $200$ freshmen students can sign the registration list in
-   $200!=200\cdot 199\cdot198 \cdots 2\cdot 1 \approx 7,89 \cdot
-   10^{374}$ different ways.
-*** Proof							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-     From the $n$ different elements, we have $n$ choices for the
-     first, $n-1$ for the second, \dots
+    The $200$ freshmen students can sign the registration list in
+    $200!=200\cdot 199\cdot198 \cdots 2\cdot 1 \approx 7,89 \cdot
+    10^{374}$ different ways.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+      From the $n$ different elements, we have $n$ choices for the
+      first, $n-1$ for the second, \dots
 
-     Therefore the number of all possibilities is $n (n-1)\cdots
-     2\cdot 1$.  
+      Therefore the number of all possibilities is $n (n-1)\cdots
+      2\cdot 1$.  
 
-** 
-*** Example
-    - $5$ students attend an exam. What are the possible outcomes if
-      - $2$ of them got grade 4, 
-      - $3$ of them got grade 5. 
+*** 
+**** Example
+     - $5$ students attend an exam. What are the possible outcomes if
+       - $2$ of them got grade 4, 
+       - $3$ of them got grade 5. 
     
-    Making a distinction between the five student's grades: $(2+3)!=5!$.
-    | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{blue} 5}$  |          |
-    | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{blue} 5}$  | ${\color{red} 5}$   | ${\color{black} 5}$ | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 |          |
-    | ${\color{blue} 5}$  | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{blue} 5}$  | ${\color{red} 5}$   | ${\color{black} 5}$ | $\ldots$ |
-    | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | ${\color{blue} 5}$  | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   |          |
-    | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 |          |
+     Making a distinction between the five student's grades: $(2+3)!=5!$.
+     | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{blue} 5}$  |          |
+     | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{blue} 5}$  | ${\color{red} 5}$   | ${\color{black} 5}$ | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 |          |
+     | ${\color{blue} 5}$  | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{blue} 5}$  | ${\color{red} 5}$   | ${\color{black} 5}$ | $\ldots$ |
+     | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | ${\color{blue} 5}$  | ${\color{red} 5}$   | ${\color{blue} 5}$  | ${\color{black} 5}$ | ${\color{black} 5}$ | ${\color{red} 5}$   |          |
+     | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 | $4$                 |          |
 
-     The number of redundant sequences because the 5's can be
-     interchanged is $3!=6$.  Similarly, the number of redundant
-     sequences because the 4's can be interchanged is $2!=2$.
+      The number of redundant sequences because the 5's can be
+      interchanged is $3!=6$.  Similarly, the number of redundant
+      sequences because the 4's can be interchanged is $2!=2$.
 
-     - All possibilities: $\frac{5!}{2!\cdot 3!}=\frac{120}{2\cdot 6}=10$
+      - All possibilities: $\frac{5!}{2!\cdot 3!}=\frac{120}{2\cdot 6}=10$
 
-** Permutations with repetition (Multi\-set permutations)
-*** Number of permutations with repetition			  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    *A permutation with repetition* is a sequence of $m$ different
-     kinds of elements, so that there are $k_1$ number of elements of
-     the first kind, $k_2$ of the second kind, \dots, $k_m$ of the
-     \(m\)-th kinds, and their number is:
-     \begin{equation}\label{eq:permrep}
-     \frac{(k_1+k_2+\dots+k_m)!}{k_1!k_2!\cdots k_m!} 
-     \end{equation}
+*** Permutations with repetition (Multi\-set permutations)
+**** Number of permutations with repetition                       :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     *A permutation with repetition* is a sequence of $m$ different
+      kinds of elements, so that there are $k_1$ number of elements of
+      the first kind, $k_2$ of the second kind, \dots, $k_m$ of the
+      \(m\)-th kinds, and their number is:
+      \begin{equation}\label{eq:permrep}
+      \frac{(k_1+k_2+\dots+k_m)!}{k_1!k_2!\cdots k_m!} 
+      \end{equation}
 
-*** Proof							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    - If we distinguish each of the element: $(k_1+k_2+\dots+k_m)!$.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     - If we distinguish each of the element: $(k_1+k_2+\dots+k_m)!$.
  
-    - If we don't distinguish the elements of the \(i\)-th kind: $k_i!$
-      of the sequences are equal.
-    - If we don't distinguish the elements of the same kind:
-      $k_1!k_2!\cdots k_m!$ of the sequences are equal.
-    - Ergo, the number of all distinguished sequences is
-      \eqref{eq:permrep}.
+     - If we don't distinguish the elements of the \(i\)-th kind: $k_i!$
+       of the sequences are equal.
+     - If we don't distinguish the elements of the same kind:
+       $k_1!k_2!\cdots k_m!$ of the sequences are equal.
+     - Ergo, the number of all distinguished sequences is
+       \eqref{eq:permrep}.
 
-* Variations
-** Variations (Partial permutations)
-*** Example
-   We have $10$ courses at the university, when making our time table,
-   we would like $3$ of them to be on Monday. In how many different
-   ways can we achieve this?
+** Variations
+*** Variations (Partial permutations)
+**** Example
+    We have $10$ courses at the university, when making our time table,
+    we would like $3$ of them to be on Monday. In how many different
+    ways can we achieve this?
 
-   Solution: The first class on Monday can be one out of $10$
-   classes. The second one out of $9$, the third one out of $8$.
+    Solution: The first class on Monday can be one out of $10$
+    classes. The second one out of $9$, the third one out of $8$.
 
-   Combined, the number of possibilities is $10\cdot 9 \cdot 8$.
+    Combined, the number of possibilities is $10\cdot 9 \cdot 8$.
 
-*** Number of variations					  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-     A sequence of $k$ different elements from a set $A$ of $n$
-     elements, is a variation, and the number of all possible
-     variations is $n(n-1)\cdots(n-k+1)=n!/(n-k)!$.
-*** Proof							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    The number of choices for the first element from the set $A$ is
-    $n$, for the second element $(n-1)$, \dots, for the \(k\)-th
-    element $n-k+1$ choices.
+**** Number of variations                                         :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+      A sequence of $k$ different elements from a set $A$ of $n$
+      elements, is a variation, and the number of all possible
+      variations is $n(n-1)\cdots(n-k+1)=n!/(n-k)!$.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     The number of choices for the first element from the set $A$ is
+     $n$, for the second element $(n-1)$, \dots, for the \(k\)-th
+     element $n-k+1$ choices.
 
-** Variations with repetition
-*** Example
-   How many, at most two digit numbers can we make using the digits
-   $0$, $1$, $2$?
+*** Variations with repetition
+**** Example
+    How many, at most two digit numbers can we make using the digits
+    $0$, $1$, $2$?
 
-   Solution: There are $3$ possibilities for the first digit:
-   | $0$ |
-   | $1$ |
-   | $2$ |
+    Solution: There are $3$ possibilities for the first digit:
+    | $0$ |
+    | $1$ |
+    | $2$ |
   
-   There are also $3$ possibilities for the second digit: 
-   | 00 | 10 | 20 |
-   | 01 | 11 | 21 |
-   | 02 | 12 | 22 |
+    There are also $3$ possibilities for the second digit: 
+    | 00 | 10 | 20 |
+    | 01 | 11 | 21 |
+    | 02 | 12 | 22 |
 
-   Together:  $3 \cdot 3  =9$
-** Variations with repetition
-*** Number of variations with repetition 			  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    The number of $k$ long sequences of $n$ kinds of elements is
-    $n^k$.
-*** Proof 							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    There are $n$ possibilities to choose the first element of the
-    sequence, $n$ possibilities to choose the second, \dots 
+    Together:  $3 \cdot 3  =9$
+*** Variations with repetition
+**** Number of variations with repetition                         :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     The number of $k$ long sequences of $n$ kinds of elements is
+     $n^k$.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     There are $n$ possibilities to choose the first element of the
+     sequence, $n$ possibilities to choose the second, \dots 
 
-*** Example
-    - A ``TOTO'' ticket (which has $13+1$ fields, where we can write
-      $1$, $2$ or $x$) can be filled out in $3^{14}=4\,782\,969$
-      different ways.
+**** Example
+     - A ``TOTO'' ticket (which has $13+1$ fields, where we can write
+       $1$, $2$ or $x$) can be filled out in $3^{14}=4\,782\,969$
+       different ways.
   
-    - What is the number of all the subsets of a set of $n$ elements?
+     - What is the number of all the subsets of a set of $n$ elements?
   
-      - A subset of $A=\{a_1,a_2,\dots, a_n\}$ can be represented with
-        $n$ bits:
-      - $\emptyset \leftrightarrow (0,0,\dots, 0)$,
-        $A\leftrightarrow (1,1,\dots, 1)$
-        $\{a_1\}\leftrightarrow (1,0,0, 0\dots, 0)$,
-        $\{a_3\}\leftrightarrow (0,0,1, 0\dots, 0)$,
-        $\{a_1,a_3\}\leftrightarrow (1,0,1, 0\dots, 0)$, \dots,
+       - A subset of $A=\{a_1,a_2,\dots, a_n\}$ can be represented with
+         $n$ bits:
+       - $\emptyset \leftrightarrow (0,0,\dots, 0)$,
+         $A\leftrightarrow (1,1,\dots, 1)$
+         $\{a_1\}\leftrightarrow (1,0,0, 0\dots, 0)$,
+         $\{a_3\}\leftrightarrow (0,0,1, 0\dots, 0)$,
+         $\{a_1,a_3\}\leftrightarrow (1,0,1, 0\dots, 0)$, \dots,
   
-      - How many $n$ long $\{0,1\}$ sequences are there: $\alert{2^n}$.
+       - How many $n$ long $\{0,1\}$ sequences are there: $\alert{2^n}$.
 
-* Combinations
 ** Combinations
-*** Number of combinations 					  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-     The number of subsets with $k$ elements, of a set $A$ with $n$
-     elements is
-     $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
+*** Combinations
+**** Number of combinations                                       :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+      The number of subsets with $k$ elements, of a set $A$ with $n$
+      elements is
+      $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
   
-*** Proof							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-     First choose $k$ elements from $A$ considering the order they are
-     chosen. This can be done \(n(n-1)\dots
-     (n-k+1)=\frac{n!}{(n-k)!}\) different ways.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+      First choose $k$ elements from $A$ considering the order they are
+      chosen. This can be done \(n(n-1)\dots
+      (n-k+1)=\frac{n!}{(n-k)!}\) different ways.
     
-     If we ignore the order they were chosen, in the previous
-     enumeration every subset of $k$ elements appeared exactly $k!$
-     times. So we should divide by $k!$ to obtain the number of
-     subsets with $k$ elements. 
-*** Example  
-    The number of different ways to fill out a lottery ticket ($5$ out
-    of $90$) is: $\binom{90}{5} = \frac{90!}{5!85!}=\frac{90\cdot
-    89\cdot 88\cdot 87\cdot 86}{5\cdot 4\cdot 3\cdot 2 \cdot
-    1}=\alert{43\,949\,268}$
+      If we ignore the order they were chosen, in the previous
+      enumeration every subset of $k$ elements appeared exactly $k!$
+      times. So we should divide by $k!$ to obtain the number of
+      subsets with $k$ elements. 
+**** Example  
+     The number of different ways to fill out a lottery ticket ($5$ out
+     of $90$) is: $\binom{90}{5} = \frac{90!}{5!85!}=\frac{90\cdot
+     89\cdot 88\cdot 87\cdot 86}{5\cdot 4\cdot 3\cdot 2 \cdot
+     1}=\alert{43\,949\,268}$
 
-** Combinations with repetition
-*** Number of combinations with repetition 			  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    The number of ways to choose $k$ elements out of $n$ kind of
-    elements is $\binom{k+n-1}{k}$
-*** Proof							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    Let $A=\{a_1, a_2, \dots, a_n\}$.  Then every possibility can be
-    represented with a $\{0,1\}$ sequence:
+*** Combinations with repetition
+**** Number of combinations with repetition                       :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     The number of ways to choose $k$ elements out of $n$ kind of
+     elements is $\binom{k+n-1}{k}$
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     Let $A=\{a_1, a_2, \dots, a_n\}$.  Then every possibility can be
+     represented with a $\{0,1\}$ sequence:
 
-    \[\underset{\text{\color{black}choices of }a_1 }{\underbrace{1, 1,
-    \dots , 1} },0, \underset{\text{\color{black}choices of }a_2
-    }{\underbrace{1, 1, \dots , 1} }, 0,\dots, 0,
-    \underset{\text{\color{black}choices of } a_n}{\underbrace{1, 1,
-    \dots , 1}}\]
+     \[\underset{\text{\color{black}choices of }a_1 }{\underbrace{1, 1,
+     \dots , 1} },0, \underset{\text{\color{black}choices of }a_2
+     }{\underbrace{1, 1, \dots , 1} }, 0,\dots, 0,
+     \underset{\text{\color{black}choices of } a_n}{\underbrace{1, 1,
+     \dots , 1}}\]
 
-    Then the sequences contain $k$ number of \(1\)'s (the number of
-    chosen elements), $n-1$ number of \(0\)'s (separators). Together
-    $n-1+k$ positions, $k$ of them are chosen.  The number of such
-    sequences is $\binom{k+n-1}{k}$.
+     Then the sequences contain $k$ number of \(1\)'s (the number of
+     chosen elements), $n-1$ number of \(0\)'s (separators). Together
+     $n-1+k$ positions, $k$ of them are chosen.  The number of such
+     sequences is $\binom{k+n-1}{k}$.
 
-** Combinations with repetition
-*** Example
-    There are $5$ kinds of pastries in the pastry shop, and we want to
-    by $8$. In how many different ways can we do this?
+*** Combinations with repetition
+**** Example
+     There are $5$ kinds of pastries in the pastry shop, and we want to
+     by $8$. In how many different ways can we do this?
   
-    Now $n=5$, $k=8$: $\displaystyle
-    \binom{5+8-1}{8}=\binom{12}{8}=\frac{12!}{8!\cdot 4!}=495$
+     Now $n=5$, $k=8$: $\displaystyle
+     \binom{5+8-1}{8}=\binom{12}{8}=\frac{12!}{8!\cdot 4!}=495$
  
-    How many different ways can we throw $5$ dice?
+     How many different ways can we throw $5$ dice?
 
-    From the set $\{1,2,3,4,5,6\}$ we choose $5$ (the order is not
-    important, one element can occur multiple times). Combinations
-    with repetition with $n=6$, $k=5$:
+     From the set $\{1,2,3,4,5,6\}$ we choose $5$ (the order is not
+     important, one element can occur multiple times). Combinations
+     with repetition with $n=6$, $k=5$:
 
-    $\displaystyle \binom{6+5-1}{5}=\binom{10}{5}=\frac{10!}{5!\cdot
-    5!}=252$
-** Summary (without repetition)
-   - Permutations without repetition: number of
-     sequences of $n$ elements (order counts, each element appears
-     (exactly) once). \[n!\]
-   - Variations without repetition: number of
-     sequences of $k$ different elements from $n$ elements (order
-     counts, each element appears once, at most).
-     \[ \frac{n!}{(n-k)!} \]
-   - Combinations without repetition: subset of $k$ elements from $n$ elements (order doesn't
-     count, each element appears once, at most).
-     \[\binom{n}{k}=\frac{n!}{k!(n-k)!}\]
-** Summary (with repetition)
-   - Permutations with repetition: the number of sequences of
-     $n=k_1+k_2+\dots +k_m$ elements, where number of \(i\)-th kind of
-     elements is $k_i$ (order counts, elements can appear multiple
-     times). \[\frac{(k_1+k_2+\dots+k_m)!}{k_1!k_2!\cdots k_m!} \]
-   - Variations with repetition: the number of $k$ long sequences made
-     of $n$ elements (order counts, elements can appear multiple
-     times). \[ n^k \]
-   - Combinations with repetition: multisets of $k$ elements from $n$
-     kinds of elements (order doesn't count, elements can appear
-     multiple times). \[\binom{n+k-1}{k}=\frac{(n+k-1)!}{k!(n-1)!}\]
-* Binomial theorem
+     $\displaystyle \binom{6+5-1}{5}=\binom{10}{5}=\frac{10!}{5!\cdot
+     5!}=252$
+*** Summary (without repetition)
+    - Permutations without repetition: number of
+      sequences of $n$ elements (order counts, each element appears
+      (exactly) once). \[n!\]
+    - Variations without repetition: number of
+      sequences of $k$ different elements from $n$ elements (order
+      counts, each element appears once, at most).
+      \[ \frac{n!}{(n-k)!} \]
+    - Combinations without repetition: subset of $k$ elements from $n$ elements (order doesn't
+      count, each element appears once, at most).
+      \[\binom{n}{k}=\frac{n!}{k!(n-k)!}\]
+*** Summary (with repetition)
+    - Permutations with repetition: the number of sequences of
+      $n=k_1+k_2+\dots +k_m$ elements, where number of \(i\)-th kind of
+      elements is $k_i$ (order counts, elements can appear multiple
+      times). \[\frac{(k_1+k_2+\dots+k_m)!}{k_1!k_2!\cdots k_m!} \]
+    - Variations with repetition: the number of $k$ long sequences made
+      of $n$ elements (order counts, elements can appear multiple
+      times). \[ n^k \]
+    - Combinations with repetition: multisets of $k$ elements from $n$
+      kinds of elements (order doesn't count, elements can appear
+      multiple times). \[\binom{n+k-1}{k}=\frac{(n+k-1)!}{k!(n-1)!}\]
+* Intermediate combinatorics
 ** Binomial theorem
-*** Binomial theorem						  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-     For given numbers $x,y$ and $n\in\N$, \center
-     \[(x+y)^n=\sum_{k=0}^n \binom{n}{k}x^k y^{n-k}\]
-*** Proof							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    $(x+y)^n=(x+y)(x+y)\cdots (x+y)$ The multiplication, yields terms
-    of the form $x^k y^{n-k}$, and the number of such a term is the
-    number of possibilities when $k$ number of \(x\)'s were chosen from
-    $n$ terms.
+*** Binomial theorem
+**** Binomial theorem                                             :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+      For given numbers $x,y$ and $n\in\N$, \center
+      \[(x+y)^n=\sum_{k=0}^n \binom{n}{k}x^k y^{n-k}\]
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     $(x+y)^n=(x+y)(x+y)\cdots (x+y)$ The multiplication, yields terms
+     of the form $x^k y^{n-k}$, and the number of such a term is the
+     number of possibilities when $k$ number of \(x\)'s were chosen from
+     $n$ terms.
   
-*** Definition						       :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    The number of the form $\binom{n}{k}$ ($n,k\in\N$)
-    is called a *binomial coefficient*.
+**** Definition                                                :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     The number of the form $\binom{n}{k}$ ($n,k\in\N$)
+     is called a *binomial coefficient*.
 
-** Binomial coefficient
-*** Properties of binomial coefficients				  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    1. $\binom{n}{k} = \binom{n}{n-k}$
-    2. $\binom{n}{k} = \binom{n-1}{k-1}+\binom{n-1}{k}$
-    3. $\sum_{k=0}^n \binom{n}{k} = \binom{n}{0} + \binom{n}{1} + \dots + \binom{n}{n} =2^n$
-*** Proof 							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    $\binom{n}{k}$ is the number of $n$ long $\{0,1\}$ sequences,
-    with $k$ number of \(1\)'s.
-    1. The number of $n$ long $\{0,1\}$ sequences equals to the number of
-       sequences which have $n-k$ number of \(1\)'s.
-    2. The number of $n$ long $\{0,1\}$ sequences, with first element
-       $1$: $\binom{n-1}{k-1}$.  The number of $n$ long $\{0,1\}$
-       sequences, with first element $0$: $\binom{n-1}{k}$.
-** Binomial coefficient
-   $\displaystyle(x+y)^n=\sum_{k=0}^n \binom{n}{k}x^k y^{n-k}$: $\displaystyle \binom{n}{k} = \frac{n!}{k!(n-k)!}$
-| $n$ | $\binom{n}{k}$            | $(x+y)^n$                               |
-| $0$ | $1$                       | $1$                                     |
-| $1$ | $1$ $1$                   | $x+y$                                   |
-| $2$ | $1$ $2$ $1$               | $x^2 +2xy+y^2$                          |
-| $3$ | $1$ $3$ $3$ $1$           | $x^3 + 3x^2y + 3xy^2+y^3$               |
-| $4$ | $1$ $4$ $6$ $4$ $1$       | $x^4+4x^3y+6x^2y^2+4xy^3+y^4$           |
-| $5$ | $1$ $5$ $10$ $10$ $5$ $1$ | $x^5+5x^4y+10x^3y^2+10x^2y^3+5xy^4+y^5$ |
+*** Binomial coefficient
+**** Properties of binomial coefficients                          :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     1. $\binom{n}{k} = \binom{n}{n-k}$
+     2. $\binom{n}{k} = \binom{n-1}{k-1}+\binom{n-1}{k}$
+     3. $\sum_{k=0}^n \binom{n}{k} = \binom{n}{0} + \binom{n}{1} + \dots + \binom{n}{n} =2^n$
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     $\binom{n}{k}$ is the number of $n$ long $\{0,1\}$ sequences,
+     with $k$ number of \(1\)'s.
+     1. The number of $n$ long $\{0,1\}$ sequences equals to the number of
+        sequences which have $n-k$ number of \(1\)'s.
+     2. The number of $n$ long $\{0,1\}$ sequences, with first element
+        $1$: $\binom{n-1}{k-1}$.  The number of $n$ long $\{0,1\}$
+        sequences, with first element $0$: $\binom{n-1}{k}$.
+*** Binomial coefficient
+    $\displaystyle(x+y)^n=\sum_{k=0}^n \binom{n}{k}x^k y^{n-k}$: $\displaystyle \binom{n}{k} = \frac{n!}{k!(n-k)!}$
+ | $n$ | $\binom{n}{k}$            | $(x+y)^n$                               |
+ | $0$ | $1$                       | $1$                                     |
+ | $1$ | $1$ $1$                   | $x+y$                                   |
+ | $2$ | $1$ $2$ $1$               | $x^2 +2xy+y^2$                          |
+ | $3$ | $1$ $3$ $3$ $1$           | $x^3 + 3x^2y + 3xy^2+y^3$               |
+ | $4$ | $1$ $4$ $6$ $4$ $1$       | $x^4+4x^3y+6x^2y^2+4xy^3+y^4$           |
+ | $5$ | $1$ $5$ $10$ $10$ $5$ $1$ | $x^5+5x^4y+10x^3y^2+10x^2y^3+5xy^4+y^5$ |
 
 
-** Polynomial theorem
-*** Example
-    What is $(x+y+z)^2=x^2+y^2+z^3+2xy+2xz+2yz$. \qquad $(x+y+z)^3=\dots$
-*** Polynomial theorem 						  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    \begin{equation*}
-    (x_1+x_2+\dots+x_r)^n=\sum_{i_1+i_2+\dots+i_r=n}
-    \frac{n!}{i_1!i_2!\dots i_r!}x_1^{i_1}x_2^{i_2}\dots x_r^{i_r} 
-    \quad (r,n\in\N)
-    \end{equation*}
-*** Proof 							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    $(x_1+x_2+\dots+x_r)^n=(x_1+\dots+x_r)(x_1+\dots+x_r)
-    \cdots (x_1+\dots +x_r)$
+*** Polynomial theorem
+**** Example
+     What is $(x+y+z)^2=x^2+y^2+z^3+2xy+2xz+2yz$. \qquad $(x+y+z)^3=\dots$
+**** Polynomial theorem                                           :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     \begin{equation*}
+     (x_1+x_2+\dots+x_r)^n=\sum_{i_1+i_2+\dots+i_r=n}
+     \frac{n!}{i_1!i_2!\dots i_r!}x_1^{i_1}x_2^{i_2}\dots x_r^{i_r} 
+     \quad (r,n\in\N)
+     \end{equation*}
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     $(x_1+x_2+\dots+x_r)^n=(x_1+\dots+x_r)(x_1+\dots+x_r)
+     \cdots (x_1+\dots +x_r)$
     
-    The coefficient of $x_1^{i_1}x_2^{i_2}\dots x_r^{i_r}$:
-    # \begin{equation*}
-    $\binom{n}{i_1}\binom{n-i_1}{i_2}
-    \binom{n-i_1-i_2}{i_3}\dots
-    \binom{n-i_1-i_2-\dots-i_{r-1}}{i_r}$ =
-    $\frac{n!}{i_1!(n-i_1)!}\frac{(n-i_1)!}{i_2!(n-i_1-i_2)!}\dots
-    \frac{(n-i_1-i_2-\dots-i_{r-1})!}{i_r!(n-i_1-i_2-\dots-i_{r-1}-i_r)!}
-    =\frac{n!}{i_1!i_2!\dots i_r!}$
-** Polynomial theorem
-   $(x_1+x_2+\dots+x_r)^n=\sum_{i_1+i_2+\dots+i_r=n}
-   \frac{n!}{i_1!i_2!\dots i_r!}x_1^{i_1}x_2^{i_2}\dots x_r^{i_r}$
+     The coefficient of $x_1^{i_1}x_2^{i_2}\dots x_r^{i_r}$:
+     # \begin{equation*}
+     $\binom{n}{i_1}\binom{n-i_1}{i_2}
+     \binom{n-i_1-i_2}{i_3}\dots
+     \binom{n-i_1-i_2-\dots-i_{r-1}}{i_r}$ =
+     $\frac{n!}{i_1!(n-i_1)!}\frac{(n-i_1)!}{i_2!(n-i_1-i_2)!}\dots
+     \frac{(n-i_1-i_2-\dots-i_{r-1})!}{i_r!(n-i_1-i_2-\dots-i_{r-1}-i_r)!}
+     =\frac{n!}{i_1!i_2!\dots i_r!}$
+*** Polynomial theorem
+    $(x_1+x_2+\dots+x_r)^n=\sum_{i_1+i_2+\dots+i_r=n}
+    \frac{n!}{i_1!i_2!\dots i_r!}x_1^{i_1}x_2^{i_2}\dots x_r^{i_r}$
   
-   So $(x+y+z)^3=\dots$
+    So $(x+y+z)^3=\dots$
 
-   | $i_1$ | $i_2$ | $i_3$ | $\frac{3!}{i_1!i_2! i_3!}$ |      | $(x+y+z)^3=$ |
-   |-------+-------+-------+----------------------------+------+--------------|
-   | $3$   | $0$   | $0$   | $\frac{3!}{3!0!0!}$        | $=1$ | $\quad x^3$  |
-   | $2$   | $1$   | $0$   | $\frac{3!}{2!1!0!}$        | $=3$ | $+3x^2y$     |
-   | $2$   | $0$   | $1$   | $\frac{3!}{2!0!1!}$        | $=3$ | $+3x^2z$     |
-   | $1$   | $2$   | $0$   | $\frac{3!}{1!2!0!}$        | $=3$ | $+3xy^2$     |
-   | $1$   | $1$   | $1$   | $\frac{3!}{1!1!1!}$        | $=6$ | $+6xyz$      |
-   | $1$   | $0$   | $2$   | $\frac{3!}{1!0!2!}$        | $=3$ | $+3xz^2$     |
-   | $0$   | $3$   | $0$   | $\frac{3!}{0!3!0!}$        | $=1$ | $+y^3$       |
-   | $0$   | $2$   | $1$   | $\frac{3!}{0!2!1!}$        | $=3$ | $+3y^2z$     |
-   | $0$   | $1$   | $2$   | $\frac{3!}{0!1!2!}$        | $=3$ | $+3yz^2$     |
-   | $0$   | $0$   | $3$   | $\frac{3!}{0!0!3!}$        | $=1$ | $+z^3$       |
-* Pigeonhole principle
+    | $i_1$ | $i_2$ | $i_3$ | $\frac{3!}{i_1!i_2! i_3!}$ |      | $(x+y+z)^3=$ |
+    |-------+-------+-------+----------------------------+------+--------------|
+    | $3$   | $0$   | $0$   | $\frac{3!}{3!0!0!}$        | $=1$ | $\quad x^3$  |
+    | $2$   | $1$   | $0$   | $\frac{3!}{2!1!0!}$        | $=3$ | $+3x^2y$     |
+    | $2$   | $0$   | $1$   | $\frac{3!}{2!0!1!}$        | $=3$ | $+3x^2z$     |
+    | $1$   | $2$   | $0$   | $\frac{3!}{1!2!0!}$        | $=3$ | $+3xy^2$     |
+    | $1$   | $1$   | $1$   | $\frac{3!}{1!1!1!}$        | $=6$ | $+6xyz$      |
+    | $1$   | $0$   | $2$   | $\frac{3!}{1!0!2!}$        | $=3$ | $+3xz^2$     |
+    | $0$   | $3$   | $0$   | $\frac{3!}{0!3!0!}$        | $=1$ | $+y^3$       |
+    | $0$   | $2$   | $1$   | $\frac{3!}{0!2!1!}$        | $=3$ | $+3y^2z$     |
+    | $0$   | $1$   | $2$   | $\frac{3!}{0!1!2!}$        | $=3$ | $+3yz^2$     |
+    | $0$   | $0$   | $3$   | $\frac{3!}{0!0!3!}$        | $=1$ | $+z^3$       |
 ** Pigeonhole principle
 *** Pigeonhole principle
-    If we have $n$ pigeonholes and $n+1$ pigeons, then how ever we put
-    the pigeons in the holes, there will be at least one pigeonhole
-    with two pigeons.
+**** Pigeonhole principle
+     If we have $n$ pigeonholes and $n+1$ pigeons, then how ever we put
+     the pigeons in the holes, there will be at least one pigeonhole
+     with two pigeons.
    
-*** Example
-    Out of eight people at least two are born on the same day of the
-    week.
+**** Example
+     Out of eight people at least two are born on the same day of the
+     week.
   
-    How ever we choose five elements from the set
-    $A=\{1,2,3,4,5,6,7,8\}$, we will end up with two elements that
-    have a sum of $9$.
+     How ever we choose five elements from the set
+     $A=\{1,2,3,4,5,6,7,8\}$, we will end up with two elements that
+     have a sum of $9$.
 
-    Consider the sets $\{1,8\}$, $\{2,7\}$, $\{3,6\}$, $\{4,5\}$. Then
-    from the five elements, two will be in one of these sets, so their
-    sum will be $9$.
-
-* Inclusion-exclusion principle
-** Inclusion-exclusion principle
-   How many positive integers, less than $1000$, are not divisible by
-   $2$, $3$ nor $5$?
-
-   Integers less than $1000$ 
-   | /                              |                                         |    <r> |           <r> |
-   | All                            |                                         |  $999$ |         $999$ |
-   | divisible by $2$               | $\lfloor 999/2 \rfloor$                 | $=499$ |        $-499$ |
-   | divisible by $3$               | $\lfloor 999/3 \rfloor$                 | $=333$ |        $-333$ |
-   | divisible by $5$               | $\lfloor 999/5 \rfloor$                 | $=199$ |        $-199$ |
-   | divisible by $2\cdot 3$        | $\lfloor 999/(2\cdot 3) \rfloor$        | $=166$ |        $+166$ |
-   | divisible by $2\cdot 5$        | $\lfloor 999/(2\cdot 5) \rfloor$        |  $=99$ |         $+99$ |
-   | divisible by $3\cdot 5$        | $\lfloor 999/(3\cdot 5) \rfloor$        |  $=66$ |         $+66$ |
-   | divisible by $2\cdot 3\cdot 5$ | $\lfloor 999/(2\cdot 3\cdot 5) \rfloor$ |  $=33$ |         $-33$ |
-   |                                |                                         |    $=$ | $\alert{266}$ |
+     Consider the sets $\{1,8\}$, $\{2,7\}$, $\{3,6\}$, $\{4,5\}$. Then
+     from the five elements, two will be in one of these sets, so their
+     sum will be $9$.
 
 ** Inclusion-exclusion principle
-*** Inclusion-exclusion principle 				  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    Let $A_1$, $A_2$, \dots, $A_n$ be finite sets. Then $\left|\bigcup
-    _{i=1}^n A_i\right| = \sum_{i=1}^n |A_i|-\sum_{i<j}|A_i\cap A_j| +
-    \sum_{i<j<k} |A_i\cap A_j \cap A_k| \mp \dots$
-*** Example
-    - The number of positive integers, less than $1000$, minus the
-      integers are divisible by $2$ or $3$ or $5$?
-    
-      - $A_1=\{1\leq k < 999 : 2 \mid k\}$ $\color{black}
-	\rightarrow$ $|A_1|=\left\lfloor \frac{999}{2} \right\rfloor$
-      - $A_2=\{1\leq k < 999 : 3 \mid k\}$ $\color{black}
-	\rightarrow$ $|A_2|=\left\lfloor \frac{999}{3} \right\rfloor$
-      - $A_3=\{1\leq k < 999 : 5 \mid k\}$ $\color{black}
-	\rightarrow$ $|A_3|=\left\lfloor \frac{999}{5} \right\rfloor$
-      - Similarly $|A_1\cap A_2|=\left\lfloor \frac{999}{2\cdot 3} \right\rfloor$, $|A_1\cap A_3|=\left\lfloor \frac{999}{2\cdot 5} \right\rfloor$, $|A_2\cap A_3|=\left\lfloor \frac{999}{3\cdot 5} \right\rfloor$, $|A_1\cap A_2 \cap A_3|=\left\lfloor \frac{999}{2\cdot 3 \cdot 5} \right\rfloor$
-    
-    The number of integers divisible by $2$, $3$ or $5$:
-    $\lfloor999/2\rfloor+\lfloor999/3\rfloor+\lfloor999/5\rfloor-
-    \lfloor999/(2\cdot 3)\rfloor-\lfloor999/(2\cdot 5)\rfloor
-    -\lfloor999/(3\cdot 5)\rfloor+\lfloor999/(2\cdot3\cdot5)\rfloor$
+*** Inclusion-exclusion principle
+    How many positive integers, less than $1000$, are not divisible by
+    $2$, $3$ nor $5$?
 
-** The general Inclusion-exclusion formula
-*** Inclusion-exclusion principle 				  :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    Let $A_1, \dots A_n$ be subsets of the finite set $A$,
-    $f:A\rightarrow\R$ an arbitrary function.  Let
-    \[
-    S=\sum_{x\in A}f(x), \quad
-    S_r= \sum_{J\in I_r}\sum_{x\in A_J} f(x), \quad
-    S_0=\sum_{x\in A'}  f(x) \quad
-    \]
-    where $I_r=\bigl\{\{i_1,i_2,\ldots,i_r\}: 1\leq i_1 < i_2 < \cdots
-    < i_r \leq n\bigr\}$, $A_J=\cap_{j\in J} A_j$ and
-    and $A'=A\setminus \cup_{i=1}^n A_i$.
+    Integers less than $1000$ 
+    | /                              |                                         |    <r> |           <r> |
+    | All                            |                                         |  $999$ |         $999$ |
+    | divisible by $2$               | $\lfloor 999/2 \rfloor$                 | $=499$ |        $-499$ |
+    | divisible by $3$               | $\lfloor 999/3 \rfloor$                 | $=333$ |        $-333$ |
+    | divisible by $5$               | $\lfloor 999/5 \rfloor$                 | $=199$ |        $-199$ |
+    | divisible by $2\cdot 3$        | $\lfloor 999/(2\cdot 3) \rfloor$        | $=166$ |        $+166$ |
+    | divisible by $2\cdot 5$        | $\lfloor 999/(2\cdot 5) \rfloor$        |  $=99$ |         $+99$ |
+    | divisible by $3\cdot 5$        | $\lfloor 999/(3\cdot 5) \rfloor$        |  $=66$ |         $+66$ |
+    | divisible by $2\cdot 3\cdot 5$ | $\lfloor 999/(2\cdot 3\cdot 5) \rfloor$ |  $=33$ |         $-33$ |
+    |                                |                                         |    $=$ | $\alert{266}$ |
 
-    Then $S_0=S-S_1+S_2-S_3 \pm \cdots (-1)^nS_n$ 
-*** Example
-    $f(x)=1$, $A=\{1,2,\dots, 999\}$, $A_1=\{k:\ 1\leq k < 1000, 2\mid k\}$,
-    $A_2=\{k:\ 1\leq k < 1000, 3\mid k\}$, $A_3=\{k:\ 1\leq k < 1000,
-    5\mid k\}$.
+*** Inclusion-exclusion principle
+**** Inclusion-exclusion principle                                :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     Let $A_1$, $A_2$, \dots, $A_n$ be finite sets. Then $\left|\bigcup
+     _{i=1}^n A_i\right| = \sum_{i=1}^n |A_i|-\sum_{i<j}|A_i\cap A_j| +
+     \sum_{i<j<k} |A_i\cap A_j \cap A_k| \mp \dots$
+**** Example
+     - The number of positive integers, less than $1000$, minus the
+       integers are divisible by $2$ or $3$ or $5$?
+    
+       - $A_1=\{1\leq k < 999 : 2 \mid k\}$ $\color{black}
+	 \rightarrow$ $|A_1|=\left\lfloor \frac{999}{2} \right\rfloor$
+       - $A_2=\{1\leq k < 999 : 3 \mid k\}$ $\color{black}
+	 \rightarrow$ $|A_2|=\left\lfloor \frac{999}{3} \right\rfloor$
+       - $A_3=\{1\leq k < 999 : 5 \mid k\}$ $\color{black}
+	 \rightarrow$ $|A_3|=\left\lfloor \frac{999}{5} \right\rfloor$
+       - Similarly $|A_1\cap A_2|=\left\lfloor \frac{999}{2\cdot 3} \right\rfloor$, $|A_1\cap A_3|=\left\lfloor \frac{999}{2\cdot 5} \right\rfloor$, $|A_2\cap A_3|=\left\lfloor \frac{999}{3\cdot 5} \right\rfloor$, $|A_1\cap A_2 \cap A_3|=\left\lfloor \frac{999}{2\cdot 3 \cdot 5} \right\rfloor$
+    
+     The number of integers divisible by $2$, $3$ or $5$:
+     $\lfloor999/2\rfloor+\lfloor999/3\rfloor+\lfloor999/5\rfloor-
+     \lfloor999/(2\cdot 3)\rfloor-\lfloor999/(2\cdot 5)\rfloor
+     -\lfloor999/(3\cdot 5)\rfloor+\lfloor999/(2\cdot3\cdot5)\rfloor$
+
+*** The general Inclusion-exclusion formula
+**** Inclusion-exclusion principle                                :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     Let $A_1, \dots A_n$ be subsets of the finite set $A$,
+     $f:A\rightarrow\R$ an arbitrary function.  Let
+     \[
+     S=\sum_{x\in A}f(x), \quad
+     S_r= \sum_{J\in I_r}\sum_{x\in A_J} f(x), \quad
+     S_0=\sum_{x\in A'}  f(x) \quad
+     \]
+     where $I_r=\bigl\{\{i_1,i_2,\ldots,i_r\}: 1\leq i_1 < i_2 < \cdots
+     < i_r \leq n\bigr\}$, $A_J=\cap_{j\in J} A_j$ and
+     and $A'=A\setminus \cup_{i=1}^n A_i$.
+
+     Then $S_0=S-S_1+S_2-S_3 \pm \cdots (-1)^nS_n$ 
+**** Example
+     $f(x)=1$, $A=\{1,2,\dots, 999\}$, $A_1=\{k:\ 1\leq k < 1000, 2\mid k\}$,
+     $A_2=\{k:\ 1\leq k < 1000, 3\mid k\}$, $A_3=\{k:\ 1\leq k < 1000,
+     5\mid k\}$.
  
-    $S_0$: the number of integers less then $1000$ not divisible by
-    $2$, $3$ nor $5$.
-** The general Inclusion-exclusion  formula
-   $S_0=S-S_1+S_2-S_3 \pm \dots (-1)^n S_n$:
-    \[
-    S=\sum_{x\in A}f(x), \quad
-    S_r= \sum_{J\in I_r}\sum_{x\in A_J} f(x), \quad
-    S_0=\sum_{x\in A'}  f(x) \quad
-    \]
-    where $I_r=\bigl\{\{i_1,i_2,\ldots,i_r\}: 1\leq i_1 < i_2 < \cdots
-    < i_r \leq n\bigr\}$, $A_J=\cap_{j\in J} A_j$ and
-    and $A'=A\setminus \cup_{i=1}^n A_i$.
-*** Proof 							    :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    If $x\in A\setminus \cup_{i=1}^n A_i$, then $f(x)$ appears once
-    on each side.
+     $S_0$: the number of integers less then $1000$ not divisible by
+     $2$, $3$ nor $5$.
+*** The general Inclusion-exclusion  formula
+    $S_0=S-S_1+S_2-S_3 \pm \dots (-1)^n S_n$:
+     \[
+     S=\sum_{x\in A}f(x), \quad
+     S_r= \sum_{J\in I_r}\sum_{x\in A_J} f(x), \quad
+     S_0=\sum_{x\in A'}  f(x) \quad
+     \]
+     where $I_r=\bigl\{\{i_1,i_2,\ldots,i_r\}: 1\leq i_1 < i_2 < \cdots
+     < i_r \leq n\bigr\}$, $A_J=\cap_{j\in J} A_j$ and
+     and $A'=A\setminus \cup_{i=1}^n A_i$.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     If $x\in A\setminus \cup_{i=1}^n A_i$, then $f(x)$ appears once
+     on each side.
  
-    If $x\in \cup_{i=1}^n A_i$, let 
-    # $A_{j_1}, \dots, A_{j_t}$ be the
-    # sets, which $x$ is an element of. 
-    $I(x)=\{i : x\in A_i\}$ and $t=|I(x)|$.  $f(x)$ does not appear on
-    the left side. It appears in the $\sum_{J\in I_r}\sum_{x\in
-    A_J}f(x)$ sum on the right side, if $J\subset I(x)$. There are
-    $\binom{t}{r}$ such sets of indices of $r$ elements. So $f(x)$ has
-    the coefficient $\sum_{r=0}^t\binom{t}{r} (-1)^r=0$ (prove for
-    homework, hint $(1-1)^t=?$).
+     If $x\in \cup_{i=1}^n A_i$, let 
+     # $A_{j_1}, \dots, A_{j_t}$ be the
+     # sets, which $x$ is an element of. 
+     $I(x)=\{i : x\in A_i\}$ and $t=|I(x)|$.  $f(x)$ does not appear on
+     the left side. It appears in the $\sum_{J\in I_r}\sum_{x\in
+     A_J}f(x)$ sum on the right side, if $J\subset I(x)$. There are
+     $\binom{t}{r}$ such sets of indices of $r$ elements. So $f(x)$ has
+     the coefficient $\sum_{r=0}^t\binom{t}{r} (-1)^r=0$ (prove for
+     homework, hint $(1-1)^t=?$).
  

@@ -1,5 +1,5 @@
 # -*- mode: org; mode: flyspell; -*-
-#+SETUPFILE: ../inc/lecture.h.org
+#+SETUPFILE: ../include/lecture.h.org
 # #+LATEX_HEADER: \DeclareMathOperator\Im{\operatorname{Im}}
 #+LATEX_HEADER: \renewcommand{\Re}{\operatorname{Re}}
 #+LATEX_HEADER: \renewcommand{\Im}{\operatorname{Im}}
@@ -9,691 +9,693 @@
 #+TITLE: Discrete mathematics I - Complex numbers
 #+SHORT_TITLE: Complex numbers
 
-* Introduction and historical background
-** Cubic equation
-*** Solving the cubic equation
-    For $a\neq 0$, we are looking for the solution of $ax^3 + bx^2 +
-    cx +d =0$ By dividing with $a$ we obtain a monic polynomial on the
-    lhs: 
+* Complex numbers
+** Introduction and historical background
+*** Cubic equation
+**** Solving the cubic equation
+     For $a\neq 0$, we are looking for the solution of $ax^3 + bx^2 +
+     cx +d =0$ By dividing with $a$ we obtain a monic polynomial on the
+     lhs: 
+     #+BEGIN_EXPORT latex
+     \begin{equation}\label{eq:cubcd}
+     x^3 + b'x^2 + c'x + d'=0 
+     \end{equation} 
+     #+END_EXPORT
+**** Reminder: Solving $x^2+px+q=0$
+     With the substitution $x=y-\frac{p}{2}$ we get $y^2+q'=0$.  From
+     this we can easily obtain the solution by rearranging and taking
+     the square roots.  By substituting $x=y-b/3$ into \eqref{eq:cubcd}
+     #+BEGIN_EXPORT latex
+     \begin{equation}\label{eq:cubic}
+     y^3 + py + q=0
+     \end{equation} 
+     #+END_EXPORT
+*** Solving $y^3+py+q=0$ 
+**** Idea: try to find the solution in a $y=u+v$ form!
+    By rearranging $(u+v)^3=u^3+3u^2v+3uv^2+v^3$ we obtain
+
+    $\begin{array}{cccc}
+    (u+v)^3 & - 3uv(u+v) &- (u^3+v^3) & =0 \\
+    y^3 & +py & +q & =0
+    \end{array}$
+
+    Our goal: find $u,v$ for which $-3uv=p$, $-(u^3+v^3)=q$. Then
+    $y=u+v$ will be a solution!
+**** Finding $u,v$ 
+     $u^3v^3=(-\frac{p}{3})^3$ and $u^3+v^3=-q$, $u^3$, $v^3$ will be
+    the roots of the quadratic equation $z^2+qz+(\frac{-p}{3})^3=0$.
+    Taking the cubic root of the solutions of the previous equation:
+
     #+BEGIN_EXPORT latex
-    \begin{equation}\label{eq:cubcd}
-    x^3 + b'x^2 + c'x + d'=0 
-    \end{equation} 
-    #+END_EXPORT
-*** Reminder: Solving $x^2+px+q=0$
-    With the substitution $x=y-\frac{p}{2}$ we get $y^2+q'=0$.  From
-    this we can easily obtain the solution by rearranging and taking
-    the square roots.  By substituting $x=y-b/3$ into \eqref{eq:cubcd}
-    #+BEGIN_EXPORT latex
-    \begin{equation}\label{eq:cubic}
-    y^3 + py + q=0
-    \end{equation} 
-    #+END_EXPORT
-** Solving $y^3+py+q=0$ 
-*** Idea: try to find the solution in a $y=u+v$ form!
-   By rearranging $(u+v)^3=u^3+3u^2v+3uv^2+v^3$ we obtain
-
-   $\begin{array}{cccc}
-   (u+v)^3 & - 3uv(u+v) &- (u^3+v^3) & =0 \\
-   y^3 & +py & +q & =0
-   \end{array}$
-
-   Our goal: find $u,v$ for which $-3uv=p$, $-(u^3+v^3)=q$. Then
-   $y=u+v$ will be a solution!
-*** Finding $u,v$ 
-    $u^3v^3=(-\frac{p}{3})^3$ and $u^3+v^3=-q$, $u^3$, $v^3$ will be
-   the roots of the quadratic equation $z^2+qz+(\frac{-p}{3})^3=0$.
-   Taking the cubic root of the solutions of the previous equation:
-
-   #+BEGIN_EXPORT latex
-   \begin{equation}\label{eq:cubsol}
-   y=\sqrt[3]{-\frac{q}{2}+ \sqrt{\left(\frac{q}{2}\right)^2 + \left(\frac{p}{3}\right)^3}}
-   + \sqrt[3]{-\frac{q}{2}- \sqrt{\left(\frac{q}{2}\right)^2 + \left(\frac{p}{3}\right)^3}}
-   \end{equation}
-   #+END_EXPORT
-** Example: solve $y^3-21y+20=0$
-   It is pretty obvious that $y=1$ is a solution.
-*** Using the formula 
-    Substitution $p=-21, q=20$ into \eqref{eq:cubsol}
-    #+BEGIN_EXPORT latex
-    \begin{align*}
-    x&=\sqrt[3]{-\frac{q}{2}+\sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}}
-    + \sqrt[3]{-\frac{q}{2}-\sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}}\\
-    x&=\sqrt[3]{-10+\sqrt{-243}}+\sqrt[3]{-10-\sqrt{-243}}
-    \end{align*}
-    #+END_EXPORT
-
-    We have *negative* $-243$ under the square root! Can we continue
-    using the formula like this?
-** Calculating $x=\sqrt[3]{-10+\sqrt{-243}}+\sqrt[3]{-10-\sqrt{-243}}$
-*** Let's (formally) allow $(\sqrt{-3})^2=-3$:
-    #+BEGIN_EXPORT latex
-    \begin{align*}
-    (2+\sqrt{-3})^3 &= 2^3+3\cdot 2^2 \cdot \sqrt{-3}+3\cdot  2(\sqrt{-3})^2+(\sqrt{-3})^3\\
-    &=-10+9\sqrt{-3} =-10+\sqrt{-243}
-     \end{align*}
-
-    #+END_EXPORT
-
- 
-    # %\[2^3+3\dot 2^2 \cdot \sqrt{-3}+3\dot 2(\sqrt{-3})^3=(2+\sqrt{-3})^3.\]
-    So $-10+\sqrt{-243}=(2+\sqrt{-3})^3$ and similarly $-10-\sqrt{-243}=(2-\sqrt{-3})^3$
-
-    The solution is: $x=(2+\sqrt{-3})+(2-\sqrt{-3})=4$.
-
-    - Is this formal calculation with \(\sqrt{-3}\) allowed?
-    - Why do we calculate the value of $-10+\sqrt{-243}$ like this?
-    - There was a solution $y=1$, what happened to it?
-    - Is there a third root? (There should be!)
-** Number sets
-*** Natural numbers: $\mathbb{N}=\{0,1,2,\dots\}$
-    There is no $x\in\N$ such that: $x+2=1$ \ie *$x+2=1$* has no
-    solution because *subtraction is not (always) defined in $\N$*!
-*** Integers: $\Z=\{\dots, -2,-1,0,1,2,\dots\}$
-    Now we have subtraction ($x=-1$), but *$x\cdot 2=1$* has no
-    solution because *division is not (always) defined in $\Z$*!
-*** Rational numbers: $\Q=\left\{\frac{p}{q}: p,q \in \Z, q\neq 0\right\}$
-    Now we have division ($x=\frac{1}{2}$), but *$x^2=2$* has no
-    solution because *square root is not (always) defined in $\Q$*!
-*** Real numbers: $\mathbb{R}$
-    Now we have square root (and a irrational numbers), but *$x^2=-1$*
-    has no solution, because *the square root of negative numbers is
-    (never) defined*!
-** $x^2=-1$ can be solved in the set of complex numbers
-*** Application of complex numbers
-    - CS: Computer graphics, geometry
-    - Math: geometry, solving equations
-    - Physics: quantum mechanics, relativity theory \etc
-*** Introduction of complex numbers (informal definition)
-    Let $i$ be the solution of $x^2=-1$.  We do our calculations as if
-    $i$ was a variable, substituting $i^2=-1$. For example:
-    #+BEGIN_EXPORT latex
-    \begin{equation*}
-    (1+i)^2=1+2i+i^2=1+2i+(-1)=2i{\color{black}.}
-    \end{equation*}
-    More generally:
-    \begin{equation}\label{eq:cmul}
-    (a+bi)(c+di)=ac-bd+(ad+bc)i{\color{black}}
+    \begin{equation}\label{eq:cubsol}
+    y=\sqrt[3]{-\frac{q}{2}+ \sqrt{\left(\frac{q}{2}\right)^2 + \left(\frac{p}{3}\right)^3}}
+    + \sqrt[3]{-\frac{q}{2}- \sqrt{\left(\frac{q}{2}\right)^2 + \left(\frac{p}{3}\right)^3}}
     \end{equation}
     #+END_EXPORT
-* Complex numbers
-** Definition of complex numbers
-*** The set of complex numbers                                 :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    The *$\C$* is the *set of complex numbers*, where if $z\in\C$,
-    then $z$ is an expression $a+bi$ with $a,b\in\R$. This is the
-    *rectangular (or Cartesian or algebraic) form* of $z$.  $\Re(z)=a$
-    is the *real part* and $\Im(z)=b$ is the *imaginary part* of $z$.
-    *Important warning*: $\Im(z)\neq bi$!
+*** Example: solve $y^3-21y+20=0$
+    It is pretty obvious that $y=1$ is a solution.
+**** Using the formula 
+     Substitution $p=-21, q=20$ into \eqref{eq:cubsol}
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     x&=\sqrt[3]{-\frac{q}{2}+\sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}}
+     + \sqrt[3]{-\frac{q}{2}-\sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}}\\
+     x&=\sqrt[3]{-10+\sqrt{-243}}+\sqrt[3]{-10-\sqrt{-243}}
+     \end{align*}
+     #+END_EXPORT
 
-    #+BEGIN_COMMENT
-    The set of all expressions of the form $a+bi$, where $a,b\in\R$ is
-    the set of complex numbers ($\C$). If $z=a+bi$ ($a,b\in\R$) then
-    this is the *rectangular form* of the complex number $z$.
-    #+END_COMMENT
-*** Graphical representation
+     We have *negative* $-243$ under the square root! Can we continue
+     using the formula like this?
+*** Calculating $x=\sqrt[3]{-10+\sqrt{-243}}+\sqrt[3]{-10-\sqrt{-243}}$
+**** Let's (formally) allow $(\sqrt{-3})^2=-3$:
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     (2+\sqrt{-3})^3 &= 2^3+3\cdot 2^2 \cdot \sqrt{-3}+3\cdot  2(\sqrt{-3})^2+(\sqrt{-3})^3\\
+     &=-10+9\sqrt{-3} =-10+\sqrt{-243}
+      \end{align*}
+
+     #+END_EXPORT
+
+ 
+     # %\[2^3+3\dot 2^2 \cdot \sqrt{-3}+3\dot 2(\sqrt{-3})^3=(2+\sqrt{-3})^3.\]
+     So $-10+\sqrt{-243}=(2+\sqrt{-3})^3$ and similarly $-10-\sqrt{-243}=(2-\sqrt{-3})^3$
+
+     The solution is: $x=(2+\sqrt{-3})+(2-\sqrt{-3})=4$.
+
+     - Is this formal calculation with \(\sqrt{-3}\) allowed?
+     - Why do we calculate the value of $-10+\sqrt{-243}$ like this?
+     - There was a solution $y=1$, what happened to it?
+     - Is there a third root? (There should be!)
+*** Number sets
+**** Natural numbers: $\mathbb{N}=\{0,1,2,\dots\}$
+     There is no $x\in\N$ such that: $x+2=1$ \ie *$x+2=1$* has no
+     solution because *subtraction is not (always) defined in $\N$*!
+**** Integers: $\Z=\{\dots, -2,-1,0,1,2,\dots\}$
+     Now we have subtraction ($x=-1$), but *$x\cdot 2=1$* has no
+     solution because *division is not (always) defined in $\Z$*!
+**** Rational numbers: $\Q=\left\{\frac{p}{q}: p,q \in \Z, q\neq 0\right\}$
+     Now we have division ($x=\frac{1}{2}$), but *$x^2=2$* has no
+     solution because *square root is not (always) defined in $\Q$*!
+**** Real numbers: $\mathbb{R}$
+     Now we have square root (and a irrational numbers), but *$x^2=-1$*
+     has no solution, because *the square root of negative numbers is
+     (never) defined*!
+*** $x^2=-1$ can be solved in the set of complex numbers
+**** Application of complex numbers
+     - CS: Computer graphics, geometry
+     - Math: geometry, solving equations
+     - Physics: quantum mechanics, relativity theory \etc
+**** Introduction of complex numbers (informal definition)
+     Let $i$ be the solution of $x^2=-1$.  We do our calculations as if
+     $i$ was a variable, substituting $i^2=-1$. For example:
+     #+BEGIN_EXPORT latex
+     \begin{equation*}
+     (1+i)^2=1+2i+i^2=1+2i+(-1)=2i{\color{black}.}
+     \end{equation*}
+     More generally:
+     \begin{equation}\label{eq:cmul}
+     (a+bi)(c+di)=ac-bd+(ad+bc)i{\color{black}}
+     \end{equation}
+     #+END_EXPORT
+** Complex numbers
+*** Definition of complex numbers
+**** The set of complex numbers                                :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     The *$\C$* is the *set of complex numbers*, where if $z\in\C$,
+     then $z$ is an expression $a+bi$ with $a,b\in\R$. This is the
+     *rectangular (or Cartesian or algebraic) form* of $z$.  $\Re(z)=a$
+     is the *real part* and $\Im(z)=b$ is the *imaginary part* of $z$.
+     *Important warning*: $\Im(z)\neq bi$!
+
+     #+BEGIN_COMMENT
+     The set of all expressions of the form $a+bi$, where $a,b\in\R$ is
+     the set of complex numbers ($\C$). If $z=a+bi$ ($a,b\in\R$) then
+     this is the *rectangular form* of the complex number $z$.
+     #+END_COMMENT
+**** Graphical representation
+     #+BEGIN_CENTER
+     #+BEGIN_EXPORT latex
+     \begin{tikzpicture}[scale=2.5]
+     \def\sqrtthree{1.732050808}
+     \def\zcords{(\sqrtthree/2,1/2)}
+
+     %\begin{scope}
+     %\clip(-0.1,-0.1) rectangle (,1.5);  
+  
+     % grid, axis, circle
+     \draw[style=help lines,step=0.2,color=gray,densely dotted] 
+     (-0.1,-0.1) grid (1.5,0.9);
+     \draw[->] (-0.1,0) -- (1.5,0); % X axis
+     \draw[->] (0,-0.1) -- (0,0.7); % Y axis
+     %\draw[dashed,color=gray] (0,0) circle (1);
+     %\end{scope}
+  
+     \filldraw[fill=green!20,draw=cyan] (0,0) -- (3mm,0pt) arc(0:30:3mm);
+     %\node[color=cyan] at (0.4,0.1) {$\varphi$};
+
+     % r = |z| etc
+     \draw[color=magenta,decorate,decoration={brace,amplitude=5pt,mirror,raise=1pt}] \zcords -- (0,0) node[rotate=30,yshift=11,midway]{$|z|$};
+
+     % Re z
+     \draw[color=red] (0,1/2) -- \zcords  (\sqrtthree/4,1/2+0.1) node{$a=\Re(z)$};
+
+     % Im z
+     \draw[color=blue] (\sqrtthree/2,0) -- \zcords (\sqrtthree/2+0.4,1/4) node{$b=\Im(z)$};
+
+     % arrow to z and z's label
+     \draw[->,>=latex] (0,0) -- \zcords;
+     \draw \zcords 
+     node [draw, label=45:{$z={\color{red}a}+{\color{blue}b}i$}, circle, 
+     minimum width=1pt, inner sep=1pt, fill=black] {};
+
+     \end{tikzpicture}
+     #+END_EXPORT
+     #+END_CENTER
+*** Opertaions on complex numbers
+**** Operations on $\C$                                        :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     - Addition: $(a+bi)+(c+di)=a+c+(b+d)i$.
+     - Multiplication: $(a+bi)(c+di)=ac-bd+(ad+bc)i$.
+     - Equality: complex numbers are equal if both their real and
+       imaginary parts are equal \ie $a+bi=c+di$ if $a=c$ and $b=d$!
+**** Remarks: let $z=a+bi$ (with $a,b\in\R$).
+     - If $b=0$ then $z$ is a *real number*.
+     - If $a=0$ then $z$ is a *pure imaginary number*.
+*** Alternative (more formal definition) of $\C$
+**** Complex numbers as ordered pairs                          :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     Let $\C=\R\times\R$ (Cartesian product), $(a,b), (c,d) \in \C$
+     - Addition: $(a,b)+(c,d)=(a+c,d+b)$;
+     - Multiplication: $(a,b)\cdot(c,d)=(ac-bd,ad+bc)$.
+     The two definitions are equivalent with $i = 0+1\cdot i \equiv
+     (0,1)$.  $a+bi$ is more convenient when calculating with pencil
+     and paper, $(a,b)$ is used in computer programs.
+**** Fundamental theorem of algebra NP                            :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     If $0<n\in\N$,$a_0, \dots ,a_n \in \mathbb{C}$, where $a_n\neq 0$,
+     then for every expression $a_0+a_1x+a_2x^2+\ldots + a_nx^n$ there
+     is a complex number $z\in \mathbb{C}$, such that
+     $a_0+a_1z+a_2z^2+\ldots +a_nz^n=0$.
+*** Calculation with complex numbers: absolute value
+**** Additive inverse                                          :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     In general, $y$ is the additive inverse of $x$ if $x+y=0$.  For
+     $r\in \mathbb{R}$ the additive inverse is $-r$.
+**** Additive inverse                                             :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     The additive inverse of $z=a+bi \in\C$ is $-z=-a-bi \in\C$.
+
+**** Absolute value                                            :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     The *absolute value* of the $z=a+bi \in \C$ complex number in
+     rectangular form is $|z|=|a+bi|=\sqrt{a^2+b^2}$
+
+     For real numbers: $|a|=|a+0i|=\sqrt{a^2+0^2}=\sqrt{a^2}$
+**** Statement                                                    :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     If $z\in\C$, then $|z|\ge 0$, and $|z|=0 \iff z=0$
+*** Calculation with complex numbers: reciprocal
+**** Reciprocal, multiplicative inverse                        :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     $y$ is the *reciprocal* (or *multiplicative inverse*) of $x$ if
+     $x\cdot y = 1$.  For $r\in\R\setminus\{0\}$ the reciprocal is
+     $1/r$ sometimes denoted as $r^{-1}$.
+**** Reciprocal of complex numbers: rationalisation
+     What is the rectangular form of $\frac{1}{1+i}$? Idea:
+     rationalisation, \ie multiply both numerator and denominator with
+     the conjugate:
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     \frac{1}{1+\sqrt{2}}
+     &=\frac{1}{1+\sqrt{2}}\cdot\frac{1-\sqrt{2}}{1-\sqrt{2}}
+     =\frac{1-\sqrt{2}}{(1+\sqrt{2})(1-\sqrt{2})}\\
+     &=\frac{1-\sqrt{2}}{1^2-(\sqrt{2})^2}
+     =\frac{1-\sqrt{2}}{1-2}=-1+\sqrt{2}
+     \end{align*}
+     #+END_EXPORT
+     Similarly:
+     #+BEGIN_EXPORT latex
+     \[
+     \frac{1}{1+i}\frac{1-i}{1-i}
+     =\frac{1-i}{(1+i)(1-i)}
+     =\frac{1-i}{1^2-i^2}
+     =\frac{1-i}{1-(-1)}
+     =\frac{1-i}{2}
+     =\frac{1}{2}-\frac{1}{2}i
+     \]
+     #+END_EXPORT
+
+*** Calculation with complex numbers: quotient
+**** Conjugate
+     Let $z=a+bi$ be the rectangular form of a complex number.  The
+     *conjugate* of $z$ is $\overline{z}=\overline{a+bi}=a-bi$ szám.
+
+**** Statement                                                    :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     The reciprocal of $z\neq0$ is
+     $\frac{1}{z}=\frac{\overline{z}}{z\cdot
+     \overline{z}}{\color{black}}$.
+**** Remark    
+     The previous statement is correct, since the denominator is
+     $z\cdot \overline{z}=(a+bi)(a-bi)=a^2-(bi)^2=a^2+b^2=|z|^2\in\R$.
+**** No zero divisors                                             :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     $z\cdot w=0 \Rightarrow z=0$ vagy $w=0$.
+**** Quotient                                                  :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     The *quotient* of two complex numbers $\frac{z}{w}=z\cdot
+     \frac{1}{w}$.
+*** Calculation with complex numbers: rules
+**** Prove them for homework                                      :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     1. $\overline{\overline{z}}=z$;
+     2. $\overline{z+w}=\overline{z}+\overline{w}$;
+     3. $\overline{z\cdot w}=\overline{z} \cdot \overline{w}$;
+     4. $z+ \overline{z}= 2\Re(z)$;
+     5. $z-\overline{z}=2\Im(z)\cdot i$;
+     6. $z\cdot \overline{z}=|z|^2$;
+     7. If $z\neq 0$, then $z^{-1}=\frac{\overline{z}}{|z|^2}$;
+     8. $|0|=0$ and if $z\neq 0$, then $|z|>0$;
+     9. $|\overline{z}|=|z|$;
+     10. $|z\cdot w|=|z| \cdot |w|$;
+     11. $|z+w|\le |z| + |w|$ (triangle inequality theorem).
+*** Calculation with complex numbers: proof
+**** Prove them at homework                                       :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     $\vdots$
+     1. [@10] $|z\cdot w|=|z| \cdot |w|;$
+     $\vdots$
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     |z \cdot w|^2
+     &=z \cdot w \cdot \overline{z \cdot w}
+     =z \cdot w \cdot \overline{z} \cdot \overline{w}\\
+     &=z \cdot \overline{z} \cdot w \cdot \overline{w}
+     =|z|^2 \cdot |w|^2\\
+     &=(|z| \cdot |w|)^2
+     \end{align*}
+     #+END_EXPORT
+* Polar form of complex numbers
+** Polar form
+*** Representation of complex numbers
+    On the *complex plane*
     #+BEGIN_CENTER
     #+BEGIN_EXPORT latex
     \begin{tikzpicture}[scale=2.5]
     \def\sqrtthree{1.732050808}
-    \def\zcords{(\sqrtthree/2,1/2)}
-
-    %\begin{scope}
-    %\clip(-0.1,-0.1) rectangle (,1.5);  
+    \def\zcords{(1/2,\sqrtthree/2)}
+    \begin{scope}
+    \clip(-0.1,-0.1) rectangle (3,1.5);  
   
     % grid, axis, circle
-    \draw[style=help lines,step=0.2,color=gray,densely dotted] 
-    (-0.1,-0.1) grid (1.5,0.9);
-    \draw[->] (-0.1,0) -- (1.5,0); % X axis
-    \draw[->] (0,-0.1) -- (0,0.7); % Y axis
-    %\draw[dashed,color=gray] (0,0) circle (1);
-    %\end{scope}
+    \draw[style=help lines,step=0.5,color=gray,densely dotted] 
+    (-1.1,-1.1) grid (1.1,1.1);
+    \draw[->] (-1.1,0) -- (1.1,0); % X axis
+    \draw[->] (0,-1.1) -- (0,1.1); % Y axis
+    \draw[dashed,color=gray] (0,0) circle (1);
+    \end{scope}
   
-    \filldraw[fill=green!20,draw=cyan] (0,0) -- (3mm,0pt) arc(0:30:3mm);
-    %\node[color=cyan] at (0.4,0.1) {$\varphi$};
+    \filldraw[fill=green!20,draw=cyan] (0,0) -- (3mm,0pt) arc(0:60:3mm);
+    \node[color=cyan] at (0.2,0.1) {$\varphi$};
 
     % r = |z| etc
-    \draw[color=magenta,decorate,decoration={brace,amplitude=5pt,mirror,raise=1pt}] \zcords -- (0,0) node[rotate=30,yshift=11,midway]{$|z|$};
+    \node[rotate=60,color=magenta] at (-0.1,0.6) {$r=|z|$};
+    \draw[color=magenta,decorate,decoration={brace,amplitude=10pt,mirror,raise=4pt}] \zcords -- (0,0) node{};
 
-    % Re z
-    \draw[color=red] (0,1/2) -- \zcords  (\sqrtthree/4,1/2+0.1) node{$a=\Re(z)$};
+    % cos varphi
+    \draw[color=red] (0,0) -- (1/2,0)   (1/4,-0.1) node{$r \cos \varphi$};
 
-    % Im z
-    \draw[color=blue] (\sqrtthree/2,0) -- \zcords (\sqrtthree/2+0.4,1/4) node{$b=\Im(z)$};
+    % sin varphi
+    \draw[color=blue] (1/2,0) -- \zcords (0.6,0.4) node[rotate=90]{$r\sin \varphi$};
 
     % arrow to z and z's label
     \draw[->,>=latex] (0,0) -- \zcords;
     \draw \zcords 
-    node [draw, label=45:{$z={\color{red}a}+{\color{blue}b}i$}, circle, 
+    node [draw, label=45:{$z={\color{magenta}r}
+    (\cos {\color{cyan}\varphi} 
+    +i \sin {\color{cyan}\varphi})$}, circle, 
     minimum width=1pt, inner sep=1pt, fill=black] {};
 
     \end{tikzpicture}
     #+END_EXPORT
     #+END_CENTER
-** Opertaions on complex numbers
-*** Operations on $\C$ :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    - Addition: $(a+bi)+(c+di)=a+c+(b+d)i$.
-    - Multiplication: $(a+bi)(c+di)=ac-bd+(ad+bc)i$.
-    - Equality: complex numbers are equal if both their real and
-      imaginary parts are equal \ie $a+bi=c+di$ if $a=c$ and $b=d$!
-*** Remarks: let $z=a+bi$ (with $a,b\in\R$).
-    - If $b=0$ then $z$ is a *real number*.
-    - If $a=0$ then $z$ is a *pure imaginary number*.
-** Alternative (more formal definition) of $\C$
-*** Complex numbers as ordered pairs                           :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    Let $\C=\R\times\R$ (Cartesian product), $(a,b), (c,d) \in \C$
-    - Addition: $(a,b)+(c,d)=(a+c,d+b)$;
-    - Multiplication: $(a,b)\cdot(c,d)=(ac-bd,ad+bc)$.
-    The two definitions are equivalent with $i = 0+1\cdot i \equiv
-    (0,1)$.  $a+bi$ is more convenient when calculating with pencil
-    and paper, $(a,b)$ is used in computer programs.
-*** Fundamental theorem of algebra NP                             :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    If $0<n\in\N$,$a_0, \dots ,a_n \in \mathbb{C}$, where $a_n\neq 0$,
-    then for every expression $a_0+a_1x+a_2x^2+\ldots + a_nx^n$ there
-    is a complex number $z\in \mathbb{C}$, such that
-    $a_0+a_1z+a_2z^2+\ldots +a_nz^n=0$.
-** Calculation with complex numbers: absolute value
-*** Additive inverse :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    In general, $y$ is the additive inverse of $x$ if $x+y=0$.  For
-    $r\in \mathbb{R}$ the additive inverse is $-r$.
-*** Additive inverse                                              :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    The additive inverse of $z=a+bi \in\C$ is $-z=-a-bi \in\C$.
-
-*** Absolute value :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    The *absolute value* of the $z=a+bi \in \C$ complex number in
-    rectangular form is $|z|=|a+bi|=\sqrt{a^2+b^2}$
-
-    For real numbers: $|a|=|a+0i|=\sqrt{a^2+0^2}=\sqrt{a^2}$
-*** Statement                                                     :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    If $z\in\C$, then $|z|\ge 0$, and $|z|=0 \iff z=0$
-** Calculation with complex numbers: reciprocal
-*** Reciprocal, multiplicative inverse :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    $y$ is the *reciprocal* (or *multiplicative inverse*) of $x$ if
-    $x\cdot y = 1$.  For $r\in\R\setminus\{0\}$ the reciprocal is
-    $1/r$ sometimes denoted as $r^{-1}$.
-*** Reciprocal of complex numbers: rationalisation
-    What is the rectangular form of $\frac{1}{1+i}$? Idea:
-    rationalisation, \ie multiply both numerator and denominator with
-    the conjugate:
-    #+BEGIN_EXPORT latex
-    \begin{align*}
-    \frac{1}{1+\sqrt{2}}
-    &=\frac{1}{1+\sqrt{2}}\cdot\frac{1-\sqrt{2}}{1-\sqrt{2}}
-    =\frac{1-\sqrt{2}}{(1+\sqrt{2})(1-\sqrt{2})}\\
-    &=\frac{1-\sqrt{2}}{1^2-(\sqrt{2})^2}
-    =\frac{1-\sqrt{2}}{1-2}=-1+\sqrt{2}
-    \end{align*}
-    #+END_EXPORT
-    Similarly:
-    #+BEGIN_EXPORT latex
-    \[
-    \frac{1}{1+i}\frac{1-i}{1-i}
-    =\frac{1-i}{(1+i)(1-i)}
-    =\frac{1-i}{1^2-i^2}
-    =\frac{1-i}{1-(-1)}
-    =\frac{1-i}{2}
-    =\frac{1}{2}-\frac{1}{2}i
-    \]
-    #+END_EXPORT
-
-** Calculation with complex numbers: quotient
-*** Conjugate
-    Let $z=a+bi$ be the rectangular form of a complex number.  The
-    *conjugate* of $z$ is $\overline{z}=\overline{a+bi}=a-bi$ szám.
-
-*** Statement :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    The reciprocal of $z\neq0$ is
-    $\frac{1}{z}=\frac{\overline{z}}{z\cdot
-    \overline{z}}{\color{black}}$.
-*** Remark    
-    The previous statement is correct, since the denominator is
-    $z\cdot \overline{z}=(a+bi)(a-bi)=a^2-(bi)^2=a^2+b^2=|z|^2\in\R$.
-*** No zero divisors :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    $z\cdot w=0 \Rightarrow z=0$ vagy $w=0$.
-*** Quotient                                                   :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    The *quotient* of two complex numbers $\frac{z}{w}=z\cdot
-    \frac{1}{w}$.
-** Calculation with complex numbers: rules
-*** Prove them for homework                                       :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    1. $\overline{\overline{z}}=z$;
-    2. $\overline{z+w}=\overline{z}+\overline{w}$;
-    3. $\overline{z\cdot w}=\overline{z} \cdot \overline{w}$;
-    4. $z+ \overline{z}= 2\Re(z)$;
-    5. $z-\overline{z}=2\Im(z)\cdot i$;
-    6. $z\cdot \overline{z}=|z|^2$;
-    7. If $z\neq 0$, then $z^{-1}=\frac{\overline{z}}{|z|^2}$;
-    8. $|0|=0$ and if $z\neq 0$, then $|z|>0$;
-    9. $|\overline{z}|=|z|$;
-    10. $|z\cdot w|=|z| \cdot |w|$;
-    11. $|z+w|\le |z| + |w|$ (triangle inequality theorem).
-** Calculation with complex numbers: proof
-*** Prove them at homework                                        :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    $\vdots$
-    1. [@10] $|z\cdot w|=|z| \cdot |w|;$
-    $\vdots$
-*** Proof                                                           :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    #+BEGIN_EXPORT latex
-    \begin{align*}
-    |z \cdot w|^2
-    &=z \cdot w \cdot \overline{z \cdot w}
-    =z \cdot w \cdot \overline{z} \cdot \overline{w}\\
-    &=z \cdot \overline{z} \cdot w \cdot \overline{w}
-    =|z|^2 \cdot |w|^2\\
-    &=(|z| \cdot |w|)^2
-    \end{align*}
-    #+END_EXPORT
-* Polar form
-** Representation of complex numbers
-   On the *complex plane*
-   #+BEGIN_CENTER
-   #+BEGIN_EXPORT latex
-   \begin{tikzpicture}[scale=2.5]
-   \def\sqrtthree{1.732050808}
-   \def\zcords{(1/2,\sqrtthree/2)}
-   \begin{scope}
-   \clip(-0.1,-0.1) rectangle (3,1.5);  
-  
-   % grid, axis, circle
-   \draw[style=help lines,step=0.5,color=gray,densely dotted] 
-   (-1.1,-1.1) grid (1.1,1.1);
-   \draw[->] (-1.1,0) -- (1.1,0); % X axis
-   \draw[->] (0,-1.1) -- (0,1.1); % Y axis
-   \draw[dashed,color=gray] (0,0) circle (1);
-   \end{scope}
-  
-   \filldraw[fill=green!20,draw=cyan] (0,0) -- (3mm,0pt) arc(0:60:3mm);
-   \node[color=cyan] at (0.2,0.1) {$\varphi$};
-
-   % r = |z| etc
-   \node[rotate=60,color=magenta] at (-0.1,0.6) {$r=|z|$};
-   \draw[color=magenta,decorate,decoration={brace,amplitude=10pt,mirror,raise=4pt}] \zcords -- (0,0) node{};
-
-   % cos varphi
-   \draw[color=red] (0,0) -- (1/2,0)   (1/4,-0.1) node{$r \cos \varphi$};
-
-   % sin varphi
-   \draw[color=blue] (1/2,0) -- \zcords (0.6,0.4) node[rotate=90]{$r\sin \varphi$};
-
-   % arrow to z and z's label
-   \draw[->,>=latex] (0,0) -- \zcords;
-   \draw \zcords 
-   node [draw, label=45:{$z={\color{magenta}r}
-   (\cos {\color{cyan}\varphi} 
-   +i \sin {\color{cyan}\varphi})$}, circle, 
-   minimum width=1pt, inner sep=1pt, fill=black] {};
-
-   \end{tikzpicture}
-   #+END_EXPORT
-   #+END_CENTER
    
 
-   If $z=a+bi \in \mathbb{C}$, then $\Re(z)=a$, $\Im(z)=b$.
+    If $z=a+bi \in \mathbb{C}$, then $\Re(z)=a$, $\Im(z)=b$.
 
-   The *length* of the vector $(\Re(z),\Im(z))$ is
-   $r=\sqrt{a^2+b^2}=\sqrt{|z|^2}$.
+    The *length* of the vector $(\Re(z),\Im(z))$ is
+    $r=\sqrt{a^2+b^2}=\sqrt{|z|^2}$.
 
-   The *argument* of $z\neq 0$ complex number is $\varphi=arg(z) \in
-   [0,2\pi)$
+    The *argument* of $z\neq 0$ complex number is $\varphi=arg(z) \in
+    [0,2\pi)$
 
-   Using trigonometric functions, we can express the coordinates as:
-   \[\Re(z)=a=r\cdot \cos \varphi, \Im(z)=b=r\cdot \sin \varphi\]
+    Using trigonometric functions, we can express the coordinates as:
+    \[\Re(z)=a=r\cdot \cos \varphi, \Im(z)=b=r\cdot \sin \varphi\]
 
-** Polar form of complex numbers
-*** Polar form :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    The *polar (or tigonometric) form* of the non-zero $z\in
-    \mathbb{C}$ is *$z=r(\cos \varphi + i \sin \varphi)$*, where $r>0$
-    is the *absolute value* (or length) of $z$.
-*** Remarks
-    - 0 does not have a polar form (because it has no argument).
-    - The polar form is not unique:
-      #+BEGIN_EXPORT latex
-      \begin{equation*}
-      r(\cos \varphi +i \sin \varphi)= r(\cos(\varphi+2\pi)+i\sin(\varphi+2\pi))
-      \end{equation*}
-      #+END_EXPORT
-    - $z=r(\cos \varphi +i \sin \varphi)$ is the polar form;
-    - $z=a+bi$ is the rectangular form ($a=r\cos\varphi,
-      b=r\sin\varphi$)
-*** Argument :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    The *argument* of a non-zero $z\in \mathbb{C}$ is
-    $\varphi=arg(z)\in [0,2\pi)$, such that $z=|z|(\cos \varphi +i\sin
-    \varphi)$.
-** Converting rectangular to polar form
-*** Using the inverse of $\tan$
-    Let $a+bi=r(\cos\varphi + i\sin\varphi)$, which implies
-    $a=r\cos\varphi$ and $b=r\sin\varphi$.
+*** Polar form of complex numbers
+**** Polar form                                                :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     The *polar (or tigonometric) form* of the non-zero $z\in
+     \mathbb{C}$ is *$z=r(\cos \varphi + i \sin \varphi)$*, where $r>0$
+     is the *absolute value* (or length) of $z$.
+**** Remarks
+     - 0 does not have a polar form (because it has no argument).
+     - The polar form is not unique:
+       #+BEGIN_EXPORT latex
+       \begin{equation*}
+       r(\cos \varphi +i \sin \varphi)= r(\cos(\varphi+2\pi)+i\sin(\varphi+2\pi))
+       \end{equation*}
+       #+END_EXPORT
+     - $z=r(\cos \varphi +i \sin \varphi)$ is the polar form;
+     - $z=a+bi$ is the rectangular form ($a=r\cos\varphi,
+       b=r\sin\varphi$)
+**** Argument                                                  :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     The *argument* of a non-zero $z\in \mathbb{C}$ is
+     $\varphi=arg(z)\in [0,2\pi)$, such that $z=|z|(\cos \varphi +i\sin
+     \varphi)$.
+*** Converting rectangular to polar form
+**** Using the inverse of $\tan$
+     Let $a+bi=r(\cos\varphi + i\sin\varphi)$, which implies
+     $a=r\cos\varphi$ and $b=r\sin\varphi$.
     
-    If $a\ne 0$, then 
-    $\tan\varphi
-    =\frac{b}{a}$, so 
-    \[
-    \varphi = \begin{cases}
-    \arctan\frac{b}{a}    &\text{ if } a>0; \\ 
-    \arctan\frac{b}{a}+\pi &\text{ if } a<0
-    \end{cases}
-    \]
+     If $a\ne 0$, then 
+     $\tan\varphi
+     =\frac{b}{a}$, so 
+     \[
+     \varphi = \begin{cases}
+     \arctan\frac{b}{a}    &\text{ if } a>0; \\ 
+     \arctan\frac{b}{a}+\pi &\text{ if } a<0
+     \end{cases}
+     \]
 
-    If $a=0$ then we have a pure imaginary number, so \[\varphi =
-    \operatorname{sign}(b)\frac{\pi}{2}\]
+     If $a=0$ then we have a pure imaginary number, so \[\varphi =
+     \operatorname{sign}(b)\frac{\pi}{2}\]
 
-    Note: $\varphi$ is not the argument, because $\varphi \in
-    [-\frac{\pi}{2},\frac{3\pi}{2})$ is possible.  But this can be
-    fixed by adding $2\pi$.
-** Multiplication with complex in polar form
-# *** Multiplication in polar form
-    Let $z,w \in \mathbb{C}$ non-zero complex numbers: $z=|z|(\cos
-    \varphi +i\sin \varphi)$, and $w=|w|(\cos \psi +i \sin \psi)$ then
-    their product is
-    #+BEGIN_EXPORT latex
-    \begin{align*}
-    zw &= |z|(\cos \varphi +i \sin \varphi)\cdot |w|(\cos \psi +i \sin \psi)= \\
-    &=|z||w|(\cos \varphi \cos \psi -\sin \varphi \sin \psi +  
-    i(\cos \varphi \sin \psi +\sin \varphi \cos \psi))=\\
-    &=|z||w|(\cos(\varphi +\psi)+i\sin(\varphi +\psi))
-    \end{align*}
-    #+END_EXPORT
+     Note: $\varphi$ is not the argument, because $\varphi \in
+     [-\frac{\pi}{2},\frac{3\pi}{2})$ is possible.  But this can be
+     fixed by adding $2\pi$.
+*** Multiplication with complex in polar form
+ # *** Multiplication in polar form
+     Let $z,w \in \mathbb{C}$ non-zero complex numbers: $z=|z|(\cos
+     \varphi +i\sin \varphi)$, and $w=|w|(\cos \psi +i \sin \psi)$ then
+     their product is
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     zw &= |z|(\cos \varphi +i \sin \varphi)\cdot |w|(\cos \psi +i \sin \psi)= \\
+     &=|z||w|(\cos \varphi \cos \psi -\sin \varphi \sin \psi +  
+     i(\cos \varphi \sin \psi +\sin \varphi \cos \psi))=\\
+     &=|z||w|(\cos(\varphi +\psi)+i\sin(\varphi +\psi))
+     \end{align*}
+     #+END_EXPORT
 
-    The last equality comes from the trigonometric addition formulas:
-    - $\cos(\varphi +\psi)=\cos \varphi \cos \psi -\sin \varphi \sin
-      \psi$
-    - $\sin(\varphi + \psi)=\cos \varphi \sin \psi + \sin \varphi \cos
-      \psi$
+     The last equality comes from the trigonometric addition formulas:
+     - $\cos(\varphi +\psi)=\cos \varphi \cos \psi -\sin \varphi \sin
+       \psi$
+     - $\sin(\varphi + \psi)=\cos \varphi \sin \psi + \sin \varphi \cos
+       \psi$
 
-    The *absolute value* of the product is: *$|zw|=|z||w|$*.
+     The *absolute value* of the product is: *$|zw|=|z||w|$*.
     
-    The *argument* of the product is:
-    \[\arg(zw)=\begin{cases} 
-    \arg(z) + \arg(w) & \text{ if } \arg(z)+\arg(w)<2\pi \\ 
-    \arg(z) + \arg(w) - 2\pi& \text{ if } 2\pi\le\arg(z)+\arg(w)<4\pi \
-    \end{cases}\]
-    \ie the arguments are summed and then reduced by $2\pi$.
-** Multiplication in polar form
-*** De Moivre's formula :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    Let $z,w \in \mathbb{C}$ non-zero numbers
-    $z=|z|(\cos \varphi + i \sin \varphi)$, $w=|w|(\cos \psi + i \sin \psi)$,
-    and let $n\in \mathbb{N}$. Then
-    #+BEGIN_EXPORT latex
-    \begin{align*}
-    zw&=|z||w|(\cos (\varphi+\psi)+i (\sin(\varphi+ \psi));\\
-    \frac{z}{w}&=\frac{|z|}{|w|}(\cos(\varphi-\psi)+i \sin(\varphi-\psi)), \text{ if } w\neq 0;\\
-    z^n&=|z|^n(\cos n\varphi+i \sin n\varphi)
-    \end{align*}
-    #+END_EXPORT
-    The angles are added/subtracted/multiplied.  To get the argument,
-    we have to reduce the new angle by $2\pi$
-*** Geometric interpretation
-    Multiplication with $z\in \mathbb{C}$ is a combined stretching and
-    rotating transformation. The plane is "stretched" by \(|z|\), and
-    rotated by $arg(z)$ around $0$.
-** Roots of complex numbers
-*** \(8\)-th root of $1$ :B_example:
-    :PROPERTIES:
-    :BEAMER_env: example
-    :END:
-    #+BEGIN_EXPORT latex
-    \begin{align*}
-    \left(\frac{1+i}{\sqrt{2}}\right)^8&=\left(\frac{1}{\sqrt{2}}+i\frac{1}{\sqrt{2}} \right)^8=\left(\cos \frac{\pi}{4}+i\sin \frac{\pi}{4}\right)^8=\\
-    &=\cos\left(8 \cdot \frac{\pi}{4}\right)+i \sin \left(8 \cdot \frac{\pi}{4}\right)= \cos 2 \pi +i \sin 2\pi=1
-    \end{align*}
-    #+END_EXPORT
-    Other number which for which $z^8=1$
-    - $1$, $-1$;
-    - $i:i^8=(i^2)^4=(-1)^4=1$, and similarly $-i$;
-    - $\frac{1+i}{\sqrt{2}}$ and $-\frac{1+i}{\sqrt{2}}$;
-    - $\pm i\cdot\frac{1+i}{\sqrt{2}}$ also: $\left(i\cdot\frac{1+i}{\sqrt{2}} \right)^8=i^8\cdot \left(\frac{1+i}{\sqrt{2}} \right)^8=1\cdot 1=1$
-** Calculating the \(n\)-th root
-*** Equality in polar form :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    Two complex numbers $z=|z|(\cos \varphi +i \sin \varphi )$ and
-    $w=|w|(\cos \psi+i \sin \psi)$ in polar form are *equal*
-    #+BEGIN_EXPORT latex
-    \[
-    |z|(\cos \varphi +i \sin \varphi )=|w|(\cos \psi+i \sin \psi)
-    \]
-    #+END_EXPORT
+     The *argument* of the product is:
+     \[\arg(zw)=\begin{cases} 
+     \arg(z) + \arg(w) & \text{ if } \arg(z)+\arg(w)<2\pi \\ 
+     \arg(z) + \arg(w) - 2\pi& \text{ if } 2\pi\le\arg(z)+\arg(w)<4\pi \
+     \end{cases}\]
+     \ie the arguments are summed and then reduced by $2\pi$.
+*** Multiplication in polar form
+**** De Moivre's formula                                          :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     Let $z,w \in \mathbb{C}$ non-zero numbers
+     $z=|z|(\cos \varphi + i \sin \varphi)$, $w=|w|(\cos \psi + i \sin \psi)$,
+     and let $n\in \mathbb{N}$. Then
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     zw&=|z||w|(\cos (\varphi+\psi)+i (\sin(\varphi+ \psi));\\
+     \frac{z}{w}&=\frac{|z|}{|w|}(\cos(\varphi-\psi)+i \sin(\varphi-\psi)), \text{ if } w\neq 0;\\
+     z^n&=|z|^n(\cos n\varphi+i \sin n\varphi)
+     \end{align*}
+     #+END_EXPORT
+     The angles are added/subtracted/multiplied.  To get the argument,
+     we have to reduce the new angle by $2\pi$
+**** Geometric interpretation
+     Multiplication with $z\in \mathbb{C}$ is a combined stretching and
+     rotating transformation. The plane is "stretched" by \(|z|\), and
+     rotated by $arg(z)$ around $0$.
+*** Roots of complex numbers
+**** \(8\)-th root of $1$                                         :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     \left(\frac{1+i}{\sqrt{2}}\right)^8&=\left(\frac{1}{\sqrt{2}}+i\frac{1}{\sqrt{2}} \right)^8=\left(\cos \frac{\pi}{4}+i\sin \frac{\pi}{4}\right)^8=\\
+     &=\cos\left(8 \cdot \frac{\pi}{4}\right)+i \sin \left(8 \cdot \frac{\pi}{4}\right)= \cos 2 \pi +i \sin 2\pi=1
+     \end{align*}
+     #+END_EXPORT
+     Other number which for which $z^8=1$
+     - $1$, $-1$;
+     - $i:i^8=(i^2)^4=(-1)^4=1$, and similarly $-i$;
+     - $\frac{1+i}{\sqrt{2}}$ and $-\frac{1+i}{\sqrt{2}}$;
+     - $\pm i\cdot\frac{1+i}{\sqrt{2}}$ also: $\left(i\cdot\frac{1+i}{\sqrt{2}} \right)^8=i^8\cdot \left(\frac{1+i}{\sqrt{2}} \right)^8=1\cdot 1=1$
+*** Calculating the \(n\)-th root
+**** Equality in polar form                                       :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     Two complex numbers $z=|z|(\cos \varphi +i \sin \varphi )$ and
+     $w=|w|(\cos \psi+i \sin \psi)$ in polar form are *equal*
+     #+BEGIN_EXPORT latex
+     \[
+     |z|(\cos \varphi +i \sin \varphi )=|w|(\cos \psi+i \sin \psi)
+     \]
+     #+END_EXPORT
 
-    if $|w|=|z|$ and $\psi = \varphi +k \cdot 2 \pi$ for some $k \in
-    \mathbb{Z}$
-*** Taking the \(n\)-th root: Let $w^n=z$ ($w$ is unknown):
-    # #+BEGIN_EXPORT latex
-    If $w^n=|w|^n(\cos n\psi +i \sin n\psi )=|z|(\cos \varphi +i \sin \varphi )$
-    # #+END_EXPORT
-    then:
-    - $|w|^n=|z| \Rightarrow |w|=\sqrt[n]{|z|}$ and
-    - $n\psi=\varphi+k \cdot 2\pi$ for some $k \in \mathbb{Z}$, \ie
-      - $\psi= \frac{\varphi}{n}+k \cdot \frac{2\pi}{n}$
-        for some $k \in \mathbb{Z}$.
+     if $|w|=|z|$ and $\psi = \varphi +k \cdot 2 \pi$ for some $k \in
+     \mathbb{Z}$
+**** Taking the \(n\)-th root: Let $w^n=z$ ($w$ is unknown):
+     # #+BEGIN_EXPORT latex
+     If $w^n=|w|^n(\cos n\psi +i \sin n\psi )=|z|(\cos \varphi +i \sin \varphi )$
+     # #+END_EXPORT
+     then:
+     - $|w|^n=|z| \Rightarrow |w|=\sqrt[n]{|z|}$ and
+     - $n\psi=\varphi+k \cdot 2\pi$ for some $k \in \mathbb{Z}$, \ie
+       - $\psi= \frac{\varphi}{n}+k \cdot \frac{2\pi}{n}$
+         for some $k \in \mathbb{Z}$.
 
-    If $k\in \{0,1,\dots ,n-1\}$, then these are all different
-    numbers.
-** Taking the \(n\)-th root
-*** Taking the \(n\)-th root                                      :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    Let $z=|z|(\cos \varphi +i \sin \varphi)$, $n\in \N$. The values
-    of $w\in\C$ are the \(n\)-th root of $z$ if $w^n=z$:
-    $$w=\sqrt[n]{|z|}\left(\cos\left(\frac{\varphi}{n}+\frac{2\pi
-    k}{n}\right)+i \sin\left(\frac{\varphi}{n}+\frac{2\pi
-    k}{n}\right)\right)$$ $k=0,1,\dots, n-1$.
-** Example for: taking the \(n\)-th root
-   \[w=\sqrt[n]{|z|}\left(\cos\left(\frac{\varphi}{n}+\frac{2k\pi}{n}\right)+i
-   \sin\left(\frac{\varphi}{n}+\frac{2k\pi}{n}\right)\right): k=0,1,\dots, n-1\]
-*** Calculation                                                   :B_example:
-    :PROPERTIES:
-    :BEAMER_env: example
-    :END:
-    Let's calculate the value $\sqrt[6]{\frac{1-i}{\sqrt{3}+i}}$:
-    #+BEGIN_EXPORT latex
-    \begin{align*}
-    1-i&=\sqrt{2}\left(\tfrac{\sqrt{2}}{2}-i\tfrac{\sqrt{2}}{2}\right)=\sqrt{2}\left(\cos
-    \tfrac{7\pi}{4}+i \sin\tfrac{7\pi}{4}\right)\\
-    \sqrt{3}+i&=2\left(\tfrac{\sqrt{3}}{2}+i\tfrac{1}{2}\right)=2\left(\cos
-    \tfrac{\pi}{6}+i\sin\tfrac{\pi}{6}\right)
-    \end{align*}
-    #+END_EXPORT
-    Since $\frac{7\pi}{4}-\frac{\pi}{6}=\frac{19\pi}{12}$:
-    #+BEGIN_EXPORT latex
-    \begin{align*}
-    \sqrt[6]{\tfrac{1-i}{\sqrt{3}+i}}
-    &=\sqrt[6]{\tfrac{1}{\sqrt{2}}\left(\cos
-    \tfrac{19\pi}{12}+i\sin \tfrac{19\pi}{12}\right)}=\\
-    &=\tfrac{1}{\sqrt[12]{2}}\left(\cos \tfrac{19\pi+24k\pi}{72}+i
-    \sin\tfrac{19\pi+24k\pi}{72}\right): k=0,1,\dots ,5
-    \end{align*}
-    #+END_EXPORT
-** Complex roots of unity
-*** \(n\)-th roots of unity
-    The complex numbers $\varepsilon\in\C$ which for which
-    *$\varepsilon^n=1$* are the *\(n\)-th roots of unity*
-    \[\varepsilon_k=\varepsilon_k^{(n)}=\left(\cos
-    \frac{2k\pi}{n}+i\sin\frac{2k\pi}{n}\right): k=0,1,\dots , n-1\]
-*** 8-th roots of unity :B_example:
-    :PROPERTIES:
-    :BEAMER_env: example
-    :END:
-    #+BEGIN_CENTER
-    #+BEGIN_EXPORT latex
-    \def\n{8}
-    \begin{tikzpicture}[dot/.style={draw,fill,circle,inner sep=1pt}]
-    \draw[->] (-1.5,0) -- (2,0) node[below] {$\Re$};
-    \draw[->] (0,-1.5) -- (0,2) node[left] {$\Im$};
-    \draw[help lines] (0,0) circle (1);
+     If $k\in \{0,1,\dots ,n-1\}$, then these are all different
+     numbers.
+*** Taking the \(n\)-th root
+**** Taking the \(n\)-th root                                     :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     Let $z=|z|(\cos \varphi +i \sin \varphi)$, $n\in \N$. The values
+     of $w\in\C$ are the \(n\)-th root of $z$ if $w^n=z$:
+     $$w=\sqrt[n]{|z|}\left(\cos\left(\frac{\varphi}{n}+\frac{2\pi
+     k}{n}\right)+i \sin\left(\frac{\varphi}{n}+\frac{2\pi
+     k}{n}\right)\right)$$ $k=0,1,\dots, n-1$.
+*** Example for: taking the \(n\)-th root
+    \[w=\sqrt[n]{|z|}\left(\cos\left(\frac{\varphi}{n}+\frac{2k\pi}{n}\right)+i
+    \sin\left(\frac{\varphi}{n}+\frac{2k\pi}{n}\right)\right): k=0,1,\dots, n-1\]
+**** Calculation                                                  :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     Let's calculate the value $\sqrt[6]{\frac{1-i}{\sqrt{3}+i}}$:
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     1-i&=\sqrt{2}\left(\tfrac{\sqrt{2}}{2}-i\tfrac{\sqrt{2}}{2}\right)=\sqrt{2}\left(\cos
+     \tfrac{7\pi}{4}+i \sin\tfrac{7\pi}{4}\right)\\
+     \sqrt{3}+i&=2\left(\tfrac{\sqrt{3}}{2}+i\tfrac{1}{2}\right)=2\left(\cos
+     \tfrac{\pi}{6}+i\sin\tfrac{\pi}{6}\right)
+     \end{align*}
+     #+END_EXPORT
+     Since $\frac{7\pi}{4}-\frac{\pi}{6}=\frac{19\pi}{12}$:
+     #+BEGIN_EXPORT latex
+     \begin{align*}
+     \sqrt[6]{\tfrac{1-i}{\sqrt{3}+i}}
+     &=\sqrt[6]{\tfrac{1}{\sqrt{2}}\left(\cos
+     \tfrac{19\pi}{12}+i\sin \tfrac{19\pi}{12}\right)}=\\
+     &=\tfrac{1}{\sqrt[12]{2}}\left(\cos \tfrac{19\pi+24k\pi}{72}+i
+     \sin\tfrac{19\pi+24k\pi}{72}\right): k=0,1,\dots ,5
+     \end{align*}
+     #+END_EXPORT
+*** Complex roots of unity
+**** \(n\)-th roots of unity
+     The complex numbers $\varepsilon\in\C$ which for which
+     *$\varepsilon^n=1$* are the *\(n\)-th roots of unity*
+     \[\varepsilon_k=\varepsilon_k^{(n)}=\left(\cos
+     \frac{2k\pi}{n}+i\sin\frac{2k\pi}{n}\right): k=0,1,\dots , n-1\]
+**** 8-th roots of unity                                          :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     #+BEGIN_CENTER
+     #+BEGIN_EXPORT latex
+     \def\n{8}
+     \begin{tikzpicture}[dot/.style={draw,fill,circle,inner sep=1pt}]
+     \draw[->] (-1.5,0) -- (2,0) node[below] {$\Re$};
+     \draw[->] (0,-1.5) -- (0,2) node[left] {$\Im$};
+     \draw[help lines] (0,0) circle (1);
 
-    \node[dot,label={below right:$O$}] (O) at (0,0) {};
-    \pgfmathtruncatemacro{\nmo}{\n-1}
-    \foreach \i in {0,...,\nmo} {
-    \node[dot,label={\i*360/\n-(\i==\n)*45:$\varepsilon_{\i}$}] (w\i) at (\i*360/\n:1) {};
-    \draw[->] (O) -- (w\i);
-    }
-    \draw[->] (0:.3) arc (0:360/\n:.3);
-    \node at (360/\n/2:.5) {$\alpha$};
-    \end{tikzpicture}
-    #+END_EXPORT
-    #+END_CENTER
-** Taking the \(n\)-th root
-   The square roots a of a positive real number $r$ is are the
-    solutions of $x^2=r$ \ie $\pm \sqrt{r}$.
+     \node[dot,label={below right:$O$}] (O) at (0,0) {};
+     \pgfmathtruncatemacro{\nmo}{\n-1}
+     \foreach \i in {0,...,\nmo} {
+     \node[dot,label={\i*360/\n-(\i==\n)*45:$\varepsilon_{\i}$}] (w\i) at (\i*360/\n:1) {};
+     \draw[->] (O) -- (w\i);
+     }
+     \draw[->] (0:.3) arc (0:360/\n:.3);
+     \node at (360/\n/2:.5) {$\alpha$};
+     \end{tikzpicture}
+     #+END_EXPORT
+     #+END_CENTER
+*** Taking the \(n\)-th root
+    The square roots a of a positive real number $r$ is are the
+     solutions of $x^2=r$ \ie $\pm \sqrt{r}$.
 
-*** All \(n\)-th roots                                            :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    Let $z\in \mathbb{C}$ be a non-zero complex number, $n\in
-    \mathbb{N}$ and $w\in \mathbb{C}$ such that $w^n=z$. Then the
-    \(n\)-th roots of $z$ can be written as $w\varepsilon_k$ for
-    $k=0,1,\dots n-1$.
-*** Proof :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    The values of $w\varepsilon_k$ are \(n\)-th roots:
-    $(w\varepsilon_k)^n=w^n\varepsilon_k^n=z\cdot 1=z$.
+**** All \(n\)-th roots                                           :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     Let $z\in \mathbb{C}$ be a non-zero complex number, $n\in
+     \mathbb{N}$ and $w\in \mathbb{C}$ such that $w^n=z$. Then the
+     \(n\)-th roots of $z$ can be written as $w\varepsilon_k$ for
+     $k=0,1,\dots n-1$.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     The values of $w\varepsilon_k$ are \(n\)-th roots:
+     $(w\varepsilon_k)^n=w^n\varepsilon_k^n=z\cdot 1=z$.
 
-    This results in $n$ different values, so we have all the \(n\)-th
-    roots of $z$.
-* Order and primitive roots of unity
-** Order
-   The integer powers of some complex numbers are periodic:
+     This results in $n$ different values, so we have all the \(n\)-th
+     roots of $z$.
+** Order and primitive roots of unity
+*** Order
+    The integer powers of some complex numbers are periodic:
 
-   - ${\color{red}1},1,1,\dots$
-   - ${\color{red}-1},1,{\color{red}-1},1, \dots$
-   - ${\color{red}i},-1,-i,1,{\color{red}i},-1,\dots$
-   - ${\color{red} \frac{1+i}{\sqrt{2}}}, i, \frac{-1+i}{\sqrt{2}},
-     -1, \frac{-1-i}{\sqrt{2}}, -i, \frac{1-i}{\sqrt{2}}, 1,
-     {\color{red}\frac{1+i}{\sqrt{2}}},i,\dots$
-   In general $\cos(\frac{2\pi}{n})+i\sin(\frac{2\pi}{n})$ has (only) $n$
-   different powers.
-*** Order                                                      :B_definition:
-    :PROPERTIES:
-    :BEAMER_env: definition
-    :END:
-    The number of different powers of a complex number $z$ is the
-    *order of $z$*, sometimes denoted by $o(z)$.
-*** Order :B_example:
-    :PROPERTIES:
-    :BEAMER_env: example
-    :END:
-    - The order of $1$ is $1$;
-    - The order of $2$ is $\infty : 2,4,8,16,\dots$;
-    - The order of $-1$ is $2$: $1,-1$;
-    - The order of $i$ is $4$: $1,i,-1,-i$.
-** Properties of order 
-*** Properties of order                                           :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    A complex number $z$ 
-    - either has all pairs of integer powers different, then
-      $o(z)=\infty$,
-    - or there are two integer powers equal, and then the powers of
-      $z$ are periodic, with the period equal to $o(z)$.
-    Also, $o(z)=\min\{d\in\N^+:z^d=1\}$, \ie the order is the smallest
-    positive integer $d$ such that $z^d=1$.
+    - ${\color{red}1},1,1,\dots$
+    - ${\color{red}-1},1,{\color{red}-1},1, \dots$
+    - ${\color{red}i},-1,-i,1,{\color{red}i},-1,\dots$
+    - ${\color{red} \frac{1+i}{\sqrt{2}}}, i, \frac{-1+i}{\sqrt{2}},
+      -1, \frac{-1-i}{\sqrt{2}}, -i, \frac{1-i}{\sqrt{2}}, 1,
+      {\color{red}\frac{1+i}{\sqrt{2}}},i,\dots$
+    In general $\cos(\frac{2\pi}{n})+i\sin(\frac{2\pi}{n})$ has (only) $n$
+    different powers.
+**** Order                                                     :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     The number of different powers of a complex number $z$ is the
+     *order of $z$*, sometimes denoted by $o(z)$.
+**** Order                                                        :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     - The order of $1$ is $1$;
+     - The order of $2$ is $\infty : 2,4,8,16,\dots$;
+     - The order of $-1$ is $2$: $1,-1$;
+     - The order of $i$ is $4$: $1,i,-1,-i$.
+*** Properties of order 
+**** Properties of order                                          :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     A complex number $z$ 
+     - either has all pairs of integer powers different, then
+       $o(z)=\infty$,
+     - or there are two integer powers equal, and then the powers of
+       $z$ are periodic, with the period equal to $o(z)$.
+     Also, $o(z)=\min\{d\in\N^+:z^d=1\}$, \ie the order is the smallest
+     positive integer $d$ such that $z^d=1$.
 
-    Furthermore, $z^k=z^\ell \Leftrightarrow o(z) \mid k-\ell$.
-    Specially: $z^k=1 \iff o(z) \mid k$
-*** Proof                                                           :B_proof:
-    :PROPERTIES:
-    :BEAMER_env: proof
-    :END:
-    Let $o(z)<\infty$.  Then there are $k,\ell$ integers, such that
-    $z^k=z^\ell$.  Suppose $k>\ell$. Then $z^{k-\ell}=1$.
+     Furthermore, $z^k=z^\ell \Leftrightarrow o(z) \mid k-\ell$.
+     Specially: $z^k=1 \iff o(z) \mid k$
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     Let $o(z)<\infty$.  Then there are $k,\ell$ integers, such that
+     $z^k=z^\ell$.  Suppose $k>\ell$. Then $z^{k-\ell}=1$.
 
-    Let $d$ be the smallest positive integer, such that $z^d=1$.
-    Let's divide $n$ by $d$ (with a remainder), so $n=q\cdot d+r$,
-    where $0\le r <d$. Now $1=z^n=z^{q\cdot d+r}=(z^d)^q
-    z^r=1^qz^r=z^r$. Since $d$ is the smallest such integer, $r=0$
-    implying $d\mid n$.  In the other direction: $d\mid n$ \ie $dq=n
-    \Rightarrow z^n=1$.  So: $d\mid n \iff z^n=1$.
-** Primitive roots of unity
-    Not all \(n\)-th roots of unity have order equal to $n$:
-*** 4-th roots of unity: $1,i,-1,-i$.
-    - $o(1)=1$;
-    - $o(-1)=2$
-    - $o(i)=4$
-*** Primitive \(n\)-th roots of unity
-    The \(n\)-th roots of unity which have order equal to $n$ are the
-    *primitive \(n\)-th roots of unity*
-*** Corollary (proof for homework)                                :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    - The powers of a primitive \(n\)-th root of unity are exactly the
-      \(n\)-th roots of unity.
-    - A primitive \(n\)-th root of unity is a \(k\)-th root of unity
-      if, and only if $n \mid k$.
-** Primitive roots of unity
-*** Primitive roots of unity :B_example:
-    :PROPERTIES:
-    :BEAMER_env: example
-    :END:
-    - Primitive 1-st root of unity: $1$;
-    - Primitive 2-nd root of unity: $-1$;
-    - Primitive 3-rd roots of unity: $\frac{-1\pm i \sqrt{3}}{2}$;
-    - Primitive 4-th roots of unity: $\pm i;$
-    - Primitive 5-th roots of unity: $\dots$ (HW)
-    - Primitive 6-th roots of unity: $\frac{1\pm i \sqrt{3}}{2}$.
-*** Statement :B_theorem:
-    :PROPERTIES:
-    :BEAMER_env: theorem
-    :END:
-    An \(n\)-th root of unity $\cos\left(
-    \frac{2k\pi}{n}\right)+i\sin\left( \frac{2k\pi}{n}\right)$ is a
-    primitive \(n\)-th root of unity, if and only if
-    $\operatorname{gcd}(n,k)=1$.
+     Let $d$ be the smallest positive integer, such that $z^d=1$.
+     Let's divide $n$ by $d$ (with a remainder), so $n=q\cdot d+r$,
+     where $0\le r <d$. Now $1=z^n=z^{q\cdot d+r}=(z^d)^q
+     z^r=1^qz^r=z^r$. Since $d$ is the smallest such integer, $r=0$
+     implying $d\mid n$.  In the other direction: $d\mid n$ \ie $dq=n
+     \Rightarrow z^n=1$.  So: $d\mid n \iff z^n=1$.
+*** Primitive roots of unity
+     Not all \(n\)-th roots of unity have order equal to $n$:
+**** 4-th roots of unity: $1,i,-1,-i$.
+     - $o(1)=1$;
+     - $o(-1)=2$
+     - $o(i)=4$
+**** Primitive \(n\)-th roots of unity
+     The \(n\)-th roots of unity which have order equal to $n$ are the
+     *primitive \(n\)-th roots of unity*
+**** Corollary (proof for homework)                               :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     - The powers of a primitive \(n\)-th root of unity are exactly the
+       \(n\)-th roots of unity.
+     - A primitive \(n\)-th root of unity is a \(k\)-th root of unity
+       if, and only if $n \mid k$.
+*** Primitive roots of unity
+**** Primitive roots of unity                                     :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     - Primitive 1-st root of unity: $1$;
+     - Primitive 2-nd root of unity: $-1$;
+     - Primitive 3-rd roots of unity: $\frac{-1\pm i \sqrt{3}}{2}$;
+     - Primitive 4-th roots of unity: $\pm i;$
+     - Primitive 5-th roots of unity: $\dots$ (HW)
+     - Primitive 6-th roots of unity: $\frac{1\pm i \sqrt{3}}{2}$.
+**** Statement                                                    :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     An \(n\)-th root of unity $\cos\left(
+     \frac{2k\pi}{n}\right)+i\sin\left( \frac{2k\pi}{n}\right)$ is a
+     primitive \(n\)-th root of unity, if and only if
+     $\operatorname{gcd}(n,k)=1$.

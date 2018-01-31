@@ -1,6 +1,6 @@
 # -*- mode:org; mode: flyspell; -*-
 
-#+SETUPFILE: ../inc/practice.h.org
+#+SETUPFILE: ../include/practice.h.org
 
 #+TITLE: Discrete mathematics I. practice - Number theory
 #+SHORT_TITLE: Number theory
@@ -176,7 +176,6 @@
       3) $3x   \equiv 8  \pmod{13}$;
       4) $12x  \equiv 9  \pmod{18}$.
   32. Show that $a^{1729}\equiv a \pmod{1729}$ although 1729 is not prime.
-
 
 * Solutions
   

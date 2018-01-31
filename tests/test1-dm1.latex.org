@@ -1,4 +1,4 @@
-#+INCLUDE: ../inc/test.h.org
+#+INCLUDE: ../include/test.h.org
 # Set no title
 #+BIND: org-latex-title-command ""
 #+TITLE: First test - Discrete mathematics 1.

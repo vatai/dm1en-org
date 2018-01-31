@@ -1,6 +1,6 @@
 # -*- mode:org; mode: flyspell; -*-
 
-#+SETUPFILE: ../inc/practice.h.org
+#+SETUPFILE: ../include/practice.h.org
 #+LATEX_HEADER: \renewcommand{\Re}{\operatorname{Re}}
 #+LATEX_HEADER: \renewcommand{\Im}{\operatorname{Im}}
 
