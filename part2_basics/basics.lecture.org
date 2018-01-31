@@ -1,0 +1,1743 @@
+# -*- mode: org; mode: flyspell; -*-
+#+SETUPFILE: ../include/lecture.h.org
+# (plist-put org-format-latex-options :scale 2)
+# (org-tree-slide-mode)
+
+
+#+TITLE: Discrete mathematics I - Basics of mathematics
+#+SHORT_TITLE: Bascis
+#+LATEX_HEADER: \def\A{\mathcal{A}}
+#+LATEX_HEADER: \def\B{\mathcal{B}}
+#+LATEX_HEADER: \def\C{\mathcal{C}}
+# #+LATEX_HEADER: \def\iff{\Leftrightarrow}
+#+LATEX_HEADER: \def\tru{\top}
+#+LATEX_HEADER: \def\fls{\perp}
+#+LATEX_HEADER: \usepackage{wasysym}
+
+* Logic
+** Basics of logic
+*** Logic: The science of correct reasoning 
+**** Definition
+     - *Logic* (from the Ancient Greek: logike) is the use and study of
+       *valid reasoning*.
+     - Independent of the objects of discussion.
+     - Logic discusses *statements* which have a unique *truth value*.
+**** Truth values
+     - *Truth values* can be either
+       - *true* ($\uparrow$, 1, $\top$, $T$) or
+       - *false* ($\downarrow$, 0, $\perp$, $F$).
+     - $\mathbb{L}=\{T,F\}$.
+     - *Propositional variables* are variables which range over truth
+       values, (they must be either true or false, but never both).
+*** What we need to know
+**** Different kinds of logic
+     1. Zeroth-order logic - *Propositional* calculus
+     2. First-order logic - *Predicate* calclulus
+     3. Second-order logic (we're not doing this in detail)
+
+**** Why do we need it
+     - To *express* ourselves (not in an emo/artsy way!), 
+     - To *understand* the mathematics and
+     - To be able to apply it *properly*.
+     - Remark: the order (zero, first, second) denotes the *expressive
+       strength* of the logic.
+
+*** Application and examples
+**** Application
+     - Mathematics,
+     - Computer science,
+     - Artificial intelligence
+**** Statements and negations                                     :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     - Every bug is an insect. *Negation*: There are bugs which are not
+       insects.
+     - It is raining, but it's warm, although the sun is hiding, and it
+       is getting late. *Negation*: ???
+*** The axiomatic approach
+**** Our goal is to approximate reality using a mathematical model!
+     The axiomatic approach uses (undefined) /fundamental/ concepts
+     (predicates, see later) and *axioms*: a set of rules between these
+     concepts which we assume to be true without proof.  From these
+     rules, we derive our theory (by proving theorems using the rules
+     of logic).
+**** The *advantage* of the axiomatic approach
+     Our model is guaranteed to be sound, one needs just to check the
+     axioms.
+**** Geometry                                                     :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     - Concepts: point, line, plane;
+     - Axioms: Euclid's famous fifth postulate (Playfair's axiom) - In
+       a plane, given a line and a point not on it, at most one line
+       parallel to the given line can be drawn through the point.
+** Propositional calculus
+*** Predicates 
+**** Predicate                                                 :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     A *predicate* is a fundamental concept in our theory, which,
+     depending on the value of its variables (arguments), returns a
+     truth value: true or false (but not both).
+**** Predicates                                                   :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     - $B()$: Every parrot is a bird. $B()=T$.
+     - $F(t)$: $t$ is female. $F(\female)=T$, $F(\male)=F$.
+     - $P(s)$: $s$ is a palindrome.
+       - $P("asantaatnasa")=T$, $P("asantainfinland")=F$.
+       - ~bool Palindrome(std::string s) {...}~
+     - $M(a,b)$: $a$ is a multiple $b$. $M(2,6)=F$, $M(6,2)=T$.
+       - ~bool Multiple(int a, int b){ return (a%b)==0; }~
+     - $C(x,y,z)$: $x$ is a child of $y$ and $z$.
+*** Prolog - GOT                                                :B_fullframe:
+    :PROPERTIES:
+    :BEAMER_env: fullframe
+    :END:
+**** Prolog                                                       :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     #+BEGIN_SRC prolog
+       female('Arya Stark').
+       female('Catelyn Tully').
+       female('Joanna Lannister').
+       male('Eddard Stark').
+       male('Jon Snow').
+       male('Rickard Stark').
+       male('Tyrion Lannister').
+       male('Tywin Lannister').
+       parent('Rickard Stark','Eddard Stark').
+       parent('Eddard Stark','Jon Snow').
+       parent('Eddard Stark','Arya Stark').
+       parent('Catelyn Tully','Arya Stark').
+       parent('Tywin Lannister','Tyrion Lannister').
+       parent('Joanna Lannister','Tyrion Lannister').
+       descendant(X,Y) :- parent(Y,X).
+       descendant(X,Z) :- parent(Z,Y), descendant(X,Y).
+       mother(X,Y) :- parent(X,Y), female(X).
+       brother(X,Y) :- parent(Z,X), parent(Z,Y), male(X).
+     #+END_SRC
+*** Logical operators
+**** Logical operator                                          :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     - Logical operators are maps of the form $\mathbb{L}^n \to
+       \mathbb{L}$.
+     - =bool implicat(bool A, bool B){return (!A)||B;}=
+     - They come from well-known everyday logical operations, \eg
+       *negation* (not), *conjunction* (and), *disjunction* (inclusive
+       or), *implication* (if...then), *equivalence* (if and only if).
+     - They connect predicates to form larger statements.
+
+**** Truth tables of basic logical operators                   :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     #+ATTR_LATEX: :align ccccccc
+     | $\A$  | $\B$ | $\lnot\A$ | $\A\land\B$ | $\A\lor\B$ | $\A\implies\B$ | $\A\iff\B$ |
+     |-------+------+-----------+-------------+------------+-------------------+------------|
+     | T     | T    | F         | T           | T          | T                 | T          |
+     | T     | F    | F         | F           | T          | F                 | F          |
+     | F     | T    | T         | F           | T          | T                 | F          |
+     | F     | F    | T         | F           | F          | T                 | T          |
+*** Different OR's
+**** Inclusive or, exclusive or and alternative denial
+     1. Inclusive or $\lor$: Those who had good weapons *or* good
+        reflexes were victorious.
+     2. Exclusive or $\oplus$: We have to go left *or* right.
+     3. Alternative denial: Drink *or* drive!
+        #+ATTR_LATEX: :align ccccc
+        | $\A$ | $\B$ | $\A\lor\B$ | $\A\oplus\B$ | Conflicting |
+        |------+------+------------+--------------+-------------|
+        | $T$  | $T$  | $T$        | $F$          | $F$         |
+        | $T$  | $F$  | $T$        | $T$          | $T$         |
+        | $F$  | $T$  | $T$        | $T$          | $T$         |
+        | $F$  | $F$  | $F$        | $F$          | $T$         |
+*** Remarks about implication
+    #+ATTR_LATEX: :align ccc
+    | $\A \implies \B$ | T | F |
+    |------------------+---+---|
+    | T                | T | F |
+    | F                | T | T |
+**** Logic vs usage in English
+     Logical implication /describes/ the logical relation. It doesn't
+     imply causality.
+     - $2\cdot2=4 \implies i^2=-1$ is true.
+     - $2\cdot2=4 \implies i^2=5$ is false.
+     - $2\cdot2=5 \implies i^2=-1$ is true.
+     - $2\cdot2=5 \implies i^2=5$ is true, since $F\implies*$
+       is always true.
+     - Similarly: "If pigs can fly than parrots can swim." is also
+       true.
+**** A logical operation can be expressed in different ways
+     $(A\implies B)\iff(\lnot A \lor B)$
+*** Some rules of propositional logic
+**** Rules                                                        :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     1. $\A \land \B \iff \B \land \A$, (commutativity)
+     2. $\A \lor \B \iff \B \lor \A$ (commutativity)
+     3. $(\A \land \B) \land \C \iff \A \land (\B \land \C)$ (associativity)
+     4. $(\A \lor \B) \lor \C \iff \A \lor (\B \lor \C)$ (associativity)
+     5. $\A\land (\B \lor \C) \iff (\A \land \B ) \lor (\A \land \C)$ (distributivity)
+     6. $\A\lor (\B \land \C) \iff (\A \lor \B ) \land (\A \lor \C)$ (distributivity)
+     7. $\A\land(\A \lor \B) \iff \A$, $A\lor(\A \land \B)\iff \A$ (absorption)
+     8. $\A\land\A\iff\A$, $\A\lor\A\iff\A$ (idempotency)
+     9. $\A\lor\lnot\A$ (law of excluded middle)
+     10. $\lnot(\A\land\lnot\A)$ 
+     11. $\lnot(\lnot(\A))\iff\A$ 
+*** Some rules of propositional logic
+**** Rules                                                        :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     1. $\A \land T \iff \A$ 
+     2. $\A \land F \iff F$ 
+     3. $\A \lor  T \iff T$ 
+     4. $\A \lor  F \iff \A$ 
+     5. $\lnot(\A\land\B)\iff\lnot\A\lor\lnot\B$ (De Morgan's law)
+     6. $\lnot(\A\lor\B)\iff\lnot\A\land\lnot\B$ (De Morgan's law)
+     7. $(\A\implies\B) \iff (\lnot\B \implies \lnot \A)$ 
+     8. $\bigl((\A\implies\B)\land\A\bigr) \implies \B$ 
+     9. $\bigl((\A\implies\B)\land\lnot\B\bigr) \implies \lnot \A$ 
+     10. $\bigl((\A\implies \B) \land (\B\implies\C)\bigr) \implies (\A\implies\C)$ 
+     11. $\bigl((\A\implies\B)\land(\B\implies\A)\bigr)\iff(\A\iff\B)$ 
+*** Proof
+**** $\A\land(\A \lor \B) \iff \A$                                  :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     Let $lhs$ be $\A\land(\A \lor \B)$ (left hand side), and let $rhs$
+     be $\A$ (right hand side).
+
+     If $\A=F$ then $lhs$ is false because of the definition of
+     conjunction.  If $\A=T$ then $\A \lor \B$ is true because of the
+     definition of disjunction, so $lhs$ is $\A\land T$ which is
+     $T$. In both cases the $rhs$ equals $lhs$, so by the definition of
+     equivalence the formula is always true.
+
+     *Proof using truth tables* is done by filling out the first two
+     columns of the table as given bellow, and then the rest using the
+     definitions of the logical operators:
+     | $\A$ | $\B$ | $\A\lor\B$ | $lhs$ | $rhs$ | $\A\land(\A \lor \B) \iff \A$ |
+     |      |      | <c>        | <c>   | <c>   | <c>                           |
+     | $T$  | $T$  | $T$        | $T$   | $T$   | $T$                           |
+     | $T$  | $F$  | $T$        | $T$   | $T$   | $T$                           |
+     | $F$  | $T$  | $T$        | $F$   | $F$   | $T$                           |
+     | $F$  | $F$  | $F$        | $F$   | $F$   | $T$                           |
+** Predicate calculus
+*** Quantifiers
+**** Existential and universal quantifier                      :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     - $\exists$ is the *existential* quantifier: "exists", "there is".
+     - $\forall$ is the *universal* quantifier: "every", "for all".
+**** Predicate calculus                                           :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     - $B(x)$: $x$ is a bird; $P(x)$: $x$ is a parrot.
+     - $\forall x (P(x) \implies B(x))$: Every parrot is a bird.
+     - $\exists x (\lnot P(x) \land B(x))$: There are birds which are
+       not parrots.
+     - $\forall x (P(x) \implies B(x)) \land \exists x (\lnot P(x)
+       \land B(x))$: Every parrot is a bird, but there are some birds
+       which are not parrots.
+*** Well-formed formulas
+**** Formulas
+     1) Predicates are the simplest, so called  *atomic
+        formulas*.
+     2) If $\A$ and $\B$ are formulas then $(\A\land\B)$,
+        $(\A\lor\B)$, $(\A\implies\B)$, $(\A\iff\B)$ and $\lnot\A$ are
+        also formulas.
+     3) If $\A$ is a formula, $x$ is a variable $(\forall x\A)$ and
+        $(\exists x\A)$ are also formulas (they are *universally* and
+        *existentially* quantified).
+     4) *Every formula* can be obtained by finite application of the
+        previous three rules.
+**** Formula                                                      :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     $\forall x (P(x) \implies B(x)) \land \exists x (\lnot P(x) \land
+     B(x))$ is a formula. (If it is not ambiguous, parenthesis can be
+     omitted.)
+*** Scope, free and bound occurrences of variables
+**** Scope                                                     :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     Let $Q\in \{\exists,\forall\}$ be a quantifier, $\A$ a formula and
+     $x$ a variable.
+     - In the formula $(Qx\A)$, every occurrence of $x$ in $\A$ is in
+       the *scope* of the quantifier $Q$.
+     - An occurrence of a variable is *bound* if it is in the scope of
+       a quantifier, otherwise the occurrence is *free*.
+     - A variable in a formula is a *free variable* if it has at least
+       one free occurrence, otherwise it is a *bound variable*.
+     - An *open formula* has at least one free variable, otherwise it
+       is a *closed formula* (\ie all of its variables are bound).
+*** Examples
+**** Geometry                                                     :B_example:
+     :PROPERTIES:
+     :BEAMER_env: example
+     :END:
+     $P(x)$: $x$ is a point; $L(x)$: $x$ is a line; $O(x,y)$: $x$ is on
+     $y$.
+     - $P(x)$, $L(x)$ and $O(x,y)$ are open (atomic) formulas.
+     - Let $\A(x,y)$ be $L(x)\land P(y) \land O(y,x)$: A point $y$ is
+       on the line $x$. $\A(x,y)$ is an open formula, with two free
+       variables.
+     - Let $\B(x,y)$ be $P(x) \land P(y) \land \lnot (x=y)$: $x$ and
+       $y$ are two different points. $\B(x,y)$ is an open formula with
+       two free variables.
+     - Let $\C(x)$ be $\exists y(L(x)\land P(y) \land O(y,x))$: There
+       is a point which is on the line $x$.  $\C(x)$ is an open
+       formula, because of the free variable $x$ (while $y$ is a bound
+       variable).
+     - Let $\mathcal{D}()$ be $\forall x\Bigr(L(x) \implies \exists
+       y\bigl(L(x)\land P(y) \land O(x,y)\bigr)\Bigr)$: For every line
+       there is a point which is on the line. $\mathcal{D}()$ is a
+       closed formula. The first occurrence of $x$ is in the scope of
+       the universal quantifier but not in the scope of the existential
+       quantifier.
+*** Rules of first order logic
+**** Rules
+    1) $\lnot\forall x P(x) \iff \exists x \lnot P(x)$
+    2) $\lnot\exists x P(x) \iff \forall x \lnot P(x)$
+    3) $\forall x \forall y P(x,y) \iff \forall y \forall x P(x,y)$
+    4) $\exists x \exists y P(x,y) \iff \exists y \exists x P(x,y)$
+    5) $\exists x \forall y P(x,y) \implies \forall y \exists x P(x,y)$
+
+**** An example to remember the last rule
+     If $U=\{1,2\}$ then consider the following two formulas:
+     - $\exists x \forall y (x=y)$ is false because it is: $\exists x
+       (x=1 \land x=2)$ which is $(1=1\land 1=2) \lor (2=1\land 2=2)$
+     - $\forall y \exists x (x=y)$ is true because it is: $\forall y
+       (1=y \lor 2=y)$ which is $(1=1 \lor 2=1) \land (1=2 \lor 2=2)$
+     - And by the definition of implication $True\implies False$ is
+       false and $False \implies True$ is true.
+      
+* Sets
+** Naive set theory
+*** Sets and elements
+**** Set theory
+     - Two predicates: $X$ is a *set*.  $x\in X$, $x$ is an *element of* $X$
+     - The negation of the \in predicate is sometimes written as $\not\in$
+     - A /set of sets/ is some times referred to as a *family* or *system sets*.
+**** Examples, notation
+     - $A=\{\text{cat}, \text{dog}, \text{elephant}\}$, $B=\{\tru,\fls\}$
+     - $C=\{1,2,3,\ldots\}$, $D=\{\text{the sutudents in this class}\}$
+     - $S=\{ A,B,C,D \}$ the set of the previous examples (a system of sets)
+*** Basics
+**** Definition: Axiom of extensionality
+     - Two sets are *equal* if they have the same elements, \ie a set is determined by its elements.
+     - $A=B \iff \forall x (x\in A \iff x\in B)$
+**** Definition 
+     - The *empty set* is denoted by \emptyset and has no elements.
+     - The empty set is unique and $\forall x  (x \not\in \emptyset)$.
+**** Example
+     - $\{1,2,3\}$ and the /set of all positive integers less then/ $4$ are equal.
+     - $\{\}=\emptyset$
+*** Subsets
+**** Definition: Axiom schema of specification
+    - It is said that $A$ is a *subset* of $B$,  written as 
+      $A \subset B$ (or $A \subseteq B$), if $\forall x (x\in A \Rightarrow x\in B)$.
+    - A set is a *proper* (or *strict*) subset if $A \subset B$ and $A\neq B$ and 
+      is written as $A \subsetneq B$.
+    - Subsets of a set can be defined using a formula. 
+      - Let $\mathcal{F}$ be a formula and $X$ a set,
+        then the set $\{x\in X : \mathcal{F}(x)\}$ contains exactly those $x$ elements 
+        for which $\mathcal{F}(x)$ is true.
+**** Examples
+     - $\{1,3\}\subset \{1,3\}$, $\{1,3\} \subsetneq \{1,2,3,4\}$
+     - $\{x\in\mathbb{N}: 0<x \land x<4\}=\{1,2,3\}\subset\mathbb{N}$.
+     - Let $E(x)$ be true if and only if $x$ is even, then $\{x \in\mathbb{Z} : E(x)\}$ is
+       the set of even integers.
+*** Powerset
+**** Definition: Axiom of power set
+     - Given a set $A$, the set of all subsets of $A$ is called the *powerset* of $A$.
+     - The powerset of $A$ is denoted by $\wp(A)$ or $2^A$, and
+       $\wp(A)=\{x : x\subset A\}$
+**** Example
+     - $\wp(\{a,b,c\})=\{\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\},\}$
+     - If $A$ has $n$ elements, then $\wp(A)$ has $2^n$ elements \ie
+       $\lvert 2^A \rvert = 2^{\lvert A \rvert}$.  Therefore sometimes we denote the power\-set
+       of $A$ as $2^A$.
+** Set operations
+*** Union, intersection
+**** Definition: Axiom of union
+     - The *union* of the sets $A$ and $B$ is the set $A\cup B$.
+       - $x$ is an element of $A\cup B$ if and only if $x\in A$ or $x\in B$.
+       - $A\cup B = \{ x : x\in A \lor x\in B\}$.
+       - If $\mathcal{A}$ is a non-empty system of sets then $\cup
+         \mathcal{A}$ contains elements which an element of at least
+         one $A\in\mathcal{A}$ or $\cup \mathcal{A} = \{x : \exists A
+         (A\in \mathcal{A} \land x \in A) \}$
+**** Definition: intersection
+     - The *intersection* of the sets $A$ and $B$ is the set $A\cap B$.
+       - $x$ is an element of $A\cap B$ if and only if $x\in A$ and $x\in B$.
+       - $A\cap B = \{ x : x\in A \land x\in B\}$.
+       - If $\mathcal{A}$ is a non-empty system of sets then $\cap
+         \mathcal{A}$ contains elements which an element of all
+         $A\in \mathcal{A}$ or $\cap \mathcal{A} = \{x : \forall A (A\in
+         \mathcal{A} \land x \in A) \}$
+*** Visual representation
+**** Union                                                    :B_block:BMCOL:
+     :PROPERTIES:
+     :BEAMER_env: block
+     :BEAMER_col: 0.49
+     :END:
+     file:../figs/union.tikz
+**** Intersection                                             :B_block:BMCOL:
+     :PROPERTIES:
+     :BEAMER_env: block
+     :BEAMER_col: 0.49
+     :END:
+     file:../figs/intersection.tikz
+*** Difference, complement
+**** Definition: Difference
+     - The *set-theoretic difference* (or *relative complement*) of $A$ and $B$ 
+       is the set $A\setminus B$ (read as "A minus B") which contains elements
+       from $A$ which are not in $B$ \ie $A\setminus B=\{x\in A:x\not\in B\}$.
+**** Definition: Complement
+     - If $A \subset X$, where $X$ is a base set (or the universe),
+       the *complement* of $A$ is $X\setminus A$.
+     - It is denoted by $\overline{A}_X$ or if it is clear from the context
+       just $\overline{A}$.
+*** Visual representation
+**** Difference                                               :B_block:BMCOL:
+     :PROPERTIES:
+     :BEAMER_env: block
+     :BEAMER_col: 0.49
+     :END:
+     file:../figs/setdiff.tikz
+**** Complement                                               :B_block:BMCOL:
+     :PROPERTIES:
+     :BEAMER_env: block
+     :BEAMER_col: 0.49
+     :END:
+     file:../figs/setcompl.tikz
+*** Examples
+**** Examples of unions and intersections
+     - $\{a\}\cup\{b\}=\{a,b\}$, $\{a,b\}\cup\{b\}=\{a,b\}$
+     - $\{a\}\cap\{b\}=\emptyset$, $\{a,b\}\cap\{b\}=\{b\}$
+     - $\{2k+1:k\in\mathbb{Z}\}\cup\{2k:k\in\mathbb{Z}\}=\mathbb{Z}$
+     - If $\mathcal{A}=\{[i,i+1]\subset\mathbb{R}:i\in\mathbb{Z}\}$,
+       then $\cup\mathcal{A}=\mathbb{R}$ and $\cap\mathcal{A}=\emptyset$
+     - $\{a,b,c,d\}\setminus\{a,b\}=\{c,d\}$
+     - $\{a,b,c\}\setminus\{c,d\}=\{a,b\}$
+     - $\{a,b\}\setminus\{c,d\}=\{a,b\}$
+     - If $X=\{a,b,c,d\}$, 
+       then $\{a,c\}\subset X$ and $\overline{\{a,c\}}=\{b,d\}$
+*** Question
+**** What is the union, intersection, complement, difference?
+     file:../figs/beaver-platypus-duck.jpg 
+
+     The platypus's instrument is a keytar! (Lame spelling checker)
+** Theorems
+*** Theorems
+**** Some basic theorems
+    - $A\cup B=B\cup A$, $A\cap B = B \cap A$: *commutative* property
+    - $(A\cup B)\cup C = A\cup (B\cup C)$, $(A\cap B)\cap C = A\cap
+      (B\cap C)$: *associative* property
+    - $(A\cup B)\cap C = (A \cap C) \cup (B\cap C)$, $(A\cap B)\cup C =
+      (A \cup C) \cap (B\cup C)$: *distributive* property
+    - $A\cap (A \cup B) = A$, $A\cup (A \cap B) = A$: *absorption*
+      property
+    - $A\cup A = A$, $A\cap A = A$: *idempotency*
+*** Proof
+**** Homework!
+    - *HW*: Try to prove these simple equations at home! 
+    - Remember, a proof is not the same as giving an example, what if
+      the sets have infinitely many elements!?
+    - \Eg the proof of the first equation is as follows:
+      - $x$ is an element of the lhs iff $x\in A \lor x\in B$.
+      - By definition $\lor$ is commutative, so $\cup$ is also.
+    - \Eg the proof of the seventh is as follows:
+      - If $x\in A$ then $x\in A\cup B$, and so $x\in A\cap(A\cup B)$.
+      - If $x\not\in A$ then $x\not \in A\cap X$ for every set $X$ 
+        (by the definition of $\cap$).
+      - Every possible $x$ was covered, and if it the element of the lhs iff
+        it is an element of the rhs.
+*** Some more theorems
+**** Other theorems
+     Let $X$ be the base set, and $A,B\subset U$ arbitrary sets.
+     | $A \cap \emptyset = \emptyset$   | $A \cup \emptyset = A$    |
+     | $A \cap X = A$                   | $A \cup X = X$            |
+     | $A \cap \overline{A} =\emptyset$ | $A \cup \overline{A} = X$ | 
+**** The De Morgan equalities
+     $\overline{A \cap B}=\overline{A} \cup \overline{B}$ and
+     $\overline{A \cup B}=\overline{A} \cap \overline{B}$.
+**** Homework
+     - *HW:* Show that $A\setminus B=A \cap \overline{B}$
+*** Disjoint sets
+**** Definition: Disjoint sets
+     - The sets $A_1,A_2,\ldots,A_n$ are *disjoint* iff 
+       $A_1 \cap A_2 \cap \cdots \cap A_n=\emptyset$,
+       or the system of sets $\mathcal{A}$ is disjoint if 
+       $\cap\mathcal{A}=\emptyset$.
+     - The sets $A_1,A_2,\ldots,A_n$ are *pairwise (or mutually)
+       disjoint* iff $A_i \cap A_j =\emptyset$ for each $i\neq j$
+       index, or the system of sets $\mathcal{A}$ is mutually disjoint
+       disjoint if for each $A,B\in\mathcal{A}$ for which $A\neq B$
+       implies $A\cap B=\emptyset$.
+**** Questions
+     - Are all mutually disjoint sets disjoint?  
+     - Are all disjoint sets mutually disjoint?
+     - If true prove it, if false give a counter example!
+*** Symmetric difference
+**** Definition: Symmetric difference
+     - The *symmetric difference* of the two sets $A$ and $B$ is
+       $A \Delta B=(A \setminus B) \cup (B \setminus A)$
+     - Show that $A \Delta B=(A \cup B) \setminus (A \cap B)$
+**** Visual representation                                    :B_block:BMCOL:
+     :PROPERTIES:
+     :BEAMER_env: block
+     :BEAMER_col: 0.5
+     :END:
+     file:../figs/symmdiff.tikz
+*** Question
+**** What is the symmetric difference?
+     file:../figs/beaver-platypus-duck.jpg 
+
+     The platypus's instrument is a keytar! (Lame spelling checker)
+** ZFC
+*** Russell's paradox
+**** Russell's paradox
+     - Russell's paradox demonstrates the problems which arise from a /naive/ 
+       set theory.
+     - Let $A = \{x : x\not\in x\}$ then $A\in A \iff A\not\in A$.
+     - $A = \{x : x\not\in x\}$ then $A\in A \iff A\not\in A$ is the set of sets
+       which don't contain themselves.  If $A$ does not contain itself, 
+       by definition it should be $\in A$, so it should contain itself.
+       The other way: if $A$ contains itself, then by definition it should not
+       contain itself.
+     - The barber goes to the army and is given the order not to shave anyone
+       show shaves himself, but shave everyone else... Does he shave himself?
+*** ZFC
+**** Zermelo-Freankle + axiom of choice
+     To resolve Russell's paradox Zermelo and Freankle:
+     1. Axiom of extensionality: 
+        $\forall x\forall y (\forall z (z\in x \iff z\in y)\Rightarrow x=y)$
+     2. *Axiom of regularity*: 
+        $\forall x (x\not=\emptyset \Rightarrow \exists y\in x(y\cap x=\emptyset))$
+     3. Axiom schema of specification: 
+        for each formula $\mathcal{F}$ on $z$ there is a set $\{x\in z:\mathcal{F}(x)=\tru\}$
+     4. *Axiom of pairing*: 
+        $\forall x \forall y \exists z (x \in z \land y \in z)$
+     5. Axiom of union: 
+        $\forall \mathcal{F} \exists A \forall Y \forall x
+        ((x\in Y \land Y\in \mathcal{F})\Rightarrow x\in A)$
+     6. *Axiom schema of replacement*: 
+        the image of a set under any definable function will also fall inside a set.
+     7. *Axiom of infinity*: see later.
+     8. Axiom of power set: $\forall x \exists y \forall z 
+        (z \subset x \Rightarrow z \in y)$ 
+     9. *Axiom of choice*: there is an $f$ choice function for every system $X$
+        of non-empty sets for which $\forall Y \in X f(Y)\in Y$.
+*** Infinite sets
+**** Axiom of infinity
+     The /axiom of infinity/ states that there are infinite sets!
+     Let $S(x)=x \cup \{x\}$. The axiom states that:
+     \begin{equation*}
+     \exists X (\emptyset \in X \land \forall y ( y \in X \Rightarrow S(y)\in X)
+     \end{equation*}
+
+     The "function" $S(x)$ is the /successor/ function, the equivalent of 
+     $f(n)=n+1$ on the set $\mathbb{N}$. $\emptyset = 0$; $\{ \emptyset \} = 1$;
+     $\{\emptyset,\{\emptyset\}\} = 2$; 
+     $\{\emptyset,\{\emptyset\},\{\emptyset,\{\emptyset\}\}\} = 3$; etc.
+* Relations
+** Ordered pairs
+*** The idea of a relation
+    Describes:
+    - Connection/relation between objects
+    - Generalized function/mapping
+    - "Multivalued" functions
+   
+    Examples:
+    - *equals*, *is less than or equal*, *divides*, *is sitting next
+      to* etc.
+*** Ordered pairs, Cartesian product
+**** Definition (Ordered pair)
+     - The *ordered pair* $(x,y)$ is defined as the set 
+       $\bigl\{\{x\},\{x,y\}\bigr\}$
+     - $x$ is the *first* and $y$ is the *second element* (or
+       coordinate)
+     - Important: $(x,y)=(u,v)\iff (x=u) \land (y=v)$ 
+     - If $x,y\in X$ then $(x,y)\in\wp\bigl(\wp(X)\bigr)$
+     - Counter example: $\{x,y\}$ is not an ordered pair
+       because  $\{x,y\}=\{y,x\}$ but $(x,y)\not=(y,x)$.
+       (which we don't want!)
+*** Cartesian product
+**** Definition (Cartesian product)
+     - The *Cartesian product* of two sets $X$ and $Y$ is the set of
+       all possible ordered pairs with the first element from $X$ and
+       the second element from $Y$ \ie $$X \times Y=\bigl\{(x,y): x \in X \land
+       y \in Y \bigr\}$$
+**** Example
+     - $\{a,b\}\times\{1,2,3\}=\bigl\{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3)\bigr\}$
+** Relations
+*** Binary relations
+**** Definition (Binary relation)
+     - A *binary relation* is a set of ordered pairs.
+     - If the binary relation $R$ is a subset of $X \times Y$, than it is a
+       relation between $X$ and $Y$.
+       - If $X=Y$ then $R$ is a homogeneous (binary) relation, and
+         it is said that $R$ is a relation on the the $X$
+     - The fact that $(x,y)\in R$ is often written as $xRy$ 
+**** Examples:
+    - $\mathbb{I}_X=\{(x,x)\in X\times X: x\in X \}$ is the identity
+      relation.
+    - $\{(x,y)\in\Z \times \Z: x \mid y\}$ is the divisibility relation.
+    - For the system of sets $\mathcal{F}$ the set $\{(X,Y)\in
+      \mathcal{F}\times \mathcal{F}: X \subset Y\}$ is the subset
+      relation.
+    - Given a function $f:\R\rightarrow \R$ function, $\{(x,f(x))\in \R\times\R:
+      x\in\R\}$ is also a relation.
+*** Domain and range
+**** Definition (Domain and range)
+     The *domain* of a binary relation $R\subset X \times Y$ is
+     $\dmn(R) = \{ x: \exists y (x,y)\in R \}$ and the *range* of $R$
+     is $\rng(R)=\{ y: \exists x (x,y)\in R \}$.
+**** Example
+    - If $R=\{(x, 1/x^2): x\in\R\}$, then $\dmn (R)=\{x\in\R: x\neq
+      0\}$, $\rng (R)=\{x\in\R: x>0\}$.
+    - If $R=\{(1/x^2,x): x\in\R\}$, then $\dmn (R)=\{x\in\R: x>0\}$,
+      $\rng (R)=\{x\in\R: x\neq 0\}$.
+    - If $R=\bigl\{(a,1),(b,1),(b,3)\bigr\}$, then $\dmn(R)=\{a,b\}$,
+      $\rng(R)=\{1,3\}$.
+*** Extension, restriction and inverse of relations
+**** Definition (Extension, restriction)
+     A binary relation $R$ is the *extension* of the binary relation
+     $S$, or $S$ is a *restriction* of $R$, if $S\subset R$. If
+     $A$ is a set, then the restriction of $R$ to
+     $A$ is $R|_A=\{(x,y)\in R: x\in A\}$.
+**** Example
+     Let $R=\{(x^2,x)\in\R\times \R: x\in \R\}$,
+     $S=\{(x,\sqrt{x})\in\R\times \R: x\in \R\}$.
+    
+     Then $R$ is the extension of $S$, and $S$ is a restriction of $R$
+     and $S=R|_{\R^+_0}$ (where $\R^+_0$ is the set of non-negative
+     real numbers).
+**** Definition (Inverse)
+     The *inverse* of a relation $R$ is $R^{-1}=\{(y,x): (x,y)\in R\}$.
+**** Example
+     $R^{-1}=\{(x,x^2)\in\R\times \R: x\in \R\}$, $S^{-1}=\{(\sqrt{x},x)\in\R\times \R: x\in \R\}$
+*** Image and preimage
+**** Definition (Image and inverse image) 
+     - Let $R\subset X\times Y$ be a binary relation, $A\subset X$. The *image of $A$ under
+       $R$* is $R(A)=\{y \in Y: \exists x (x\in A \land (x,y)\in R)\}$.
+ 
+     - The *inverse image* or *pre\-image* of a given set $B$, is
+       $R^{-1}(B)$, i.e. the image of the set $B$ under the relation
+       $R^{-1}$.
+**** Example
+     Let $R=\{(x^2,x)\in\R\times \R: x\in \R\}$,
+     $S=\{(x,\sqrt{x})\in\R\times \R: x\in \R\}$.
+     - $R(\{9\})=\{-3, +3\}$ (or more compact $R(9)=\{-3, +3\}$),
+     - $S(9)=\{+3\}$.
+*** Example (Domain, Range, Restriction)
+**** Example
+     :PROPERTIES:
+     :BEAMER_COL: 0.7
+     :BEAMER_ENV: block
+     :END:
+     Let $R$ be a relation on the set $X=\{A,B,C, \dots, P\}$ and let
+     $T \rightarrow T'$, if
+     $(T,T')\in R$.
+     - ${\color{red}  \dmn(R)} = \{A,B,C,D,F,G,H,I,K\}$.
+     - ${\color{green}\rng(R)} = \{A,B,C,E,F,G,H,I,J,L\}$.
+     - ${\color{blue} R|_{\{A,B,C,D\}}} = \{ (A,B), (B,C), (C,A), (D,E), (D,F)\}$
+**** Image
+     :PROPERTIES:
+     :BEAMER_COL: 0.3
+     :END:
+     file:../figs/dmnrngimgres.tikz
+** Composition
+*** Composition
+**** Definition (Composition)
+     Let $S\subset X \times Y$ and $R\subset Y \times Z$ be binary
+     relations. Then the *composition* (or *product*) of $R$ and $S$ is
+     the following relation: $R \circ S =\Bigl\{(x,z)\in X \times Z:
+     \exists y\bigl( (x,y)\in S \land (y, z)\in R\bigr)\Bigr\}$.
+    
+     - Note: For composition we write the relations "from right to left":
+     - Note: $(R \circ S)(A) = R(S(A))$
+**** Example
+     Let 
+     $R_{\sin} = \{(x,y)\in \R \times \R: \sin x =y\}$,
+     $S_{\log} = \{(x,y)\in \R \times \R: \log x =y\}$.
+ 
+     Then
+     - $R_{\sin}\circ S_{\log} = \{ (x,y): \exists z( \log x = z \land
+       \sin z = y )\}$
+     - $R _{\sin}\circ S_{\log} = \{ (x,y) \in \R \times \R: \sin \log
+       x =y\}$.
+*** Example (Composition)
+ #+ATTR_LATEX: :height 4.5cm
+ #+ATTR_LATEX: :float t
+      file:../figs/comp.tikz
+**** Composition
+    $R \circ S = \{(x,z): \exists y ( (x,y)\in S \land
+    (y,z) \in R) \}$
+
+    Let $\color{green} S$, $\color{blue} R$ be two relations, and let
+    us consider the composition ${\color{red} T} = {\color{blue}R}\circ
+    {\color{green}S}$.
+
+*** Database example
+   In a company let $a,b,c,\ldots,j$ denote the employees. The company
+   is working on two projects: $bank$, $game$
+**** 
+     :PROPERTIES:
+     :BEAMER_COL: 0.4
+     :END:
+     | *assignment*     | *employee* |
+     | $manager$        | $a,b$      |
+     | $programmer$     | $c,d,e$    |
+     | $tester$         | $f,g,h$    |
+     | $hr$             | $i$        |
+     | $tech. employee$ | $j$        |
+**** 
+     :PROPERTIES:
+     :BEAMER_ENV: block
+     :BEAMER_COL: 0.59
+     :END:
+     | *project* | *employee*    | *deadline*    |
+     | $bank$    | $a,c,d,f$     | 31. dec. 2014 |
+     | $game$    | $b,d,e,f,g,h$ | 31. jan. 2015 |
+**** 
+     Let $\alpha$ be the assignment relation: \eg $b \alpha manager$,
+     $\pi$ the project relation: \eg $a \pi bank$, $\delta$ the
+     deadline relation: \eg $bank\delta 31.dec$
+     - Questions: Who is working on the $bank$ project?
+       $\pi^{-1}(bank)$ Who are the testers? 
+       #+BEAMER: \pause
+       $\alpha^{-1}(tester)$ What is the $bank$ projects deadline?
+       #+BEAMER: \pause
+       $\delta(bank)$ Which deadlines do the employees have?  
+       #+BEAMER: \pause
+       $\delta \circ \pi$ Which deadlines do the testers have?  
+       #+BEAMER: \pause
+       $\delta \circ \pi \circ \alpha^{-1}(tester)$
+*** Properties of composition
+**** Properties of composition                                    :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     Let $T\subset W \times X$, $S\subset X \times Y$, $R \subset Y
+     \times Z$ be binary relations. Then
+     1. If $\rng(S) \supset  \dmn(R)$, then $\rng (R \circ S)=\rng (R)$.
+     2. $R \circ (S \circ T)=(R \circ S) \circ T$ (the composition is associative).
+     3. $(R \circ S)^{-1}=S^{-1}\circ R^{-1}$.
+
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     1. $\rng(R)=\{z: \ \exists y \ (y,z)\in R \}$. Since $\rng(S)
+        \supset \dmn(R)$, then for each $(y,z)\in R$ we have $\exists
+        x : (x,y)\in S$, so $(x,z)\in R \circ S$
+     2. $S \circ T =\{(w,y): \exists x ((w,x)\in T \land (x, y)\in
+        S)\}$, so $R\circ (S \circ T) =\{(w,z): \exists y ((w,y)\in S
+        \circ T \land (y, z)\in R)\} =\{(w,z): \exists y \exists x 
+        ((w,x)\in T \land (x, y)\in S \land (y, z)\in R )\} =(R\circ S )\circ T$
+     3. $(R \circ S)^{-1}=\{(z,x): \exists y((x,y)\in S \land (y, z)\in
+        R )\} =\{(z,x): \exists y((y,x)\in S^{-1}\land (z, y)\in
+        R^{-1})\}=S^{-1}\circ R^{-1}$.
+** Properties of relations
+*** Properties of relations
+   Example relations: $=$, $<$, $\leq$, $\mid$, $\subset$ and
+   $T=\{(x,y) \in \R \times \R: |x-y|<1 \}$.
+**** Definition (Relation properties)
+    The homogeneous binary relations $R \subset X \times X$ is
+    1. *transitive*, if $\forall x \forall y \forall z (xRy \land yRz
+       \implies xRz)$; \quad ($=$, $<$, $\leq$, $\mid$, $\subset$)
+    2. *symmetric*, if $\forall x \forall y(xRy \implies yRx)$;
+       \quad ($=$, $T$)
+    3. *anti-symmetric*, if $\forall x \forall y(xRy \land yRx \implies
+       x=y)$; \quad ($=$, $\leq$, $\subset$)
+    4. *strictly anti-symmetric*, if $\forall x \forall y(xRy \implies
+       \lnot yRx)$; \quad ($<$)
+    5. *reflexive*, if $\forall x(x \in X \implies xRx)$;
+       \quad ($=$, $\leq$, $\mid$, $\subset$, $T$)
+    6. *irreflexive*, if $\forall x(x \in X \implies \neg
+       xRx)$; \quad ($<$)
+    7. *trichotomous*, if for all $x,y$ from $X$ exactly one of the
+       following holds: $x=y$, $xRy$ and $yRx$[fn::$\forall x \forall
+       y( (x\in X \land y \in X) \implies((x=y \land \lnot xRy \land
+       \lnot yRx)\lor$ $(\lnot x=y \land xRy \land \lnot yRx)\lor(\lnot
+       x=y \land \lnot xRy \land yRx)))$]; \quad ($<$)
+    8. *dichotomous*, if $\forall x \forall y(x \in X \land y \in X
+       \implies xRy \lor yRx)$; \quad ($\leq$)
+
+*** Properties of relations
+    The *reflexive*, *irreflexive*, *trichotomous*, *dichotomous*
+    properties, depend not only on the relation, but also on the base
+    set:
+
+    The relation $\{(x,x)\in \R \times \R , x\in \R\}\subset \R\times
+    \R \subset \C \times \C$ defined on $\R$ is 
+    *reflexive*, but if defined on $\C$ then it is *not
+    reflexive*.
+   
+    file:../figs/relexample.tikz
+   
+    |----------------------+-------------------------------+--------------------|
+    | transitive: *NO*     | strictly anti-symmetric: *NO* | trichotomous: *NO* |
+    | symmetric: *NO*      | reflexive: *NO*               | dichotomous: *NO*  |
+    | anti-symmetic: $YES$ | irreflexive: *NO*             |                    |
+    |----------------------+-------------------------------+--------------------|
+
+*** Graphs of relations
+   The graph of a relation can be simplified:
+   - If a relation is *reflexive*, the loops can be omitted. $x\mid y$:
+   \tikzstyle{every node}=[draw,circle,fill=cyan,minimum size=4pt, inner sep=0pt]
+   \tikzstyle{rel}=[>=stealth',->,shorten <=1pt, shorten >= 1pt]
+   \tikzstyle{symrel}=[shorten <=1pt, shorten >= 1pt]
+   \tikzstyle{clean}=[draw=none,fill=none]
+   \begin{tikzpicture}
+   \draw
+   (0,0) node (2) [label=right:$2$] {}
+   (1,0) node (3) [label=right:$3$] {}
+   (2,0) node (4) [label=right:$4$] {}
+   (3,0) node (5) [label=right:$5$] {}
+   (4,0) node (6) [label=right:$6$] {}
+   (5,0) node (7) [label=right:$7$] {}
+   (6,0) node (8) [label=right:$8$] {}
+   ;
+   \path[rel]
+   (2) edge[bend left] (4)
+   (2) edge[bend left] (6)
+   (2) edge[bend left] (8)
+   (3) edge[bend left] (6)
+   (4) edge[bend left] (8)
+   ;
+   \end{tikzpicture}
+   - If a relation is *transitive*, implied edges can be omitted. $x\mid y$
+
+   \begin{tikzpicture}
+   \draw
+   (0,0) node (2) [label=right:$2$] {}
+   (1,0) node (3) [label=right:$3$] {}
+   (2,0) node (4) [label=right:$4$] {}
+   (3,0) node (5) [label=right:$5$] {}
+   (4,0) node (6) [label=right:$6$] {}
+   (5,0) node (7) [label=right:$7$] {}
+   (6,0) node (8) [label=right:$8$] {}
+   ;
+   \path[rel]
+   (2) edge[bend left] (4)
+   (2) edge[bend left] (6)
+   (3) edge[bend left] (6)
+   (4) edge[bend left] (8)
+   ;
+   \end{tikzpicture}
+   - If a relation is *symmetric*, directed edges can be replaced with
+     un\-directed edges (lines). $3\mid x-y$
+   \begin{tikzpicture}
+   \draw
+   (0,0) node (2) [label=below:$2$] {}
+   (1,0) node (3) [label=below:$3$] {}
+   (2,0) node (4) [label=below:$4$] {}
+   (3,0) node (5) [label=below:$5$] {}
+   (4,0) node (6) [label=below:$6$] {}
+   (5,0) node (7) [label=below:$7$] {}
+   (6,0) node (8) [label=below:$8$] {}
+   ;
+   \path[symrel]
+   (2) edge[bend left] (5)
+   (3) edge[bend left] (6)
+   (4) edge[bend left] (7)
+   (5) edge[bend left] (8)
+   ;
+   \end{tikzpicture}              
+** Equivalence and partition
+*** Equivalence relations and Partitions
+**** Equivalence relation
+     :PROPERTIES:
+     :BEAMER_ENV: definition
+     :END:
+     Let $X$ be a set, $R \subset X \times X$ be a relation on $X$.
+     The relation $R$ is an *equivalence relation*, if it is
+     *reflexive*, *symmetric* and  *transitive*.
+**** Equivalence classes
+     :PROPERTIES:
+     :BEAMER_ENV: definition
+     :END:
+     Given a set $X$ and an equivalence relation $R$ on $S$, the
+     *equivalence class of an element* $a$ in $S$ is the set $\tilde{a}
+     = \{x\in X : x\sim a\}$ of elements which are equivalent to $a$.
+**** Example
+     - 1. $=$ \quad 2. $3 \mid x-y$ \quad 3. similarity on the set of
+       all triangles
+**** Partition                                                 :B_definition:
+     :PROPERTIES:
+     :BEAMER_env: definition
+     :END:
+     A system of sets $\mathcal{P}$ containing subsets of the set $X$
+     is a *partition* of $X$, if $\mathcal{P}$ is a *pairwise disjoint*
+     system of *non-empty* sets and *$\cup \mathcal{P} =X$*.
+*** Examples
+**** Equivalence relations
+     1. Equality on $\R$.
+     2. $x\sim y \iff 3\mid x-y$ for $x,y\in\Z$.
+     3. Two lines in the two-dimensional plane are in relation if they
+        have the same length.
+     4. Two lines in the two-dimensional plane are in relation if they
+        are parallel to each other.
+**** Corresponding classes
+     1. A partition of $\R$: $\big\{ \{a\}: a\in \R \big\}$;
+     2. A partition of $\Z$: $\bigl\{\{0,3,6,\ldots\},\{1,4,7,\ldots\},\{2,5,8,\ldots\}\bigr\}$;
+     3. Different lengths in the two-dimensional plane.
+     4. Different directions
+*** Equivalence relations induce partitions
+**** Each equivalence relation defines a partition                :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     For every equivalence relation $\sim$ on the set $X$ the
+     equivalence classes $\tilde{x}=\{y\in X: y \sim x\}$ (for $x\in
+     X$), yield a partition of $X$, which is denoted by $X/{\sim}$.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     Let $\sim$ be an equivalence relation on $X$. We have to show that
+     $X/{\sim} \, =\{\tilde{x}: x\in X\}$ is a partition of $X$.
+     - Since $\sim$ is reflexive, $x\in\tilde{x} \implies$
+       *$\bigcup_{x}\tilde{x}=X$* $\land$ *$\tilde{x}\neq \emptyset$*.
+     - Equivalence classes are *pairwise disjoint*: Suppose $\tilde{x}
+       \cap \tilde{y} \neq \emptyset$, let $z\in \tilde{x} \cap
+       \tilde{y}$. Since $z\in \tilde{x} \Rightarrow z \sim x$ which,
+       because of symmetry, implies $x \sim z$. Similarly $z\in
+       \tilde{y} \Rightarrow z \sim y$.  For all $x'\in \tilde{x}
+       \implies x'\sim x$ using transitivity $x' \sim x \land x \sim z
+       \implies x' \sim z$, $x' \sim z \land z \sim y \implies x' \sim
+       y$. So $\tilde{x}\subset \tilde{y}$. Similarly for all $y'\in
+       \tilde{y}\implies y' \sim x$, so $\tilde{x}=\tilde{y}$.
+*** Partitions induce equivalence relations
+**** Each partition defines an equivalence relation               :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     For each partition $\mathcal{P}$ of $X$ the relation $R=\cup\{Y
+     \times Y : Y\in \mathcal{P} \}$ is an equivalence relation, with
+     $\mathcal{P}$ as its associated equivalence classes.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     - $R$ is *reflexive*: let the class of $x$ be $Y$: $x\in Y\in
+       \mathcal{P}$. Then $(x,x)\in Y \times Y$.
+     - $R$ is *symmetric*: let $(x,y)\in R$. Then $x,y\in Y$ for some $Y$
+       class, in particular $(y,x)\in Y \times Y$.
+     - $R$ is *transitive*: similarly let $(x,y), (y,z)\in R$, therefore
+       $x,y\in Y$, $y,z\in Y'$. Since the classes are pairwise
+       disjoint, $Y=Y'$, in particular $z\in Y$, i.e. $(x,z)\in Y
+       \times Y$.
+** Ordering
+*** Partial ordering
+**** Partial ordering
+     :PROPERTIES:
+     :BEAMER_ENV: definition
+     :END:
+     A /reflexive/, /transitive/ and /anti-symmetric/ relation defined
+     on the set $X$ is a *partial ordering*. (symbol: $\leq$, $\preceq$
+     $\preccurlyeq$, \dots)
+**** 
+     :PROPERTIES:
+     :BEAMER_ENV: definition
+     :END:
+     We say that, the set $X$ is a *(partially) ordered set* and the
+     elements $x,y\in X$ are *comparable* if $x \preceq y$ or $y
+     \preceq x$,
+**** Total ordering
+     :PROPERTIES:
+     :BEAMER_ENV: definition
+     :END:
+     If all elements are comparable, the relation is dichotomous.
+  
+     A /reflexive/, /transitive/, /anti-symmetric/ and /dichotomous/
+     relation defined on the set $X$ is a *total ordering* (or just
+     ordering).
+**** Examples
+     - $\R$ with $\leq$ is a *ordered set*: $\forall x,y\in \R$: $x\leq
+       y$ or $y \leq x$.
+     - On $\N$ the $\mid$ (divisor) relation is a *partial ordering*:
+       $4\nmid 5$, $5 \nmid 4$.
+     - On $\wp(X)$ the $\subset$ relation is a *partial ordering*
+       $X=\{a,b,c\}$, $\{a\}\not\subset \{b,c\}$, $\{b,c\}\not\subset \{a\}$
+*** Strict and non-strict relations
+**** Definition (Strict and non-strict relations)
+     The *strict* relation associated with the relation $R$ defined on
+     the set $X$ is $S$ if $xSy \iff xRy \land x\neq y$.
+  
+     The *non-strict* relation associated with the relation $R$ defined
+     on the set $X$ is $T$ if $xTy \iff xRy \lor x= y$.
+ 
+     Another formulation: $S=R\setminus \mathbb{I}_X$, $T=R\cup
+     \mathbb{I}_X$, where $\mathbb{I}_X=\{(x,x): x\in X\}$.
+ 
+**** Examples
+     - The strict relation associated with $\leq$ is: $<$.
+     - The strict relation associated with $\subset$ is:
+       $\subsetneq$.
+     - The strict relation associated with the *divisor* relation on
+       the set $\N$ is: *proper divisor*.
+*** Strict and non-strict partial ordering
+**** Definition (Strict partial ordering)
+     A /transitive/ and /irreflexive/ relation defined on the set $X$
+     is a *strict partial ordering*. (symbol: ${}<{}$, $\prec$,
+     \dots)
+**** Remark
+     - *Transitive* and *irreflexive* implies *strictly
+       anti-symmetric*: $x\prec y$, $y \prec x$ and transitivity
+       implies $x\prec x$, which is a contradiction.
+     - The strict version of a partial ordering is the associated
+       strict partial ordering and conversely: $\prec = \preceq
+       \setminus \mathbb{I}_X$, $\preceq = \prec \cup \mathbb{I}_X$.
+*** Strict and non-strict ordering
+**** Statement
+     The partial ordering $\preceq$ is a total ordering if and only if
+     $\prec$ is trichotomous.
+**** Proof
+     We need $x=y$, $x\prec y$ and $y\prec x$ not to be true
+     simultaneously. If $x=y$, then the statement is true because of
+     the definition of $\prec$. But $x\prec y$ and $y\prec x$ can not
+     be true simultaneously because of strict anti-symmetry.
+
+     Conversely, because of the trichotous property, for each pair of
+     elements we have $x\prec y \lor x=y$ or $y\prec x \lor x=y$, which
+     is the definition of $x\preceq y$ or $y\preceq x$.
+*** Intervals
+**** Definition (Intervals)
+     Let $(X,\preceq)$ be a partially ordered set.  
+     - *$z$ is between $x$ and $y$* if $x\preceq z$ and $z\preceq y$,
+     - *$z$ is strictly between $x$ and $y$* if $x\prec z$ and $z\prec y$.
+     The set of elements between $x$ and $y$ is denoted by $[x,y]$, and
+     the set for elements strictly between $x$ and $y$ is denoted by
+     $(x,y)$ or $]x,y[$.
+     - $[x,y]=\{z\in X : x\preceq z \land z \preceq y\}$
+     - $(x,y)=]x,y[=\{z\in X : x\prec z \land z \prec y\}$
+     Analogous notations are $[x,y)$, and $(x,y]$.
+     - $[x,y)=[x,y[=\{z\in X : x\preceq z \land z \prec y\}$
+     - $(x,y]=]x,y]=\{z\in X : x\prec z \land z \preceq y\}$
+*** Examples
+**** Examples
+     Let $X=\wp(\{a,b,c\})$ with the /subset/
+     relation.
+     - $[\{a\}, \{a,b,c\}]=\big\{\{a\}, \{a,b\},\{a,c\},\{a,b,c\}\big\}$
+     - $(\{a\}, \{a,b,c\})=\big\{ \{a,b\}, \{a,c\}, \big\}$
+ 
+     Let $X$ be the set of positive integers with the /divisor/ relation.
+     - $[2, 12]=\big\{2, 4, 6, 12\big\}$
+     - $(2, 12)=\big\{ 4, 6\big\}$
+*** Immediate predecessor and successor
+**** Definition (Immediate predecessor and successor)
+     If $x \prec y$, but there are no elements strictly between $x$ and
+     $y$, then *$x$ precedes $y$* and *$y$ succeeds $x$* \ie *$x$ is
+     the predecessor of $y$* and *$y$ is the successor of $x$*.
+**** Example
+     - For $\wp(\{a,b,c\})$ with $\subset$: $\{a\}$
+       precedes $\{a,b\}$ and $\{a,c\}$.
+     - For $\N$ with divisibility: $2$ precedes $4$, $6$, $10$, $14$.
+**** Definition (Initial segment)
+     The subset $\{y\in X: y\preceq x\}$ is the *initial segment* associated
+     with the element $x$.
+**** Example
+     Let $X$ the power set of $\{a,b,c\}$ with the /subset/ relation.
+     Then the initial segment associated with $\{a,b\}$ is:
+     $\big\{\emptyset,\{a\},\{b\}, \{a,b\}\big\}$
+*** Hasse-diagram
+    In a *Hasse-diagram* of a partially ordered set, the elements are
+    represented as dots and there is a directed edge (an arrow) from
+    every $x$ to $y$ if $x$ is the immediate predecessor of $y$.
+    Alternatively, the arrows can be omitted if the "smaller" elements
+    are lower on the diagram. Example: /divisibility/ on $[1,8]$.
+**** Hasse-diagram with arrows                                        :BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.5
+     :END:
+     #+ATTR_LATEX: :width 4cm
+     file:../figs/hasse-wa.tikz
+**** Hasse-diagram without arrows                                     :BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.5
+     :END:
+     #+ATTR_LATEX: :width 4cm
+     file:../figs/hasse.tikz
+*** Least, greatest, minimum, maximum element
+**** Definition(Least, greatest, minimal, maximal elements)
+     In the partially ordered set $X$ we define $x\in X$ to be the
+     - *least*    element if $\forall y \, (y\in X \Rightarrow  x\preceq y)$;
+     - *greatest* element if $\forall y \, (y\in X \Rightarrow  y\preceq x)$;
+     - *min.* elem. if $\forall y \, (y \in X \Rightarrow \lnot (y
+       \prec x) )$ which is the same as $\lnot\exists y\, (y\in X \land
+       y\neq x \land y \preceq x)$;
+     - *max.* elem. if $\forall y \, (y\in X \Rightarrow \lnot(x\prec
+       y))$ which is the same as $\lnot\exists y\, (y\in X \land y\neq
+       x \land x \preceq y)$;
+**** Example                                                  :B_block:BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.6
+     :BEAMER_env: block
+     :END:
+   Let $X=\{1,2,\dots,8\}$ with divisibility:
+   - *least* element: $1$
+   - *greatest* element: none
+   - *minimal* element: $1$
+   - *maximal* elements: $5$, $6$, $7$, $8$
+**** Hasse-diagram                                                    :BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.3
+     :END:
+     #+ATTR_LATEX: :width 3cm
+     file:../figs/hasse.tikz
+*** Least, greatest, minimum, maximum element
+**** Remarks
+     - Finite (partially ordered) sets have *at least* one minimal and
+       maximal element.
+     - There can be *at most* one least and greatest element.
+     - If a set is (totally) ordered set has a minimal (or maximal) element,
+       then *minimal* = *least* (or *maximal* = *greatest*).
+     - If the set $X$ has a unique minimal or maximal element, then it
+       is denoted by $\min X$ and $\max X$.
+**** $X=\{1,2,\dots,8\}$ with divisibility                    :B_block:BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.6
+     :BEAMER_env: block
+     :END:
+   - minimal element: $1$, so $\min X=1$
+   - maximal elements: $5$, $6$, $7$, $8$ there is no $\max X$
+**** Hasse-diagram                                                    :BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.3
+     :END:
+     #+ATTR_LATEX: :width 3cm
+     file:../figs/hasse.tikz
+*** Bounds
+**** Bounds
+     :PROPERTIES:
+     :BEAMER_ENV: definition
+     :END:
+     Let $(X,\preceq)$ be a partially ordered set $x\in X$ and $Y\subset X$.
+     - $x$ is a *lower bound* of $Y$ if $\forall y\, (y\in Y
+       \Rightarrow x\preceq y)$, 
+     - $x$ is an *upper bound* of $Y$ if $\forall
+       y\, (y\in Y \Rightarrow y\preceq x)$,
+     - The /least upper bound/ of $Y$ (if it exists) is the *supremum*
+       of $Y$ \ie $\sup Y$,
+     - The /greatest lower bound/ of $Y$ (if it exists) is the
+       *infimum* of $Y$ \ie $\inf Y$.
+     - $Y$ is *bounded from below* (in $X$) if $Y$ has a lower bound in
+       $X$.
+     - $Y$ is *bounded from above* (in $X$) if $Y$ has an upper bound
+       in $X$.
+*** Example: bounds, supremum and infimum      
+**** $X=\{1,2,\dots,8\}$ with divisibility                    :B_block:BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.6
+     :BEAMER_env: block
+     :END:
+     - for $Y=\{1,2,3\}$ 
+       - lower bound: $1$, upper bound: $6$,
+       - infimum: $1$, supremum: $6$.
+
+     - for $Y=\{2,3,4\}$
+       - lower bound: $1$, upper bound: $\emptyset$,
+       - infimum: $1$, supremum: none.
+**** Hasse-diagram                                                    :BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.3
+     :END:
+     #+ATTR_LATEX: :width 3cm
+     file:../figs/hasse.tikz
+*** Least-upper-bound property
+**** LUB and GLB property
+     :PROPERTIES:
+     :BEAMER_ENV: definition
+     :END:
+     Let $(X,\preceq)$ be a partially ordered set.
+     - $X$ has the *least-upper-bound property*, if every non-empty
+       $Y\subset X$ which is bounded from above has a supremum,
+     - $X$ has the *greatest-lower-bound property*, if every non-empty
+       $Y\subset X$ which is bounded from below has an infimum.
+**** Examples
+     The set $\N$ with divisibility has the least-upper-bound property:
+     - If $Y=\{n_1,n_2,\ldots,n_k\}$ then $\inf Y =gcd(n_1,n_2,\ldots,n_k)$
+       and $\sup Y = lcm(n_1,n_2,\ldots,n_k)$.
+     The set $(\Q,\le)$ does not have the least-upper-bound property:
+     - If $Y=\{y\in\Q : y^2\le 2\}$ then $Y$ has upper bounds (\eg $2$,
+       $10$, $42$) but the least upper bound would be $\sqrt{2}$ and
+       $\sqrt{2}\not\in\Q$.
+*** COMMENT Well ordered sets
+**** Definition
+     A partially ordered set $(X,\preceq)$ is *well ordered* if every
+     non-empty subset of $X$ has a least element.
+**** Examples
+     - $(\N,\leq)$ is well ordered
+     - $(\R,\leq)$ is not well ordered: \eg $(0,1)$ has no least
+       element.
+** Functions
+*** Definition
+**** Definition (Functions)
+     - A relation $f\subset X \times Y$ is a *function* (or map,
+       operator, transformation) if $\forall x,y,y' : (x,y) \in f \land (x,y')\in f
+       \Rightarrow y=y'$ (for all $x\in X$ and $y\in Y$). 
+     - Since $f(\{x\})$ has at most one element the $f(x)=y$ (of
+       $x\mapsto y$ or $f_x=y$) notation is used.
+**** Examples
+     - $f=\{(x,x^2)\in \R\times\R : x\in\R\}$ is a function, and
+       $f$ is the $x\mapsto x^2$ map or $f(x)=x^2$.
+     - The inverse $f^{-1}$ is not a function because
+       $(4,2),(4,-2)\in f^{-1}$.
+     - Any sequence is a mapping from $\N$. \Eg the Fibonacci sequence
+       $F$ is a mapping from $\N$ to $\N$ and $F_0=0$, $F_1=1$ and
+       $F_{n+2}=F_{n+1}+F_n$.
+*** Set of functions
+**** Notation
+     The set of functions $f\subset X\times Y$ is denoted as $X\to Y$.
+     So $f\in X\to Y$ is a map from $X$ to $Y$ and if $\dmn(f)=X$ then
+     the $f:X \to Y$ notation is used. (If $f:X \to Y$, then
+     $\rng(f)\subsetneq Y$ is still possible.)
+**** Examples
+     If $f(x)=\sqrt{x}$ then,
+     - $f \in \R \to \R$ is correct.
+     - $f : \R \to \R$ is NOT correct because $\dmn(f)=[0,\infty)=\R_0^+$.
+     - $f : \R_0^+ \to \R$ is correct!
+*** Injective, surjective and bijective
+**** Definition (Injective, surjective and bijective)
+     - The function $f:X\to Y$ is
+       - *injective* (or *invertable*), if $f(x)=y \land f(x')=y \Rightarrow x=x'$;
+       - *surjective*, if $\rng(f)=Y$;
+       - *bijective*, if it is /injective/ and /surjective/.
+    
+     - A bijective function $f:X\to X$ is a *permutation* of $X$.
+
+     Remarks: 
+     - $f$ is /injective/ if and only if the relation $f^{-1}$ is a
+       function.
+     - Whether a function $f:X\to Y$ is /surjective/, depends on $Y$. If
+       $Y\subsetneq Y'$, then $f\subset X\times Y \subset X\times Y'$,
+       and $f:X\rightarrow Y'$ is surely *not* surjective.
+*** Example   
+**** Example  
+     - The function $f:\R \to \R$, $f(x)= x^2$ is *not* injective and
+       *not* surjective: $f(-1)=f(1)$, $\rng(f)=\R_0^+$.
+     - The function $f:\R \to \R_0^+$, $f=x\mapsto x^2$ is *not*
+       injective but it is surjective.
+     - The function $f:\R_0^+ \to \R_0^+$, $f:x\mapsto x^2$ is
+       injective and surjective, therefor it is also bijective.
+*** Composition of functions
+**** Properties of the composition of functions                   :B_theorem:
+     :PROPERTIES:
+     :BEAMER_env: theorem
+     :END:
+     1. If $f$ and $g$ are *functions*, then $g \circ f$ is also a
+        *function*.
+     2. If $f$ and $g$ are *injective*, then $g \circ f$ is also
+        *injective*.
+     3. If $f:X\rightarrow Y$, $g:Y\rightarrow Z$ are *surjective*,
+        then $g \circ f : X \rightarrow Z$ is also *surjective*.
+**** Proof                                                          :B_proof:
+     :PROPERTIES:
+     :BEAMER_env: proof
+     :END:
+     Let $h=g\circ f$.
+     1. Let $(x,y)\in h$, $(x,y')\in h$: $\exists z\,( (x,z)\in f \land
+        (z, y)\in g)$, $\exists z' \,((x,z')\in f, (z', y')\in g)$.
+        Since $f$ is a function $z=z'$, since $g$ is a function $y=y'$.
+     2. Let $h(x)=h(x')$. Let $f(x)=y, f(x')=y'$, so
+        $g(y)=g(y')$. Since $g$ is injective: $y=y'$. Since $f$
+        injective: $x=x'$.
+     3. HW.
+*** Monotonic functions 
+**** Definition (Monotonic functions)
+     Let $X$, $Y$ be partially ordered sets. The function $f:X\to Y$ is
+     - *monotonically increasing*, if $x,y\in X \land x\preceq y
+       \Rightarrow f(x)\preceq f(y)$;
+     - *strictly increasing*, if $x,y\in X \land x\prec y \Rightarrow
+       f(x)\prec f(y)$;
+     - *monotonically decreasing*, if $x,y\in X \land x\preceq y
+       \Rightarrow f(x)\succeq f(y)$;
+     - *strictly decreasing*, if $x,y\in X \land x\prec y \Rightarrow
+       f(x)\succ f(y)$.
+*** Example
+**** Example
+     - Let $X=Y=\R$ with the usual ordering. Then $f(x)=x^3$ is a
+       /strictly increasing/ function.
+     - Let $X=Y=\N$ with the divisor relation. Then $f(x)=5x$ is a
+       /strictly increasing/ function: $x \mid y \Rightarrow 5x \mid
+       5y$.
+     - Let $X=Y=\wp(\{a,b,c\})$ with the subset partial ordering.  Then
+       - $f(A)=A\setminus \{a\}$ /monotonically increasing/: 
+         $A \subset B$ $\color{black} \Rightarrow$ $A \setminus \{a\}\subset
+         B\setminus \{a\}$; 
+       - $g(A)=\overline{A}$ is /strictly
+	 decreasing/: $A \subsetneq B$ $\color{black} \Rightarrow$
+	 $\overline{A} \supsetneq \overline{B}$.
+*** Monotonic functions 
+**** Remarks
+     Let $X,Y$ be ordered sets and $f:X\to Y$.
+     - If $f$ is a /strictly increasing/ (or /decreasing/) function
+       then $f$ is also *injective*: If $x\neq y$ then $x\prec y\lor y
+       \prec x$ then $f(x)\prec f(y)\lor f(y) \prec f(x)$ so $f(x)\neq
+       f(y)$.
+     - If $f$ is a /strictly increasing/ (or /decreasing/) function
+       then $f^{-1}$ is also a /strictly increasing/ (or /decreasing/)
+       function: Since $f$ is injective, $f^{-1}$ is a function. If
+       $f(x)\prec f(y)$, then $x \succeq y$ can not be true.
+*** Operations
+**** Definition (Binary operation)
+     A *binary operation* (operation with two variables) defined on the
+     set $X$ is a $\otimes: X \times X \to X$ function.  Often $x
+     \otimes y$ is used instead of $\otimes (x,y)$.
+    
+     A *unary operation* defined on the set $X$ is a $\otimes : X \to
+     X$ function.
+  
+**** Example
+     - $+$, $\cdot$ are /binary/ and $z\mapsto -z$ is a /unary
+       operation/ on the set $\R$.
+     - $\div$ (division) is /not/ an /operation/ on $\R$, because $\dmn
+       (\div)\neq \R \times \R$.
+     - $\div$ is a /binary/, and $x\mapsto 1/x$ (reciprocal) is a
+       /unary operation/ on the set $\R^*=\R\setminus\{0\}$.
+ #    - Designating the constant elements $0$ and $1$ are /nullary
+ #      operations/ on the set $\R$.
+*** Operations
+    On a finite set, operations can be given with the operation table.
+
+    | $\land$ | 0 | 1 | $\lor$ | 0 | 1 | $\oplus$ | 0 | 1 | $\lnot$ | 0 | 1 |
+    |       / |   | > |        |   | > |          |   | > |         |   |   |
+    |       0 | 0 | 0 |      0 | 0 | 1 |        0 | 0 | 1 |         | 1 | 0 |
+    |       1 | 0 | 1 |      1 | 1 | 1 |        1 | 1 | 0 |         |   |   |
+**** Definition (Operations on functions)
+     Let $X$ be an arbitrary set, $Y$ a set with the $\otimes:Y\times
+     Y\to Y$ operation, $f,g:X \rightarrow Y$ two functions. Then 
+     $$(f\otimes g)(x)=f(x)\otimes g(x)$$
+ 
+**** Example
+     $(\sin + \cos )(x)=\sin x + \cos x$
+ 
+*** Properties of operations
+**** Definition (Properties of operations)
+     The operation $\otimes$ is *associative*, if $(a \otimes b)
+     \otimes c =a \otimes (b \otimes c)$; *commutative*, if $a \otimes
+     b =b \otimes a$.
+**** Example
+     - The operations $+$ and $\cdot$ operation is /associative/ and
+       /commutative/ on the set $\R$.
+     - The function /composition/ as an operation on $X\to X$
+       functions, is /associative/: $(f\circ g) \circ h=f\circ (g \circ
+       h)$.
+     - The function /composition/ as an operation on $X\to X$, is *not*
+       /commutative/: $f(x)=x+1$, $g(x)=x^2$: $x^2+1=(f\circ g)(x)\neq
+       (g \circ f)(x)=(x+1)^2$.
+     - /Division/ is *not* /associative/: $\frac{a}{bc}=(a\div b) \div
+       c\neq a\div (b \div c)=\frac{ac}{b}$.
+*** Structure preserving maps
+**** Definition
+     Let $X$ be a set with the $\otimes$ operation, $Y$ with the
+     $\oplus$ operation. The $\varphi: X\to Y$ function is
+     *structure-preserving* or a *homomorphism*, if
+     $\varphi(x\otimes y)=\varphi(x)\oplus \varphi(y)$.
+**** Example
+     - Let $X=\R$ with the $+$ operation, $Y=\R^+$ with the $\cdot$
+       operation.  Then $x\mapsto a^x$ is a /homomorphism/
+       $a^{x+y}=a^x\cdot a^y$.
+     # - Let $X=Y=\C$ with the $+$ operation.  Then $z\mapsto
+     #   \overline{z}$ is /homomorphism/:
+     #   $\overline{z+w}=\overline{z}+\overline{w}$
+     - Let $X=\Z$ with the $+$ operation, $Y=\Z_3$ with the $+_3$
+       (addition modulo $3$) operation.  Then $n\mapsto n \bmod 3$ is
+       /homomorphism/: $k+n \bmod 3 = (k \bmod 3)+_3 (n \bmod 3)$.
+     - Let $X=\{\top,\perp\}$ with the $\oplus$ or $\land$ operation, $\Z_2$
+       with the $+_2$ or $\cdot_2$ operation. Then
+       $\perp \mapsto 0$, $\top\mapsto 1$ is a *homomorphism*.
+      
+*** COMMENT Different homomorphisms
+**** Different kinds of homomorphisms
+     Let $\varphi : X \to Y$ be a homomorphism. $\varphi$ is a
+     - Monomorphism, if $\varphi$ is injective;
+     - Epimorphism, if $rng(\varphi)=Y$; 
+     - Isomorphism, if $\varphi$ is a bijection;
+     - Endomorphism, if $X=Y$;
+     - Automorphism, if $X=Y$ and $\varphi$ is bijective.
+* Number sets
+** Natural numbers
+*** Peano axioms
+**** The set of natural numbers $\N$
+     Let $\N$ be a set and $f:\N\to\N$ a function so that the
+     following statements are true:
+     1. $0\in\N$.
+     2. $n\in\N \Rightarrow f(n)\in\N$.
+     3. $n\in\N \Rightarrow f(n)\neq 0$.
+     4. $\bigl[n,m\in\N \land n\neq m\bigr] \Rightarrow f(n)\neq f(m)$.
+     5. $\bigl[ S\subset \N \land 0\in S \land (n\in S \Rightarrow
+        f(n)\in S) \bigr] \Rightarrow S=\N$.
+    
+     Usually, we write $n^+$ instead of $f(n)$.
+
+     Also instead of $0^+$ we write $1$ and $0^{++}=1^+=2$ and so on,
+     so the $^+$ function basically means $f(n)=n^+=n+1$.
+*** Existence and uniqueness
+**** Existence 
+     - There exists a set $\N$ which satisfies the Peano axioms,
+       because of the infinity axiom of ZFC set theory.
+     - The infinity axiom states $\exists X (\emptyset \in X \land
+       \forall y ( y \in X \Rightarrow S(y)\in X)$ where $S(y)=y\cup
+       \{y\}$.
+     - The $S$ function here is the same as the $f$ function in the
+       Peano axioms, \ie the /successor of an element/.
+**** Uniqueness
+     It can be proven, that the set of natural numbers is unique (up to
+     naming) \ie if there is a different set $\N'$ satisfying the Peano
+     axioms, there is a homomorphic bijection $\varphi :\N\to\N'$ so
+     that $\varphi(0)=0'\in\N'$ and $\varphi(n^+) =
+     (\varphi(n))^{+'}\in\N'$.
+*** Operations on natural numbers
+**** Recursion
+     Let $X$ be an arbitrary set, $a\in X$ and $f:X\to X$. Then there
+     is a unique $g:\N\to X$ function for which $g(0)=a$ and $\forall n
+     (n\in\N \Rightarrow g(n^+)=f(g(n))$.
+
+     The essence of this theorem is that we can use recursion in
+     definitions.
+**** Addition
+     For each $m\in\N$ we define $s_m:\N\to\N$ so that $s_m(0)=m$ and
+     $s_m(n^+)=s_m(n)^+$.  Instead of $s_m(n)$ we usually write
+     $m+n$. Using induction if $k,m,n\in \N$ the following can be
+     proven (it is not that hard, you should try it at home):
+     - associativity: $(k+n)+m=k+(n+m)$; 
+     - 0 is a neutral (or zero) element: $0+n=n+0=n$;
+     - commutativity: $m+n=n+m$;
+     - simplification: $\bigl[(m+k=n+k)\lor(k+m=k+n)\bigr] 
+       \Rightarrow (m=n)$
+*** Operations on natural numbers
+**** Multiplication
+     Similarly, we define a function $p_m:\N\to\N$ so that $p_m(0)=0$
+     and $p_m(n^+)=p_m(n)+m$. Again, instead of $p_m(n)$ we write
+     $m\cdot n$ (or $mn$).  Using induction if $k,m,n\in \N$ the
+     following can be proven:
+     - associativity: $(k\cdot n)\cdot m=k\cdot (n\cdot m)$;
+     - $0\cdot n = n \cdot 0 = 0$;
+     - 1 is a neutral (or unit) element: $1\cdot n=n\cdot 1=n$;
+     - commutativity: $m\cdot n=n\cdot m$;
+     - distributivity: $k\cdot(m+n)=k\cdot m + k\cdot n$ and
+       $(m+n)\cdot k = m\cdot k + n\cdot k$.
+*** Ordering of natural numbers
+**** Definition of $\leq$
+    We can define the relation $R\subset \N\times\N$ as follows:
+    $(n,m)\in R \iff \exists k (k\in \N \land n+k=m)$. Instead
+    $(n,m)\in R$ we usually write $n\leq m$.
+
+    It can be shown that $\leq$ is 
+    - reflexive: $n\leq n$ because there exists $k=0$ so that $n+k=n$.
+    - anti-symmetric: if $n\leq m\iff \exists k (k\in\N \land n+k=m)$
+      and $m\leq n \iff \exists k' (k'\in\N \land m+k'=n)$ substituting
+      $n$ into the previous formula we have $m+k'+k=m$ which can only be
+      true if $k+k'=0$ which implies $k=k'=0$.
+    - transitive: $n_1 \leq n_2 \iff \exists k_1 (k_1\in \N \land
+      n_1+k_1=n_2)$ and $n_2 \leq n_3 \iff \exists k_2 (k_2 \in \N
+      \land n_2+k_2=n_3)$. Substituting $n_2$ from the first statement
+      into the second statement we get $n_1+k_1+k_2 = n_3$ \ie $\exists
+      k_3 (k_3 \in \N \land n_1 + k_3 =n_3)$ where $k_3=k_1+k_2$.
+** Integers
+*** Definition of integers
+**** The set $\Z$
+    We can define the set of integers $\Z$ using $\N$ with its
+    operations as follows.
+    - Let $=_\Z\subset \N^2\times\N^2$ and $(m,n)=_\Z(m',n')\iff m+n'=m'+n$.
+    - $=_\Z$ is an equivalence relation (\ie reflexive, transitive and
+      symmetric) and it defines a classification of $\N\times\N$
+    - Each class represents one integer \ie an element of $\Z$.
+    - $m$ represents the "positive" and $n$ the negative part of the
+      integer which contains $(m,n)$, so two integers $(m,n)$ and
+      $(m',n')$ are identical if $m-n=_\Z m'-n'$ \ie $m+n'=m'+n$ (note
+      that the later doesn't use subtraction which is not yet defined).
+    - Example: the number $-42$ contains all the ordered pairs $(m,n)$
+      for which $m-n=-42$ \ie $m+42=n$ or
+      $\{(42,0),(43,1),(44,2),\ldots\}$
+*** Operations on integers
+**** Addition of integers
+    - Since $(m,n)$ is basically $m-n$ we can define the operation
+      $(m,n)+(m',n')=(m+m',n+n')$ because ${\color{gray}
+      (m-n)+(m'-n') =(m+m')-(n+n')}$.
+**** Multiplication of integers
+    - Because $\color{gray}(m-n)\cdot (m'-n')=(m\cdot m' +n\cdot n') -
+      (m\cdot n'+m'\cdot n)$ we can define $(m,n)\cdot(m',n')=(m\cdot
+      m' +n\cdot n', m\cdot n'+m'\cdot n)$
+**** Remarks
+    - Note that grayed out equations are not entirely precise, because
+      they are not yet defined.
+    - Of course instead of class of $(7,0)$ we just write 7, and
+      instead of $(0,42)$ we write just $-42$.
+*** Ordering of integers
+**** Embedding of $\N$ into $\Z$
+     - There is a homomorphism from $\N$ to the equivalence classes
+       which contain the pairs $(m,0)$ ($m\in\N$)
+     # - This means that there is a natural connection between the
+     #  natural numbers and some of the integers \ie $\N\subset\Z$
+**** A classification compatible with an operation
+     - The classification (or the $\sim$ equivalence relation) of a set
+       $X$ is compatible with the operation $\oplus:X\times X \to X$
+       when $x\sim x'$ and $y\sim y'$ implies $x\otimes y \sim
+       x'\otimes y'$.
+     - The classification defined by $=_\Z$ of $\N\times\N$ is
+       compatible with the $+$ and $\cdot$ defined on integers.
+**** Ordering of integers
+     - We say that for $k,l\in\Z$ that $k\leq l$ if there is an $n\in\N$
+       such that $k+n=l$.
+*** Groups and semigroups 
+    The addition $+$ on $\Z$ is associative, has a neutral element,
+    zero, and for each $k\in\Z$ we can define an inverse $-k$ for which
+    $k+(-k)=0$, and addition is also commutative. This motivates the
+    following deffinitions:
+**** Grupoid, Semigroup, Monoid, Group, Abelian group
+     - A set $G$ and an operation $\otimes:G\times G\to G$ is a
+       *grupoid* if for each $g,g'\in G$ the result of $g\otimes g'\in
+       G$ (\ie the operation does not "lead out" of the set).
+     - A $(G,\otimes)$ groupoid is a *semigroup* if the operation is
+       associative.
+     - A $(G,\otimes)$ semigroup is a *monoid* if there is an element $n\in
+       G$ such that $n$ is the neutral element \ie $g\otimes n = n
+       \otimes g = g$ for each $g\in G$.
+     - A $(G,\otimes,n)$ monoid is a *group* if every element has an inverse
+       \ie for each $g\in G$ there is a $g^{-1}\in G$ so that $g\otimes
+       g^{-1} = n$. The group is an *abelian group* if the operation is
+       commutative \ie $a\otimes b = b \otimes a$ for each $a,b\in G$.
+** Rational numbers
+*** Definition
+**** Definition of $\Q$
+     Usually the set of rational numbers is defined as a set of
+     fractions \ie numbers $\frac{p}{q}$ where $p,q\in \Z$. The precise
+     definition is as follows:
+     - We define the $=_\Q$ equivalence relation of $\Z\times\Z$ so that
+       $(p,q)=_\Q (p',q')\iff pq'=p'q$. 
+     - The $=_\Q$ equivalence relation defines a classification of
+       $\Z\times\Z$ and the classes are the rational numbers \ie
+       elements of $\Q$.
+     - Addition: $(p,q)+(p',q')=(pq'+p'q,qq')$
+     - Multiplication: $(p,q)\cdot (p',q')=(pp',qq')$
+     - Ordering: $(p,q)\leq (p',q')\iff 0\leq (p'q-q'p)qq'$
+     - Instead of $(p,q)$ we write of course $\frac{p}{q}$ or $p/q$,
+       and instead of $=_\Q$ we use simply $=$
+     - $\Z$ can be embedded into $\Q$ using the mapping $k\mapsto (k,1)$
+     - The classification is compatible with addition on multiplication
+*** Rings
+**** Ring, integral domain, skew field, field
+     Let $R$ be a set with two operations $+:R\times R\to R$ and
+     $\otimes:R\times R \to R$.
+     - $(R,+,\otimes)$ is a ring if $(R,+)$ is an abelian group,
+       $(R,\otimes)$ is a semigroup, and the two operations are
+       distributive, \ie $a\otimes(b+c)=a\otimes b+a\otimes c$ and
+       $(b+c)\otimes a=b\otimes a+c\otimes a$ for each $a,b,c\in R$
+     - A ring $(R,+,\otimes)$ is a *commutative ring* if the $\otimes$
+       operation is commutative \ie $a\otimes b=b\otimes a$ for each
+       $a,b\in R$.
+     - A ring is a *unitary ring* if there is a multiplicative unity
+       \ie an element $u\in R$ so that $u\otimes a = a \otimes u = a$ for
+       each $a\in R$.
+     - A *zero ring* is a ring that contains only one element, and that
+       has to be the zero element $0$ (\ie the neutral element of the
+       additive group).
+       - The term "zero ring" sometimes refers to the other trivial
+         ring, in which $a\otimes b=0$ for any $a,b\in R$.
+*** Integral domain, skew field, field
+**** Integral domain, skew field, field
+     - Two element $a$ and $b$ of a ring are *zero divisors* if $a\neq
+       0$ and $b\neq 0$ and $a\otimes b = 0$
+     - A nonzero [fn:: a ring with at least two elements] commutative
+       ring $(R,+,\otimes)$ is an *integral domain* if it has no zero
+       divisors. [fn::An equivalent definition of the integral domain
+       is a nonzero commutative ring such that $a\otimes b=0$ implies
+       $a=0 \lor b=0$ for each $a,b\in R$.]
+       - An integral domain is ordered if $R$ is ordered with a $\leq$
+         relation so that for all $a,b,c\in R$:
+	 - addition is monotonous: $a\leq b \Rightarrow a+c\leq b+c$
+	 - multiplication is monotonous $0\leq a,b \Rightarrow 0\leq
+           a\otimes b$
+     - The ring $(R,+,\otimes)$ is a *division ring* or a *skew field*
+       if $(R\setminus\{0\},\otimes)$ is a group.
+     - The ring $(R,+,\otimes)$ is a *field* if $(R \setminus \{0\},
+       \otimes)$ is an abelian group.
+       - All fields are integral domains.
+*** TODO Examples
+** Real numbers
+*** Definition of real numbers
+**** Example
+     - $\sqrt{2}$ (which is the diagonal of a unit square) is not
+       rational! Because, if it were $\in\Q$ then
+       $\sqrt{2}=\frac{p}{q}$ for some $p,q\in\Z$ such that $p$ and $q$
+       are as small as possible. Squaring both sides we have
+       $2=p^2/q^2$, or $2q^2=p^2$ (we can suppose that
+       $0<p,q\in\N$). We can see that $p$ has to be even \eg $p=2k$ so
+       $2q^2=4k^2$, therefore $q^2=2k^2$ which implies that $q$ is also
+       even, and we could have simplified $p$ and $q$ by dividing them
+       with $2$ which would make them smaller (which is a
+       contradiction).
+**** Definition of $\R$
+     The set of *real numbers* $\R$ is defined as an ordered field
+     which has the leas upper bound property. The properties of real
+     numbers are further discussed in analysis/calculus.
+** Complex numbers
+*** Definition of complex numbers
+**** Motivation
+     - Even some quadratic equations have no /real/ solutions, \eg
+       $x^2+1=0\iff x^2=-1$ or $x^2+x+2=0$ would have solutions
+       $x=(-1\pm\sqrt{1-4\cdot 2})/2$ \ie a solution with a negative
+       discriminant.
+**** Definition 
+     The set of *complex numbers* is defined a $\C=\R\times\R$ with the
+     following operations:
+     - addition: $(x,y)+(u,v) = (x+u,y+v)$
+     - multiplication: $(x,y)\cdot(u,v) = (xu-yv,xv+yu)$
+
+     Note: things become simpler by introducing the "value" $i$ which
+     is the *imaginary unit*, \ie a "number" which has the property
+     $i^2=-1$.
+*** Functions on complex numbers
+**** Algebraic form
+     If $z\in\C$, instead of $z=(x,y)$ we write $z=x+yi$ which is the
+     *algebraic* or *rectangular form* of $z$.
+    
+     In this form, addition of two complex numbers $z=x+yi$ and
+     $w=u+vi$ becomes $z+w=(x+yi)+(u+vi)=(x+u)+(y+v)i$; multiplication
+     becomes $zw=(x+yi)(u+vi)=xu +xvi +yui + yvi^2=(xu-yv) + (xv +yu)i$
+     because $i^2=-1$.
+**** Functions on $z=x+yi$
+     If $z\in \C$ and $z=x+yi$ where $x,y\in\R$ then 
+     - $x=\Re(z)$ is the *real* and $y=\Im(z)$ is the *imaginary
+       part* of $z$;
+     - $\overline{z}=x-yi$ is the *conjugate* of $z$;
+     - $\left\vert z\right\vert=\sqrt{x^2+y^2}=\sqrt{z\overline{z}}$
+       is the *absolute value* or *modulus* of $z$;
+*** Polar form
+    Since $\C=\R\times\R$, we think about $\C$ as a 2-dimensional plane
+    called the *complex plane*.  Each complex number $z\in\C$
+    represents a point on the complex plane.  In the rectangular form
+    $x$ and $y$ represent the length of the sides of a rectangle
+    defined by the origin $0$ and the point $z$.  But points can also
+    be given as a distance from the origin $0$ and as an angle (usually
+    measured from the positive real axis counter clockwise in radians).
+**** Polar form
+     The *polar form* of $z\in\C$ is $z=r(\cos \theta+i\sin \theta)$
+     where $r=\left\vert z\right\vert$ is the distance of $z$ from $0$,
+     and $\theta$ is the angle from the positive real axis measured in
+     radians counter clockwise.
+**** Argument
+     Using the above notation, if $\theta \in [0,2\pi)$ then we say it
+     is the *argument of $z$* and this is denoted by *$\arg z$*.  It
+     can be calculated using $\arctan\frac{y}{x}$ and the signs of
+     $x$ and $y$.
+
+     # The argument of the complex number $z=x+yi$ (where $x,y\in\R$)
+     # is \(\arg z=\begin{cases}\arctan\frac{y}{x}&\text{if
+     # $x>0$}\\ \arctan\frac{y}{x}+\pi&\text{if $x<0$}\end{cases}\).
+*** Division in rectangular form
+**** Calculating the reciprocial
+     Let $0\neq z=x+yi\in\C$ ($x,y\in\R$). Then
+     \begin{equation*}
+     \frac{1}{z} =  \frac{1}{x+yi} = \frac{1}{x+yi}\cdot\frac{x-yi}{x-yi} = 
+     \frac{x-yi}{x^2+y^2} =     \frac{x}{x^2+y^2} - \frac{y}{x^2+y^2}i
+     \end{equation*}
+**** Division
+     Let $z,w\in\C$ such that $w\neq0$. Then using the above procedure:
+     \begin{equation*}
+     \frac{z}{w} = \frac{z}{w}\cdot\frac{\overline{w}}{\overline{w}}=
+     \frac{z\overline{w}}{\left\vert w\right\vert^2}=
+     \frac{\Re(z\overline{w})}{\left\vert w\right\vert^2}+
+     \frac{\Im(z\overline{w})}{\left\vert w\right\vert^2}i
+     \end{equation*}
+*** De Moivre formuls
+**** Operations in polar form
+     Let $z,w\in \C$, $n\in\N$ $z=r(\cos t+i\sin t)$ and $w=s(\cos q+i\sin q)$
+     - multiplication: $zw=rs(\cos(t+q)+i\sin(t+q))$
+     - division: $z/w=\frac{r}{s}(\cos(t-q)+i\sin(t-q))$
+     - exponentiation: $z^n=r^n(\cos(nt)+i\sin(nt))$
+**** \(n\)-th root of a complex number
+     Let $z=r(\cos t+i\sin t)$ and $n\in\N$.  $w\in\C$ is the *\(n\)-th
+     root of $z$* if $w^n=z$ \ie the roots of the polynomial $x^n-z$
+     sometimes written as $w=\sqrt[n]{z}$.
+
+     By the fundamental theorem of algebra, there are $n$ number of
+     \(n\)-th roots of $z$, and these can be obtained using the following
+     formula: \[w_k=\sqrt[n]{r}\left(\cos\frac{t+2k\pi}{n}
+     +i\sin\frac{t+2k\pi}{n}\right) \text{ for } k=0,1,2,\ldots,n-1\]
+** Graphical representations
+   \usetikzlibrary{decorations.pathreplacing}
+   \begin{tikzpicture}[scale=2]
+   \def\sqrtthree{1.732050808}
+   \def\zcords{(1/2,\sqrtthree/2)}
+
+   \clip(-0.3,-0.3) rectangle (3,1.5);  
+  
+   % grid, axis, circle
+   \draw[style=help lines,step=0.5,color=gray,densely dotted] 
+   (-1.2,-1.2) grid (1.2,1.2);
+   \draw[->] (-1.2,0) -- (1.2,0); % X axis
+   \draw[->] (0,-1.2) -- (0,1.2); % Y axis
+   \draw[dashed,color=gray] (0,0) circle (1);
+  
+   \filldraw[fill=green!20,draw=cyan] (0,0) -- (3mm,0pt) arc(0:60:3mm);
+   \node[color=cyan] at (0.2,0.1) {$\alpha$};
+
+   % r = |z| etc
+   \node[rotate=60,color=magenta] at (-0.1,0.6) {$r=|z|$};
+   \draw[color=magenta,decorate,decoration={brace,amplitude=10pt,mirror,raise=4pt}] \zcords -- (0,0) node{};
+
+   % cos alpha
+   \draw[color=blue] (0,0) -- (1/2,0)   (1/4,-0.1) node{$\cos \alpha$};
+
+   % sin alpha
+   \draw[color=red] (1/2,0) -- \zcords (0.6,0.4) node[rotate=90]{$\sin \alpha$};
+
+   % arrow to z and z's label
+   \draw[->,>=latex] (0,0) -- \zcords;
+   \draw \zcords 
+   node [draw, label=45:{$z=r(\cos \alpha + i \sin \alpha)$}, circle, 
+   minimum width=1pt, inner sep=1pt, fill=black] {};
+
+   \end{tikzpicture}
+** Roots of unity
+*** \(n\)-th roots of unity
+**** Definition
+     For $n\in\N^+$ the $\varepsilon\in\C$ is an *\(n\)-th root of unity*
+     if $\varepsilon^n=1$.
+
+     The set of \(n\)-th roots of unity are denoted by $E_n$.
+**** Example
+     - 1 is a \(n\)-th root of unity for each $n\in\N^+$.
+     - second roots of unity are $+1$ and $-1$.
+     - $E_4=\{1,i,-1,-i\}$.
+     - $\varepsilon=\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}=-\frac{1}{2}+i\frac{\sqrt{3}}{2}$
+       is a third root of unity, but it is not a \(4\)-th root of unity.
+     - $E_n=\{\varepsilon_0,\varepsilon_1,\ldots,\varepsilon_{n-1}\}$
+       where $\varepsilon_k=\cos\frac{2\pi k}{n}+i\sin\frac{2\pi
+       k}{n}$.
+*** Primitive \(n\)-th roots of unity
+**** Definition
+     For $n\in\N^+$ the $\varepsilon\in\C$ is an *primitive \(n\)-th root
+     of unity* if $\varepsilon^n=1$ \ie it is an \(n\)-th root of unity
+     and $\{\varepsilon^k:k\in\N\}=E_n$.
+**** Example
+     - $E_2=\{1,-1\}$, $E_4=\{1,i,-1,-i\}$
+       - $-1$ is a second and a \(4\)-th root of unity, 
+       - but it is only a primitive second root of unity, 
+       - not a primitive \(4\)-th root of unity
+     - $\varepsilon=\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}=-\frac{1}{2}+i\frac{\sqrt{3}}{2}$
+       is a primitive third root of unity.
+
+    

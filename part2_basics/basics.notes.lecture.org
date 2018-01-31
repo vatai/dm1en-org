@@ -1,5 +1,5 @@
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper]
 #+LATEX_HEADER: \usepackage[]{beamerarticle}
-#+include: numbertheory.lecture.org
+#+include: basics.lecture.org
 #+OPTIONS: toc:t
